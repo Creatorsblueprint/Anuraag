@@ -136,6 +136,10 @@
     display: none;
   }
 
+  .desktopContactWrapper {
+    display: none;
+  }
+
   .mobileToggle {
     display: flex;
   }

@@ -69,7 +69,7 @@ export default function Nav() {
           </ul>
         </nav>
 
-        <div>
+        <div className={styles.desktopContactWrapper}>
           <a
             href="#contact"
             onClick={(e) => handleNavClick(e, '#contact')}
