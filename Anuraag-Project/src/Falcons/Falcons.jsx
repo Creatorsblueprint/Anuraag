@@ -54,14 +54,14 @@ export default function Falcons() {
           </motion.div>
 
           {/* Status and Submission link */}
-          <motion.div className={styles.statusRow} variants={fadeIn}>
+          {/* <motion.div className={styles.statusRow} variants={fadeIn}>
             <span className={styles.pulseDot} />
             <span className={styles.statusText}>SEASON BROADCAST STREAMING ACROSS MENA</span>
           </motion.div>
 
           <motion.a href="#contact" className={styles.submitLink} variants={fadeIn}>
             SUBMIT VENTURE FOR FALCON SCREENING &rarr;
-          </motion.a>
+          </motion.a> */}
         </motion.div>
 
         {/* Right Column: Series Dossier */}

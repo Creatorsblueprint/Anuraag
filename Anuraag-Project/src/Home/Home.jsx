@@ -144,7 +144,7 @@ export default function Home() {
                 <span className={styles.dot} />
                 <span>Wazir Holdings Executive Office</span>
               </div>
-              <span className={styles.frameDate}>DXB · 2025</span>
+              <span className={styles.frameDate}>DXB · 2026</span>
             </div>
 
             {/* Overlapping Floating Television Investor Badge */}

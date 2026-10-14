@@ -25,10 +25,10 @@ export default function Footer() {
               landmark business broadcast 'Falcons of Majlis'. Distinguished visiting professor of strategy
               and enterprise governance at AURAK.
             </p>
-            <div className={styles.statusIndicator}>
+            {/* <div className={styles.statusIndicator}>
               <span className={styles.statusDot} />
               <span>ACADEMIC PEDAGOGY &amp; THOUGHT LEADERSHIP</span>
-            </div>
+            </div> */}
           </div>
 
           {/* Column 2: Navigation Links */}
@@ -104,7 +104,7 @@ export default function Footer() {
         {/* Bottom Sub-footer */}
         <div className={styles.bottomBar}>
           <div className={styles.copyright}>
-            &copy; 2025 Dr. Anuraag Guglaani. All rights reserved.
+            &copy; 2026 Dr. Anuraag Guglaani. All rights reserved.
           </div>
 
           <div className={styles.legalLinks}>
