@@ -111,7 +111,7 @@ export default function Home() {
             <div className={styles.imageWrapper}>
               {!imgError ? (
                 <img
-                  src="/portrait.png"
+                  src="/home.png"
                   alt="Dr. Anuraag Guglaani — Fiduciary Sovereign Counsel"
                   className={styles.portraitImg}
                   onError={() => setImgError(true)}
