@@ -10,7 +10,7 @@ export default function Nav() {
     { label: 'Overview', href: '#overview', id: 'overview' },
     { label: 'Pillars', href: '#pillars', id: 'pillars' },
     { label: 'Falcons of Majlis', href: '#falcons', id: 'falcons' },
-    { label: 'EBOOK', href: '#ebook', id: 'ebook' },
+    { label: 'Ebook', href: '#ebook', id: 'ebook' },
     { label: 'Lectern', href: '#lectern', id: 'lectern' }
   ];
 
@@ -38,11 +38,23 @@ export default function Nav() {
 
   const handleNavClick = (e, href) => {
     e.preventDefault();
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
     setMobileMenuOpen(false);
+
+    // Allow mobile menu exit animation to start, then scroll taking sticky header height into account
+    setTimeout(() => {
+      const target = document.querySelector(href);
+      if (target) {
+        const header = document.querySelector(`.${styles.header}`);
+        const headerHeight = header ? header.offsetHeight : 70;
+        const elementPosition = target.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - headerHeight;
+
+        window.scrollTo({
+          top: Math.max(0, offsetPosition),
+          behavior: 'smooth'
+        });
+      }
+    }, 100);
   };
 
   return (
