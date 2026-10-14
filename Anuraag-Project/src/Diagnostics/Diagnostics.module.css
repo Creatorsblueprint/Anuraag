@@ -113,4 +113,10 @@
     grid-template-columns: 1fr;
     gap: 1.25rem;
   }
+
+  .card {
+    text-align: center;
+    align-items: center;
+    padding: 2rem 1.5rem;
+  }
 }

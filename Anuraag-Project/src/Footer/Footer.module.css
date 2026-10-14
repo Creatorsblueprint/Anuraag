@@ -195,9 +195,36 @@
     padding: 4rem 1.25rem 2rem;
   }
 
+  .brandCol {
+    align-items: center;
+    text-align: center;
+  }
+
+  .navCol {
+    align-items: center;
+    text-align: center;
+  }
+
+  .ctaCol {
+    align-items: center;
+    text-align: center;
+  }
+
+  .preorderBtn {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .bottomBar {
+    align-items: center;
+    text-align: center;
+  }
+
   .legalLinks {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 0.75rem;
+    width: 100%;
   }
 }

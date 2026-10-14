@@ -308,11 +308,46 @@
     font-size: 1.15rem;
   }
 
+  .detailsCol {
+    align-items: center;
+    text-align: center;
+  }
+
+  .overviewText {
+    text-align: center;
+  }
+
+  .partsList {
+    width: 100%;
+    text-align: left;
+  }
+
+  .purchaseBox {
+    width: 100%;
+    align-items: center;
+    padding: 1.75rem 1.25rem;
+  }
+
+  .priceTag {
+    justify-content: center;
+  }
+
   .purchaseForm {
     flex-direction: column;
+    width: 100%;
+  }
+
+  .emailInput {
+    width: 100%;
+    text-align: center;
   }
 
   .buyBtn {
     width: 100%;
+    padding: 1rem;
+  }
+
+  .noteText {
+    text-align: center;
   }
 }

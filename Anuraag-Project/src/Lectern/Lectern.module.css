@@ -169,7 +169,44 @@
     padding: 4.5rem 1.25rem;
   }
 
+  .headerBlock {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .mainTitle {
+    font-size: 2.15rem;
+  }
+
   .card {
     padding: 2rem 1.5rem;
+    text-align: center;
+    align-items: center;
+  }
+
+  .cardTopRow {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+    width: 100%;
+  }
+
+  .cardTitle {
+    font-size: 1.45rem;
+  }
+
+  .cardFooter {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .exploreLink {
+    width: 100%;
+    justify-content: center;
+    padding: 0.85rem;
+    background: var(--color-surface-container-high);
+    border: 1px solid var(--color-border-hairline);
+    border-radius: var(--radius-xs);
   }
 }

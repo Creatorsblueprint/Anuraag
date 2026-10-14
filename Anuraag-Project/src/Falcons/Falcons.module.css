@@ -281,16 +281,66 @@
     padding: 4rem 1.25rem 4.5rem;
   }
 
+  .leftCol {
+    align-items: center;
+    text-align: center;
+  }
+
+  .stageTag {
+    text-align: center;
+  }
+
   .mainTitle {
     font-size: 2.35rem;
+    text-align: center;
+  }
+
+  .quoteSubtitle {
+    text-align: center;
+  }
+
+  .description {
+    text-align: center;
   }
 
   .cardsGrid {
     grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .featureCard {
+    text-align: center;
+  }
+
+  .statusRow {
+    justify-content: center;
+  }
+
+  .submitLink {
+    margin: 0 auto;
+    width: 100%;
+    justify-content: center;
+    padding: 0.85rem;
+    background: rgba(181, 154, 98, 0.12);
+    border: 1px solid rgba(181, 154, 98, 0.3);
+    border-radius: var(--radius-xs);
+  }
+
+  .dossierCard {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .dossierHeader {
+    text-align: center;
   }
 
   .statsRow {
     grid-template-columns: 1fr;
-    gap: 1.25rem;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .statItem {
+    align-items: center;
   }
 }
