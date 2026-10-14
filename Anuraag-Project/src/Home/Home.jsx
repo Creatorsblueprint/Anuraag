@@ -66,13 +66,13 @@ export default function Home() {
               onClick={(e) => handleScrollTo(e, '#falcons')}
               className={styles.secondaryBtn}
             >
+              <span>LEARN MORE</span>
               <span className={styles.btnIcon}>
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="12" cy="12" r="10" />
-                  <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none" />
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
                 </svg>
               </span>
-              <span>WATCH FALCONS OF MAJLIS</span>
             </a>
           </motion.div>
 
@@ -141,14 +141,14 @@ export default function Home() {
             {/* Inset Footer below photo */}
             <div className={styles.frameFooter}>
               <div className={styles.officeInfo}>
-                <span className={styles.dot} />
-                <span>Wazir Holdings Executive Office</span>
+                {/* <span className={styles.dot} />
+                <span>Wazir Holdings Executive Office</span> */}
               </div>
               <span className={styles.frameDate}>DXB · 2026</span>
             </div>
 
             {/* Overlapping Floating Television Investor Badge */}
-            <div className={styles.floatingBadge}>
+            {/* <div className={styles.floatingBadge}>
               <div className={styles.badgeIcon}>
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M12 2v4" />
@@ -166,7 +166,7 @@ export default function Home() {
                 <span className={styles.badgeTag}>TELEVISION INVESTOR</span>
                 <span className={styles.badgeTitle}>Falcons of Majlis (UAE Broadcast)</span>
               </div>
-            </div>
+            </div> */}
           </div>
         </motion.div>
       </div>
