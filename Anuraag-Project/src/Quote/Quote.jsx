@@ -14,7 +14,7 @@ export default function Quote() {
           viewport={{ once: true, amount: 0.3 }}
         >
           <motion.div className={styles.quoteMark} variants={fadeInUp}>
-            99
+            ”
           </motion.div>
 
           <motion.blockquote className={styles.quoteText} variants={fadeInUp}>
