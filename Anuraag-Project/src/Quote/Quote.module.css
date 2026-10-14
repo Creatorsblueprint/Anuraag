@@ -1,0 +1,76 @@
+.quoteSection {
+  background-color: var(--color-surface-container);
+  padding: 6.5rem 2rem;
+  border-bottom: 1px solid var(--color-border-hairline);
+  position: relative;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.quoteMark {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  line-height: 1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.05em;
+  user-select: none;
+}
+
+.quoteText {
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--color-on-surface);
+  letter-spacing: -0.01em;
+  margin-bottom: 2.75rem;
+}
+
+.attribution {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.authorName {
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-on-surface);
+}
+
+.authorRole {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-on-surface-variant);
+}
+
+@media (max-width: 768px) {
+  .quoteSection {
+    padding: 4.5rem 1.5rem;
+  }
+
+  .quoteText {
+    font-size: 1.25rem;
+    line-height: 1.6;
+  }
+
+  .quoteMark {
+    font-size: 2.5rem;
+  }
+}

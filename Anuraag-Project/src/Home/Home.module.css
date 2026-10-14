@@ -1,0 +1,373 @@
+.heroSection {
+  padding: 4.5rem 2rem 5.5rem;
+  background-color: var(--color-surface);
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* Left Column */
+.leftCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.badgeRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+  flex-wrap: wrap;
+}
+
+.badgeLight {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-on-surface);
+  background-color: var(--color-surface-container-high);
+  border: 1px solid var(--color-border-hairline);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-xs);
+}
+
+.badgeDark {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-xs);
+}
+
+.heroTitle {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 600;
+  line-height: 1.14;
+  letter-spacing: -0.02em;
+  color: var(--color-on-surface);
+  margin-bottom: 1.6rem;
+}
+
+.heroSubtitle {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.68;
+  color: var(--color-on-surface-variant);
+  margin-bottom: 2.25rem;
+  max-width: 580px;
+}
+
+.heroSubtitle em {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-on-surface);
+}
+
+.actionRow {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 3.5rem;
+  flex-wrap: wrap;
+}
+
+.primaryBtn {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  padding: 0.95rem 1.85rem;
+  border-radius: var(--radius-xs);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(11, 31, 51, 0.15);
+}
+
+.primaryBtn:hover {
+  background-color: #1a2c42;
+  border-color: var(--color-gold);
+}
+
+.secondaryBtn {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-on-surface);
+  background-color: transparent;
+  border: 1px solid var(--color-border-hairline);
+  padding: 0.95rem 1.85rem;
+  border-radius: var(--radius-xs);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  transition: all 0.25s ease;
+}
+
+.secondaryBtn:hover {
+  background-color: var(--color-surface-container-high);
+  border-color: var(--color-primary);
+}
+
+.btnIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Metrics Row */
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border-hairline);
+}
+
+.metricItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.metricValue {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-on-surface);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.metricLabel {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-on-surface-variant);
+  line-height: 1.3;
+}
+
+/* Right Column: Framed Portrait */
+.rightCol {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.portraitFrame {
+  width: 100%;
+  max-width: 440px;
+  background-color: #ffffff;
+  border: 1px solid var(--color-border-hairline);
+  border-radius: var(--radius-xs);
+  padding: 1rem 1rem 1.25rem 1rem;
+  box-shadow: var(--shadow-ambient);
+  position: relative;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 4.4;
+  background-color: #121820;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.portraitImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* Fallback card styling if user hasn't added portrait.png yet */
+.portraitPlaceholder {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 60% 30%, #3a4a5b 0%, #17222f 50%, #0b141d 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold-light);
+}
+
+.portraitOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2.5rem 1.25rem 1.1rem;
+  background: linear-gradient(to top, rgba(0, 5, 14, 0.92) 0%, rgba(0, 5, 14, 0.6) 60%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.overlayName {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.overlayRole {
+  font-family: var(--font-body);
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-gold-light);
+}
+
+.frameFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.9rem;
+  padding: 0 0.25rem;
+}
+
+.officeInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  color: var(--color-on-surface-variant);
+  font-weight: 500;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-gold);
+}
+
+.frameDate {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--color-stone-muted);
+  letter-spacing: 0.04em;
+}
+
+/* Floating Television Investor Badge */
+.floatingBadge {
+  position: absolute;
+  bottom: -18px;
+  left: -20px;
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-gold-border);
+  border-radius: var(--radius-xs);
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  box-shadow: var(--shadow-dark-card);
+  z-index: 2;
+}
+
+.badgeIcon {
+  color: var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badgeContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.badgeTag {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gold-light);
+}
+
+.badgeTitle {
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .heroTitle {
+    font-size: 3rem;
+  }
+
+  .rightCol {
+    justify-content: flex-start;
+  }
+
+  .portraitFrame {
+    max-width: 480px;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    padding: 3rem 1.25rem 4rem;
+  }
+
+  .heroTitle {
+    font-size: 2.25rem;
+    line-height: 1.2;
+  }
+
+  .heroSubtitle {
+    font-size: 0.95rem;
+  }
+
+  .metricsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 1rem;
+  }
+
+  .floatingBadge {
+    position: static;
+    margin-top: 1rem;
+    width: 100%;
+  }
+}

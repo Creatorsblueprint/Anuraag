@@ -1,0 +1,125 @@
+.affiliationsSection {
+  padding: 3.5rem 2rem 4.5rem;
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border-hairline);
+  border-bottom: 1px solid var(--color-border-hairline);
+}
+
+.container {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.sectionLabel {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-stone-muted);
+  text-align: center;
+}
+
+.logoTrack {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.logoItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-stone-muted);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  cursor: default;
+  user-select: none;
+}
+
+.logoItem:hover {
+  color: var(--color-primary);
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.brandBloomberg {
+  font-family: var(--font-body);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.brandForbes {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.brandForbes span {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-left: 0.25rem;
+  letter-spacing: 0.05em;
+}
+
+.brandArabian {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.brandAurak {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.brandWazirHoldings {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.brandWazirAdvisors {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.brandAdam {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+@media (max-width: 900px) {
+  .logoTrack {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem 1.5rem;
+    justify-items: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .logoTrack {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem 1rem;
+  }
+}
