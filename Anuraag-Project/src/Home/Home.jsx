@@ -114,7 +114,13 @@ export default function Home() {
                   src="/home.png"
                   alt="Dr. Anuraag Guglaani — Fiduciary Sovereign Counsel"
                   className={styles.portraitImg}
-                  onError={() => setImgError(true)}
+                  onError={(e) => {
+                    if (e.currentTarget.src.endsWith('/home.png')) {
+                      e.currentTarget.src = '/Images/home.jpg';
+                    } else {
+                      setImgError(true);
+                    }
+                  }}
                 />
               ) : (
                 <div className={styles.portraitPlaceholder}>
