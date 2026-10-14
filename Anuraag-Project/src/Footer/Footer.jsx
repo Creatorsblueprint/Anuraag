@@ -83,21 +83,56 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: The Living Charter CTA */}
-          <div className={styles.ctaCol}>
-            <h4 className={styles.colHeader}>THE LIVING CHARTER</h4>
-            <p className={styles.ctaText}>
-              Dr. Anuraag Guglaani's forthcoming monograph on enterprise immortality and generational
-              dynasty governance.
-            </p>
-            <a
-              href="#ebook"
-              onClick={(e) => handleScrollTo(e, '#ebook')}
-              className={styles.preorderBtn}
-            >
-              <span>PRE-ORDER EBOOK</span>
-              <span>&rarr;</span>
-            </a>
+          {/* Column 3: Social Links */}
+          <div className={styles.socialCol}>
+            <h4 className={styles.colHeader}>CONNECT</h4>
+            <div className={styles.socialList}>
+              <a
+                href="http://www.linkedin.com/in/anuraagguglaani"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialLink}
+              >
+                <span className={styles.socialIcon}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                    <rect width="4" height="12" x="2" y="9" />
+                    <circle cx="4" cy="4" r="2" />
+                  </svg>
+                </span>
+                <span>LinkedIn</span>
+              </a>
+
+              <a
+                href="https://www.instagram.com/anuraagguglaani/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialLink}
+              >
+                <span className={styles.socialIcon}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                  </svg>
+                </span>
+                <span>Instagram</span>
+              </a>
+
+              <a
+                href="https://www.threads.com/@anuraagguglaani"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialLink}
+              >
+                <span className={styles.socialIcon}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12.001 2c-5.523 0-10 4.477-10 10s4.477 10 10 10c2.81 0 5.34-1.16 7.15-3.03l-1.42-1.42A7.95 7.95 0 0 1 12.001 20c-4.411 0-8-3.589-8-8s3.589-8 8-8c4.07 0 7.42 3.038 7.92 7h-2.02c-.46-2.83-2.92-5-5.9-5-3.309 0-6 2.691-6 6s2.691 6 6 6c1.88 0 3.55-.87 4.65-2.23l1.54 1.28A7.98 7.98 0 0 1 12.001 22c-5.523 0-10-4.477-10-10s4.477-10 10-10zm2.25 10.75c0 1.24-1.01 2.25-2.25 2.25s-2.25-1.01-2.25-2.25 1.01-2.25 2.25-2.25 2.25 1.01 2.25 2.25z" />
+                  </svg>
+                </span>
+                <span>Threads</span>
+              </a>
+            </div>
           </div>
         </div>
 
