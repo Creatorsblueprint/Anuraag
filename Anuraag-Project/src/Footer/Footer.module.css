@@ -141,9 +141,41 @@
   color: inherit;
 }
 
-/* Bottom Bar */
+/* Developer Credit Line */
+.creditLine {
+  padding-top: 2.5rem;
+  padding-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-bottom: 1px solid rgba(226, 221, 210, 0.08);
+}
+
+.developerCredit {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  color: #74777d;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.creditLink {
+  color: var(--color-gold-light);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.creditLink:hover {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .bottomBar {
-  padding-top: 2rem;
+  padding-top: 1.25rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -151,34 +183,10 @@
   gap: 1.25rem;
 }
 
-.copyrightGroup {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  flex-wrap: wrap;
-}
-
 .copyright {
   font-family: var(--font-body);
   font-size: 0.72rem;
   color: #60656c;
-}
-
-.creditDivider {
-  color: #44474c;
-  font-size: 0.72rem;
-}
-
-.developerCredit {
-  font-family: var(--font-body);
-  font-size: 0.72rem;
-  color: #60656c;
-  letter-spacing: 0.02em;
-}
-
-.creditName {
-  color: var(--color-gold-light);
-  font-weight: 600;
 }
 
 .legalLinks {
@@ -235,13 +243,14 @@
     align-items: center;
   }
 
-  .bottomBar {
-    align-items: center;
+  .creditLine {
+    justify-content: center;
     text-align: center;
+    padding-top: 2rem;
   }
 
-  .copyrightGroup {
-    justify-content: center;
+  .bottomBar {
+    align-items: center;
     text-align: center;
   }
 

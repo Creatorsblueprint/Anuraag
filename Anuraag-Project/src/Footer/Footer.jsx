@@ -136,16 +136,25 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Developer Credit Line */}
+        <div className={styles.creditLine}>
+          <span className={styles.developerCredit}>
+            Developed By{' '}
+            <a
+              href="https://www.creatorsblueprint.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.creditLink}
+            >
+              Creators Blueprint
+            </a>
+          </span>
+        </div>
+
         {/* Bottom Sub-footer */}
         <div className={styles.bottomBar}>
-          <div className={styles.copyrightGroup}>
-            <span className={styles.copyright}>
-              &copy; 2026 Dr. Anuraag Guglaani. All rights reserved.
-            </span>
-            {/* <span className={styles.creditDivider}>·</span>
-            <span className={styles.developerCredit}>
-              Developed By <span className={styles.creditName}>Creators Blueprint</span>
-            </span> */}
+          <div className={styles.copyright}>
+            &copy; 2026 Dr. Anuraag Guglaani. All rights reserved.
           </div>
 
           <div className={styles.legalLinks}>
