@@ -15,6 +15,8 @@ export default function Nav() {
   ];
 
   useEffect(() => {
+    let scrollTimeout;
+
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 140;
       const sections = ['overview', 'pillars', 'falcons', 'lectern', 'ebook'];
@@ -26,6 +28,19 @@ export default function Nav() {
           const height = el.offsetHeight;
           if (scrollPosition >= top && scrollPosition < top + height) {
             setActiveSection(sectionId);
+
+            // Update URL dynamically as the user scrolls
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+              const currentPath = window.location.pathname.replace(/^\/+|\/+$/g, '').toLowerCase();
+              const targetPath = sectionId === 'overview' ? '/' : `/${sectionId}`;
+              const expectedPath = sectionId === 'overview' ? '' : sectionId;
+
+              if (currentPath !== expectedPath && !window.location.search.includes('p=')) {
+                window.history.replaceState(null, '', targetPath);
+              }
+            }, 80);
+
             break;
           }
         }
@@ -33,12 +48,20 @@ export default function Nav() {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(scrollTimeout);
+    };
   }, []);
 
   const handleNavClick = (e, href) => {
     e.preventDefault();
     setMobileMenuOpen(false);
+
+    const sectionId = href.replace('#', '');
+    const newPath = sectionId === 'overview' ? '/' : `/${sectionId}`;
+    window.history.pushState(null, '', newPath);
+    setActiveSection(sectionId);
 
     // Allow mobile menu exit animation to start, then scroll taking sticky header height into account
     setTimeout(() => {

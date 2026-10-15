@@ -4,9 +4,21 @@ import styles from './Footer.module.css';
 export default function Footer() {
   const handleScrollTo = (e, targetId) => {
     e.preventDefault();
+    const sectionId = targetId.replace('#', '');
+    const newPath = sectionId === 'overview' ? '/' : `/${sectionId}`;
+    window.history.pushState(null, '', newPath);
+
     const el = document.querySelector(targetId);
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+      const header = document.querySelector('header');
+      const headerHeight = header ? header.offsetHeight : 70;
+      const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - headerHeight;
+
+      window.scrollTo({
+        top: Math.max(0, offsetPosition),
+        behavior: 'smooth'
+      });
     }
   };
 
