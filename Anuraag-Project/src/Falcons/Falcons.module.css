@@ -1,292 +1,192 @@
 .falconsSection {
-  background-color: #06111d;
+  background-color: #07121e;
   color: #ffffff;
-  padding: 5.5rem 2rem 6rem;
+  padding: 6.5rem 2rem 7rem;
   position: relative;
-  border-top: 1px solid rgba(181, 154, 98, 0.2);
-  border-bottom: 1px solid rgba(181, 154, 98, 0.2);
+  border-top: 1px solid rgba(181, 154, 98, 0.15);
+  border-bottom: 1px solid rgba(181, 154, 98, 0.15);
 }
 
 .container {
   max-width: var(--max-content-width);
   margin: 0 auto;
+}
+
+/* Side-by-Side Main Grid */
+.mainGrid {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   gap: 4.5rem;
-  align-items: flex-start;
+  align-items: center;
+  margin-bottom: 5rem;
 }
 
-/* Left Column */
+/* Left Column: All Text & Editorial Narrative */
 .leftCol {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .stageTag {
   font-family: var(--font-body);
   font-size: 0.68rem;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-gold-light);
-  margin-bottom: 0.85rem;
+  margin-bottom: 1.15rem;
 }
 
 .mainTitle {
   font-family: var(--font-display);
-  font-size: 3.25rem;
+  font-size: 3.5rem;
   font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.015em;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
   color: #ffffff;
-  margin-bottom: 1.25rem;
+  margin-bottom: 2rem;
 }
 
-.quoteSubtitle {
+.leadText {
+  font-family: var(--font-body);
+  font-size: 1.08rem;
+  line-height: 1.85;
+  color: #c2c7cf;
+  margin-bottom: 2.5rem;
+}
+
+.quoteAxiom {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 1.25rem;
-  line-height: 1.55;
-  color: var(--color-gold);
-  margin-bottom: 1.75rem;
+  font-size: 1.5rem;
+  line-height: 1.65;
+  color: #ffffff;
+  padding-left: 1.75rem;
+  border-left: 2px solid var(--color-gold);
+  margin-bottom: 2.25rem;
 }
 
-.description {
+.bodyText {
   font-family: var(--font-body);
   font-size: 0.98rem;
-  line-height: 1.72;
-  color: #c2c7cf;
-  margin-bottom: 2.75rem;
+  line-height: 1.8;
+  color: #8f949c;
 }
 
-/* Two Cards */
-.cardsGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
-  margin-bottom: 2.5rem;
-}
-
-.featureCard {
-  background: rgba(14, 28, 44, 0.7);
-  border: 1px solid rgba(181, 154, 98, 0.18);
-  border-radius: var(--radius-xs);
-  padding: 1.5rem 1.4rem;
-  transition: all 0.3s ease;
-}
-
-.featureCard:hover {
-  border-color: var(--color-gold);
-  background: rgba(17, 34, 54, 0.85);
-  transform: translateY(-2px);
-}
-
-.cardCategory {
-  font-family: var(--font-body);
-  font-size: 0.62rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-gold-light);
-  margin-bottom: 0.65rem;
-}
-
-.cardTitle {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: #ffffff;
-  margin-bottom: 0.6rem;
-  letter-spacing: -0.01em;
-}
-
-.cardText {
-  font-family: var(--font-body);
-  font-size: 0.84rem;
-  line-height: 1.6;
-  color: #a7aaa5;
-}
-
-/* Bottom status & link */
-.statusRow {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 1rem;
-}
-
-.pulseDot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background-color: #ba1a1a;
-  box-shadow: 0 0 8px #ba1a1a;
-}
-
-.statusText {
-  font-family: var(--font-body);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #dcdad2;
-}
-
-.submitLink {
-  font-family: var(--font-body);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-gold-light);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  transition: all 0.2s ease;
-  width: fit-content;
-}
-
-.submitLink:hover {
-  color: #ffffff;
-  transform: translateX(4px);
-}
-
-/* Right Column: Dossier Card */
+/* Right Column: Clean Image Container occupying the space */
 .rightCol {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
-.dossierCard {
-  background: rgba(11, 23, 37, 0.85);
-  border: 1px solid rgba(181, 154, 98, 0.22);
+.imageCard {
+  width: 100%;
+  max-width: 460px;
   border-radius: var(--radius-xs);
-  padding: 2.25rem 2rem 2.25rem;
-  box-shadow: var(--shadow-dark-card);
-  backdrop-filter: blur(8px);
-  margin-bottom: 2.5rem;
+  overflow: hidden;
+  position: relative;
+  background: #0b1725;
+  border: 1px solid rgba(181, 154, 98, 0.22);
+  box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.6);
 }
 
-.dossierHeader {
-  margin-bottom: 1.75rem;
-  padding-bottom: 1.25rem;
-  border-bottom: 1px solid rgba(226, 221, 210, 0.1);
+.showcaseImg {
+  width: 100%;
+  aspect-ratio: 4 / 4.8;
+  object-fit: cover;
+  object-position: center 15%;
+  display: block;
 }
 
-.dossierSubtitle {
+.imageCaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2.25rem 1.5rem 1.25rem;
+  background: linear-gradient(to top, rgba(6, 17, 29, 0.95) 0%, rgba(6, 17, 29, 0.6) 65%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.captionTag {
   font-family: var(--font-body);
   font-size: 0.62rem;
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--color-gold-light);
-  margin-bottom: 0.4rem;
 }
 
-.dossierTitle {
+.captionTitle {
   font-family: var(--font-display);
-  font-size: 1.35rem;
+  font-size: 1.15rem;
   font-weight: 600;
   color: #ffffff;
   letter-spacing: -0.01em;
 }
 
-.dossierList {
-  display: flex;
-  flex-direction: column;
-  gap: 1.6rem;
-}
-
-.dossierItem {
-  display: flex;
-  gap: 1.15rem;
-  align-items: flex-start;
-}
-
-.itemIconWrapper {
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-xs);
-  background: rgba(181, 154, 98, 0.1);
-  border: 1px solid rgba(181, 154, 98, 0.25);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-gold-light);
-  flex-shrink: 0;
-  margin-top: 0.15rem;
-}
-
-.itemContent {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.itemHeading {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: #ffffff;
-  letter-spacing: -0.01em;
-}
-
-.itemText {
-  font-family: var(--font-body);
-  font-size: 0.83rem;
-  line-height: 1.58;
-  color: #a7aaa5;
-}
-
-/* Stats Row */
+/* Minimal Metrics Row */
 .statsRow {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  padding-top: 0.5rem;
+  gap: 2.5rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(181, 154, 98, 0.15);
 }
 
 .statItem {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.4rem;
 }
 
 .statNumber {
   font-family: var(--font-display);
-  font-size: 1.85rem;
+  font-size: 2.25rem;
   font-weight: 600;
   color: #ffffff;
   letter-spacing: -0.01em;
+  line-height: 1;
 }
 
 .statLabel {
   font-family: var(--font-body);
-  font-size: 0.65rem;
+  font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-gold-light);
 }
 
+/* Responsive adjustments */
 @media (max-width: 1024px) {
-  .container {
+  .mainGrid {
     grid-template-columns: 1fr;
     gap: 3.5rem;
+  }
+
+  .mainTitle {
+    font-size: 3rem;
+  }
+
+  .imageCard {
+    max-width: 480px;
   }
 }
 
 @media (max-width: 768px) {
   .falconsSection {
-    padding: 4rem 1.25rem 4.5rem;
+    padding: 4.5rem 1.25rem 5rem;
   }
 
   .leftCol {
     align-items: center;
-    text-align: center;
-  }
-
-  .stageTag {
     text-align: center;
   }
 
@@ -295,48 +195,27 @@
     text-align: center;
   }
 
-  .quoteSubtitle {
+  .leadText {
+    font-size: 0.95rem;
     text-align: center;
   }
 
-  .description {
+  .quoteAxiom {
+    font-size: 1.2rem;
+    padding-left: 0;
+    border-left: none;
+    padding-top: 1rem;
+    border-top: 2px solid var(--color-gold);
     text-align: center;
   }
 
-  .cardsGrid {
-    grid-template-columns: 1fr;
-    width: 100%;
-  }
-
-  .featureCard {
-    text-align: center;
-  }
-
-  .statusRow {
-    justify-content: center;
-  }
-
-  .submitLink {
-    margin: 0 auto;
-    width: 100%;
-    justify-content: center;
-    padding: 0.85rem;
-    background: rgba(181, 154, 98, 0.12);
-    border: 1px solid rgba(181, 154, 98, 0.3);
-    border-radius: var(--radius-xs);
-  }
-
-  .dossierCard {
-    padding: 1.75rem 1.25rem;
-  }
-
-  .dossierHeader {
+  .bodyText {
     text-align: center;
   }
 
   .statsRow {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1.75rem;
     text-align: center;
   }
 
