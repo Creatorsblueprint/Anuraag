@@ -151,10 +151,34 @@
   gap: 1.25rem;
 }
 
+.copyrightGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
 .copyright {
   font-family: var(--font-body);
   font-size: 0.72rem;
   color: #60656c;
+}
+
+.creditDivider {
+  color: #44474c;
+  font-size: 0.72rem;
+}
+
+.developerCredit {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  color: #60656c;
+  letter-spacing: 0.02em;
+}
+
+.creditName {
+  color: var(--color-gold-light);
+  font-weight: 600;
 }
 
 .legalLinks {
@@ -213,6 +237,11 @@
 
   .bottomBar {
     align-items: center;
+    text-align: center;
+  }
+
+  .copyrightGroup {
+    justify-content: center;
     text-align: center;
   }
 

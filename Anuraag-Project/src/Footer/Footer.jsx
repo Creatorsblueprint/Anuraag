@@ -50,7 +50,7 @@ export default function Footer() {
                   onClick={(e) => handleScrollTo(e, '#pillars')}
                   className={styles.navLink}
                 >
-                  The Three Pillars
+                  Pillars
                 </a>
               </li>
               <li>
@@ -68,7 +68,7 @@ export default function Footer() {
                   onClick={(e) => handleScrollTo(e, '#lectern')}
                   className={styles.navLink}
                 >
-                  Academic Appointments
+                  Lectern
                 </a>
               </li>
               <li>
@@ -77,7 +77,7 @@ export default function Footer() {
                   onClick={(e) => handleScrollTo(e, '#ebook')}
                   className={styles.navLink}
                 >
-                  The Living Charter Monograph
+                  Ebook
                 </a>
               </li>
             </ul>
@@ -138,8 +138,14 @@ export default function Footer() {
 
         {/* Bottom Sub-footer */}
         <div className={styles.bottomBar}>
-          <div className={styles.copyright}>
-            &copy; 2026 Dr. Anuraag Guglaani. All rights reserved.
+          <div className={styles.copyrightGroup}>
+            <span className={styles.copyright}>
+              &copy; 2026 Dr. Anuraag Guglaani. All rights reserved.
+            </span>
+            {/* <span className={styles.creditDivider}>·</span>
+            <span className={styles.developerCredit}>
+              Developed By <span className={styles.creditName}>Creators Blueprint</span>
+            </span> */}
           </div>
 
           <div className={styles.legalLinks}>
