@@ -21,32 +21,15 @@ export default function Ebook() {
   return (
     <section id="ebook" className={styles.ebookSection}>
       <div className={styles.container}>
-        {/* Header Block */}
         <motion.div
-          className={styles.headerBlock}
-          variants={fadeInUp}
+          className={styles.mainGrid}
+          variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <span className={styles.tagPill}>EBOOK</span>
-          <h2 className={styles.mainTitle}>The Living Charter</h2>
-          <p className={styles.subtitle}>
-            Why 70% of Family Conglomerates Fail by Generation Three, and the Blueprint for
-            Enterprise Immortality.
-          </p>
-        </motion.div>
-
-        {/* Content Grid */}
-        <div className={styles.contentGrid}>
           {/* Left Column: Book Mockup */}
-          <motion.div
-            className={styles.bookCol}
-            variants={fadeInUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
+          <motion.div className={styles.bookCol} variants={fadeInUp}>
             <div className={styles.bookCard}>
               <div className={styles.bookInnerBorder} />
 
@@ -62,69 +45,35 @@ export default function Ebook() {
 
               <div className={styles.bookBottom}>
                 <span className={styles.bookAuthor}>DR. ANURAAG GUGLAANI</span>
-                <span className={styles.bookRelease}>Hardcover · Global Release</span>
+                <span className={styles.bookRelease}>Digital · Global Release</span>
               </div>
             </div>
           </motion.div>
 
-          {/* Right Column: Treatise Details & Purchase */}
-          <motion.div
-            className={styles.detailsCol}
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <motion.p className={styles.overviewText} variants={fadeInUp}>
+          {/* Right Column: All Text, Info & Purchase */}
+          <motion.div className={styles.detailsCol} variants={fadeInUp}>
+            <span className={styles.tagPill}>EBOOK</span>
+            <h2 className={styles.mainTitle}>The Living Charter</h2>
+            <p className={styles.subtitle}>
+              Why 70% of Family Conglomerates Fail by Generation Three, and the Blueprint for
+              Enterprise Immortality.
+            </p>
+
+            <p className={styles.overviewText}>
               Synthesizing twenty-five years of confidential majlis mediation and boardroom stewardship
               across 35 countries, this landmark treatise reveals why conventional legal structures
               crumble under human friction—and outlines the definitive operational operating system
               for generational survival.
-            </motion.p>
+            </p>
 
-            <motion.div className={styles.partsList} variants={fadeInUp}>
-              <div className={styles.partItem}>
-                <div className={styles.partIcon}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z" />
-                  </svg>
+            {/* Seamless, unboxed purchase area */}
+            <div className={styles.purchaseArea}>
+              <div className={styles.priceRow}>
+                <div className={styles.priceTag}>
+                  <span className={styles.dollarSymbol}>$</span>
+                  <span>120</span>
                 </div>
-                <p className={styles.partText}>
-                  <span className={styles.partStrong}>Part I: The Psychology of Sibling Friction:</span> How
-                  emotional fault lines dissolve multi-billion dollar balance sheets.
-                </p>
-              </div>
-
-              <div className={styles.partItem}>
-                <div className={styles.partIcon}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z" />
-                  </svg>
-                </div>
-                <p className={styles.partText}>
-                  <span className={styles.partStrong}>Part II: The Living Charter:</span> Designing
-                  enforceable family constitutions that evolve without litigation.
-                </p>
-              </div>
-
-              <div className={styles.partItem}>
-                <div className={styles.partIcon}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z" />
-                  </svg>
-                </div>
-                <p className={styles.partText}>
-                  <span className={styles.partStrong}>Part III: Sovereign Wealth Integration:</span> Transitioning
-                  private family holdings into institutional sovereign scale.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Purchase Box */}
-            <motion.div className={styles.purchaseBox} variants={fadeInUp}>
-              <div className={styles.priceTag}>
-                <span className={styles.dollarSymbol}>$</span>
-                <span>120</span>
+                {/* <span className={styles.editionLabel}>Hardcover &amp; Digital Monograph</span> */}
               </div>
 
               <form onSubmit={handleSubmit} className={styles.purchaseForm}>
@@ -144,9 +93,9 @@ export default function Ebook() {
               <span className={styles.noteText}>
                 *Sent directly to your email after checkout
               </span>
-            </motion.div>
+            </div>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
