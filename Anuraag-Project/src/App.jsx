@@ -17,10 +17,10 @@ export default function App() {
       <main>
         <Home />
         <Affiliations />
+        <Diagnostics />
         <Falcons />
         <Quote />
         <Lectern />
-        <Diagnostics />
         <Ebook />
       </main>
       <Footer />

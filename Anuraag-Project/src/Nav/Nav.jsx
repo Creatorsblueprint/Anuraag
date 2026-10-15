@@ -10,14 +10,14 @@ export default function Nav() {
     { label: 'Overview', href: '#overview', id: 'overview' },
     { label: 'Pillars', href: '#pillars', id: 'pillars' },
     { label: 'Falcons of Majlis', href: '#falcons', id: 'falcons' },
-    { label: 'Ebook', href: '#ebook', id: 'ebook' },
-    { label: 'Lectern', href: '#lectern', id: 'lectern' }
+    { label: 'Lectern', href: '#lectern', id: 'lectern' },
+    { label: 'Ebook', href: '#ebook', id: 'ebook' }
   ];
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 140;
-      const sections = ['overview', 'falcons', 'lectern', 'pillars', 'ebook'];
+      const sections = ['overview', 'pillars', 'falcons', 'lectern', 'ebook'];
 
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);
