@@ -75,7 +75,7 @@ export default function Ebook() {
                   <span className={styles.dollarSymbol}>$</span>
                   <span>120</span>
                 </div>
-                <span className={styles.editionLabel}>Hardcover &amp; Digital Monograph</span>
+                {/* <span className={styles.editionLabel}>Hardcover &amp; Digital Monograph</span> */}
               </div>
 
               <form onSubmit={handleSubmit} className={styles.purchaseForm}>
