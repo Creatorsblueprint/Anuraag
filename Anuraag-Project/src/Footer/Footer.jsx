@@ -33,7 +33,7 @@ export default function Footer() {
               "Where sovereign governance meets generational stewardship."
             </p>
             <p className={styles.brandBio}>
-              Author of The Living Charter, Group CEO &amp; Chair of Wazir Holdings, Falcon on UAE's
+              Author of You Will Not Fly, Group CEO &amp; Chair of Wazir Holdings, Falcon on UAE's
               landmark business broadcast 'Falcons of Majlis'. Distinguished visiting professor of strategy
               and enterprise governance at AURAK.
             </p>

@@ -23,6 +23,7 @@ export default function App() {
       // Route aliases mapping to section element IDs
       const routeMap = {
         'ebook': 'ebook',
+        'you-will-not-fly': 'ebook',
         'the-living-charter': 'ebook',
         'book': 'ebook',
         'pillars': 'pillars',

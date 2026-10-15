@@ -28,42 +28,44 @@ export default function Ebook() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {/* Left Column: Book Mockup */}
+          {/* Left Column: Realistic 3D Book Cover */}
           <motion.div className={styles.bookCol} variants={fadeInUp}>
-            <div className={styles.bookCard}>
-              <div className={styles.bookInnerBorder} />
-
-              <div className={styles.bookTop}>
-                <span className={styles.bookEdition}>MONOGRAPH EDITION</span>
-                <h3 className={styles.bookMainTitle}>
-                  THE LIVING<br />CHARTER
-                </h3>
-                <p className={styles.bookSubtitle}>
-                  The Architecture of Enterprise Immortality
-                </p>
-              </div>
-
-              <div className={styles.bookBottom}>
-                <span className={styles.bookAuthor}>DR. ANURAAG GUGLAANI</span>
-                <span className={styles.bookRelease}>Digital · Global Release</span>
-              </div>
+            <div className={styles.bookWrapper}>
+              <div className={styles.bookSpineGlow} />
+              <img
+                src="/book_cover.jpg"
+                alt="You Will Not Fly - Dr. Anuraag Guglaani"
+                className={styles.bookImage}
+                loading="lazy"
+              />
             </div>
           </motion.div>
 
           {/* Right Column: All Text, Info & Purchase */}
           <motion.div className={styles.detailsCol} variants={fadeInUp}>
-            <span className={styles.tagPill}>EBOOK</span>
-            <h2 className={styles.mainTitle}>The Living Charter</h2>
+            <span className={styles.tagPill}>FEATURED BOOK</span>
+            <h2 className={styles.mainTitle}>You Will Not Fly</h2>
+            <p className={styles.tagline}>Grounded at Twenty. Airborne Ever Since.</p>
             <p className={styles.subtitle}>
-              Why 70% of Family Conglomerates Fail by Generation Three, and the Blueprint for
-              Enterprise Immortality.
+              One Operating System for Business, Career, Family and Legacy
             </p>
 
+            <blockquote className={styles.quoteBlock}>
+              &ldquo;A Verdict is not a Destiny. A Title is a Noun. What you can do is a Verb.&rdquo;
+            </blockquote>
+
             <p className={styles.overviewText}>
-              Synthesizing twenty-five years of confidential majlis mediation and boardroom stewardship
-              across 35 countries, this landmark treatise reveals why conventional legal structures
-              crumble under human friction—and outlines the definitive operational operating system
-              for generational survival.
+              At twenty, after clearing one of the toughest selection processes and spending years training
+              at the prestigious National Defence Academy (NDA) as an aspiring fighter jet pilot, Anuraag was
+              grounded by a verdict he could not appeal. He hadn&rsquo;t failed or quit. The sky he&rsquo;d staked
+              everything on simply closed.
+            </p>
+
+            <p className={styles.descriptionText}>
+              What followed was not a comeback story—it was a reinvention. Across three decades from factory floors
+              to boardrooms in 35 countries, known today as <em>The Family Business Doctor</em>, Dr. Guglaani shares
+              the tested operating system built along the way: cash, decisions, talent, foresight, and governance,
+              shaped as much at his own kitchen table as in any boardroom.
             </p>
 
             {/* Seamless, unboxed purchase area */}
@@ -73,7 +75,7 @@ export default function Ebook() {
                   <span className={styles.dollarSymbol}>$</span>
                   <span>120</span>
                 </div>
-                {/* <span className={styles.editionLabel}>Hardcover &amp; Digital Monograph</span> */}
+                <span className={styles.editionLabel}>Hardcover &amp; Digital Monograph</span>
               </div>
 
               <form onSubmit={handleSubmit} className={styles.purchaseForm}>
