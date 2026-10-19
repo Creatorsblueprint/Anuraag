@@ -18,18 +18,15 @@ export default function Quote() {
           </motion.div>
 
           <motion.blockquote className={styles.quoteText} variants={fadeInUp}>
-            "When our family conglomerate faced a paralyzing succession impasse across four
-            jurisdictions, Dr. Guglaani walked into our Majlis not as an abstract theorist,
-            but as a sovereign surgeon. Within ninety days, twenty years of unspoken discord
-            was converted into an unshakeable institutional charter."
+            &ldquo;A Verdict is not a Destiny. A Title is a Noun. What you can do is a Verb.&rdquo;
           </motion.blockquote>
 
           <motion.div className={styles.attribution} variants={fadeInUp}>
             <span className={styles.authorName}>
-              H.E. CONFIDENTIAL ENTERPRISE PATRIARCH
+              DR. ANURAAG GUGLAANI
             </span>
             <span className={styles.authorRole}>
-              MULTI-BILLION GCC CONGLOMERATE PRINCIPAL · ABU DHABI
+              THE DEFINING AXIOM OF &lsquo;YOU WILL NOT FLY&rsquo; · FOUNDATION OF THE 6-VERB OPERATING SYSTEM
             </span>
           </motion.div>
         </motion.div>
