@@ -54,6 +54,19 @@
   border-radius: var(--radius-xs);
 }
 
+.badgeAccent {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #0b1f33;
+  background-color: var(--color-gold-light);
+  border: 1px solid var(--color-gold);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-xs);
+}
+
 .heroTitle {
   font-family: var(--font-display);
   font-size: 3.5rem;
@@ -62,6 +75,15 @@
   letter-spacing: -0.02em;
   color: var(--color-on-surface);
   margin-bottom: 1.6rem;
+}
+
+.heroTitleHighlight {
+  color: var(--color-gold);
+  font-weight: 500;
+  font-style: italic;
+  display: block;
+  font-size: 2.85rem;
+  margin-top: 0.35rem;
 }
 
 .heroSubtitle {
@@ -281,27 +303,44 @@
   letter-spacing: 0.04em;
 }
 
-/* Floating Television Investor Badge */
-.floatingBadge {
+/* Floating Book Announcement Badge */
+.floatingBookBadge {
   position: absolute;
-  bottom: -18px;
-  left: -20px;
-  background-color: var(--color-primary);
-  border: 1px solid var(--color-gold-border);
+  bottom: -22px;
+  left: -24px;
+  background-color: #06111d;
+  border: 1px solid rgba(225, 195, 135, 0.4);
   border-radius: var(--radius-xs);
-  padding: 0.85rem 1.25rem;
+  padding: 0.75rem 1.15rem 0.75rem 0.75rem;
   display: flex;
   align-items: center;
-  gap: 0.85rem;
-  box-shadow: var(--shadow-dark-card);
+  gap: 0.95rem;
+  box-shadow: 0 16px 40px -4px rgba(0, 0, 0, 0.6), 0 0 25px rgba(181, 154, 98, 0.15);
   z-index: 2;
+  transition: all 0.3s ease;
+  max-width: 320px;
 }
 
-.badgeIcon {
-  color: var(--color-gold);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.floatingBookBadge:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-gold-light);
+  box-shadow: 0 20px 48px -4px rgba(0, 0, 0, 0.75), 0 0 35px rgba(181, 154, 98, 0.3);
+}
+
+.floatingBookCoverWrapper {
+  width: 44px;
+  height: 60px;
+  flex-shrink: 0;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.floatingBookCover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .badgeContent {
@@ -312,18 +351,26 @@
 
 .badgeTag {
   font-family: var(--font-body);
-  font-size: 0.62rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--color-gold-light);
 }
 
 .badgeTitle {
-  font-family: var(--font-body);
-  font-size: 0.76rem;
-  font-weight: 500;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
   color: #ffffff;
+  line-height: 1.2;
+}
+
+.badgeSub {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  color: #a7aaa5;
+  line-height: 1.25;
 }
 
 /* Responsive */

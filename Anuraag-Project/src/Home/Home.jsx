@@ -27,21 +27,22 @@ export default function Home() {
           {/* Badges */}
           <motion.div className={styles.badgeRow} variants={fadeInUp}>
             <span className={styles.badgeLight}>THE FAMILY BUSINESS DOCTOR™</span>
-            <span className={styles.badgeDark}>FALCON · UAE MEDIA BROADCAST</span>
+            {/* <span className={styles.badgeDark}>NEW BOOK · YOU WILL NOT FLY</span> */}
+            <span className={styles.badgeAccent}>FALCON · UAE BROADCAST</span>
           </motion.div>
 
           {/* Headline */}
           <motion.h1 className={styles.heroTitle} variants={fadeInUp}>
-            Architect of Multi-<br />
-            Generational Enterprise &<br />
-            Sovereign Scale.
+            Grounded at Twenty.<br />
+            Airborne Ever Since.<br />
+            <span className={styles.heroTitleHighlight}>Architect of Generational Legacy.</span>
           </motion.h1>
 
           {/* Subparagraph */}
           <motion.p className={styles.heroSubtitle} variants={fadeInUp}>
-            Dr. Anuraag Guglaani — Group CEO, Chair of Wazir Holdings, and Investor on UAE’s premier
-            televised venture showcase <em>Falcons of Majlis</em>. Fusing institutional governance with
-            multi-century dynasty preservation across the Middle East, India, and global sovereign hubs.
+            Dr. Anuraag Guglaani — author of <em>You Will Not Fly</em>, Group CEO &amp; Chair of Wazir Holdings,
+            and Investor on UAE’s landmark televised broadcast <em>Falcons of Majlis</em>. Fusing 30 years of in-situ
+            reversal, board stewardship, and the tested operating system across 35 countries.
           </motion.p>
 
           {/* CTAs */}
@@ -141,32 +142,31 @@ export default function Home() {
             {/* Inset Footer below photo */}
             <div className={styles.frameFooter}>
               <div className={styles.officeInfo}>
-                {/* <span className={styles.dot} />
-                <span>Wazir Holdings Executive Office</span> */}
+                <span className={styles.dot} />
+                <span>The Family Business Doctor</span>
               </div>
               <span className={styles.frameDate}>DXB · 2026</span>
             </div>
 
-            {/* Overlapping Floating Television Investor Badge */}
-            {/* <div className={styles.floatingBadge}>
-              <div className={styles.badgeIcon}>
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 2v4" />
-                  <path d="m4.93 4.93 2.83 2.83" />
-                  <path d="M2 12h4" />
-                  <path d="m4.93 19.07 2.83-2.83" />
-                  <path d="M12 22v-4" />
-                  <path d="m19.07 19.07-2.83-2.83" />
-                  <path d="M22 12h-4" />
-                  <path d="m19.07 4.93-2.83 2.83" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
+            {/* Overlapping Floating Book Announcement Badge */}
+            <a
+              href="#ebook"
+              onClick={(e) => handleScrollTo(e, '#ebook')}
+              className={styles.floatingBookBadge}
+            >
+              <div className={styles.floatingBookCoverWrapper}>
+                <img
+                  src="/book_cover.jpg"
+                  alt="You Will Not Fly book cover thumbnail"
+                  className={styles.floatingBookCover}
+                />
               </div>
               <div className={styles.badgeContent}>
-                <span className={styles.badgeTag}>TELEVISION INVESTOR</span>
-                <span className={styles.badgeTitle}>Falcons of Majlis (UAE Broadcast)</span>
+                <span className={styles.badgeTag}>NEW RELEASE</span>
+                <span className={styles.badgeTitle}>You Will Not Fly</span>
+                <span className={styles.badgeSub}>One Operating System for Business &amp; Legacy</span>
               </div>
-            </div> */}
+            </a>
           </div>
         </motion.div>
       </div>
