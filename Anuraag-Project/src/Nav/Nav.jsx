@@ -8,11 +8,11 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
 
   const navLinks = [
-    { label: 'The book', href: '#book', id: 'book' },
-    { label: 'The man', href: '#story', id: 'story' },
-    { label: 'The work', href: '#expertise', id: 'expertise' },
+    { label: 'The Book', href: '#book', id: 'book' },
+    { label: 'The Man', href: '#story', id: 'story' },
+    { label: 'The Work', href: '#expertise', id: 'expertise' },
     { label: 'The Falcon', href: '#falcons', id: 'falcons' },
-    { label: 'Videos', href: '#videos', id: 'videos' },
+    // { label: 'Videos', href: '#videos', id: 'videos' },
     { label: 'Recognition', href: '#recognition', id: 'recognition' }
   ];
 
@@ -113,7 +113,7 @@ export default function Nav() {
             onClick={(e) => handleNavClick(e, '#purchase')}
             className={styles.navContact}
           >
-            <span>Get the book</span>
+            <span>Get the Book</span>
             <span className={styles.arrowIcon}>↗</span>
           </a>
         </div>
@@ -170,7 +170,7 @@ export default function Nav() {
                 onClick={(e) => handleNavClick(e, '#purchase')}
                 className={styles.mobileCtaBtn}
               >
-                <span>Get the book</span>
+                <span>Get the Book</span>
                 <span>↗</span>
               </a>
             </div>
