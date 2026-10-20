@@ -66,7 +66,7 @@
 
 .bookObject {
   width: 330px;
-  aspect-ratio: 595 / 897;
+  aspect-ratio: 599 / 897;
   position: relative;
   transform-style: preserve-3d;
   filter: drop-shadow(25px 35px 22px rgba(0, 0, 0, 0.8));
