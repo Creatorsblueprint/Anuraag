@@ -35,7 +35,6 @@ export default function StickyBook() {
       aria-label="Book quick action"
     >
       <div className={styles.bookInfoGroup}>
-        <span className={styles.stickyDot} />
         <div className={styles.bookTitles}>
           <small>THE NEW BOOK</small>
           <strong>You Will Not Fly</strong>

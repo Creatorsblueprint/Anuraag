@@ -48,7 +48,7 @@ export default function Falcons() {
           {/* Right Copy */}
           <motion.div className={styles.falconFeatureCopy} variants={fadeInUp}>
             <span className={styles.falconKicker}>
-              <i /> INVESTOR · MENTOR · BUSINESS LEADER
+              INVESTOR · MENTOR · BUSINESS LEADER
             </span>
 
             <h2>
