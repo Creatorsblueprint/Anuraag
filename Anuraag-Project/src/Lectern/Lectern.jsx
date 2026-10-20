@@ -75,7 +75,7 @@ export default function Lectern() {
 
             <div className={styles.cardFooter}>
               <a href="#ebook" className={styles.exploreLink}>
-                <span>EXPLORE MONOGRAPH CHAPTERS</span>
+                <span>EXPLORE EBOOK CHAPTERS</span>
                 <span>&rarr;</span>
               </a>
             </div>
