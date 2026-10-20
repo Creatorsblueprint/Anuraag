@@ -1,0 +1,224 @@
+.faqSection {
+  padding: 115px 0;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 80px;
+  align-items: start;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.section {
+  position: relative;
+}
+
+.wrap {
+  max-width: 1320px;
+  width: calc(100% - 112px);
+  margin: auto;
+}
+
+.eyebrow {
+  color: var(--color-gold);
+  font-size: 10px;
+  letter-spacing: 2.3px;
+  line-height: 1.5;
+  font-weight: 600;
+  margin: 0 0 20px;
+}
+
+.faqSidebar {
+  position: sticky;
+  top: 110px;
+}
+
+.faqSidebar h2 {
+  font-size: clamp(34px, 3.5vw, 50px);
+  letter-spacing: -1.8px;
+  line-height: 1.15;
+  color: #efefec;
+  font-weight: 500;
+  margin: 0 0 40px;
+}
+
+.muted {
+  color: #a4a79e;
+  font-weight: 400;
+}
+
+/* Mini Book Visual Card */
+.faqBookVisual {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.faqBookVisual:hover {
+  border-color: rgba(199, 169, 103, 0.4);
+  transform: translateY(-2px);
+}
+
+.faqCover {
+  width: 75px;
+  height: 110px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+  flex-shrink: 0;
+}
+
+.faqCover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardInfo small {
+  font-size: 8px;
+  letter-spacing: 1.8px;
+  color: var(--color-gold);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.cardInfo strong {
+  font-size: 16px;
+  color: #f5f5f1;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.cardInfo em {
+  font-size: 11px;
+  color: #b2b5ab;
+  font-style: italic;
+  font-family: Georgia, serif;
+  margin-bottom: 12px;
+}
+
+.cardInfo b {
+  font-size: 11px;
+  color: var(--color-gold);
+  font-weight: 600;
+}
+
+/* Accordion List */
+.faqList {
+  display: flex;
+  flex-direction: column;
+}
+
+.faqItem {
+  border-bottom: 1px solid var(--color-line);
+  padding: 10px 0;
+  transition: all 0.25s ease;
+}
+
+.faqItem:first-child {
+  padding-top: 0;
+}
+
+.faqHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.questionText {
+  font-size: clamp(17px, 1.8vw, 21px);
+  color: #efefec;
+  font-weight: 500;
+  letter-spacing: -0.4px;
+  line-height: 1.35;
+  transition: color 0.25s ease;
+}
+
+.faqItem:hover .questionText,
+.itemOpen .questionText {
+  color: var(--color-gold);
+}
+
+.toggleIcon {
+  font-size: 22px;
+  color: var(--color-gold);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.faqBody {
+  overflow: hidden;
+}
+
+.answerContent {
+  padding-bottom: 24px;
+}
+
+.answerContent p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #c4c6bf;
+  margin: 0 0 14px;
+}
+
+.textLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-gold);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(199, 169, 103, 0.4);
+  padding-bottom: 3px;
+  transition: all 0.25s ease;
+}
+
+.textLink:hover {
+  border-color: var(--color-gold);
+  color: #f5e4b8;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .faqSection {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .faqSidebar {
+    position: relative;
+    top: 0;
+  }
+  .faqBookVisual {
+    max-width: 440px;
+  }
+}
+
+@media (max-width: 520px) {
+  .wrap {
+    width: calc(100% - 40px);
+  }
+  .faqBookVisual {
+    padding: 18px;
+  }
+  .questionText {
+    font-size: 16px;
+  }
+}

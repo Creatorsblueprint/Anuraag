@@ -5,21 +5,25 @@ import styles from './Nav.module.css';
 export default function Nav() {
   const [activeSection, setActiveSection] = useState('overview');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const navLinks = [
-    { label: 'Overview', href: '#overview', id: 'overview' },
-    { label: 'Pillars', href: '#pillars', id: 'pillars' },
-    { label: 'Falcons of Majlis', href: '#falcons', id: 'falcons' },
-    { label: 'Lectern', href: '#lectern', id: 'lectern' },
-    { label: 'Ebook', href: '#ebook', id: 'ebook' }
+    { label: 'The book', href: '#book', id: 'book' },
+    { label: 'The man', href: '#story', id: 'story' },
+    { label: 'The work', href: '#expertise', id: 'expertise' },
+    { label: 'The Falcon', href: '#falcons', id: 'falcons' },
+    { label: 'Videos', href: '#videos', id: 'videos' },
+    { label: 'Recognition', href: '#recognition', id: 'recognition' }
   ];
 
   useEffect(() => {
     let scrollTimeout;
 
     const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+
       const scrollPosition = window.scrollY + 140;
-      const sections = ['overview', 'pillars', 'falcons', 'lectern', 'ebook'];
+      const sections = ['overview', 'book', 'story', 'expertise', 'falcons', 'videos', 'recognition', 'faq', 'purchase'];
 
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);
@@ -29,7 +33,6 @@ export default function Nav() {
           if (scrollPosition >= top && scrollPosition < top + height) {
             setActiveSection(sectionId);
 
-            // Update URL dynamically as the user scrolls
             clearTimeout(scrollTimeout);
             scrollTimeout = setTimeout(() => {
               const currentPath = window.location.pathname.replace(/^\/+|\/+$/g, '').toLowerCase();
@@ -63,12 +66,11 @@ export default function Nav() {
     window.history.pushState(null, '', newPath);
     setActiveSection(sectionId);
 
-    // Allow mobile menu exit animation to start, then scroll taking sticky header height into account
     setTimeout(() => {
       const target = document.querySelector(href);
       if (target) {
         const header = document.querySelector(`.${styles.header}`);
-        const headerHeight = header ? header.offsetHeight : 70;
+        const headerHeight = header ? header.offsetHeight : 80;
         const elementPosition = target.getBoundingClientRect().top + window.scrollY;
         const offsetPosition = elementPosition - headerHeight;
 
@@ -81,39 +83,42 @@ export default function Nav() {
   };
 
   return (
-    <header className={styles.header}>
-      <div className={styles.container}>
-        <a href="#overview" onClick={(e) => handleNavClick(e, '#overview')} className={styles.brand}>
-          <span className={styles.brandName}>Dr. Anuraag Guglaani</span>
-          <span className={styles.brandSubtitle}>AUTHOR · INVESTOR · PROFESSOR</span>
+    <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
+      <div className={styles.headerInner}>
+        <a href="#overview" onClick={(e) => handleNavClick(e, '#overview')} className={styles.brand} aria-label="Dr. Anuraag Guglaani home">
+          <span className={styles.monogram}>
+            AG<span>·</span>
+          </span>
+          <span className={styles.brandName}>
+            DR. ANURAAG<br />GUGLAANI
+          </span>
         </a>
 
-        <nav aria-label="Main Navigation">
-          <ul className={styles.navMenu}>
-            {navLinks.map((link) => (
-              <li key={link.id} className={styles.navItem}>
-                <a
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className={`${styles.navLink} ${activeSection === link.id ? styles.active : ''}`}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+        <nav aria-label="Main Navigation" className={styles.desktopNav}>
+          {navLinks.map((link) => (
+            <a
+              key={link.id}
+              href={link.href}
+              onClick={(e) => handleNavClick(e, link.href)}
+              className={`${styles.navLink} ${activeSection === link.id ? styles.active : ''}`}
+            >
+              {link.label}
+            </a>
+          ))}
         </nav>
 
-        <div className={styles.desktopContactWrapper}>
+        <div className={styles.desktopAction}>
           <a
-            href="#contact"
-            onClick={(e) => handleNavClick(e, '#contact')}
-            className={styles.contactBtn}
+            href="#purchase"
+            onClick={(e) => handleNavClick(e, '#purchase')}
+            className={styles.navContact}
           >
-            CONTACT
+            <span>Get the book</span>
+            <span className={styles.arrowIcon}>↗</span>
           </a>
         </div>
 
+        {/* Retained 3-line hamburger menu with animated open/close state */}
         <button
           className={styles.mobileToggle}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -123,7 +128,7 @@ export default function Nav() {
           <span
             className={styles.hamburgerLine}
             style={{
-              transform: mobileMenuOpen ? 'rotate(45deg) translate(4.5px, 4.5px)' : 'none'
+              transform: mobileMenuOpen ? 'rotate(45deg) translate(5px, 5px)' : 'none'
             }}
           />
           <span
@@ -133,7 +138,7 @@ export default function Nav() {
           <span
             className={styles.hamburgerLine}
             style={{
-              transform: mobileMenuOpen ? 'rotate(-45deg) translate(4.5px, -4.5px)' : 'none'
+              transform: mobileMenuOpen ? 'rotate(-45deg) translate(5px, -5px)' : 'none'
             }}
           />
         </button>
@@ -146,25 +151,29 @@ export default function Nav() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
           >
-            {navLinks.map((link) => (
+            <div className={styles.mobileLinksList}>
+              {navLinks.map((link) => (
+                <a
+                  key={link.id}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className={`${styles.mobileLink} ${activeSection === link.id ? styles.mobileActive : ''}`}
+                >
+                  <span>{link.label}</span>
+                  <span className={styles.mobileArrow}>&rarr;</span>
+                </a>
+              ))}
               <a
-                key={link.id}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className={styles.mobileLink}
+                href="#purchase"
+                onClick={(e) => handleNavClick(e, '#purchase')}
+                className={styles.mobileCtaBtn}
               >
-                {link.label}
+                <span>Get the book</span>
+                <span>↗</span>
               </a>
-            ))}
-            <a
-              href="#contact"
-              onClick={(e) => handleNavClick(e, '#contact')}
-              className={styles.mobileContactBtn}
-            >
-              CONTACT
-            </a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -1,51 +1,57 @@
-/* Modern Executive Minimalist Design Tokens */
+/* Premium Dark Editorial Theme Design Tokens — Dr. Anuraag Guglaani */
 :root {
-  --color-surface: #fcf9f1;
-  --color-surface-dim: #dcdad2;
-  --color-surface-bright: #fcf9f1;
-  --color-surface-container-lowest: #ffffff;
-  --color-surface-container-low: #f6f3eb;
-  --color-surface-container: #f1eee6;
-  --color-surface-container-high: #ebe8e0;
-  --color-surface-container-highest: #e5e2da;
-  
-  --color-on-surface: #1c1c17;
-  --color-on-surface-variant: #44474c;
-  --color-reading-charcoal: #2A2A2A;
-  --color-stone-muted: #A7AAA5;
-  --color-border-hairline: #E2DDD2;
-  --color-border-subtle: rgba(226, 221, 210, 0.6);
+  /* Rich Obsidian / Charcoal Dark Theme Base */
+  --color-bg: #090c0e;
+  --color-surface: #0e1216;
+  --color-surface-dim: #07090b;
+  --color-surface-elevated: #141920;
+  --color-surface-card: #12161c;
+  --color-surface-glass: rgba(18, 22, 28, 0.85);
 
-  --color-primary: #0B1F33;
-  --color-primary-dark: #00050e;
-  --color-on-primary: #ffffff;
-  --color-primary-container: #0b1f33;
-  --color-on-primary-container: #7587a0;
+  /* High-Contrast Crisp Typography Palette */
+  --color-text-primary: #f5f5f1;
+  --color-text-secondary: #dcded7;
+  --color-text-muted: #abb0a4;
+  --color-text-faint: #81867c;
 
-  --color-gold: #B59A62;
-  --color-gold-light: #E1C387;
-  --color-gold-dim: #9c834d;
-  --color-gold-bg: rgba(181, 154, 98, 0.1);
-  --color-gold-border: rgba(181, 154, 98, 0.25);
+  /* Refined Champagne Gold Accents matching client reference */
+  --color-gold: #c7a967;
+  --color-gold-light: #e1c68e;
+  --color-gold-dim: #9b8751;
+  --color-gold-bg: rgba(199, 169, 103, 0.08);
+  --color-gold-border: rgba(199, 169, 103, 0.28);
+  --color-gold-glow: rgba(199, 169, 103, 0.2);
 
-  --color-dark-surface: #0B1F33;
-  --color-dark-surface-elevated: #0f243a;
-  --color-dark-graphite: #1a222c;
-  --color-dark-footer: #060b12;
+  /* Hairlines and Dividers */
+  --color-line: #292927;
+  --color-border: rgba(255, 255, 255, 0.09);
+  --color-border-subtle: rgba(255, 255, 255, 0.05);
 
-  --font-display: 'Playfair Display', Georgia, serif;
-  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* Typography */
+  --font-serif: Georgia, 'Playfair Display', serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  --shadow-ambient: 0 12px 32px -4px rgba(11, 31, 51, 0.05);
-  --shadow-card: 0 8px 24px -2px rgba(11, 31, 51, 0.04);
-  --shadow-dark-card: 0 14px 40px -4px rgba(0, 0, 0, 0.4);
+  /* Spacing & Layout */
+  --max-content-width: 1280px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
 
-  --radius-xs: 2px;
-  --radius-sm: 4px;
-  --radius-md: 6px;
-  --radius-full: 9999px;
+  /* Shadows */
+  --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.35);
+  --shadow-gold: 0 6px 24px rgba(208, 182, 130, 0.16);
+  --shadow-book: 0 25px 45px -10px rgba(0, 0, 0, 0.7);
 
-  --max-content-width: 1240px;
+  /* Backward Compatibility Aliases for components */
+  --font-display: var(--font-serif);
+  --font-body: var(--font-sans);
+  --color-primary: var(--color-gold);
+  --color-on-surface: var(--color-text-primary);
+  --color-on-surface-variant: var(--color-text-secondary);
+  --color-border-hairline: var(--color-border);
+  --color-surface-container-high: var(--color-surface-elevated);
+  --radius-xs: var(--radius-sm);
 }
 
 *, *::before, *::after {
@@ -56,21 +62,28 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 90px;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--color-surface);
-  color: var(--color-reading-charcoal);
-  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
 }
 
 body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background-color: var(--color-surface);
-  color: var(--color-reading-charcoal);
-  line-height: 1.6;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  line-height: 1.7;
+}
+
+/* Custom Text Selection */
+::selection {
+  background: var(--color-gold);
+  color: #090c0e;
 }
 
 img {
@@ -82,26 +95,20 @@ img {
 a {
   color: inherit;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: all 0.25s ease;
 }
 
 button {
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
   border: none;
   cursor: pointer;
   background: none;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
 }
 
-input, textarea {
-  font-family: var(--font-body);
+input, textarea, select {
+  font-family: var(--font-sans);
   outline: none;
-}
-
-/* Custom Selection */
-::selection {
-  background: #0B1F33;
-  color: #E1C387;
 }
 
 /* Elegant Scrollbar */
@@ -109,12 +116,39 @@ input, textarea {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-surface);
+  background: var(--color-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-surface-dim);
+  background: #20262e;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
+}
+
+/* Global Container Utility */
+.sectionWrap {
+  width: 90%;
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+}
+
+.eyebrowTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 1rem;
+}
+
+.eyebrowTag::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1px;
   background: var(--color-gold);
 }

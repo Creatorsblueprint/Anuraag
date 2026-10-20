@@ -1,18 +1,23 @@
 import React, { useEffect } from 'react';
 import Nav from './Nav/Nav';
 import Home from './Home/Home';
-import Affiliations from './Affiliations/Affiliations';
-import Falcons from './Falcons/Falcons';
-import Quote from './Quote/Quote';
-import Lectern from './Lectern/Lectern';
-import Diagnostics from './Diagnostics/Diagnostics';
 import Ebook from './Ebook/Ebook';
+import Interlude from './Interlude/Interlude';
+import Story from './Story/Story';
+import Diagnostics from './Diagnostics/Diagnostics';
+import Roles from './Roles/Roles';
+import Falcons from './Falcons/Falcons';
+import Recognition from './Recognition/Recognition';
+import Videos from './Videos/Videos';
+import FAQ from './FAQ/FAQ';
+import Contact from './Contact/Contact';
+import StickyBook from './StickyBook/StickyBook';
 import Footer from './Footer/Footer';
 import './App.css';
 
 export default function App() {
   useEffect(() => {
-    // 1. Check if redirected from 404.html via /?p=...
+    // 1. Check if redirected from 404.html via /?p=... or direct pathname
     const urlParams = new URLSearchParams(window.location.search);
     let targetPath = urlParams.get('p') || window.location.pathname;
 
@@ -22,19 +27,34 @@ export default function App() {
 
       // Route aliases mapping to section element IDs
       const routeMap = {
-        'ebook': 'ebook',
-        'you-will-not-fly': 'ebook',
-        'the-living-charter': 'ebook',
-        'book': 'ebook',
-        'pillars': 'pillars',
-        'diagnostics': 'pillars',
+        'book': 'book',
+        'ebook': 'book',
+        'you-will-not-fly': 'book',
+        'the-living-charter': 'book',
+        'story': 'story',
+        'the-man': 'story',
+        'the-story': 'story',
+        'lectern': 'story',
+        'academic': 'story',
+        'expertise': 'expertise',
+        'the-work': 'expertise',
+        'work': 'expertise',
+        'pillars': 'expertise',
+        'six-verbs': 'expertise',
+        'diagnostics': 'expertise',
         'falcons': 'falcons',
         'falcons-of-majlis': 'falcons',
-        'lectern': 'lectern',
-        'academic': 'lectern',
+        'videos': 'videos',
+        'media': 'videos',
+        'recognition': 'recognition',
+        'honors': 'recognition',
+        'affiliations': 'recognition',
+        'faq': 'faq',
+        'purchase': 'purchase',
+        'contact': 'purchase',
+        'order': 'purchase',
         'overview': 'overview',
-        'home': 'overview',
-        'contact': 'contact'
+        'home': 'overview'
       };
 
       const sectionId = routeMap[cleanPath];
@@ -48,7 +68,7 @@ export default function App() {
           const targetEl = document.getElementById(sectionId);
           if (targetEl) {
             const header = document.querySelector('header');
-            const headerHeight = header ? header.offsetHeight : 70;
+            const headerHeight = header ? header.offsetHeight : 80;
             const elementPosition = targetEl.getBoundingClientRect().top + window.scrollY;
             const offsetPosition = elementPosition - headerHeight;
 
@@ -67,13 +87,18 @@ export default function App() {
       <Nav />
       <main>
         <Home />
-        <Affiliations />
-        <Diagnostics />
-        <Falcons />
-        <Quote />
-        <Lectern />
         <Ebook />
+        <Interlude />
+        <Story />
+        <Diagnostics />
+        <Roles />
+        <Falcons />
+        <Recognition />
+        <Videos />
+        <FAQ />
+        <Contact />
       </main>
+      <StickyBook />
       <Footer />
     </div>
   );

@@ -1,93 +1,170 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '../animations';
 import styles from './Diagnostics.module.css';
 
 export default function Diagnostics() {
-  const systemPillars = [
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const expertiseItems = [
     {
-      verb: 'DECIDE',
-      number: '01',
-      title: 'Decision Rights',
-      principle: 'Decisions belong closest to the problem.',
-      description: 'Moving critical operational calls out of bottleneck founder desks to the operators who bear the consequences.'
+      num: '01',
+      title: 'Family business & governance',
+      displayTitle: (
+        <>
+          Family business<br />& governance
+        </>
+      ),
+      description:
+        'Business transformation, succession-minded leadership, strategic decisions and the continuity of family enterprise.'
     },
     {
-      verb: 'SEE',
-      number: '02',
-      title: 'Cash Visibility',
-      principle: 'A cash crisis is usually a governance crisis.',
-      description: 'Engineering non-negotiable leading indicators and radical liquidity clarity before capital turns into crisis.'
+      num: '02',
+      title: 'Investment & entrepreneurship',
+      displayTitle: (
+        <>
+          Investment &<br />entrepreneurship
+        </>
+      ),
+      description:
+        'Multi-family office leadership, startup investment, MSME mentorship and long-term business value creation.'
     },
     {
-      verb: 'BUILD',
-      number: '03',
-      title: 'System Capability',
-      principle: 'Founders cannot scale by being the answer to every question.',
-      description: 'Instituting resilient operational muscles so organizational execution never rests on a single charismatic individual.'
+      num: '03',
+      title: 'Intelligent transformation',
+      displayTitle: (
+        <>
+          Intelligent<br />transformation
+        </>
+      ),
+      description:
+        'AI, automation, technology governance, risk and enterprise solutions, informed by the A2G Framework.'
     },
     {
-      verb: 'ANTICIPATE',
-      number: '04',
-      title: 'Foresight & Signals',
-      principle: 'Lagging indicators tell you who died. Leading indicators keep you alive.',
-      description: 'Designing asymmetric market scanning and early warning triggers across multigenerational industry disruption.'
+      num: '04',
+      title: 'Markets & expansion',
+      displayTitle: (
+        <>
+          Markets &<br />expansion
+        </>
+      ),
+      description:
+        'International operations, strategic alliances and growth across the Middle East, Africa, South Asia and North America.'
     },
     {
-      verb: 'ALIGN',
-      number: '05',
-      title: 'Family Trust & Living Room',
-      principle: 'Agreement before structure. People before charts.',
-      description: 'Harmonizing deep human friction, succession identities, and equity before codifying sterile legal charters.'
+      num: '05',
+      title: 'Leadership & learning',
+      displayTitle: (
+        <>
+          Leadership &<br />learning
+        </>
+      ),
+      description:
+        'Adjunct teaching in Service Marketing, Data Analytics, Entrepreneurship and International Business for MBA at the American University of Ras Al Khaimah.'
     },
     {
-      verb: 'ENDURE',
-      number: '06',
-      title: 'Generational Stewardship',
-      principle: 'Build something strong enough to run after you leave the room.',
-      description: 'The ultimate legacy test: establishing fiduciary governance where sovereign capital compounds beyond generation three.'
+      num: '06',
+      title: 'Humanitarian impact',
+      displayTitle: (
+        <>
+          Humanitarian<br />impact
+        </>
+      ),
+      description:
+        'Women and youth empowerment, entrepreneurial development and initiatives that connect leadership to social contribution.'
     }
   ];
 
-  return (
-    <section id="pillars" className={styles.diagnosticsSection}>
-      <div className={styles.container}>
-        {/* Header Block */}
-        <motion.div
-          className={styles.headerBlock}
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          <span className={styles.arsenalTag}>THE MIDNIGHT LIST · 6 FOUNDATIONAL VERBS</span>
-          <h2 className={styles.mainTitle}>The Tested Operating System</h2>
-          <p className={styles.subtitle}>
-            Born the night an NDA flight career closed. Tested across 26 industries, 35 countries,
-            boardrooms, and family dining tables.
-          </p>
-        </motion.div>
+  const currentItem = expertiseItems[activeIndex];
 
-        {/* 6 Verbs System Grid */}
-        <motion.div
-          className={styles.cardsGrid}
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {systemPillars.map((item) => (
-            <motion.div key={item.number} className={styles.card} variants={fadeInUp}>
-              <div className={styles.cardHeader}>
-                <span className={styles.verbBadge}>{item.verb}</span>
-                <span className={styles.cardNumber}>{item.number}</span>
+  return (
+    <section className={`${styles.expertiseSection} ${styles.section}`} id="expertise">
+      {/* Anchor alias for #pillars and #work */}
+      <div id="pillars" style={{ position: 'absolute', top: 0 }} />
+      <div id="work" style={{ position: 'absolute', top: 0 }} />
+
+      <div className={styles.wrap}>
+        <p className={styles.eyebrow}>03 — WHERE PERSPECTIVE BECOMES PRACTICE</p>
+
+        <div className={styles.splitHeading}>
+          <h2>
+            Build the business.<br />
+            <span className={styles.muted}>Protect the legacy.</span>
+          </h2>
+          <p>
+            From the boardroom to the next generation of founders, a connected approach to
+            enterprise, investment and people.
+          </p>
+        </div>
+
+        <div className={styles.expertiseExperience}>
+          {/* Left Sticky/Dynamic Visual Canvas */}
+          <aside className={styles.expertiseVisual}>
+            <div className={styles.networkBackdrop} aria-hidden="true" />
+            <div className={styles.networkScan} aria-hidden="true" />
+            <div className={styles.architectureShade} />
+
+            <div className={styles.visualTop}>
+              <span>THE CONNECTED ENTERPRISE</span>
+              <span>01 — 06</span>
+            </div>
+
+            <div className={styles.orbitSystem} aria-hidden="true">
+              <span className={`${styles.orbit} ${styles.o1}`} />
+              <span className={`${styles.orbit} ${styles.o2}`} />
+              <span className={`${styles.orbit} ${styles.o3}`} />
+              <div className={styles.orbitCore}>
+                HUMAN<br />
+                <b>JUDGMENT</b>
               </div>
-              <h3 className={styles.cardTitle}>{item.title}</h3>
-              <p className={styles.cardPrinciple}>&ldquo;{item.principle}&rdquo;</p>
-              <p className={styles.cardText}>{item.description}</p>
-            </motion.div>
-          ))}
-        </motion.div>
+              <span className={`${styles.satellite} ${styles.s1}`}>GOVERNANCE</span>
+              <span className={`${styles.satellite} ${styles.s2}`}>INTELLIGENCE</span>
+              <span className={`${styles.satellite} ${styles.s3}`}>LEGACY</span>
+              <span className={styles.orbitalDot} />
+              <span className={styles.orbitTrace} />
+            </div>
+
+            <div className={styles.visualBottom}>
+              <span className={styles.visualIndex}>{currentItem.num} / 06</span>
+              <h3 className={styles.activeTitle}>{currentItem.displayTitle}</h3>
+              <div className={styles.visualSteps} aria-hidden="true">
+                {expertiseItems.map((_, i) => (
+                  <i
+                    key={i}
+                    className={i === activeIndex ? styles.stepActive : ''}
+                    onClick={() => setActiveIndex(i)}
+                    style={{ cursor: 'pointer' }}
+                  />
+                ))}
+              </div>
+            </div>
+          </aside>
+
+          {/* Right 6 Pillars Grid */}
+          <motion.div
+            className={styles.expertiseGrid}
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+          >
+            {expertiseItems.map((item, index) => (
+              <motion.article
+                key={item.num}
+                className={`${styles.expertiseItem} ${
+                  activeIndex === index ? styles.expertiseItemActive : ''
+                }`}
+                variants={fadeInUp}
+                onMouseEnter={() => setActiveIndex(index)}
+                onClick={() => setActiveIndex(index)}
+              >
+                <span>{item.num}</span>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </motion.article>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -1,0 +1,302 @@
+.recognitionSection {
+  padding: 115px 0;
+  position: relative;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.section {
+  position: relative;
+}
+
+.wrap {
+  max-width: 1320px;
+  width: calc(100% - 112px);
+  margin: auto;
+}
+
+.sectionTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.eyebrow {
+  color: var(--color-gold);
+  font-size: 10px;
+  letter-spacing: 2.3px;
+  line-height: 1.5;
+  font-weight: 600;
+  margin: 0;
+}
+
+.smallNote {
+  font-size: 9px;
+  letter-spacing: 1.8px;
+  color: #a4a79e;
+  font-weight: 600;
+}
+
+.mainTitle {
+  font-size: clamp(34px, 3.5vw, 50px);
+  letter-spacing: -1.8px;
+  line-height: 1.15;
+  color: #efefec;
+  font-weight: 500;
+  margin: 0 0 60px;
+}
+
+.muted {
+  color: #a4a79e;
+  font-weight: 400;
+}
+
+/* Layout: Photo + Awards */
+.recognitionLayout {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 80px;
+  align-items: center;
+  margin-bottom: 70px;
+}
+
+.recognitionPhoto {
+  position: relative;
+  margin: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(199, 169, 103, 0.25);
+  height: 560px;
+}
+
+.recognitionPhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 20%;
+  display: block;
+}
+
+.recognitionPhoto::after {
+  content: '';
+  position: absolute;
+  inset: 45% 0 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.92));
+  pointer-events: none;
+}
+
+.figcaption {
+  position: absolute;
+  bottom: 35px;
+  left: 35px;
+  right: 35px;
+  z-index: 2;
+}
+
+.figcaption span {
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: var(--color-gold);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.figcaption b {
+  font-size: 26px;
+  color: #efefec;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  display: block;
+}
+
+/* Awards List */
+.awardsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.award {
+  position: relative;
+  padding: 30px 30px 30px 80px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  transition: all 0.25s ease;
+}
+
+.award:hover {
+  border-color: rgba(199, 169, 103, 0.4);
+  background: var(--color-surface-elevated);
+  transform: translateY(-2px);
+}
+
+.awardMark {
+  position: absolute;
+  left: 25px;
+  top: 30px;
+  font-size: 24px;
+  color: var(--color-gold);
+  line-height: 1;
+}
+
+.award small {
+  font-size: 8.5px;
+  letter-spacing: 2px;
+  color: var(--color-gold);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.award h3 {
+  font-size: clamp(19px, 2vw, 24px);
+  color: #f5f5f1;
+  margin: 0 0 10px;
+  letter-spacing: -0.5px;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.award p {
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: #c4c6bf;
+  margin: 0;
+}
+
+/* Dossier Accordion */
+.dossier {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color 0.25s ease;
+}
+
+.dossier[open] {
+  border-color: rgba(199, 169, 103, 0.4);
+}
+
+.dossierSummary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 30px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  color: #efefec;
+  list-style: none;
+  user-select: none;
+}
+
+.dossierSummary::-webkit-details-marker {
+  display: none;
+}
+
+.toggleIcon {
+  font-size: 20px;
+  color: var(--color-gold);
+  font-weight: 400;
+}
+
+.dossierContent {
+  padding: 0 30px 35px;
+  border-top: 1px solid var(--color-line);
+}
+
+.dossierContent h3 {
+  font-size: 16px;
+  color: var(--color-gold);
+  letter-spacing: 0.5px;
+  margin: 25px 0 10px;
+  font-weight: 600;
+}
+
+.dossierContent p {
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: #c4c6bf;
+  margin: 0 0 12px;
+}
+
+/* Region Tabs */
+.regionTabs {
+  display: flex;
+  gap: 12px;
+  border-bottom: 1px solid var(--color-line);
+  margin: 20px 0 20px;
+  padding-bottom: 8px;
+}
+
+.regionTab {
+  padding: 8px 18px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #a4a79e;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  background: transparent;
+}
+
+.regionTab:hover {
+  color: #efefec;
+}
+
+.regionTabActive {
+  background: rgba(199, 169, 103, 0.15);
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+
+.regionPanel h4 {
+  font-size: 14px;
+  color: #f5f5f1;
+  margin: 0 0 10px;
+  font-weight: 600;
+}
+
+.regionPanel p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #babbb6;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .recognitionLayout {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+  .recognitionPhoto {
+    height: 460px;
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 520px) {
+  .wrap {
+    width: calc(100% - 40px);
+  }
+  .award {
+    padding: 24px 20px 24px 60px;
+  }
+  .awardMark {
+    left: 20px;
+  }
+  .dossierSummary {
+    padding: 18px 20px;
+    font-size: 13.5px;
+  }
+  .dossierContent {
+    padding: 0 20px 25px;
+  }
+}

@@ -5,76 +5,134 @@ import styles from './Falcons.module.css';
 
 export default function Falcons() {
   return (
-    <section id="falcons" className={styles.falconsSection}>
-      <div className={styles.container}>
-        {/* Main Content: Left text & narrative, Right image */}
+    <section className={`${styles.falconFeature} ${styles.section}`} id="falcons">
+      <div className={styles.wrap}>
+        {/* Section Top */}
+        <div className={styles.sectionTop}>
+          <p className={styles.eyebrow}>THE FALCON PERSPECTIVE</p>
+          <a
+            className={styles.textLink}
+            href="https://falconsofmajlis.com/falcons/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span>Meet the Falcons</span>
+            <span className={styles.arrowIcon}>↗</span>
+          </a>
+        </div>
+
+        {/* Falcon Feature Grid */}
         <motion.div
-          className={styles.mainGrid}
+          className={styles.falconFeatureGrid}
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.15 }}
         >
-          {/* Left Column: All Text & Editorial Narrative */}
-          <motion.div className={styles.leftCol} variants={fadeInUp}>
-            <span className={styles.stageTag}>UAE TELEVISED VENTURE SHOWCASE</span>
-            <h2 className={styles.mainTitle}>Falcons of Majlis</h2>
+          {/* Left Portrait: Speaking into Mic */}
+          <motion.figure className={styles.falconFeaturePortrait} variants={fadeInUp}>
+            <img
+              src="/client_images/falcons_speaking_mic.jpg"
+              width="1920"
+              height="1280"
+              loading="lazy"
+              alt="Dr. Anuraag Guglaani speaking with a microphone at Falcons of Majlis"
+            />
+            <figcaption>
+              <span>A FALCON ON</span>
+              <strong>Falcons of Majlis</strong>
+              <small>DR. ANURAAG GUGLAANI</small>
+            </figcaption>
+          </motion.figure>
 
-            <p className={styles.leadText}>
-              Commanding the investor panel on UAE’s landmark business broadcast alongside global icon
-              Suniel Shetty and leading GCC dignitaries—championing high-growth enterprise, frontier
-              technology, and sovereign market integration.
+          {/* Right Copy */}
+          <motion.div className={styles.falconFeatureCopy} variants={fadeInUp}>
+            <span className={styles.falconKicker}>
+              <i /> INVESTOR · MENTOR · BUSINESS LEADER
+            </span>
+
+            <h2>
+              Bold founders.<br />
+              Real decisions.<br />
+              <span className={styles.goldText}>Lasting businesses.</span>
+            </h2>
+
+            <p className={styles.lead}>
+              Dr. Anuraag Guglaani brings his business, investment and governance experience to Falcons of Majlis as a Falcon.
             </p>
-
-            <blockquote className={styles.quoteAxiom}>
-              "We don't merely invest checks; we engineer sovereign distribution and generational endurance."
-            </blockquote>
 
             <p className={styles.bodyText}>
-              Evaluating founders with disciplined balance sheets, defensible unit economics, and scalable
-              operational architecture primed for multi-region Middle East expansion.
+              The UAE startup funding show by NKN Media connects founders with investors, family offices and strategic capital.
+              His official Falcon profile highlights expertise in technology, transformation, strategy and international business,
+              alongside active investment and mentorship of MSMEs.
             </p>
-          </motion.div>
 
-          {/* Right Column: Full-Height Clean Visual Showcase */}
-          <motion.div className={styles.rightCol} variants={fadeInUp}>
-            <div className={styles.imageCard}>
-              <img
-                src="/Images/image_3.jpg"
-                alt="Dr. Anuraag Guglaani — Television Investor, Falcons of Majlis"
-                className={styles.showcaseImg}
-              />
-              <div className={styles.imageCaption}>
-                <span className={styles.captionTag}>Television Investor · UAE</span>
-                <span className={styles.captionTitle}>Falcons of Majlis</span>
+            <div className={styles.falconPerspectives}>
+              <div>
+                <b>Capital with perspective</b>
+                <p>Investment experience informed by operating businesses across markets.</p>
+              </div>
+              <div>
+                <b>Growth with judgment</b>
+                <p>Transformation, governance and a long-term view of enterprise.</p>
               </div>
             </div>
+
+            <a
+              className={styles.goldButton}
+              href="https://falconsofmajlis.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>Explore Falcons of Majlis</span>
+              <span className={styles.btnArrow}>↗</span>
+            </a>
           </motion.div>
         </motion.div>
 
-        {/* Minimal Metrics Row Below */}
+        {/* Event Photos Row */}
         <motion.div
-          className={styles.statsRow}
-          variants={fadeInUp}
+          className={styles.falconsEventGrid}
+          variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.15 }}
         >
-          <div className={styles.statItem}>
-            <span className={styles.statNumber}>AED 75M+</span>
-            <span className={styles.statLabel}>SYNDICATE POWER</span>
-          </div>
+          <motion.figure className={styles.eventWide} variants={fadeInUp}>
+            <img
+              src="/client_images/falcons_stage_panel.jpg"
+              width="1920"
+              height="1280"
+              loading="lazy"
+              alt="Dr. Guglaani seated with fellow participants on the Falcons of Majlis stage"
+            />
+            <figcaption>
+              <span>ON THE MAJLIS STAGE</span>
+              <b>Experience meets entrepreneurial ambition.</b>
+            </figcaption>
+          </motion.figure>
 
-          <div className={styles.statItem}>
-            <span className={styles.statNumber}>100+</span>
-            <span className={styles.statLabel}>FOUNDERS VETTED</span>
-          </div>
-
-          <div className={styles.statItem}>
-            <span className={styles.statNumber}>100%</span>
-            <span className={styles.statLabel}>GCC INTEGRATION</span>
-          </div>
+          <motion.figure className={styles.eventCandid} variants={fadeInUp}>
+            <img
+              src="/client_images/falcons_launch_event.jpg"
+              width="1920"
+              height="1280"
+              loading="lazy"
+              alt="Dr. Guglaani at the Falcons of Majlis launch event"
+            />
+            <figcaption>
+              <span>BEHIND THE CONVERSATIONS</span>
+              <b>People. Possibility. Perspective.</b>
+            </figcaption>
+          </motion.figure>
         </motion.div>
+
+        <p className={styles.falconSource}>
+          Discover his profile on the{' '}
+          <a href="https://falconsofmajlis.com/falcons/" target="_blank" rel="noopener noreferrer">
+            official Falcons of Majlis website ↗
+          </a>
+        </p>
       </div>
     </section>
   );

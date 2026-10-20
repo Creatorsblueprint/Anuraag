@@ -1,225 +1,344 @@
-.falconsSection {
-  background-color: #07121e;
-  color: #ffffff;
-  padding: 6.5rem 2rem 7rem;
+.falconFeature {
+  padding: 115px 0;
   position: relative;
-  border-top: 1px solid rgba(181, 154, 98, 0.15);
-  border-bottom: 1px solid rgba(181, 154, 98, 0.15);
+  border-bottom: 1px solid var(--color-line);
 }
 
-.container {
-  max-width: var(--max-content-width);
-  margin: 0 auto;
+.section {
+  position: relative;
 }
 
-/* Side-by-Side Main Grid */
-.mainGrid {
+.wrap {
+  max-width: 1320px;
+  width: calc(100% - 112px);
+  margin: auto;
+}
+
+.sectionTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  margin-bottom: 50px;
+}
+
+.eyebrow {
+  color: var(--color-gold);
+  font-size: 10px;
+  letter-spacing: 2.3px;
+  line-height: 1.5;
+  font-weight: 600;
+  margin: 0;
+}
+
+.textLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 1px solid #77715f;
+  padding-bottom: 6px;
+  font-size: 12px;
+  color: #efefec;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.textLink:hover {
+  color: var(--color-gold);
+  border-color: var(--color-gold);
+}
+
+.arrowIcon {
+  color: var(--color-gold);
+  font-size: 14px;
+}
+
+/* Feature Grid */
+.falconFeatureGrid {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 4.5rem;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 80px;
   align-items: center;
-  margin-bottom: 5rem;
 }
 
-/* Left Column: All Text & Editorial Narrative */
-.leftCol {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.stageTag {
-  font-family: var(--font-body);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-gold-light);
-  margin-bottom: 1.15rem;
-}
-
-.mainTitle {
-  font-family: var(--font-display);
-  font-size: 3.5rem;
-  font-weight: 600;
-  line-height: 1.18;
-  letter-spacing: -0.02em;
-  color: #ffffff;
-  margin-bottom: 2rem;
-}
-
-.leadText {
-  font-family: var(--font-body);
-  font-size: 1.08rem;
-  line-height: 1.85;
-  color: #c2c7cf;
-  margin-bottom: 2.5rem;
-}
-
-.quoteAxiom {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.5rem;
-  line-height: 1.65;
-  color: #ffffff;
-  padding-left: 1.75rem;
-  border-left: 2px solid var(--color-gold);
-  margin-bottom: 2.25rem;
-}
-
-.bodyText {
-  font-family: var(--font-body);
-  font-size: 0.98rem;
-  line-height: 1.8;
-  color: #8f949c;
-}
-
-/* Right Column: Clean Image Container occupying the space */
-.rightCol {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.imageCard {
-  width: 100%;
-  max-width: 460px;
-  border-radius: var(--radius-xs);
-  overflow: hidden;
+.falconFeaturePortrait {
   position: relative;
-  background: #0b1725;
-  border: 1px solid rgba(181, 154, 98, 0.22);
-  box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.6);
+  margin: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(199, 169, 103, 0.25);
+  height: 580px;
 }
 
-.showcaseImg {
+.falconFeaturePortrait img {
   width: 100%;
-  aspect-ratio: 4 / 4.8;
+  height: 100%;
   object-fit: cover;
-  object-position: center 15%;
+  object-position: 47% center;
   display: block;
 }
 
-.imageCaption {
+.falconFeaturePortrait::after {
+  content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 2.25rem 1.5rem 1.25rem;
-  background: linear-gradient(to top, rgba(6, 17, 29, 0.95) 0%, rgba(6, 17, 29, 0.6) 65%, transparent 100%);
+  inset: 40% 0 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.92));
+  pointer-events: none;
+}
+
+.falconFeaturePortrait figcaption {
+  position: absolute;
+  bottom: 35px;
+  left: 35px;
+  right: 35px;
+  z-index: 2;
+}
+
+.falconFeaturePortrait figcaption span {
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: var(--color-gold);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.falconFeaturePortrait figcaption strong {
+  font-size: clamp(28px, 3vw, 42px);
+  color: #efefec;
+  font-weight: 500;
+  letter-spacing: -0.8px;
+  display: block;
+  line-height: 1.15;
+}
+
+.falconFeaturePortrait figcaption small {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #b2b5ab;
+  display: block;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+/* Copy Column */
+.falconKicker {
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: var(--color-gold);
+  font-weight: 700;
   display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
-.captionTag {
-  font-family: var(--font-body);
-  font-size: 0.62rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--color-gold-light);
+.falconKicker i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  box-shadow: 0 0 8px var(--color-gold);
 }
 
-.captionTitle {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: #ffffff;
-  letter-spacing: -0.01em;
+.falconFeatureCopy h2 {
+  font-size: clamp(34px, 3.5vw, 50px);
+  letter-spacing: -1.8px;
+  line-height: 1.15;
+  color: #efefec;
+  font-weight: 500;
+  margin: 0 0 24px;
 }
 
-/* Minimal Metrics Row */
-.statsRow {
+.goldText {
+  color: var(--color-gold);
+}
+
+.lead {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #dcded7;
+  margin-bottom: 18px;
+  font-family: Georgia, serif;
+  font-style: italic;
+}
+
+.bodyText {
+  font-size: 14px;
+  line-height: 1.85;
+  color: #babbb6;
+  margin-bottom: 30px;
+}
+
+.falconPerspectives {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2.5rem;
-  padding-top: 3rem;
-  border-top: 1px solid rgba(181, 154, 98, 0.15);
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  padding: 24px 0;
+  border-block: 1px solid var(--color-line);
+  margin-bottom: 35px;
 }
 
-.statItem {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.statNumber {
-  font-family: var(--font-display);
-  font-size: 2.25rem;
+.falconPerspectives b {
+  font-size: 13px;
+  color: var(--color-gold);
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: 8px;
   font-weight: 600;
-  color: #ffffff;
-  letter-spacing: -0.01em;
-  line-height: 1;
 }
 
-.statLabel {
-  font-family: var(--font-body);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-gold-light);
+.falconPerspectives p {
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: #a4a79e;
+  margin: 0;
 }
 
-/* Responsive adjustments */
-@media (max-width: 1024px) {
-  .mainGrid {
+.goldButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 28px;
+  background: var(--color-gold);
+  color: #090c0e;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(199, 169, 103, 0.25);
+  transition: all 0.25s ease;
+}
+
+.goldButton:hover {
+  transform: translateY(-2px);
+  background: #d8bc7d;
+  box-shadow: 0 8px 25px rgba(199, 169, 103, 0.4);
+}
+
+.btnArrow {
+  font-size: 14px;
+}
+
+/* Event Photos Grid */
+.falconsEventGrid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 30px;
+  margin-top: 55px;
+}
+
+.eventWide,
+.eventCandid {
+  position: relative;
+  margin: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  height: 380px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+.eventWide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 44% 62%;
+  display: block;
+}
+
+.eventCandid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 30%;
+  display: block;
+}
+
+.eventWide::after,
+.eventCandid::after {
+  content: '';
+  position: absolute;
+  inset: 50% 0 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.92));
+  pointer-events: none;
+}
+
+.eventWide figcaption,
+.eventCandid figcaption {
+  position: absolute;
+  bottom: 25px;
+  left: 25px;
+  right: 25px;
+  z-index: 2;
+}
+
+.eventWide figcaption span,
+.eventCandid figcaption span {
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: var(--color-gold);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.eventWide figcaption b,
+.eventCandid figcaption b {
+  font-size: 18px;
+  color: #efefec;
+  font-weight: 500;
+  letter-spacing: -0.4px;
+  display: block;
+}
+
+.falconSource {
+  margin-top: 35px;
+  font-size: 12px;
+  color: #888b82;
+  text-align: right;
+}
+
+.falconSource a {
+  color: var(--color-gold);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .falconFeatureGrid {
     grid-template-columns: 1fr;
-    gap: 3.5rem;
+    gap: 45px;
   }
-
-  .mainTitle {
-    font-size: 3rem;
+  .falconFeaturePortrait {
+    height: 480px;
+    max-width: 520px;
   }
-
-  .imageCard {
-    max-width: 480px;
+  .falconsEventGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .eventWide,
+  .eventCandid {
+    height: 320px;
   }
 }
 
-@media (max-width: 768px) {
-  .falconsSection {
-    padding: 4.5rem 1.25rem 5rem;
+@media (max-width: 520px) {
+  .wrap {
+    width: calc(100% - 40px);
   }
-
-  .leftCol {
-    align-items: center;
-    text-align: center;
+  .falconFeaturePortrait {
+    height: 420px;
   }
-
-  .mainTitle {
-    font-size: 2.35rem;
-    text-align: center;
-  }
-
-  .leadText {
-    font-size: 0.95rem;
-    text-align: center;
-  }
-
-  .quoteAxiom {
-    font-size: 1.2rem;
-    padding-left: 0;
-    border-left: none;
-    padding-top: 1rem;
-    border-top: 2px solid var(--color-gold);
-    text-align: center;
-  }
-
-  .bodyText {
-    text-align: center;
-  }
-
-  .statsRow {
+  .falconPerspectives {
     grid-template-columns: 1fr;
-    gap: 1.75rem;
-    text-align: center;
+    gap: 18px;
   }
-
-  .statItem {
-    align-items: center;
+  .falconSource {
+    text-align: left;
   }
 }

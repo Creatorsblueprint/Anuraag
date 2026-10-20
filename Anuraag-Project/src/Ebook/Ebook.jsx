@@ -1,206 +1,242 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '../animations';
 import styles from './Ebook.module.css';
 
 export default function Ebook() {
-  const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-  const [activeTab, setActiveTab] = useState('verdict');
+  const [activeTheme, setActiveTheme] = useState('business');
+  const [bookRotation, setBookRotation] = useState({ y: -18, z: -4 });
 
-  const excerpts = [
+  const themes = [
     {
-      id: 'verdict',
-      tabLabel: '01 · The Verdict',
-      title: 'Four Words That Changed Everything',
-      subtitle: 'The loss of a defining identity becomes the birth of a lifelong operating system.',
-      quote: '“The sky he had staked everything on simply closed. Faced with the loss of his first ambition, he was forced to confront the question: What can you actually do?”',
-      content:
-        'At twenty, after clearing one of the most competitive selection processes in India and spending years training at the prestigious National Defence Academy (NDA) to become a fighter jet pilot, Dr. Guglaani walked out with the identity he had built his life around abruptly erased. What followed was not a comeback story—it was a 30-year reinvention. A verdict is not a destiny.'
+      id: 'business',
+      num: '01',
+      label: 'Business',
+      title: 'Decisions that shape the enterprise.',
+      desc: 'Cash, decisions, talent, foresight and governance. The book brings together perspectives developed across factories, family businesses, boardrooms and investment rooms.'
     },
     {
-      id: 'verbs',
-      tabLabel: '02 · The Six Verbs',
-      title: 'The Midnight List Over Titles & Nouns',
-      subtitle: 'Why who you are is answered by verbs, never by designations.',
-      quote: '“The answer began with a midnight list of six verbs. Those verbs became more important than any title, qualification or designation.”',
-      content:
-        'From factory floors to sales, from family businesses to multi-billion boardrooms, Guglaani discovers that problems businesses present are rarely the problems they actually have. A cash crisis is often a governance crisis. A succession dilemma is an identity struggle. A growth obstacle is a capability bottleneck. Six verbs replace the fragility of titles.'
+      id: 'career',
+      num: '02',
+      label: 'Career',
+      title: 'A closed door. A different direction.',
+      desc: 'Grounded at twenty after training as an aspiring fighter jet pilot, Anuraag had to decide what came next. His journey offers a personal perspective on reinvention when a long-held plan changes.'
     },
     {
-      id: 'system',
-      tabLabel: '03 · Living Room to Boardroom',
-      title: 'Agreement Before Structure',
-      subtitle: 'Why legal frameworks crumble when human trust is fractured.',
-      quote: '“Families need agreement before they need structure. The boardroom and the living room are solving the exact same problem.”',
-      content:
-        'Working with multi-generational family enterprises across the GCC, South Asia, Africa, and North America, Guglaani reveals why 70% of family dynasties implode by generation three. Governance cannot simply be imposed through legal boilerplate. When money, power, and succession collide, emotional alignment must precede fiduciary architecture.'
+      id: 'family',
+      num: '03',
+      label: 'Family',
+      title: 'The people behind the enterprise.',
+      desc: 'The story and the operating system were shaped as much at his own kitchen table as in any boardroom. Family, judgment and continuity are central to the perspective he shares.'
     },
     {
-      id: 'playbook',
-      tabLabel: '04 · The Playbook',
-      title: 'Tools For Generational Endurance',
-      subtitle: 'Building a system strong enough to run after you leave the room.',
-      quote: '“The greatest legacy is building something strong enough to continue after you leave the room.”',
-      content:
-        'The book concludes with a practical, field-tested Playbook: frameworks for cash visibility, decision rights delegation, succession readiness audits, leading indicators, and family councils. Designed for founders, successors, and the invisible operators running family enterprises without formal titles.'
+      id: 'legacy',
+      num: '04',
+      label: 'Legacy',
+      title: 'Build with the next generation in mind.',
+      desc: 'Across business leadership, mentorship and teaching, the book asks what remains when titles, plans and certainty are stripped away—and what you choose to build next.'
     }
   ];
 
-  const currentExcerpt = excerpts.find((e) => e.id === activeTab) || excerpts[0];
+  const currentTheme = themes.find((t) => t.id === activeTheme) || themes[0];
 
-  const handleSubmit = (e) => {
+  const handleBookView = (view) => {
+    if (view === 'front') {
+      setBookRotation({ y: 0, z: 0 });
+    } else if (view === 'back') {
+      setBookRotation({ y: 180, z: 0 });
+    } else if (view === 'spin') {
+      setBookRotation((prev) => ({ y: prev.y + 360, z: 0 }));
+    } else {
+      setBookRotation({ y: -18, z: -4 });
+    }
+  };
+
+  const handleScrollTo = (e, targetId) => {
     e.preventDefault();
-    if (email.trim()) {
-      setSubmitted(true);
-      setTimeout(() => {
-        setSubmitted(false);
-        setEmail('');
-      }, 4000);
+    const el = document.querySelector(targetId);
+    if (el) {
+      const header = document.querySelector('header');
+      const headerHeight = header ? header.offsetHeight : 80;
+      const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - headerHeight;
+
+      window.scrollTo({
+        top: Math.max(0, offsetPosition),
+        behavior: 'smooth'
+      });
     }
   };
 
   return (
-    <section id="ebook" className={styles.ebookSection}>
-      <div className={styles.container}>
+    <section className={`${styles.bookSection} ${styles.section}`} id="book">
+      {/* Anchor alias for #ebook backward compatibility */}
+      <div id="ebook" style={{ position: 'absolute', top: 0 }} />
+
+      <div className={styles.wrap}>
+        {/* Section Top Eyebrow */}
+        <div className={styles.sectionTop}>
+          <p className={styles.eyebrow}>01 — THE FEATURED BOOK</p>
+          <span className={styles.smallNote}>A MEMOIR. A FIELD MANUAL. A NEW PERSPECTIVE.</span>
+        </div>
+
+        {/* Book Layout: 3D Object Left, Copy Right */}
         <motion.div
-          className={styles.mainGrid}
+          className={styles.bookLayout}
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {/* Left Column: Realistic 3D Book Cover */}
-          <motion.div className={styles.bookCol} variants={fadeInUp}>
-            <div className={styles.bookWrapper}>
-              <div className={styles.bookSpineGlow} />
-              <img
-                src="/book_cover.jpg"
-                alt="You Will Not Fly - Dr. Anuraag Guglaani"
-                className={styles.bookImage}
-                loading="lazy"
-              />
-            </div>
-          </motion.div>
+          {/* 3D Interactive Book Stage */}
+          <motion.div className={styles.bookStage} variants={fadeInUp}>
+            <div className={styles.bookHalo} />
 
-          {/* Right Column: All Text, Info & Purchase */}
-          <motion.div className={styles.detailsCol} variants={fadeInUp}>
-            {/* <span className={styles.tagPill}>FEATURED BOOK &amp; OPERATING SYSTEM</span> */}
-            <span className={styles.tagPill}>FEATURED EBOOK</span>
-            <h2 className={styles.mainTitle}>You Will Not Fly</h2>
-            <p className={styles.tagline}>Grounded at Twenty. Airborne Ever Since.</p>
-            <p className={styles.subtitle}>
-              One Operating System for Business, Career, Family and Legacy
-            </p>
-
-            {/* <blockquote className={styles.quoteBlock}>
-              &ldquo;A Verdict is not a Destiny. A Title is a Noun. What you can do is a Verb.&rdquo;
-            </blockquote> */}
-
-            <p className={styles.overviewText}>
-              At twenty, after clearing one of the toughest selection processes and spending years training
-              at the prestigious National Defence Academy (NDA) as an aspiring fighter jet pilot, Anuraag was
-              grounded by a verdict he could not appeal. He hadn&rsquo;t failed or quit. The sky he&rsquo;d staked
-              everything on simply closed.
-            </p>
-
-            <p className={styles.descriptionText}>
-              What followed was not a comeback story—it was a reinvention. Across three decades from factory floors
-              to boardrooms in 35 countries, known today as <em>The Family Business Doctor</em>, Dr. Guglaani shares
-              the tested operating system built along the way: cash, decisions, talent, foresight, and governance,
-              shaped as much at his own kitchen table as in any boardroom.
-            </p>
-
-            {/* Seamless, unboxed purchase area */}
-            <div className={styles.purchaseArea}>
-              <div className={styles.priceRow}>
-                <div className={styles.priceTag}>
-                  <span className={styles.dollarSymbol}>$</span>
-                  <span>120</span>
-                </div>
-                {/* <span className={styles.editionLabel}>Hardcover &amp; Digital Monograph</span> */}
+            <div
+              className={styles.bookObject}
+              style={{
+                transform: `rotateY(${bookRotation.y}deg) rotateZ(${bookRotation.z}deg)`
+              }}
+            >
+              {/* Front Cover */}
+              <div className={`${styles.bookFront} ${styles.bookFace}`}>
+                <img
+                  src="/client_images/book_cover_front.jpg"
+                  alt="Front cover of You Will Not Fly"
+                  draggable="false"
+                />
               </div>
 
-              <form onSubmit={handleSubmit} className={styles.purchaseForm}>
-                <input
-                  type="email"
-                  required
-                  placeholder="Enter your email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className={styles.emailInput}
+              {/* Back Cover */}
+              <div className={`${styles.bookBack} ${styles.bookFace}`}>
+                <img
+                  src="/client_images/book_back_cover.jpg"
+                  alt="Original back cover including synopsis and author biography"
+                  draggable="false"
                 />
-                <button type="submit" className={styles.buyBtn}>
-                  {submitted ? 'ORDER SENT' : 'BUY NOW'}
-                </button>
-              </form>
+              </div>
 
-              <span className={styles.noteText}>
-                *Sent directly to your email after checkout with instant digital download
-              </span>
+              {/* Spine */}
+              <div className={`${styles.bookSpine} ${styles.bookFace}`} aria-label="Book spine" />
+
+              {/* Pages */}
+              <div className={`${styles.bookPages} ${styles.bookFace}`} aria-hidden="true" />
             </div>
+
+            {/* Interactive View Controls */}
+            <div className={styles.bookViewerTools}>
+              <p className={styles.dragInstructions}>Interactive 3D Stage</p>
+              <div className={styles.bookViewerControls}>
+                <button type="button" onClick={() => handleBookView('front')}>Front</button>
+                <button type="button" onClick={() => handleBookView('back')}>Back</button>
+                <button type="button" onClick={() => handleBookView('spin')}>360° ↻</button>
+                <button type="button" onClick={() => handleBookView('reset')}>Reset</button>
+              </div>
+            </div>
+
+            <span className={styles.stageCaption}>
+              FRONT. SPINE. BACK. EVERY SIDE OF THE STORY.
+            </span>
+          </motion.div>
+
+          {/* Book Copy Right */}
+          <motion.div className={styles.bookCopy} variants={fadeInUp}>
+            <div className={styles.launchTag}>
+              <span className={styles.stickyDot} /> A STORY OF REINVENTION. A NEW PERSPECTIVE.
+            </div>
+
+            <h2>
+              You Will<br />
+              <span className={styles.strike}>Not</span> <span className={styles.goldText}>Fly.</span>
+            </h2>
+
+            <p className={styles.bookSubtitle}>
+              Grounded at Twenty.<br />
+              Airborne Ever Since.
+            </p>
+
+            <p className={styles.lead}>
+              One operating system for business, career, family and legacy.
+            </p>
+
+            <p>
+              At twenty, after clearing one of the toughest selection processes and training at the National
+              Defence Academy as an aspiring fighter jet pilot, Anuraag was grounded by a verdict he could not appeal.
+            </p>
+
+            <p>
+              What followed was a life of reinvention. Across factories, family businesses, boardrooms, classrooms
+              and startup investment rooms, he spent three decades discovering what remains when titles, plans and
+              certainty are stripped away.
+            </p>
+
+            <p>
+              Part business memoir, part field manual, this is the story of that journey—and the operating system
+              built along the way: cash, decisions, talent, foresight and governance.
+            </p>
+
+            <a
+              className={`${styles.button} ${styles.gold}`}
+              href="#purchase"
+              onClick={(e) => handleScrollTo(e, '#purchase')}
+            >
+              <span>Get the book</span>
+              <span className={styles.btnArrow}>↗</span>
+            </a>
+
+            <span className={styles.bookPublisher}>Published by Notion Press</span>
           </motion.div>
         </motion.div>
 
-        {/* Interactive "Look Inside" Chapter Excerpts Showcase */}
-        <motion.div
-          className={styles.excerptsShowcase}
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }}
-        >
-          <div className={styles.excerptsHeader}>
-            <span className={styles.excerptsTag}>LOOK INSIDE THE BOOK</span>
-            <h3 className={styles.excerptsTitle}>The Architecture of Reinvention</h3>
-            <p className={styles.excerptsSubtitle}>
-              Explore the core turning points, midnight realizations, and field-tested frameworks.
-            </p>
+        {/* 4 Connected Dimensions / Themes Explorer */}
+        <div className={styles.themesExplorer}>
+          <div className={styles.themesHeading}>
+            <span>ONE OPERATING SYSTEM. FOUR CONNECTED DIMENSIONS.</span>
           </div>
 
-          {/* Tab Navigation */}
-          <div className={styles.tabNav}>
-            {excerpts.map((tab) => (
+          <div className={styles.bookThemes} role="tablist">
+            {themes.map((t) => (
               <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`${styles.tabBtn} ${activeTab === tab.id ? styles.tabBtnActive : ''}`}
+                key={t.id}
+                role="tab"
+                aria-selected={activeTheme === t.id}
+                onClick={() => setActiveTheme(t.id)}
+                className={`${styles.themeTabBtn} ${activeTheme === t.id ? styles.themeTabActive : ''}`}
               >
-                {tab.tabLabel}
+                <span className={styles.tabNum}>{t.num}</span>
+                <span className={styles.tabName}>{t.label}</span>
+                <b className={styles.tabArrow}>↗</b>
               </button>
             ))}
           </div>
 
-          {/* Active Excerpt Card */}
-          <div className={styles.excerptCard}>
-            <div className={styles.excerptContentCol}>
-              <span className={styles.excerptStep}>{currentExcerpt.tabLabel}</span>
-              <h4 className={styles.excerptHeading}>{currentExcerpt.title}</h4>
-              <p className={styles.excerptSubhead}>{currentExcerpt.subtitle}</p>
-              <blockquote className={styles.excerptPullQuote}>{currentExcerpt.quote}</blockquote>
-              <p className={styles.excerptParagraph}>{currentExcerpt.content}</p>
-            </div>
-            <div className={styles.excerptActionCol}>
-              <div className={styles.authorTagBox}>
-                <span className={styles.authorTagLabel}>BY DR. ANURAAG GUGLAANI</span>
-                <span className={styles.authorTagRole}>The Family Business Doctor</span>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTheme}
+              className={styles.themePanel}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.25 }}
+            >
+              <span className={styles.themeWord}>{currentTheme.label}</span>
+              <div className={styles.themePanelIndex}>
+                {currentTheme.num}<span>/ 04</span>
               </div>
-              <p className={styles.excerptActionNote}>
-                Gain immediate access to the full operating manual, workbook, and generational governance tools.
-              </p>
-              <button
-                onClick={() => {
-                  const input = document.querySelector(`.${styles.emailInput}`);
-                  if (input) input.focus();
-                }}
-                className={styles.excerptBuyLink}
-              >
-                <span>ORDER COMPLETE EDITION</span>
-                <span>&rarr;</span>
-              </button>
-            </div>
-          </div>
-        </motion.div>
+              <div className={styles.themePanelContent}>
+                <h3>{currentTheme.title}</h3>
+                <p>{currentTheme.desc}</p>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Defining Axiom Quote */}
+        <blockquote className={styles.bookQuote}>
+          “A Verdict is not a Destiny.<br />
+          A Title is a Noun. <span>What you can do is a Verb.</span>”
+          <cite>FROM YOU WILL NOT FLY</cite>
+        </blockquote>
       </div>
     </section>
   );

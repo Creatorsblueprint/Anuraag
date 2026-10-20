@@ -1,175 +1,167 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { fadeInUp, fadeInScale, staggerContainer } from '../animations';
 import styles from './Home.module.css';
 
 export default function Home() {
-  const [imgError, setImgError] = useState(false);
-
   const handleScrollTo = (e, targetId) => {
     e.preventDefault();
+    const sectionId = targetId.replace('#', '');
+    const newPath = sectionId === 'overview' ? '/' : `/${sectionId}`;
+    window.history.pushState(null, '', newPath);
+
     const el = document.querySelector(targetId);
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+      const header = document.querySelector('header');
+      const headerHeight = header ? header.offsetHeight : 80;
+      const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - headerHeight;
+
+      window.scrollTo({
+        top: Math.max(0, offsetPosition),
+        behavior: 'smooth'
+      });
     }
   };
 
   return (
-    <section id="overview" className={styles.heroSection}>
-      <div className={styles.container}>
-        {/* Left Column Content */}
+    <div id="overview">
+      <section className={styles.hero}>
+        {/* Dubai Skyline Backdrop Image from Client Assets */}
+        <img
+          className={styles.heroBackdrop}
+          src="/client_images/dubai_skyline.jpg"
+          alt="Dubai skyline photographed at sunrise by Piotr Chrobot"
+          loading="eager"
+        />
+
+        <div className={styles.heroWash} aria-hidden="true" />
+        <div className={styles.heroOrbit} aria-hidden="true" />
+        <span className={styles.heroCoordinate} aria-hidden="true">
+          PERSPECTIVE / PURPOSE / POSSIBILITY
+        </span>
+
+        {/* Hero Left Copy */}
         <motion.div
-          className={styles.leftCol}
+          className={styles.heroCopy}
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
         >
-          {/* Badges */}
-          <motion.div className={styles.badgeRow} variants={fadeInUp}>
-            <span className={styles.badgeLight}>THE FAMILY BUSINESS DOCTOR™</span>
-            {/* <span className={styles.badgeDark}>NEW BOOK · YOU WILL NOT FLY</span> */}
-            <span className={styles.badgeAccent}>FALCON · UAE BROADCAST</span>
-          </motion.div>
-
-          {/* Headline */}
-          <motion.h1 className={styles.heroTitle} variants={fadeInUp}>
-            Grounded at Twenty.<br />
-            Airborne Ever Since.<br />
-            <span className={styles.heroTitleHighlight}>Architect of Generational Legacy.</span>
-          </motion.h1>
-
-          {/* Subparagraph */}
-          <motion.p className={styles.heroSubtitle} variants={fadeInUp}>
-            Dr. Anuraag Guglaani — author of <em>You Will Not Fly</em>, Group CEO &amp; Chair of Wazir Holdings,
-            and Investor on UAE’s landmark televised broadcast <em>Falcons of Majlis</em>. Fusing 30 years of in-situ
-            reversal, board stewardship, and the tested operating system across 35 countries.
+          <motion.p className={styles.eyebrow} variants={fadeInUp}>
+            <span className={styles.goldLine} /> THE FAMILY BUSINESS DOCTOR
           </motion.p>
 
-          {/* CTAs */}
-          <motion.div className={styles.actionRow} variants={fadeInUp}>
+          <motion.h1 variants={fadeInUp}>
+            Perspective that<br />
+            <span className={styles.thin}>builds legacies.</span>
+          </motion.h1>
+
+          <motion.p className={styles.heroIntro} variants={fadeInUp}>
+            Dr. Anuraag Guglaani{' '}
+            <span className={styles.heroRole}>LEADER · INVESTOR · AUTHOR</span>
+          </motion.p>
+
+          <motion.p className={styles.heroDescription} variants={fadeInUp}>
+            Three decades of business transformation.<br />
+            A lifetime of looking beyond what comes next.
+          </motion.p>
+
+          <motion.div className={styles.heroActions} variants={fadeInUp}>
             <a
-              href="#ebook"
-              onClick={(e) => handleScrollTo(e, '#ebook')}
-              className={styles.primaryBtn}
+              className={`${styles.button} ${styles.gold}`}
+              href="#book"
+              onClick={(e) => handleScrollTo(e, '#book')}
             >
-              <span>GET EBOOK</span>
-              <span className={styles.btnIcon}>
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z" />
-                  <path d="M6 6h10" />
-                  <path d="M6 10h10" />
-                </svg>
-              </span>
+              <span>Discover the book</span>
+              <span className={styles.btnArrow}>↗</span>
             </a>
 
             <a
-              href="#falcons"
-              onClick={(e) => handleScrollTo(e, '#falcons')}
-              className={styles.secondaryBtn}
+              className={styles.textLink}
+              href="#story"
+              onClick={(e) => handleScrollTo(e, '#story')}
             >
-              <span>LEARN MORE</span>
-              <span className={styles.btnIcon}>
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14" />
-                  <path d="m12 5 7 7-7 7" />
-                </svg>
-              </span>
+              <span>Meet the author</span>
+              <span className={styles.btnArrowDown}>↓</span>
             </a>
-          </motion.div>
-
-          {/* Metrics Bar */}
-          <motion.div className={styles.metricsGrid} variants={fadeInUp}>
-            <div className={styles.metricItem}>
-              <span className={styles.metricValue}>35</span>
-              <span className={styles.metricLabel}>COUNTRIES ADVISED</span>
-            </div>
-
-            <div className={styles.metricItem}>
-              <span className={styles.metricValue}>26</span>
-              <span className={styles.metricLabel}>INDUSTRIES NAVIGATED</span>
-            </div>
-
-            <div className={styles.metricItem}>
-              <span className={styles.metricValue}>$4.2B+</span>
-              <span className={styles.metricLabel}>CAPITAL GOVERNED</span>
-            </div>
-
-            <div className={styles.metricItem}>
-              <span className={styles.metricValue}>AURAK</span>
-              <span className={styles.metricLabel}>ADJUNCT PROFESSOR</span>
-            </div>
           </motion.div>
         </motion.div>
 
-        {/* Right Column Portrait Frame */}
+        {/* Hero Photo Wrap with Client's Blue Suit Photo */}
         <motion.div
-          className={styles.rightCol}
+          className={styles.heroPhotoWrap}
           variants={fadeInScale}
           initial="hidden"
           animate="visible"
         >
-          <div className={styles.portraitFrame}>
-            <div className={styles.imageWrapper}>
-              {!imgError ? (
-                <img
-                  src="/home.png"
-                  alt="Dr. Anuraag Guglaani — Fiduciary Sovereign Counsel"
-                  className={styles.portraitImg}
-                  onError={(e) => {
-                    if (e.currentTarget.src.endsWith('/home.png')) {
-                      e.currentTarget.src = '/Images/home.jpg';
-                    } else {
-                      setImgError(true);
-                    }
-                  }}
-                />
-              ) : (
-                <div className={styles.portraitPlaceholder}>
-                  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
-                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
-                </div>
-              )}
-
-              {/* Gradient Overlay with Name and Role */}
-              <div className={styles.portraitOverlay}>
-                <span className={styles.overlayName}>Dr. Anuraag Guglaani</span>
-                <span className={styles.overlayRole}>FIDUCIARY SOVEREIGN COUNSEL</span>
-              </div>
-            </div>
-
-            {/* Inset Footer below photo */}
-            <div className={styles.frameFooter}>
-              <div className={styles.officeInfo}>
-                <span className={styles.dot} />
-                <span>The Family Business Doctor</span>
-              </div>
-              <span className={styles.frameDate}>DXB · 2026</span>
-            </div>
-
-            {/* Overlapping Floating Book Announcement Badge */}
-            <a
-              href="#ebook"
-              onClick={(e) => handleScrollTo(e, '#ebook')}
-              className={styles.floatingBookBadge}
-            >
-              <div className={styles.floatingBookCoverWrapper}>
-                <img
-                  src="/book_cover.jpg"
-                  alt="You Will Not Fly book cover thumbnail"
-                  className={styles.floatingBookCover}
-                />
-              </div>
-              <div className={styles.badgeContent}>
-                <span className={styles.badgeTag}>NEW RELEASE</span>
-                <span className={styles.badgeTitle}>You Will Not Fly</span>
-                <span className={styles.badgeSub}>One Operating System for Business &amp; Legacy</span>
-              </div>
-            </a>
-          </div>
+          <img
+            className={styles.heroPhoto}
+            src="/client_images/dr_anuraag_hero_suit.png"
+            alt="Dr. Anuraag Guglaani in his blue checked suit"
+            fetchPriority="high"
+          />
+          <div className={styles.portraitShade} />
+          <span className={styles.portraitLabel}>DUBAI BASED. GLOBALLY ENGAGED.</span>
         </motion.div>
-      </div>
-    </section>
+
+        {/* Floating Book Announcement Card */}
+        <motion.a
+          className={styles.heroBookCard}
+          href="#book"
+          onClick={(e) => handleScrollTo(e, '#book')}
+          variants={fadeInUp}
+          initial="hidden"
+          animate="visible"
+        >
+          <span className={styles.tinyCover}>
+            <img src="/client_images/book_cover_front.jpg" alt="You Will Not Fly book cover thumbnail" />
+          </span>
+          <span className={styles.cardContent}>
+            <small>THE NEW BOOK</small>
+            <strong>You Will Not Fly</strong>
+            <em>Grounded at Twenty. Airborne Ever Since.</em>
+          </span>
+          <span className={styles.cardArrow}>↗</span>
+        </motion.a>
+
+        {/* Hero Bottom Ribbon */}
+        <div className={styles.heroBottom}>
+          <span>BASED IN DUBAI. SHAPED BY THE WORLD.</span>
+          <a href="#book" onClick={(e) => handleScrollTo(e, '#book')}>
+            THE NEXT CHAPTER <span>↓</span>
+          </a>
+        </div>
+      </section>
+
+      {/* Metrics Section */}
+      <section className={`${styles.metrics} ${styles.wrap}`} id="perspective" aria-label="Experience at a glance">
+        <div className={styles.metricConviction}>
+          <span className={styles.convictionLabel}>THE FAMILY BUSINESS DOCTOR</span>
+          <strong className={styles.convictionTitle}>A wider perspective.<br />A lasting impact.</strong>
+          <p className={styles.convictionSub}>Business. Career. Family. Legacy.</p>
+        </div>
+
+        <div className={styles.metricItem}>
+          <span className={styles.metricLabel}>EXPERIENCE</span>
+          <strong className={styles.metricValue}>
+            30<span>+</span>
+          </strong>
+          <p className={styles.metricDesc}>Years of reinvention</p>
+        </div>
+
+        <div className={styles.metricItem}>
+          <span className={styles.metricLabel}>BREADTH</span>
+          <strong className={styles.metricValue}>26</strong>
+          <p className={styles.metricDesc}>Industries explored</p>
+        </div>
+
+        <div className={styles.metricItem}>
+          <span className={styles.metricLabel}>GLOBAL REACH</span>
+          <strong className={styles.metricValue}>35</strong>
+          <p className={styles.metricDesc}>Countries of experience</p>
+        </div>
+      </section>
+    </div>
   );
 }

@@ -1,263 +1,176 @@
 .footer {
-  background-color: #050a12;
-  color: #a7aaa5;
-  padding: 5.5rem 2rem 2.5rem;
-  border-top: 1px solid rgba(181, 154, 98, 0.2);
+  background-color: #0a0a0a;
+  border-top: 1px solid var(--color-line);
+  padding: 60px 0 110px;
 }
 
-.container {
-  max-width: var(--max-content-width);
-  margin: 0 auto;
+.wrap {
+  max-width: 1320px;
+  width: calc(100% - 112px);
+  margin: auto;
 }
 
-.mainGrid {
-  display: grid;
-  grid-template-columns: 1.6fr 1fr 1.2fr;
-  gap: 4.5rem;
-  padding-bottom: 4.5rem;
-  border-bottom: 1px solid rgba(226, 221, 210, 0.12);
-}
-
-/* Col 1 */
-.brandCol {
+.footerTop {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  margin-bottom: 35px;
 }
 
-.brandTitle {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #ffffff;
-  letter-spacing: -0.01em;
-  margin-bottom: 0.75rem;
-}
-
-.brandQuote {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.05rem;
-  line-height: 1.5;
-  color: var(--color-gold);
-  margin-bottom: 1.25rem;
-}
-
-.brandBio {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  line-height: 1.68;
-  color: #8f949c;
-  margin-bottom: 1.75rem;
-  max-width: 480px;
-}
-
-.statusIndicator {
+.brand {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-body);
-  font-size: 0.65rem;
+  gap: 15px;
+  text-decoration: none;
+}
+
+.monogram {
+  font-family: Georgia, serif;
+  font-size: 38px;
+  line-height: 1;
+  letter-spacing: -4px;
+  color: #efefec;
+}
+
+.monogram span {
+  color: var(--color-gold);
+  letter-spacing: 0;
+}
+
+.brandName {
+  font-size: 9px;
   font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #dcdad2;
+  letter-spacing: 1.7px;
+  line-height: 1.6;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  padding-left: 15px;
+  color: #efefec;
 }
 
-.statusDot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: #4e6077;
-}
-
-/* Col 2 */
-.navCol {
+.footerTagline {
   display: flex;
   flex-direction: column;
 }
 
-.colHeader {
-  font-family: var(--font-body);
-  font-size: 0.68rem;
+.footerTagline span {
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: var(--color-gold);
   font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #ffffff;
-  margin-bottom: 1.5rem;
 }
 
-.navList {
-  list-style: none;
+.brandMotto {
+  font-size: 11px;
+  color: #a8aba1;
+  margin: 3px 0 0;
+}
+
+.socialRow {
   display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-}
-
-.navLink {
-  font-family: var(--font-body);
-  font-size: 0.86rem;
-  color: #a7aaa5;
-  transition: all 0.2s ease;
-  display: inline-block;
-}
-
-.navLink:hover {
-  color: #ffffff;
-  transform: translateX(3px);
-}
-
-/* Col 3: Social Links */
-.socialCol {
-  display: flex;
-  flex-direction: column;
-}
-
-.socialList {
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .socialLink {
-  font-family: var(--font-body);
-  font-size: 0.86rem;
-  color: #a7aaa5;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.65rem;
-  transition: all 0.2s ease;
-  width: fit-content;
+  font-size: 11px;
+  color: #c4c7bc;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: color 0.2s ease;
 }
 
 .socialLink:hover {
-  color: var(--color-gold-light);
-  transform: translateX(3px);
+  color: var(--color-gold);
 }
 
-.socialIcon {
-  display: flex;
+.backToTop {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  color: inherit;
+  gap: 8px;
+  font-size: 9px;
+  letter-spacing: 1.8px;
+  color: #9ea194;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: color 0.2s ease;
 }
 
-/* Developer Credit Line */
+.backToTop:hover {
+  color: var(--color-gold);
+}
+
+.arrowUp {
+  color: var(--color-gold);
+  font-size: 14px;
+}
+
+/* Developer Credit Line (Centered on a separate line above copyright) */
 .creditLine {
-  padding-top: 2.5rem;
-  padding-bottom: 1.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  border-bottom: 1px solid rgba(226, 221, 210, 0.08);
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--color-line);
 }
 
 .developerCredit {
-  font-family: var(--font-body);
-  font-size: 0.72rem;
-  color: #74777d;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  font-size: 11px;
+  color: #9ea194;
+  letter-spacing: 0.8px;
 }
 
 .creditLink {
-  color: var(--color-gold-light);
+  color: var(--color-gold);
   font-weight: 600;
-  letter-spacing: 0.08em;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.creditLink:hover {
-  color: #ffffff;
   text-decoration: underline;
   text-underline-offset: 3px;
-}
-
-.bottomBar {
-  padding-top: 1.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-}
-
-.copyright {
-  font-family: var(--font-body);
-  font-size: 0.72rem;
-  color: #60656c;
-}
-
-.legalLinks {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.legalLink {
-  font-family: var(--font-body);
-  font-size: 0.72rem;
-  color: #60656c;
   transition: color 0.2s ease;
 }
 
-.legalLink:hover {
-  color: #a7aaa5;
+.creditLink:hover {
+  color: #e1c68e;
 }
 
-@media (max-width: 992px) {
-  .mainGrid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
+/* Footer Bottom Bar */
+.footerBottom {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 22px;
+  font-size: 10px;
+  color: #7c8070;
+  letter-spacing: 0.8px;
+}
 
-  .bottomBar {
+.footerBottom span:last-child {
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: #9ea194;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .footerTop {
     flex-direction: column;
     align-items: flex-start;
+    gap: 20px;
   }
 }
 
-@media (max-width: 768px) {
-  .footer {
-    padding: 4rem 1.25rem 2rem;
+@media (max-width: 600px) {
+  .wrap {
+    width: calc(100% - 40px);
   }
-
-  .brandCol {
-    align-items: center;
-    text-align: center;
-  }
-
-  .navCol {
-    align-items: center;
-    text-align: center;
-  }
-
-  .socialCol {
-    align-items: center;
-    text-align: center;
-  }
-
-  .socialList {
-    align-items: center;
-  }
-
-  .creditLine {
-    justify-content: center;
-    text-align: center;
-    padding-top: 2rem;
-  }
-
-  .bottomBar {
-    align-items: center;
-    text-align: center;
-  }
-
-  .legalLinks {
+  .footerBottom {
     flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
-    width: 100%;
+    gap: 10px;
   }
 }
