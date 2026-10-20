@@ -4,26 +4,48 @@ import { fadeInUp, staggerContainer } from '../animations';
 import styles from './Diagnostics.module.css';
 
 export default function Diagnostics() {
-  const diagnosticsData = [
+  const systemPillars = [
     {
+      verb: 'DECIDE',
       number: '01',
-      title: 'Charter Audit',
-      description: 'Evaluating legal, psychological, and fiduciary fault lines in existing family constitutions.'
+      title: 'Decision Rights',
+      principle: 'Decisions belong closest to the problem.',
+      description: 'Moving critical operational calls out of bottleneck founder desks to the operators who bear the consequences.'
     },
     {
+      verb: 'SEE',
       number: '02',
-      title: 'Majlis Mediation',
-      description: 'Private, confidential conclaves navigating high-stakes generational transfer and asset carve-outs.'
+      title: 'Cash Visibility',
+      principle: 'A cash crisis is usually a governance crisis.',
+      description: 'Engineering non-negotiable leading indicators and radical liquidity clarity before capital turns into crisis.'
     },
     {
+      verb: 'BUILD',
       number: '03',
-      title: 'Board Reformation',
-      description: 'Transitioning informal family dinner conversations into high-discipline fiduciary boards of directors.'
+      title: 'System Capability',
+      principle: 'Founders cannot scale by being the answer to every question.',
+      description: 'Instituting resilient operational muscles so organizational execution never rests on a single charismatic individual.'
     },
     {
+      verb: 'ANTICIPATE',
       number: '04',
-      title: 'Venture Syndication',
-      description: 'Aligning legacy capital with breakthrough frontier technology and televised venture pipelines.'
+      title: 'Foresight & Signals',
+      principle: 'Lagging indicators tell you who died. Leading indicators keep you alive.',
+      description: 'Designing asymmetric market scanning and early warning triggers across multigenerational industry disruption.'
+    },
+    {
+      verb: 'ALIGN',
+      number: '05',
+      title: 'Family Trust & Living Room',
+      principle: 'Agreement before structure. People before charts.',
+      description: 'Harmonizing deep human friction, succession identities, and equity before codifying sterile legal charters.'
+    },
+    {
+      verb: 'ENDURE',
+      number: '06',
+      title: 'Generational Stewardship',
+      principle: 'Build something strong enough to run after you leave the room.',
+      description: 'The ultimate legacy test: establishing fiduciary governance where sovereign capital compounds beyond generation three.'
     }
   ];
 
@@ -38,14 +60,15 @@ export default function Diagnostics() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <span className={styles.arsenalTag}>STRATEGIC ARSENAL</span>
-          <h2 className={styles.mainTitle}>The Doctor's Diagnostics</h2>
+          <span className={styles.arsenalTag}>THE MIDNIGHT LIST · 6 FOUNDATIONAL VERBS</span>
+          <h2 className={styles.mainTitle}>The Tested Operating System</h2>
           <p className={styles.subtitle}>
-            Proprietary governance frameworks engineered over three decades of in-situ resolution.
+            Born the night an NDA flight career closed. Tested across 26 industries, 35 countries,
+            boardrooms, and family dining tables.
           </p>
         </motion.div>
 
-        {/* 4 Cards */}
+        {/* 6 Verbs System Grid */}
         <motion.div
           className={styles.cardsGrid}
           variants={staggerContainer}
@@ -53,10 +76,14 @@ export default function Diagnostics() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {diagnosticsData.map((item) => (
+          {systemPillars.map((item) => (
             <motion.div key={item.number} className={styles.card} variants={fadeInUp}>
-              <span className={styles.cardNumber}>{item.number}</span>
+              <div className={styles.cardHeader}>
+                <span className={styles.verbBadge}>{item.verb}</span>
+                <span className={styles.cardNumber}>{item.number}</span>
+              </div>
               <h3 className={styles.cardTitle}>{item.title}</h3>
+              <p className={styles.cardPrinciple}>&ldquo;{item.principle}&rdquo;</p>
               <p className={styles.cardText}>{item.description}</p>
             </motion.div>
           ))}
