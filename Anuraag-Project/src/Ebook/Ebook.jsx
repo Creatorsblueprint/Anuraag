@@ -5,7 +5,6 @@ import styles from './Ebook.module.css';
 
 export default function Ebook() {
   const [activeTheme, setActiveTheme] = useState('business');
-  const [bookRotation, setBookRotation] = useState({ y: -18, z: -4 });
 
   const themes = [
     {
@@ -39,18 +38,6 @@ export default function Ebook() {
   ];
 
   const currentTheme = themes.find((t) => t.id === activeTheme) || themes[0];
-
-  const handleBookView = (view) => {
-    if (view === 'front') {
-      setBookRotation({ y: 0, z: 0 });
-    } else if (view === 'back') {
-      setBookRotation({ y: 180, z: 0 });
-    } else if (view === 'spin') {
-      setBookRotation((prev) => ({ y: prev.y + 360, z: 0 }));
-    } else {
-      setBookRotation({ y: -18, z: -4 });
-    }
-  };
 
   const handleScrollTo = (e, targetId) => {
     e.preventDefault();
@@ -88,61 +75,43 @@ export default function Ebook() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {/* 3D Interactive Book Stage */}
-          <motion.div className={styles.bookStage} variants={fadeInUp}>
+          {/* Premium Book Showcase Stage with subtle depth & micro-interaction */}
+          <motion.div
+            className={styles.bookStage}
+            variants={fadeInUp}
+          >
             <div className={styles.bookHalo} />
 
-            <div
-              className={styles.bookObject}
-              style={{
-                transform: `rotateY(${bookRotation.y}deg) rotateZ(${bookRotation.z}deg)`
-              }}
-            >
-              {/* Front Cover */}
-              <div className={`${styles.bookFront} ${styles.bookFace}`}>
+            <div className={styles.bookShowcaseWrapper}>
+              <motion.div
+                className={styles.bookShowcase}
+                whileHover={{
+                  y: -10,
+                  rotateZ: 0,
+                  boxShadow: '0 30px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(199, 169, 103, 0.25)'
+                }}
+                transition={{ duration: 0.35, ease: 'easeOut' }}
+              >
                 <img
                   src="/client_images/book_cover_front.jpg"
-                  alt="Front cover of You Will Not Fly"
+                  alt="Front cover of You Will Not Fly by Dr. Anuraag Guglaani"
+                  className={styles.bookCoverImage}
                   draggable="false"
                 />
-              </div>
-
-              {/* Back Cover */}
-              <div className={`${styles.bookBack} ${styles.bookFace}`}>
-                <img
-                  src="/client_images/book_back_cover.jpg"
-                  alt="Original back cover including synopsis and author biography"
-                  draggable="false"
-                />
-              </div>
-
-              {/* Spine */}
-              <div className={`${styles.bookSpine} ${styles.bookFace}`} aria-label="Book spine" />
-
-              {/* Pages */}
-              <div className={`${styles.bookPages} ${styles.bookFace}`} aria-hidden="true" />
-            </div>
-
-            {/* Interactive View Controls */}
-            <div className={styles.bookViewerTools}>
-              <p className={styles.dragInstructions}>Interactive 3D Stage</p>
-              <div className={styles.bookViewerControls}>
-                <button type="button" onClick={() => handleBookView('front')}>Front</button>
-                <button type="button" onClick={() => handleBookView('back')}>Back</button>
-                <button type="button" onClick={() => handleBookView('spin')}>360° ↻</button>
-                <button type="button" onClick={() => handleBookView('reset')}>Reset</button>
-              </div>
+                <div className={styles.bookSheen} />
+                <div className={styles.bookSpineEdge} />
+              </motion.div>
             </div>
 
             <span className={styles.stageCaption}>
-              FRONT. SPINE. BACK. EVERY SIDE OF THE STORY.
+              {/* THE NEW WORK · GROUNDED AT TWENTY. AIRBORNE EVER SINCE. */}
             </span>
           </motion.div>
 
           {/* Book Copy Right */}
           <motion.div className={styles.bookCopy} variants={fadeInUp}>
             <div className={styles.launchTag}>
-              <span className={styles.stickyDot} /> A STORY OF REINVENTION. A NEW PERSPECTIVE.
+              A STORY OF REINVENTION. A NEW PERSPECTIVE.
             </div>
 
             <h2>
@@ -151,8 +120,9 @@ export default function Ebook() {
             </h2>
 
             <p className={styles.bookSubtitle}>
-              Grounded at Twenty.<br />
-              Airborne Ever Since.
+              {/* Grounded at Twenty.<br />
+              Airborne Ever Since. */}
+              Grounded at Twenty. Airborne Ever Since.
             </p>
 
             <p className={styles.lead}>

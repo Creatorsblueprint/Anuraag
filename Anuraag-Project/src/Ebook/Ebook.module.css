@@ -48,132 +48,83 @@
 
 /* 3D Book Stage */
 .bookStage {
-  min-height: 700px;
+  min-height: 580px;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  perspective: 1600px;
 }
 
 .bookHalo {
   position: absolute;
-  inset: 12% -4%;
-  background: radial-gradient(ellipse, rgba(170, 133, 74, 0.2) 0%, transparent 67%);
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(199, 169, 103, 0.16) 0%, rgba(199, 169, 103, 0.04) 50%, transparent 72%);
+  pointer-events: none;
+  filter: blur(20px);
+}
+
+.bookShowcaseWrapper {
+  position: relative;
+  z-index: 2;
+  perspective: 1200px;
+}
+
+.bookShowcase {
+  position: relative;
+  width: 320px;
+  aspect-ratio: 599 / 897;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 4px 16px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transform: rotateZ(-1.5deg);
+  transition: border-color 0.3s ease;
+}
+
+.bookShowcase:hover {
+  border-color: rgba(199, 169, 103, 0.4);
+}
+
+.bookCoverImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.bookSheen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.04) 30%,
+    transparent 60%,
+    rgba(0, 0, 0, 0.25) 100%
+  );
   pointer-events: none;
 }
 
-.bookObject {
-  width: 330px;
-  aspect-ratio: 599 / 897;
-  position: relative;
-  transform-style: preserve-3d;
-  filter: drop-shadow(25px 35px 22px rgba(0, 0, 0, 0.8));
-  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.3, 1);
-}
-
-.bookFace {
+.bookSpineEdge {
   position: absolute;
-  inset: 0;
-  overflow: hidden;
-  border-radius: 4px;
-}
-
-.bookFront {
-  z-index: 2;
-  backface-visibility: hidden;
-  box-shadow: inset 3px 0 5px rgba(255, 255, 255, 0.3);
-}
-
-.bookFront img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.bookBack {
-  transform: rotateY(180deg);
-  z-index: 1;
-  backface-visibility: hidden;
-  box-shadow: inset -3px 0 5px rgba(255, 255, 255, 0.3);
-}
-
-.bookBack img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.bookSpine {
-  position: absolute;
+  left: 0;
   top: 0;
-  left: -32px;
-  width: 33px;
-  height: 100%;
-  background: linear-gradient(90deg, #020710, #101b2f 80%, #020712);
-  transform: rotateY(-22deg);
-  transform-origin: right;
-  box-shadow: -2px 0 1px rgba(255, 255, 255, 0.1);
-}
-
-.bookPages {
-  position: absolute;
-  right: -17px;
-  top: 5px;
-  width: 18px;
-  height: calc(100% - 10px);
-  background: repeating-linear-gradient(90deg, #c4c4b8 0, #e4e1d5 1px, #8b8b80 2px);
-  transform: skewY(17deg);
-  transform-origin: left;
-  z-index: 1;
-}
-
-.bookViewerTools {
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-
-.dragInstructions {
-  font-size: 10px;
-  letter-spacing: 1.5px;
-  color: #9ea194;
-  margin: 0;
-  text-transform: uppercase;
-}
-
-.bookViewerControls {
-  display: flex;
-  gap: 8px;
-}
-
-.bookViewerControls button {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #efefec;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 6px 14px;
-  border-radius: var(--radius-pill);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.bookViewerControls button:hover {
-  background: var(--color-gold);
-  color: #0a0a0a;
-  border-color: var(--color-gold);
+  bottom: 0;
+  width: 14px;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.45) 0%, rgba(255, 255, 255, 0.08) 70%, transparent 100%);
+  pointer-events: none;
 }
 
 .stageCaption {
   font-size: 9px;
-  letter-spacing: 2px;
+  letter-spacing: 2.2px;
   color: #9ea194;
   text-align: center;
-  margin-top: 15px;
+  margin-top: 30px;
+  font-weight: 600;
 }
 
 /* Book Copy */
@@ -191,15 +142,6 @@
   gap: 10px;
   align-items: center;
   font-weight: 600;
-}
-
-.stickyDot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--color-gold);
-  display: inline-block;
-  box-shadow: 0 0 12px rgba(199, 169, 103, 0.6);
 }
 
 .bookCopy h2 {
