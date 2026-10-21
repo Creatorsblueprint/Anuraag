@@ -34,7 +34,7 @@ export default function Ebook() {
       num: '04',
       label: 'Legacy',
       title: 'Build with the next generation in mind.',
-      desc: 'Across business leadership, mentorship and teaching, the book asks what remains when titles, plans and certainty are stripped away—and what you choose to build next.'
+      desc: 'Across business leadership, mentorship and teaching, the book asks what remains when titles, plans and certainty are stripped away, and what you choose to build next.'
     }
   ];
 
@@ -163,7 +163,7 @@ export default function Ebook() {
             </p>
 
             <p>
-              Part business memoir, part field manual, this is the story of that journey—and the operating system
+              Part business memoir, part field manual, this is the story of that journey and the operating system
               built along the way: cash, decisions, talent, foresight and governance.
             </p>
 

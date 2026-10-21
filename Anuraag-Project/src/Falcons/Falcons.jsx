@@ -127,12 +127,12 @@ export default function Falcons() {
           </motion.figure>
         </motion.div>
 
-        <p className={styles.falconSource}>
+        {/* <p className={styles.falconSource}>
           Discover his profile on the{' '}
           <a href="https://falconsofmajlis.com/falcons/" target="_blank" rel="noopener noreferrer">
             official Falcons of Majlis website ↗
           </a>
-        </p>
+        </p> */}
       </div>
     </section>
   );

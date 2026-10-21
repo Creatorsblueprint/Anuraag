@@ -49,7 +49,8 @@ export default function Home() {
           animate="visible"
         >
           <motion.p className={styles.eyebrow} variants={fadeInUp}>
-            <span className={styles.goldLine} /> THE FAMILY BUSINESS DOCTOR
+            {/* <span className={styles.goldLine} />  */}
+            THE FAMILY BUSINESS DOCTOR
           </motion.p>
 
           <motion.h1 variants={fadeInUp}>

@@ -48,7 +48,7 @@ export default function Videos() {
         {/* Section Top */}
         <div className={styles.sectionTop}>
           <p className={styles.eyebrow}>IN FOCUS — VIDEO CONVERSATIONS</p>
-          <span className={styles.smallNote}>WATCH DIRECTLY ON INSTAGRAM</span>
+          {/* <span className={styles.smallNote}>WATCH DIRECTLY ON INSTAGRAM</span> */}
         </div>
 
         {/* Media Heading */}
@@ -115,7 +115,7 @@ export default function Videos() {
         {/* Media Bottom Note */}
         <div className={styles.mediaBottom}>
           <span>FIVE MOMENTS. ONE GLOBAL PERSPECTIVE.</span>
-          <span>↗ Opens on Instagram</span>
+          {/* <span>↗ Opens on Instagram</span> */}
         </div>
       </div>
     </section>
