@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '../animations';
 import styles from './Story.module.css';
 
 export default function Story() {
   const [activeChapter, setActiveChapter] = useState('foundation');
+  const [isPaused, setIsPaused] = useState(false);
 
   const chapters = [
     {
@@ -43,6 +44,27 @@ export default function Story() {
   ];
 
   const currentChapter = chapters.find((c) => c.id === activeChapter) || chapters[0];
+
+  // Auto-switch between the 3 journey chapters every 3.5 seconds so it looks dynamic while presenting
+  useEffect(() => {
+    if (isPaused) {
+      // Auto-resume presentation after 7 seconds of inactivity
+      const resumeTimeout = setTimeout(() => {
+        setIsPaused(false);
+      }, 7000);
+      return () => clearTimeout(resumeTimeout);
+    }
+
+    const interval = setInterval(() => {
+      setActiveChapter((prev) => {
+        const currentIndex = chapters.findIndex((c) => c.id === prev);
+        const nextIndex = (currentIndex + 1) % chapters.length;
+        return chapters[nextIndex].id;
+      });
+    }, 3500);
+
+    return () => clearInterval(interval);
+  }, [isPaused, chapters.length]);
 
   return (
     <section className={`${styles.storySection} ${styles.section} ${styles.wrap}`} id="story">
@@ -117,8 +139,12 @@ export default function Story() {
         </motion.div>
       </motion.div>
 
-      {/* Journey Chapters Interactive Tabs */}
-      <div className={styles.journey}>
+      {/* Journey Chapters Interactive Tabs with auto-rotation & pause on hover */}
+      <div
+        className={styles.journey}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
         <div className={styles.journeyHeading}>
           <div>
             <p className={styles.eyebrow}>A LIFE THAT KEEPS EVOLVING</p>
@@ -133,7 +159,10 @@ export default function Story() {
               key={ch.id}
               role="tab"
               aria-selected={activeChapter === ch.id}
-              onClick={() => setActiveChapter(ch.id)}
+              onClick={() => {
+                setActiveChapter(ch.id);
+                setIsPaused(true);
+              }}
               className={`${styles.stepBtn} ${activeChapter === ch.id ? styles.stepBtnActive : ''}`}
             >
               <span className={styles.stepCircle}>{ch.num}</span>

@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '../animations';
 import styles from './Ebook.module.css';
 
 export default function Ebook() {
   const [activeTheme, setActiveTheme] = useState('business');
+  const [isPaused, setIsPaused] = useState(false);
 
   const themes = [
     {
@@ -38,6 +39,27 @@ export default function Ebook() {
   ];
 
   const currentTheme = themes.find((t) => t.id === activeTheme) || themes[0];
+
+  // Auto-switch between the 4 dimensions every 3.2 seconds so it looks dynamic while presenting
+  useEffect(() => {
+    if (isPaused) {
+      // Auto-resume presentation after 7 seconds of inactivity
+      const resumeTimeout = setTimeout(() => {
+        setIsPaused(false);
+      }, 7000);
+      return () => clearTimeout(resumeTimeout);
+    }
+
+    const interval = setInterval(() => {
+      setActiveTheme((prev) => {
+        const currentIndex = themes.findIndex((t) => t.id === prev);
+        const nextIndex = (currentIndex + 1) % themes.length;
+        return themes[nextIndex].id;
+      });
+    }, 3200);
+
+    return () => clearInterval(interval);
+  }, [isPaused, themes.length]);
 
   const handleScrollTo = (e, targetId) => {
     e.preventDefault();
@@ -158,8 +180,12 @@ export default function Ebook() {
           </motion.div>
         </motion.div>
 
-        {/* 4 Connected Dimensions / Themes Explorer */}
-        <div className={styles.themesExplorer}>
+        {/* 4 Connected Dimensions / Themes Explorer with auto-rotation & pause on hover */}
+        <div
+          className={styles.themesExplorer}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           <div className={styles.themesHeading}>
             <span>ONE OPERATING SYSTEM. FOUR CONNECTED DIMENSIONS.</span>
           </div>
@@ -170,7 +196,10 @@ export default function Ebook() {
                 key={t.id}
                 role="tab"
                 aria-selected={activeTheme === t.id}
-                onClick={() => setActiveTheme(t.id)}
+                onClick={() => {
+                  setActiveTheme(t.id);
+                  setIsPaused(true);
+                }}
                 className={`${styles.themeTabBtn} ${activeTheme === t.id ? styles.themeTabActive : ''}`}
               >
                 <span className={styles.tabNum}>{t.num}</span>
