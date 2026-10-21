@@ -301,36 +301,90 @@
 
 /* Responsive */
 @media (max-width: 992px) {
+  .sectionTop {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+  }
   .falconFeatureGrid {
     grid-template-columns: 1fr;
     gap: 45px;
   }
   .falconFeaturePortrait {
     height: 480px;
-    max-width: 520px;
+    max-width: 480px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .falconFeatureCopy {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .falconKicker {
+    justify-content: center;
+  }
+  .falconFeatureCopy h2 {
+    font-size: clamp(32px, 7vw, 44px);
+    letter-spacing: -1.2px;
+  }
+  .falconPerspectives {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
   }
   .falconsEventGrid {
     grid-template-columns: 1fr;
     gap: 24px;
+    max-width: 520px;
+    margin: 45px auto 0;
   }
   .eventWide,
   .eventCandid {
     height: 320px;
   }
+  .falconSource {
+    text-align: center;
+  }
 }
 
 @media (max-width: 520px) {
+  .falconFeature {
+    padding: 70px 0;
+  }
   .wrap {
-    width: calc(100% - 40px);
+    width: calc(100% - 32px);
   }
   .falconFeaturePortrait {
-    height: 420px;
+    height: 400px;
+  }
+  .falconFeaturePortrait figcaption {
+    bottom: 22px;
+    left: 20px;
+    right: 20px;
+  }
+  .falconFeaturePortrait figcaption strong {
+    font-size: 26px;
   }
   .falconPerspectives {
     grid-template-columns: 1fr;
     gap: 18px;
   }
-  .falconSource {
-    text-align: left;
+  .goldButton {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+  .eventWide,
+  .eventCandid {
+    height: 280px;
+  }
+  .eventWide figcaption,
+  .eventCandid figcaption {
+    bottom: 18px;
+    left: 18px;
+    right: 18px;
   }
 }

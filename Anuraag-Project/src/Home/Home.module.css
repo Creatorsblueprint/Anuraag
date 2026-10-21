@@ -431,58 +431,127 @@
 
 @media (max-width: 800px) {
   .hero {
-    height: 940px;
-    min-height: 940px;
+    height: auto;
+    min-height: 0;
+    padding-bottom: 30px;
   }
   .heroCopy {
-    padding-top: 140px;
-    width: 85%;
+    padding: 60px 24px 40px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .eyebrow {
+    justify-content: center;
   }
   .heroCopy h1 {
-    font-size: 72px;
+    font-size: clamp(48px, 11vw, 76px);
+    letter-spacing: -3px;
+    text-align: center;
+  }
+  .heroIntro {
+    justify-content: center;
+    text-align: center;
+  }
+  .heroDescription {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .heroActions {
+    justify-content: center;
+    width: 100%;
   }
   .heroPhotoWrap {
-    height: 610px;
+    position: relative;
     top: auto;
-    right: -10%;
-    width: 62%;
+    right: auto;
+    left: auto;
+    width: 90%;
+    max-width: 440px;
+    height: 480px;
+    margin: 0 auto;
+  }
+  .portraitLabel {
+    display: none;
+  }
+  .heroCoordinate {
+    display: none;
   }
   .heroBookCard {
-    bottom: 80px;
-    left: 6%;
+    position: relative;
+    bottom: auto;
+    left: auto;
     right: auto;
+    margin: 24px auto 0;
+    width: 90%;
+    max-width: 440px;
+    justify-content: space-between;
+  }
+  .heroBottom {
+    display: none;
+  }
+  .metrics {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 40px 0;
+    text-align: center;
+  }
+  .metricConviction {
+    text-align: center;
+  }
+  .metricConviction strong {
+    font-size: 22px;
+  }
+  .metricItem {
+    text-align: center;
+    padding: 0;
+  }
+  .metricValue {
+    margin-top: 6px;
+    font-size: 52px;
   }
 }
 
 @media (max-width: 520px) {
-  .hero {
-    height: 970px;
-    min-height: 970px;
+  .wrap {
+    width: calc(100% - 32px);
   }
   .heroCopy {
-    padding: 125px 20px 0;
-    width: 100%;
+    padding: 45px 16px 30px;
   }
   .heroCopy h1 {
-    font-size: 58px;
-    letter-spacing: -3px;
+    font-size: clamp(40px, 12vw, 56px);
+    letter-spacing: -2px;
+  }
+  .heroIntro {
+    font-size: 16px;
+    gap: 8px;
+  }
+  .heroDescription {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .heroActions {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .heroActions .button {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
   }
   .heroPhotoWrap {
-    width: 86%;
-    right: -15%;
-    height: 480px;
-    bottom: 65px;
+    width: 95%;
+    height: 420px;
   }
   .heroBookCard {
-    left: 20px;
-    right: 20px;
-    bottom: 71px;
+    width: 95%;
+    padding: 14px 16px;
   }
   .metrics {
-    grid-template-columns: 1fr;
-    padding: 32px 0;
-  }
-  .wrap {
-    width: calc(100% - 40px);
+    padding: 30px 0;
   }
 }

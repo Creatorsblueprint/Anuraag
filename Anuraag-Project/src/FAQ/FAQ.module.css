@@ -200,25 +200,48 @@
 @media (max-width: 992px) {
   .faqSection {
     grid-template-columns: 1fr;
-    gap: 50px;
+    gap: 45px;
   }
   .faqSidebar {
     position: relative;
     top: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .faqSidebar h2 {
+    font-size: clamp(32px, 7vw, 44px);
+    letter-spacing: -1.2px;
+    margin-bottom: 30px;
   }
   .faqBookVisual {
     max-width: 440px;
+    width: 100%;
+    text-align: left;
   }
 }
 
 @media (max-width: 520px) {
+  .faqSection {
+    padding: 70px 0;
+  }
   .wrap {
-    width: calc(100% - 40px);
+    width: calc(100% - 32px);
   }
   .faqBookVisual {
-    padding: 18px;
+    padding: 16px;
+    gap: 16px;
+  }
+  .faqCover {
+    width: 65px;
+    height: 95px;
   }
   .questionText {
     font-size: 16px;
+  }
+  .answerContent p {
+    font-size: 13.5px;
+    line-height: 1.7;
   }
 }

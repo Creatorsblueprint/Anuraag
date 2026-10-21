@@ -120,27 +120,14 @@ export default function Nav() {
 
         {/* Retained 3-line hamburger menu with animated open/close state */}
         <button
-          className={styles.mobileToggle}
+          className={`${styles.mobileToggle} ${mobileMenuOpen ? styles.toggleOpen : ''}`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle Navigation Menu"
           aria-expanded={mobileMenuOpen}
         >
-          <span
-            className={styles.hamburgerLine}
-            style={{
-              transform: mobileMenuOpen ? 'rotate(45deg) translate(5px, 5px)' : 'none'
-            }}
-          />
-          <span
-            className={styles.hamburgerLine}
-            style={{ opacity: mobileMenuOpen ? 0 : 1 }}
-          />
-          <span
-            className={styles.hamburgerLine}
-            style={{
-              transform: mobileMenuOpen ? 'rotate(-45deg) translate(5px, -5px)' : 'none'
-            }}
-          />
+          <span className={styles.hamburgerLine} />
+          <span className={styles.hamburgerLine} />
+          <span className={styles.hamburgerLine} />
         </button>
       </div>
 
@@ -148,10 +135,10 @@ export default function Nav() {
         {mobileMenuOpen && (
           <motion.div
             className={styles.mobileMenu}
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25, ease: 'easeOut' }}
           >
             <div className={styles.mobileLinksList}>
               {navLinks.map((link) => (
@@ -165,14 +152,22 @@ export default function Nav() {
                   <span className={styles.mobileArrow}>&rarr;</span>
                 </a>
               ))}
+            </div>
+
+            <div className={styles.mobileMenuBottom}>
               <a
                 href="#purchase"
                 onClick={(e) => handleNavClick(e, '#purchase')}
                 className={styles.mobileCtaBtn}
               >
                 <span>Get the Book</span>
-                <span>↗</span>
+                <span className={styles.arrowIcon}>↗</span>
               </a>
+
+              <div className={styles.mobileMeta}>
+                <span>DR. ANURAAG GUGLAANI</span>
+                <p>The Family Business Doctor · Dubai, UAE</p>
+              </div>
             </div>
           </motion.div>
         )}

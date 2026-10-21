@@ -387,22 +387,42 @@
   .bookLayout {
     gap: 35px;
   }
-  .bookObject {
-    width: 270px;
+  .bookShowcase {
+    width: 280px;
   }
   .bookStage {
-    min-height: 610px;
+    min-height: 520px;
   }
 }
 
 @media (max-width: 800px) {
   .bookLayout {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 35px;
+    text-align: center;
+  }
+  .bookCopy {
+    align-items: center;
+    text-align: center;
+  }
+  .launchTag {
+    justify-content: center;
+  }
+  .bookCopy h2 {
+    font-size: clamp(48px, 12vw, 68px);
+    letter-spacing: -3px;
+  }
+  .button {
+    margin-left: auto;
+    margin-right: auto;
   }
   .bookStage {
-    min-height: 520px;
-    grid-row: 2;
+    min-height: 440px;
+    grid-row: 1; /* Place the book cover prominent above the copy on mobile */
+  }
+  .bookShowcase {
+    width: 240px;
+    transform: rotateZ(0); /* Straight on mobile */
   }
   .bookThemes {
     grid-template-columns: 1fr 1fr;
@@ -410,15 +430,32 @@
   .themeTabBtn:nth-child(2) {
     border-right: none;
   }
+  .themePanel {
+    flex-direction: column;
+    padding: 30px 24px;
+    gap: 15px;
+    text-align: left;
+  }
 }
 
 @media (max-width: 520px) {
   .wrap {
-    width: calc(100% - 40px);
+    width: calc(100% - 32px);
+  }
+  .sectionTop {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
   }
   .bookCopy h2 {
-    font-size: 64px;
-    letter-spacing: -3px;
+    font-size: clamp(40px, 13vw, 54px);
+    letter-spacing: -2px;
+  }
+  .bookSubtitle {
+    font-size: 19px;
+  }
+  .lead {
+    font-size: 16px;
   }
   .bookThemes {
     grid-template-columns: 1fr;
@@ -426,5 +463,11 @@
   .themeTabBtn {
     border-right: none;
     border-bottom: 1px solid #383a30;
+    padding: 16px 14px;
+  }
+  .bookQuote {
+    font-size: 22px;
+    letter-spacing: -0.6px;
+    margin-top: 50px;
   }
 }

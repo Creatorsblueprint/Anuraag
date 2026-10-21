@@ -241,10 +241,24 @@
 }
 
 @media (max-width: 800px) {
+  .sectionTop {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
   .mediaHeading {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
     gap: 16px;
+  }
+  .mediaHeading h2 {
+    font-size: clamp(32px, 7vw, 44px);
+    letter-spacing: -1.2px;
+  }
+  .mediaHeading p {
+    text-align: center;
   }
   .reelGrid {
     grid-template-columns: repeat(2, 1fr);
@@ -255,18 +269,24 @@
 }
 
 @media (max-width: 520px) {
+  .mediaSection {
+    padding: 70px 0;
+  }
   .wrap {
-    width: calc(100% - 40px);
+    width: calc(100% - 32px);
   }
   .reelGrid {
     grid-template-columns: 1fr;
+    max-width: 360px;
+    margin: 0 auto;
   }
   .reelCover {
-    height: 360px;
+    height: 380px;
   }
   .mediaBottom {
     flex-direction: column;
     gap: 10px;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
   }
 }

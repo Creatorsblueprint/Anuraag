@@ -361,25 +361,68 @@
 }
 
 @media (max-width: 768px) {
-  .expertiseGrid {
-    grid-template-columns: 1fr;
-  }
   .splitHeading {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
     gap: 16px;
+  }
+  .splitHeading h2 {
+    font-size: clamp(30px, 6.5vw, 42px);
+    letter-spacing: -1.2px;
+  }
+  .splitHeading p {
+    text-align: center;
+  }
+  .expertiseGrid {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 520px) {
+  .expertiseSection {
+    padding: 70px 0;
+  }
   .wrap {
-    width: calc(100% - 40px);
+    width: calc(100% - 32px);
+  }
+  .eyebrow {
+    text-align: center;
   }
   .expertiseVisual {
-    height: 460px;
-    padding: 20px;
+    min-height: 480px;
+    padding: 24px 20px 20px;
+  }
+  .orbitSystem {
+    width: 210px;
+    height: 210px;
+    margin: 15px auto;
+  }
+  .o1 {
+    width: 200px;
+    height: 200px;
+  }
+  .o2 {
+    width: 150px;
+    height: 150px;
+  }
+  .o3 {
+    width: 100px;
+    height: 100px;
+  }
+  .satellite {
+    font-size: 7.5px;
+    padding: 4px 8px;
+  }
+  .s1 { top: -10px; }
+  .s2 { bottom: 6px; left: -10px; }
+  .s3 { bottom: 6px; right: -10px; }
+  .activeTitle {
+    font-size: 18px;
+    min-height: 46px;
   }
   .expertiseItem {
-    padding: 26px 22px;
+    padding: 24px 20px;
+    text-align: center;
   }
 }

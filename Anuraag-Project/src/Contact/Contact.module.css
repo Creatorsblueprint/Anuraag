@@ -196,19 +196,59 @@
 @media (max-width: 992px) {
   .purchaseGrid {
     grid-template-columns: 1fr;
-    gap: 50px;
+    gap: 45px;
+  }
+  .purchaseCol:first-child {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .heading {
+    font-size: clamp(34px, 7vw, 46px);
+    letter-spacing: -1.2px;
+  }
+  .description {
+    text-align: center;
+  }
+  .contactSignature {
+    margin: 0 auto;
   }
   .purchaseCard {
     max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
     padding: 35px 30px;
+    align-items: center;
+    text-align: center;
   }
 }
 
 @media (max-width: 520px) {
+  .contactSection {
+    padding: 70px 0;
+  }
   .wrap {
-    width: calc(100% - 40px);
+    width: calc(100% - 32px);
+  }
+  .heading {
+    font-size: clamp(28px, 8vw, 36px);
+  }
+  .lead {
+    font-size: 18px;
+  }
+  .contactSignature {
+    width: 100%;
+    padding: 14px 16px;
   }
   .purchaseCard {
-    padding: 28px 22px;
+    padding: 28px 20px;
+  }
+  .purchaseCard h3 {
+    font-size: 26px;
+  }
+  .purchaseRetailer {
+    padding: 12px 22px;
+    font-size: 12px;
   }
 }
