@@ -1,0 +1,334 @@
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.25s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modalContainer {
+  background: #0d0f0b;
+  border: 1px solid rgba(199, 169, 103, 0.3);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 520px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(199, 169, 103, 0.15);
+  position: relative;
+  overflow: hidden;
+  animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #c4c6bf;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.closeButton:hover {
+  background: rgba(199, 169, 103, 0.2);
+  color: #fff;
+  border-color: rgba(199, 169, 103, 0.4);
+}
+
+.modalHeader {
+  padding: 26px 28px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.modalEyebrow {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--color-gold, #c7a967);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.modalTitle {
+  font-size: 24px;
+  color: #f5f5f1;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+.modalBody {
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Product Preview Row */
+.productRow {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.bookThumb {
+  width: 58px;
+  height: 84px;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(199, 169, 103, 0.3);
+  flex-shrink: 0;
+}
+
+.productDetails {
+  flex: 1;
+}
+
+.productTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: #efefec;
+  margin: 0 0 4px;
+}
+
+.productDesc {
+  font-size: 11px;
+  color: #a4a79e;
+  line-height: 1.4;
+  margin: 0 0 6px;
+}
+
+.productMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.formatBadge {
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: var(--color-gold, #c7a967);
+  background: rgba(199, 169, 103, 0.12);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.priceTag {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Form Section */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #dcded7;
+  display: flex;
+  justify-content: space-between;
+}
+
+.labelHint {
+  font-size: 11px;
+  color: #8b8e84;
+  font-weight: 400;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.emailInput {
+  width: 100%;
+  padding: 13px 16px 13px 42px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.25s ease;
+  box-sizing: border-box;
+}
+
+.emailInput:focus {
+  outline: none;
+  border-color: var(--color-gold, #c7a967);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 3px rgba(199, 169, 103, 0.2);
+}
+
+.inputError {
+  border-color: #e57373 !important;
+  box-shadow: 0 0 0 3px rgba(229, 115, 115, 0.2) !important;
+}
+
+.mailIcon {
+  position: absolute;
+  left: 14px;
+  color: #8b8e84;
+  pointer-events: none;
+  font-size: 14px;
+  display: grid;
+  place-items: center;
+}
+
+.errorText {
+  font-size: 11px;
+  color: #ef5350;
+  margin: 2px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Features List */
+.benefitsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.benefitsList li {
+  font-size: 11px;
+  color: #b0b3aa;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkIcon {
+  color: var(--color-gold, #c7a967);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Action Button */
+.checkoutBtn {
+  width: 100%;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #e4c988 0%, #c7a967 100%);
+  color: #0b0c09;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border: 1px solid rgba(255, 235, 185, 0.4);
+  border-radius: 9999px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(199, 169, 103, 0.35);
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: inherit;
+  margin-top: 4px;
+}
+
+.checkoutBtn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #f0dcab 0%, #d8be80 100%);
+  box-shadow: 0 8px 28px rgba(199, 169, 103, 0.55);
+}
+
+.checkoutBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(11, 12, 9, 0.3);
+  border-top-color: #0b0c09;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.guaranteeNote {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 10px;
+  color: #7b7e75;
+  text-align: center;
+  margin-top: 2px;
+}
+
+.lockIcon {
+  font-size: 11px;
+}
+
+.serverAlert {
+  background: rgba(239, 83, 80, 0.1);
+  border: 1px solid rgba(239, 83, 80, 0.3);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 11px;
+  color: #ffcdd2;
+  line-height: 1.4;
+}
+
+@media (max-width: 480px) {
+  .modalHeader {
+    padding: 20px 20px 14px;
+  }
+  .modalBody {
+    padding: 18px 20px;
+    gap: 16px;
+  }
+  .modalTitle {
+    font-size: 20px;
+  }
+}

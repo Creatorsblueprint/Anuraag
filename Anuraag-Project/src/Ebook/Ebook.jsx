@@ -82,7 +82,7 @@ export default function Ebook() {
       <div className={styles.wrap}>
         {/* Section Top Eyebrow */}
         <div className={styles.sectionTop}>
-          <p className={styles.eyebrow}>01 — THE FEATURED BOOK</p>
+          <p className={styles.eyebrow}>01 · THE FEATURED BOOK</p>
           <span className={styles.smallNote}>A MEMOIR. A FIELD MANUAL. A NEW PERSPECTIVE.</span>
         </div>
 
@@ -179,8 +179,8 @@ export default function Ebook() {
             <p className={styles.bookDescriptionText}>
               Grounded at twenty from becoming a fighter pilot, Anuraag turned an unappealable verdict into
               three decades of enterprise reinvention across 26 industries. Part candid business memoir and
-              part field manual, this book unpacks the five battle-tested disciplines—cash, decisions, talent,
-              foresight, and governance—that build resilient organizations and enduring legacies.
+              part field manual, this book unpacks the five battle-tested disciplines: cash, decisions, talent,
+              foresight, and governance that build resilient organizations and enduring legacies.
             </p>
 
             {/* Clear Reader's Benefits Section: What Will I Gain? */}

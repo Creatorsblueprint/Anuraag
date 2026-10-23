@@ -40,7 +40,7 @@ export default function Recognition() {
     <section className={`${styles.recognitionSection} ${styles.section} ${styles.wrap}`} id="recognition">
       {/* Section Top */}
       <div className={styles.sectionTop}>
-        <p className={styles.eyebrow}>05 — RECOGNITION &amp; CONTRIBUTION</p>
+        <p className={styles.eyebrow}>05 · RECOGNITION &amp; CONTRIBUTION</p>
         <span className={styles.smallNote}>BUSINESS. LEADERSHIP. HUMANITY.</span>
       </div>
 

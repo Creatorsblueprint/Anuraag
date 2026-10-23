@@ -64,7 +64,7 @@ export default function EbookModal({ isOpen, onClose }) {
           <div className={styles.headerLeft}>
             <span className={styles.modalEyebrow}>BOOK PREVIEW · PDF DOCUMENT</span>
             <h2 id="modal-pdf-title" className={styles.modalTitle}>
-              You Will Not Fly — Sample Pages
+              You Will Not Fly: Sample Pages
             </h2>
           </div>
 
@@ -132,7 +132,7 @@ export default function EbookModal({ isOpen, onClose }) {
 
                   <div className={styles.pdfAxiomBox}>
                     <p>“A Verdict is not a Destiny. A Title is a Noun. What you can do is a Verb.”</p>
-                    <small>— FROM YOU WILL NOT FLY</small>
+                    <small>FROM: YOU WILL NOT FLY</small>
                   </div>
 
                   <p>

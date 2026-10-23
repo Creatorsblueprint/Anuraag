@@ -70,9 +70,15 @@ export default function Story() {
     <section className={`${styles.storySection} ${styles.section} ${styles.wrap}`} id="story">
       {/* Section Top */}
       <div className={styles.sectionTop}>
-        <p className={styles.eyebrow}>02 — THE MAN BEHIND THE PERSPECTIVE</p>
-        <a className={styles.textLink} href="#purchase">
-          <span>Download profile</span>
+        <p className={styles.eyebrow}>02 · THE MAN BEHIND THE PERSPECTIVE</p>
+        <a
+          className={styles.textLink}
+          href="https://www.linkedin.com/in/anuraagguglaani"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="View Dr. Anuraag Guglaani's LinkedIn Profile"
+        >
+          <span>View LinkedIn profile</span>
           <span className={styles.arrowIcon}>↗</span>
         </a>
       </div>
@@ -113,7 +119,7 @@ export default function Story() {
 
           <p>
             Based in Dubai, he has operated, invested in, and transformed enterprises across 26 industries
-            and 35 countries—spanning the Middle East, Africa, South Asia, and North America.
+            and 35 countries, spanning the Middle East, Africa, South Asia, and North America.
           </p>
 
           <p>

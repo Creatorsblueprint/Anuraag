@@ -61,7 +61,7 @@
   align-items: start;
 }
 
-/* Left Visual Card — spaced out with generous internal breathing room */
+/* Left Visual Card: spaced out with generous internal breathing room */
 .expertiseVisual {
   position: sticky;
   top: 110px;
@@ -138,7 +138,7 @@
   margin-bottom: 20px;
 }
 
-/* Orbit Centerpiece — well spaced with room for floating satellites */
+/* Orbit Centerpiece: well spaced with room for floating satellites */
 .orbitSystem {
   position: relative;
   width: 250px;

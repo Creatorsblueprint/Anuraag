@@ -7,7 +7,7 @@ export default function Roles() {
   return (
     <section className={`${styles.rolesSection} ${styles.section} ${styles.wrap}`} id="roles">
       <div className={styles.rolesBackdrop} aria-hidden="true" />
-      <p className={styles.eyebrow}>04 — LEADERSHIP &amp; AFFILIATIONS</p>
+      <p className={styles.eyebrow}>04 · LEADERSHIP &amp; AFFILIATIONS</p>
 
       <motion.div
         className={styles.rolesGrid}

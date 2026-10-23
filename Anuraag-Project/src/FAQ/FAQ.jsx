@@ -11,7 +11,7 @@ export default function FAQ() {
       question: 'Who is You Will Not Fly written for?',
       answer: (
         <p>
-          Entrepreneurs, business leaders, family enterprise owners and anyone who has been told they cannot—and must
+          Entrepreneurs, business leaders, family enterprise owners and anyone who has been told they cannot, and must
           decide what happens next. It blends a personal story of reinvention with practical perspectives on business,
           career, family and legacy.
         </p>
@@ -21,9 +21,15 @@ export default function FAQ() {
       question: 'Where can I buy the book?',
       answer: (
         <>
-          <p>Online purchase details are coming soon. The purchase section will provide the retailer link when it becomes available.</p>
-          <a href="#purchase" className={styles.textLink}>
-            View purchase details ↗
+          <p>
+            Collector’s Hardcover and Field Paperback editions are available now across Notion Press and Amazon India, with digital purchase details coming soon. The purchase section below provides direct retailer links to choose your edition.
+          </p>
+          <a
+            href="#purchase"
+            className={styles.textLink}
+            onClick={(e) => handleScrollTo(e, '#purchase')}
+          >
+            Choose your edition & retailer ↗
           </a>
         </>
       )
@@ -49,9 +55,16 @@ export default function FAQ() {
       question: 'Where can I find the complete professional profile?',
       answer: (
         <>
-          <p>The downloadable profile includes qualifications, board roles, recognition and regional operating exposure.</p>
-          <a href="#story" className={styles.textLink}>
-            Open professional profile ↗
+          <p>
+            The complete professional profile including qualifications, board advisory roles, executive recognition, and regional operating exposure is available on LinkedIn.
+          </p>
+          <a
+            href="https://www.linkedin.com/in/anuraagguglaani"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.textLink}
+          >
+            Open LinkedIn profile ↗
           </a>
         </>
       )
@@ -88,7 +101,7 @@ export default function FAQ() {
         whileInView="visible"
         viewport={{ once: true, amount: 0.15 }}
       >
-        <p className={styles.eyebrow}>06 — A FEW THINGS TO KNOW</p>
+        <p className={styles.eyebrow}>06 · A FEW THINGS TO KNOW</p>
         <h2>
           Before the<br />
           <span className={styles.muted}>conversation.</span>
