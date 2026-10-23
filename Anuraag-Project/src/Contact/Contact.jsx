@@ -1,9 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { fadeInUp } from '../animations';
 import styles from './Contact.module.css';
 
 export default function Contact() {
+  const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const validateEmail = (val) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(val).toLowerCase());
+  };
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    if (emailError) {
+      if (validateEmail(e.target.value)) {
+        setEmailError('');
+      }
+    }
+  };
+
+  const handleEmailBlur = () => {
+    if (email && !validateEmail(email)) {
+      setEmailError('Please enter a valid email address.');
+    } else {
+      setEmailError('');
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!email || !validateEmail(email)) {
+      setEmailError('Please enter a valid email address.');
+      return;
+    }
+    setEmailError('');
+    setIsSubmitted(true);
+  };
+
   const handleScrollTo = (e, targetId) => {
     e.preventDefault();
     const el = document.querySelector(targetId);
@@ -64,7 +100,7 @@ export default function Contact() {
           </div>
         </motion.div>
 
-        {/* Right Column: Exact Purchase Card from Client Reference */}
+        {/* Right Column: Purchase Card */}
         <motion.div
           className={styles.purchaseCard}
           variants={fadeInUp}
@@ -78,19 +114,44 @@ export default function Contact() {
             One operating system.<br />
             Four connected dimensions.
           </p>
-          <p className={styles.purchaseAvailability}>
-            Online purchase details coming soon.
-          </p>
 
-          <button
-            type="button"
-            className={styles.purchaseRetailer}
-            disabled
-            aria-disabled="true"
-          >
-            <span>Purchase link coming soon</span>
-            <span>↗</span>
-          </button>
+          <form className={styles.orderForm} onSubmit={handleSubmit} noValidate>
+            <div className={styles.inputGroup}>
+              <label htmlFor="purchase-email" className={styles.inputLabel}>
+                Your Email Address
+              </label>
+              <input
+                id="purchase-email"
+                type="email"
+                placeholder="name@company.com"
+                value={email}
+                onChange={handleEmailChange}
+                onBlur={handleEmailBlur}
+                className={`${styles.emailInput} ${emailError ? styles.inputError : ''}`}
+                autoComplete="email"
+              />
+              {emailError && (
+                <span className={styles.errorText} role="alert">
+                  {emailError}
+                </span>
+              )}
+            </div>
+
+            <button
+              type="submit"
+              className={styles.buyNowBtn}
+              disabled
+              aria-disabled="true"
+              title="Online checkout will be available shortly"
+            >
+              <span>Buy Now</span>
+              <span className={styles.btnArrow}>↗</span>
+            </button>
+
+            <span className={styles.disabledNote}>
+              Online checkout will be available shortly.
+            </span>
+          </form>
 
           <p className={styles.purchaseNote}>Publisher: Notion Press</p>
 
