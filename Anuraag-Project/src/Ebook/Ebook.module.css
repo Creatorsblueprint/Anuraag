@@ -629,9 +629,36 @@
     margin-left: auto;
     margin-right: auto;
   }
+  .bookActions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 320px;
+    margin: 10px auto 0;
+  }
   .button {
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+    margin: 0 auto;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  .sampleButton {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+    margin: 0 auto;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  .bookPublisher {
+    text-align: center;
+    margin-top: 14px;
+    width: 100%;
   }
   .bookStage {
     min-height: 440px;
