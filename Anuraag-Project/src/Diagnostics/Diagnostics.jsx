@@ -84,7 +84,7 @@ export default function Diagnostics() {
       <div id="work" style={{ position: 'absolute', top: 0 }} />
 
       <div className={styles.wrap}>
-        <p className={styles.eyebrow}>03 — WHERE PERSPECTIVE BECOMES PRACTICE</p>
+        <p className={styles.eyebrow}>03 · WHERE PERSPECTIVE BECOMES PRACTICE</p>
 
         <div className={styles.splitHeading}>
           <h2>
@@ -106,7 +106,7 @@ export default function Diagnostics() {
 
             <div className={styles.visualTop}>
               <span>THE CONNECTED ENTERPRISE</span>
-              <span>01 — 06</span>
+              <span>01 / 06</span>
             </div>
 
             <div className={styles.orbitSystem} aria-hidden="true">
@@ -140,7 +140,11 @@ export default function Diagnostics() {
             </div>
           </aside>
 
-          {/* Right 6 Pillars Grid */}
+          {/* Right 6 Pillars Grid: Horizontally scrollable on mobile */}
+          <div className={styles.mobileScrollHint} aria-hidden="true">
+            <span>Swipe cards to explore pillars &rarr;</span>
+          </div>
+
           <motion.div
             className={styles.expertiseGrid}
             variants={staggerContainer}

@@ -68,7 +68,7 @@ export default function Lectern() {
 
               <p className={styles.cardDesc}>
                 Through rigorous empirical analysis across GCC and South Asian conglomerates, Dr. Guglaani
-                examines institutional entropy—identifying why succession plans collapse under emotional
+                examines institutional entropy, identifying why succession plans collapse under emotional
                 friction and how enforceable governance structures insulate dynasty capital.
               </p>
             </div>

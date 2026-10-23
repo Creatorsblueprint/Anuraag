@@ -1,4 +1,4 @@
-/* Premium Dark Editorial Theme Design Tokens — Dr. Anuraag Guglaani */
+/* Premium Dark Editorial Theme Design Tokens: Dr. Anuraag Guglaani */
 :root {
   /* Rich Obsidian / Charcoal Dark Theme Base */
   --color-bg: #090c0e;
@@ -69,12 +69,17 @@ html {
   background-color: var(--color-bg);
   color: var(--color-text-primary);
   font-family: var(--font-sans);
+  overflow-x: clip;
+  width: 100%;
+  max-width: 100%;
 }
 
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  overflow-x: clip;
+  width: 100%;
+  max-width: 100%;
   background-color: var(--color-bg);
   color: var(--color-text-primary);
   line-height: 1.7;
@@ -151,4 +156,16 @@ input, textarea, select {
   width: 28px;
   height: 1px;
   background: var(--color-gold);
+}
+
+/* Symmetrical mobile container layout matching Hero section across all pages */
+@media (max-width: 800px) {
+  .sectionWrap,
+  [class*="_wrap_"] {
+    width: calc(100% - 28px) !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+  }
 }

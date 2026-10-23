@@ -213,7 +213,8 @@
 }
 
 .stepBtn {
-  display: flex;
+  display: grid;
+  grid-template-columns: 38px 1fr;
   align-items: center;
   gap: 16px;
   padding: 16px 20px;
@@ -223,6 +224,8 @@
   text-align: left;
   cursor: pointer;
   transition: all 0.25s ease;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .stepBtn:hover {
@@ -352,48 +355,71 @@
 }
 
 @media (max-width: 800px) {
+  .wrap {
+    width: calc(100% - 28px);
+    margin: 0 auto;
+  }
   .sectionTop {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 15px;
+    gap: 10px;
+    margin-bottom: 35px;
   }
   .storyGrid {
     grid-template-columns: 1fr;
-    gap: 45px;
+    gap: 40px;
+    width: 100%;
+    margin: 0 auto;
   }
   .storyImage {
-    max-width: 480px;
+    max-width: 440px;
     margin: 0 auto;
     width: 100%;
   }
   .storyImage img {
-    height: 480px;
+    height: 460px;
   }
   .imageCaption {
-    left: 24px;
-    bottom: 24px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    text-align: center;
   }
   .imageCaption b {
     font-size: 24px;
   }
   .storyCopy {
     text-align: center;
+    align-items: center;
+    width: 100%;
+    max-width: 540px;
+    margin: 0 auto;
   }
   .storyCopy h2 {
     font-size: clamp(32px, 7vw, 44px);
     letter-spacing: -1.2px;
+    text-align: center;
   }
-  .lead {
-    font-size: 17px;
+  .lead,
+  .storyParagraph {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
   .credentials {
+    width: 100%;
+    max-width: 480px;
+    margin: 30px auto 0;
     text-align: center;
   }
   .journey {
     padding: 28px 24px;
-    margin-top: 55px;
+    margin: 45px auto 0;
     text-align: center;
+    width: 100%;
+    max-width: 520px;
+    box-sizing: border-box;
   }
   .journeyHeading {
     flex-direction: column;
@@ -406,21 +432,51 @@
     text-align: center;
   }
   .journeySteps {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 12px;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto 30px;
   }
   .stepBtn {
-    justify-content: flex-start;
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 22px;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .stepCircle {
+    width: 36px;
+    height: 36px;
+    margin: 0;
+  }
+  .stepLabel {
+    text-align: left;
+    font-size: 13.5px;
+    font-weight: 600;
   }
   .journeyPanel {
     grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 28px 24px;
-    text-align: left;
+    gap: 20px;
+    padding: 24px 18px;
+    text-align: center;
   }
   .chapterDetail {
-    border-left: 2px solid var(--color-gold);
-    padding-left: 20px;
+    border-left: none;
+    border-top: 2px solid var(--color-gold);
+    padding-left: 0;
+    padding-top: 14px;
+    text-align: center;
+  }
+  .chapterDetail h4,
+  .chapterDetail p {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -429,10 +485,11 @@
     padding: 70px 0;
   }
   .wrap {
-    width: calc(100% - 32px);
+    width: calc(100% - 28px);
+    margin: 0 auto;
   }
   .storyImage {
-    max-width: 100%;
+    max-width: 360px;
   }
   .storyImage img {
     height: 400px;
@@ -440,22 +497,47 @@
   .storyCopy h2 {
     font-size: clamp(28px, 8vw, 36px);
   }
+  .credentials {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    max-width: 360px;
+  }
+  .credentialItem {
+    border-left: none;
+    border-top: 2px solid var(--color-gold);
+    padding: 12px 8px 0;
+    text-align: center;
+  }
   .journey {
-    padding: 22px 16px;
-    margin-top: 40px;
+    padding: 20px 14px;
+    margin-top: 35px;
+    max-width: 380px;
+  }
+  .journeySteps {
+    max-width: 360px;
+    margin: 0 auto 24px;
+    gap: 10px;
   }
   .journeyPanel {
-    padding: 20px 16px;
+    padding: 18px 12px;
   }
   .stepBtn {
-    padding: 12px 14px;
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    align-items: center;
+    padding: 12px 18px;
+    gap: 14px;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
   }
   .stepCircle {
-    width: 32px;
-    height: 32px;
-    font-size: 12px;
+    width: 34px;
+    height: 34px;
+    font-size: 13px;
   }
   .stepLabel {
-    font-size: 12px;
+    font-size: 13px;
+    text-align: left;
   }
 }

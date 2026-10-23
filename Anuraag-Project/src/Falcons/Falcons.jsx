@@ -10,15 +10,9 @@ export default function Falcons() {
         {/* Section Top */}
         <div className={styles.sectionTop}>
           <p className={styles.eyebrow}>THE FALCON PERSPECTIVE</p>
-          <a
-            className={styles.textLink}
-            href="https://falconsofmajlis.com/falcons/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span>Meet the Falcons</span>
-            <span className={styles.arrowIcon}>↗</span>
-          </a>
+          <span className={styles.falconBadge}>
+            NKN MEDIA · UAE STARTUP SHOW
+          </span>
         </div>
 
         {/* Falcon Feature Grid */}
@@ -80,12 +74,10 @@ export default function Falcons() {
 
             <a
               className={styles.goldButton}
-              href="https://falconsofmajlis.com/"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#videos"
             >
-              <span>Explore Falcons of Majlis</span>
-              <span className={styles.btnArrow}>↗</span>
+              <span>Watch show moments</span>
+              <span className={styles.btnArrow}>↓</span>
             </a>
           </motion.div>
         </motion.div>

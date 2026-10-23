@@ -86,12 +86,11 @@ export default function Nav() {
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={styles.headerInner}>
         <a href="#overview" onClick={(e) => handleNavClick(e, '#overview')} className={styles.brand} aria-label="Dr. Anuraag Guglaani home">
-          <span className={styles.monogram}>
-            AG<span>·</span>
-          </span>
-          <span className={styles.brandName}>
-            DR. ANURAAG<br />GUGLAANI
-          </span>
+          <img
+            src="/logos/name_logo_white.png"
+            alt="Dr. Anuraag Guglaani"
+            className={styles.brandLogo}
+          />
         </a>
 
         <nav aria-label="Main Navigation" className={styles.desktopNav}>

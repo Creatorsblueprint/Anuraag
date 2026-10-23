@@ -18,12 +18,11 @@ export default function Footer() {
         {/* Top Row: Brand & Quick Navigation */}
         <div className={styles.footerTop}>
           <a href="#overview" className={styles.brand} aria-label="Dr. Anuraag Guglaani home">
-            <span className={styles.monogram}>
-              AG<span>·</span>
-            </span>
-            <span className={styles.brandName}>
-              DR. ANURAAG<br />GUGLAANI
-            </span>
+            <img
+              src="/logos/name_logo_white.png"
+              alt="Dr. Anuraag Guglaani"
+              className={styles.brandLogo}
+            />
           </a>
 
           <div className={styles.footerTagline}>
@@ -60,13 +59,11 @@ export default function Footer() {
               <span>Threads ↗</span>
             </a>
             <a
-              href="https://falconsofmajlis.com/falcons/"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#falcons"
               className={styles.socialLink}
               aria-label="Falcons of Majlis"
             >
-              <span>Falcons ↗</span>
+              <span>Falcons ↓</span>
             </a>
           </div>
 

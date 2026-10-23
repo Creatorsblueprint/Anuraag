@@ -31,6 +31,17 @@
   margin: 0;
 }
 
+.falconBadge {
+  font-size: 9.5px;
+  letter-spacing: 1.8px;
+  font-weight: 700;
+  color: var(--color-gold);
+  border: 1px solid rgba(199, 169, 103, 0.3);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: rgba(199, 169, 103, 0.05);
+}
+
 .textLink {
   display: inline-flex;
   align-items: center;
@@ -193,21 +204,22 @@
   align-items: center;
   gap: 14px;
   padding: 14px 28px;
-  background: var(--color-gold);
-  color: #090c0e;
+  background: linear-gradient(135deg, #e4c988 0%, #c7a967 100%);
+  color: #0b0c09;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.5px;
   border-radius: 9999px;
+  border: 1px solid rgba(255, 235, 185, 0.4);
   text-decoration: none;
-  box-shadow: 0 4px 20px rgba(199, 169, 103, 0.25);
+  box-shadow: 0 4px 20px rgba(199, 169, 103, 0.35);
   transition: all 0.25s ease;
 }
 
 .goldButton:hover {
   transform: translateY(-2px);
-  background: #d8bc7d;
-  box-shadow: 0 8px 25px rgba(199, 169, 103, 0.4);
+  background: linear-gradient(135deg, #f0dcab 0%, #d8be80 100%);
+  box-shadow: 0 8px 28px rgba(199, 169, 103, 0.55);
 }
 
 .btnArrow {
@@ -301,19 +313,26 @@
 
 /* Responsive */
 @media (max-width: 992px) {
+  .wrap {
+    width: calc(100% - 28px);
+    margin: 0 auto;
+  }
   .sectionTop {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 15px;
+    gap: 12px;
+    margin-bottom: 35px;
   }
   .falconFeatureGrid {
     grid-template-columns: 1fr;
-    gap: 45px;
+    gap: 40px;
+    width: 100%;
+    margin: 0 auto;
   }
   .falconFeaturePortrait {
-    height: 480px;
-    max-width: 480px;
+    height: 460px;
+    max-width: 440px;
     margin: 0 auto;
     width: 100%;
   }
@@ -322,31 +341,48 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
   }
   .falconKicker {
     justify-content: center;
+    margin: 0 auto 16px;
   }
   .falconFeatureCopy h2 {
     font-size: clamp(32px, 7vw, 44px);
     letter-spacing: -1.2px;
+    text-align: center;
+  }
+  .falconLead,
+  .falconBody {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
   .falconPerspectives {
     width: 100%;
-    max-width: 500px;
+    max-width: 480px;
     text-align: center;
+    margin: 25px auto;
   }
   .falconsEventGrid {
     grid-template-columns: 1fr;
     gap: 24px;
-    max-width: 520px;
-    margin: 45px auto 0;
+    max-width: 480px;
+    margin: 35px auto 0;
+    width: 100%;
   }
   .eventWide,
   .eventCandid {
     height: 320px;
+    max-width: 480px;
+    margin: 0 auto;
+    width: 100%;
   }
   .falconSource {
     text-align: center;
+    margin: 30px auto 0;
   }
 }
 
@@ -355,36 +391,43 @@
     padding: 70px 0;
   }
   .wrap {
-    width: calc(100% - 32px);
+    width: calc(100% - 28px);
+    margin: 0 auto;
   }
   .falconFeaturePortrait {
-    height: 400px;
+    max-width: 360px;
+    height: 380px;
   }
   .falconFeaturePortrait figcaption {
-    bottom: 22px;
-    left: 20px;
-    right: 20px;
+    bottom: 20px;
+    left: 16px;
+    right: 16px;
+    text-align: center;
   }
   .falconFeaturePortrait figcaption strong {
-    font-size: 26px;
+    font-size: 24px;
   }
   .falconPerspectives {
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 16px;
+    max-width: 360px;
   }
   .goldButton {
     width: 100%;
-    max-width: 280px;
+    max-width: 270px;
+    margin: 0 auto;
     justify-content: center;
   }
   .eventWide,
   .eventCandid {
-    height: 280px;
+    height: 260px;
+    max-width: 360px;
   }
   .eventWide figcaption,
   .eventCandid figcaption {
-    bottom: 18px;
-    left: 18px;
-    right: 18px;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    text-align: center;
   }
 }

@@ -2,16 +2,44 @@ import React, { useState, useEffect } from 'react';
 import styles from './StickyBook.module.css';
 
 export default function StickyBook() {
-  const [visible, setVisible] = useState(false);
+  const [scrolledPastHero, setScrolledPastHero] = useState(false);
+  const [isInCtaZone, setIsInCtaZone] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setVisible(window.scrollY > 750);
+      setScrolledPastHero(window.scrollY > 650);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    handleScroll();
+
+    // Hide sticky floating bar when visitor is in #book or #purchase to avoid CTA overlap
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const intersecting = entries.some((entry) => entry.isIntersecting);
+        setIsInCtaZone(intersecting);
+      },
+      {
+        root: null,
+        rootMargin: '40px 0px 40px 0px',
+        threshold: 0.05
+      }
+    );
+
+    const targets = [
+      document.getElementById('book'),
+      document.getElementById('purchase')
+    ].filter(Boolean);
+
+    targets.forEach((target) => observer.observe(target));
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      observer.disconnect();
+    };
   }, []);
+
+  const visible = scrolledPastHero && !isInCtaZone;
 
   const handleScrollTo = (e, targetId) => {
     e.preventDefault();

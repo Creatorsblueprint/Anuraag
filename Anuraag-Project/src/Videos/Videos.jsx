@@ -9,35 +9,35 @@ export default function Videos() {
       num: '01',
       url: 'https://www.instagram.com/reel/DZHXcCSCe60/',
       image: '/client_images/reel_business_resilience.jpg',
-      alt: 'Business resilience — supplied Instagram reel cover',
+      alt: 'Business resilience: Instagram reel cover',
       label: 'INSTAGRAM REEL · 01'
     },
     {
       num: '02',
       url: 'https://www.instagram.com/reel/DcNe5DWzmvU/',
       image: '/client_images/reel_indian_brands_uae.jpg',
-      alt: 'Why Indian brands fail in UAE — supplied Instagram reel cover',
+      alt: 'Why Indian brands fail in UAE: Instagram reel cover',
       label: 'INSTAGRAM REEL · 02'
     },
     {
       num: '03',
       url: 'https://www.instagram.com/reel/DbIsXnLIvOG/',
       image: '/client_images/reel_falcons_majlis.png',
-      alt: 'Falcons of Majlis — supplied Instagram reel cover',
+      alt: 'Falcons of Majlis: Instagram reel cover',
       label: 'INSTAGRAM REEL · 03'
     },
     {
       num: '04',
       url: 'https://www.instagram.com/reel/DaFyCBUIHRy/',
       image: '/client_images/reel_falcons_interview.png',
-      alt: 'Falcons of Majlis interview — supplied Instagram reel cover',
+      alt: 'Falcons of Majlis interview: Instagram reel cover',
       label: 'INSTAGRAM REEL · 04'
     },
     {
       num: '05',
       url: 'https://www.instagram.com/reel/DaDMzVylFRn/',
       image: '/client_images/reel_vibrant_goa.png',
-      alt: 'Vibrant Goa — supplied Instagram reel cover',
+      alt: 'Vibrant Goa: Instagram reel cover',
       label: 'INSTAGRAM REEL · 05'
     }
   ];
@@ -47,7 +47,7 @@ export default function Videos() {
       <div className={styles.wrap}>
         {/* Section Top */}
         <div className={styles.sectionTop}>
-          <p className={styles.eyebrow}>IN FOCUS — VIDEO CONVERSATIONS</p>
+          <p className={styles.eyebrow}>IN FOCUS · VIDEO CONVERSATIONS</p>
           {/* <span className={styles.smallNote}>WATCH DIRECTLY ON INSTAGRAM</span> */}
         </div>
 
@@ -57,11 +57,18 @@ export default function Videos() {
             A perspective<br />
             <span className={styles.muted}>worth sharing.</span>
           </h2>
-          <p>
-            Explore five video moments from Dr. Anuraag Guglaani.<br />
-            Select a reel to watch it on Instagram.
-          </p>
+          <a
+            href="https://www.instagram.com/anuraagguglaani/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.instagramProfileBtn}
+          >
+            <span>Open Instagram Profile</span>
+            <span className={styles.btnArrow}>↗</span>
+          </a>
         </div>
+
+        <p className={styles.mobileSwipeHint}>Swipe reels horizontally &rarr;</p>
 
         {/* Reel Grid matching client 5 cards layout */}
         <motion.div

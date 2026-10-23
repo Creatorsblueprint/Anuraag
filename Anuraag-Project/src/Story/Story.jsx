@@ -70,9 +70,15 @@ export default function Story() {
     <section className={`${styles.storySection} ${styles.section} ${styles.wrap}`} id="story">
       {/* Section Top */}
       <div className={styles.sectionTop}>
-        <p className={styles.eyebrow}>02 — THE MAN BEHIND THE PERSPECTIVE</p>
-        <a className={styles.textLink} href="#purchase">
-          <span>Download profile</span>
+        <p className={styles.eyebrow}>02 · THE MAN BEHIND THE PERSPECTIVE</p>
+        <a
+          className={styles.textLink}
+          href="https://www.linkedin.com/in/anuraagguglaani"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="View Dr. Anuraag Guglaani's LinkedIn Profile"
+        >
+          <span>View LinkedIn profile</span>
           <span className={styles.arrowIcon}>↗</span>
         </a>
       </div>
@@ -108,24 +114,17 @@ export default function Story() {
 
           <p className={styles.lead}>
             Known as <span className={styles.goldText}>The Family Business Doctor</span>, Dr. Anuraag
-            Guglaani works where business transformation, investment, governance and family legacy meet.
+            Guglaani advises at the intersection of business transformation, governance, and generational legacy.
           </p>
 
           <p>
-            Based in Dubai, he has operated, invested in and transformed businesses across 26 industries
-            and 35 countries, with exposure spanning the Middle East, Africa, South Asia and North America.
+            Based in Dubai, he has operated, invested in, and transformed enterprises across 26 industries
+            and 35 countries, spanning the Middle East, Africa, South Asia, and North America.
           </p>
 
           <p>
-            As Group CEO and Board Member of ADAM Global and ADAM Global Network, and a multi-family
-            office chairperson, he helps build profitable, scalable, sustainable and investable businesses.
-            His work combines strategic growth, leadership development and cross-border expansion with the
-            human judgment that holds an enterprise together.
-          </p>
-
-          <p>
-            His doctoral research produced the <strong>A2G Framework — AI to Automation to Governance</strong>:
-            an approach to bringing intelligent systems into family businesses while retaining human judgment.
+            As Group CEO of ADAM Global and multi-family office chair, his doctoral research produced the
+            <strong> A2G Framework (AI to Automation to Governance)</strong>: empowering enterprises to adopt intelligent systems while protecting the human judgment that holds them together.
           </p>
 
           {/* Credentials Box */}

@@ -90,17 +90,34 @@
   box-shadow: 0 0 8px var(--color-gold);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .wrap {
-    width: calc(100% - 40px);
+    width: calc(100% - 28px);
+    margin: 0 auto;
     padding: 60px 0;
   }
+  .flightCopy {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .eyebrow {
+    text-align: center;
+    margin: 0 auto 16px;
+  }
   .flightTitle {
-    font-size: 38px;
+    font-size: clamp(32px, 8vw, 44px);
     letter-spacing: -2px;
+    text-align: center;
+    margin: 0 auto 25px;
   }
   .flightFooter {
     font-size: 8px;
     gap: 15px;
+    justify-content: center;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
   }
 }

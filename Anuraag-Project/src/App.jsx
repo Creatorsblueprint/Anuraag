@@ -13,12 +13,25 @@ import FAQ from './FAQ/FAQ';
 import Contact from './Contact/Contact';
 import StickyBook from './StickyBook/StickyBook';
 import Footer from './Footer/Footer';
+import PaymentSuccessModal from './Modals/PaymentSuccessModal';
+import PaymentCancelModal from './Modals/PaymentCancelModal';
 import './App.css';
 
 export default function App() {
+  const [isSuccessOpen, setIsSuccessOpen] = React.useState(false);
+  const [isCancelOpen, setIsCancelOpen] = React.useState(false);
+
   useEffect(() => {
     // 1. Check if redirected from 404.html via /?p=... or direct pathname
     const urlParams = new URLSearchParams(window.location.search);
+
+    // Check payment callback status
+    const paymentStatus = urlParams.get('payment');
+    if (paymentStatus === 'success') {
+      setIsSuccessOpen(true);
+    } else if (paymentStatus === 'cancel') {
+      setIsCancelOpen(true);
+    }
     let targetPath = urlParams.get('p') || window.location.pathname;
 
     if (targetPath) {
@@ -53,6 +66,7 @@ export default function App() {
         'purchase': 'purchase',
         'contact': 'purchase',
         'order': 'purchase',
+        'top': 'top',
         'overview': 'overview',
         'home': 'overview'
       };
@@ -82,8 +96,16 @@ export default function App() {
     }
   }, []);
 
+  const handleClosePaymentModal = () => {
+    setIsSuccessOpen(false);
+    setIsCancelOpen(false);
+    // Clean up query param without refreshing page
+    const cleanUrl = window.location.pathname + window.location.hash;
+    window.history.replaceState(null, '', cleanUrl || '/');
+  };
+
   return (
-    <div className="appWrapper">
+    <div className="appWrapper" id="top">
       <Nav />
       <main>
         <Home />
@@ -100,6 +122,10 @@ export default function App() {
       </main>
       <StickyBook />
       <Footer />
+
+      {/* Payment Feedback Modals */}
+      <PaymentSuccessModal isOpen={isSuccessOpen} onClose={handleClosePaymentModal} />
+      <PaymentCancelModal isOpen={isCancelOpen} onClose={handleClosePaymentModal} />
     </div>
   );
 }
