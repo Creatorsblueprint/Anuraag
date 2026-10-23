@@ -1,11 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '../animations';
+import EbookModal from './EbookModal';
 import styles from './Ebook.module.css';
 
 export default function Ebook() {
   const [activeTheme, setActiveTheme] = useState('business');
   const [isPaused, setIsPaused] = useState(false);
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const themes = [
     {
@@ -40,15 +43,9 @@ export default function Ebook() {
 
   const currentTheme = themes.find((t) => t.id === activeTheme) || themes[0];
 
-  // Auto-switch between the 4 dimensions every 3.2 seconds so it looks dynamic while presenting
+  // Auto-switch between the 4 dimensions with 7s dwell time and pause control
   useEffect(() => {
-    if (isPaused) {
-      // Auto-resume presentation after 7 seconds of inactivity
-      const resumeTimeout = setTimeout(() => {
-        setIsPaused(false);
-      }, 7000);
-      return () => clearTimeout(resumeTimeout);
-    }
+    if (isPaused) return;
 
     const interval = setInterval(() => {
       setActiveTheme((prev) => {
@@ -56,7 +53,7 @@ export default function Ebook() {
         const nextIndex = (currentIndex + 1) % themes.length;
         return themes[nextIndex].id;
       });
-    }, 3200);
+    }, 7000);
 
     return () => clearInterval(interval);
   }, [isPaused, themes.length]);
@@ -97,37 +94,66 @@ export default function Ebook() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {/* Premium Book Showcase Stage with subtle depth & micro-interaction */}
+          {/* Interactive 3D Book Showcase Stage with Front/Back Flip */}
           <motion.div
             className={styles.bookStage}
             variants={fadeInUp}
           >
             <div className={styles.bookHalo} />
 
-            <div className={styles.bookShowcaseWrapper}>
-              <motion.div
-                className={styles.bookShowcase}
-                whileHover={{
-                  y: -10,
-                  rotateZ: 0,
-                  boxShadow: '0 30px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(199, 169, 103, 0.25)'
+            <div className={styles.bookStageWrapper}>
+              <div
+                className={`${styles.book3DCard} ${isFlipped ? styles.cardFlipped : ''}`}
+                onClick={() => setIsFlipped(!isFlipped)}
+                role="button"
+                tabIndex="0"
+                aria-label={isFlipped ? 'Flip to front cover' : 'Flip to back cover'}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setIsFlipped(!isFlipped);
+                  }
                 }}
-                transition={{ duration: 0.35, ease: 'easeOut' }}
               >
-                <img
-                  src="/client_images/book_cover_front.jpg"
-                  alt="Front cover of You Will Not Fly by Dr. Anuraag Guglaani"
-                  className={styles.bookCoverImage}
-                  draggable="false"
-                />
-                <div className={styles.bookSheen} />
-                <div className={styles.bookSpineEdge} />
-              </motion.div>
-            </div>
+                {/* Front Cover Face */}
+                <div className={styles.bookFaceFront}>
+                  <img
+                    src="/client_images/book_cover_front.jpg"
+                    alt="Front cover of You Will Not Fly by Dr. Anuraag Guglaani"
+                    className={styles.bookCoverImage}
+                    draggable="false"
+                  />
+                  <div className={styles.bookSheen} />
+                  <div className={styles.bookSpineEdge} />
+                </div>
 
-            <span className={styles.stageCaption}>
-              {/* THE NEW WORK · GROUNDED AT TWENTY. AIRBORNE EVER SINCE. */}
-            </span>
+                {/* Back Cover Face */}
+                <div className={styles.bookFaceBack}>
+                  <img
+                    src="/client_images/book_back_cover.jpg"
+                    alt="Back cover of You Will Not Fly by Dr. Anuraag Guglaani"
+                    className={styles.bookCoverImage}
+                    draggable="false"
+                  />
+                  <div className={styles.bookSheen} />
+                  <div className={styles.bookSpineEdge} />
+                </div>
+              </div>
+
+              {/* Interactive 3D Flip Toggle Controls */}
+              <div className={styles.bookControls}>
+                <button
+                  type="button"
+                  className={styles.flipBtn}
+                  onClick={() => setIsFlipped(!isFlipped)}
+                  aria-pressed={isFlipped}
+                >
+                  <span className={styles.flipIcon}>⟲</span>
+                  <span>{isFlipped ? 'View Front Cover' : 'View Back Cover'}</span>
+                </button>
+                <span className={styles.clickHint}>Click book to flip 360°</span>
+              </div>
+            </div>
           </motion.div>
 
           {/* Book Copy Right */}
@@ -142,52 +168,93 @@ export default function Ebook() {
             </h2>
 
             <p className={styles.bookSubtitle}>
-              {/* Grounded at Twenty.<br />
-              Airborne Ever Since. */}
               Grounded at Twenty. Airborne Ever Since.
             </p>
 
             <p className={styles.lead}>
-              One operating system for business, career, family and legacy.
+              One operating system for business, career, family, and legacy.
             </p>
 
-            <p>
-              At twenty, after clearing one of the toughest selection processes and training at the National
-              Defence Academy as an aspiring fighter jet pilot, Anuraag was grounded by a verdict he could not appeal.
+            {/* Condensed, Punchy Description for Fast Readers */}
+            <p className={styles.bookDescriptionText}>
+              Grounded at twenty from becoming a fighter pilot, Anuraag turned an unappealable verdict into
+              three decades of enterprise reinvention across 26 industries. Part candid business memoir and
+              part field manual, this book unpacks the five battle-tested disciplines—cash, decisions, talent,
+              foresight, and governance—that build resilient organizations and enduring legacies.
             </p>
 
-            <p>
-              What followed was a life of reinvention. Across factories, family businesses, boardrooms, classrooms
-              and startup investment rooms, he spent three decades discovering what remains when titles, plans and
-              certainty are stripped away.
-            </p>
+            {/* Clear Reader's Benefits Section: What Will I Gain? */}
+            <div className={styles.readerBenefits}>
+              <span className={styles.benefitsTitle}>WHAT YOU WILL GAIN FROM THIS BOOK</span>
+              <ul className={styles.benefitsList}>
+                <li>
+                  <span className={styles.bulletStar}>✦</span>
+                  <div>
+                    <strong>Make clearer business decisions</strong> under high stakes and uncertainty.
+                  </div>
+                </li>
+                <li>
+                  <span className={styles.bulletStar}>✦</span>
+                  <div>
+                    <strong>Navigate change and rebuild</strong> after unexpected setbacks and closed runways.
+                  </div>
+                </li>
+                <li>
+                  <span className={styles.bulletStar}>✦</span>
+                  <div>
+                    <strong>Build a business and legacy</strong> that can scale, endure, and continue without you.
+                  </div>
+                </li>
+              </ul>
+            </div>
 
-            <p>
-              Part business memoir, part field manual, this is the story of that journey and the operating system
-              built along the way: cash, decisions, talent, foresight and governance.
-            </p>
+            {/* High-Contrast Action CTAs */}
+            <div className={styles.bookActions}>
+              <a
+                className={`${styles.button} ${styles.gold}`}
+                href="#purchase"
+                onClick={(e) => handleScrollTo(e, '#purchase')}
+              >
+                <span>Get the book</span>
+                <span className={styles.btnArrow}>↗</span>
+              </a>
 
-            <a
-              className={`${styles.button} ${styles.gold}`}
-              href="#purchase"
-              onClick={(e) => handleScrollTo(e, '#purchase')}
-            >
-              <span>Get the book</span>
-              <span className={styles.btnArrow}>↗</span>
-            </a>
+              <button
+                type="button"
+                className={styles.sampleButton}
+                onClick={() => setIsModalOpen(true)}
+              >
+                <span>Read a sample</span>
+                <span className={styles.sampleIcon}>📖</span>
+              </button>
+            </div>
 
-            <span className={styles.bookPublisher}>Published by Notion Press</span>
+            <span className={styles.bookPublisher}>Published by Notion Press · Available in Hardcover &amp; Paperback</span>
           </motion.div>
         </motion.div>
 
-        {/* 4 Connected Dimensions / Themes Explorer with auto-rotation & pause on hover */}
+        {/* 4 Connected Dimensions Explorer with user-controlled Pause/Play & hover pause */}
         <div
           className={styles.themesExplorer}
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          <div className={styles.themesHeading}>
-            <span>ONE OPERATING SYSTEM. FOUR CONNECTED DIMENSIONS.</span>
+          <div className={styles.themesHeaderRow}>
+            <div className={styles.themesHeading}>
+              <span>ONE OPERATING SYSTEM. FOUR CONNECTED DIMENSIONS.</span>
+            </div>
+
+            {/* Visible Pause / Resume Control */}
+            <button
+              type="button"
+              className={`${styles.pauseControlBtn} ${isPaused ? styles.isPausedState : ''}`}
+              onClick={() => setIsPaused(!isPaused)}
+              aria-label={isPaused ? 'Resume dimension auto-rotation' : 'Pause dimension auto-rotation'}
+            >
+              <span className={styles.pauseIcon}>{isPaused ? '▶' : '⏸'}</span>
+              <span>{isPaused ? 'Resume' : 'Pause'}</span>
+              {!isPaused && <span className={styles.pulseDot} />}
+            </button>
           </div>
 
           <div className={styles.bookThemes} role="tablist">
@@ -237,6 +304,12 @@ export default function Ebook() {
           <cite>FROM YOU WILL NOT FLY</cite>
         </blockquote>
       </div>
+
+      {/* Book Preview Modal */}
+      <EbookModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 }

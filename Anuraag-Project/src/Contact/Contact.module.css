@@ -1,5 +1,5 @@
 .contactSection {
-  padding: 115px 0;
+  padding: 115px 0 130px;
   position: relative;
   border-bottom: 1px solid var(--color-line);
 }
@@ -18,11 +18,13 @@
   margin: auto;
 }
 
-.purchaseGrid {
+/* Top Split: Author Narrative & Book Card */
+.purchaseTopGrid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1.15fr 0.85fr;
   gap: 80px;
   align-items: center;
+  margin-bottom: 90px;
 }
 
 .eyebrow {
@@ -66,7 +68,7 @@
   font-size: 14px;
   line-height: 1.8;
   color: #c4c6bf;
-  max-width: 460px;
+  max-width: 480px;
   margin: 0 0 35px;
 }
 
@@ -105,12 +107,12 @@
   margin-top: 2px;
 }
 
-/* Purchase Card */
+/* Purchase Overview Card */
 .purchaseCard {
   background: var(--color-surface);
   border: 1px solid rgba(199, 169, 103, 0.35);
   border-radius: var(--radius-lg);
-  padding: 45px 40px;
+  padding: 40px 36px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
@@ -127,7 +129,7 @@
 }
 
 .purchaseCard h3 {
-  font-size: clamp(26px, 2.5vw, 36px);
+  font-size: clamp(26px, 2.5vw, 34px);
   color: #f5f5f1;
   letter-spacing: -1px;
   margin: 0 0 10px;
@@ -138,36 +140,42 @@
   font-size: 14px;
   color: #a4a79e;
   line-height: 1.6;
-  margin: 0 0 24px;
+  margin: 0 0 18px;
 }
 
 .purchaseAvailability {
   font-size: 13.5px;
   color: #dcded7;
-  font-style: italic;
+  line-height: 1.6;
   margin: 0 0 24px;
 }
 
-.purchaseRetailer {
-  display: inline-flex;
-  align-items: center;
+.quickSpecs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 12px;
-  padding: 14px 28px;
-  background: rgba(199, 169, 103, 0.2);
-  border: 1px solid rgba(199, 169, 103, 0.4);
-  color: #efefec;
-  font-size: 13px;
-  font-weight: 600;
-  border-radius: 9999px;
-  cursor: not-allowed;
-  opacity: 0.85;
-  margin-bottom: 20px;
+  width: 100%;
+  padding: 16px 0;
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+  margin-bottom: 24px;
 }
 
-.purchaseNote {
+.specItem small {
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  color: var(--color-gold);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.specItem strong {
   font-size: 12px;
-  color: #888b82;
-  margin: 0 0 24px;
+  color: #efefec;
+  font-weight: 600;
+  display: block;
+  line-height: 1.35;
 }
 
 .textLink {
@@ -192,63 +200,368 @@
   font-size: 13px;
 }
 
+/* =========================================
+   Where to Buy Physical Copies - Showcase
+   ========================================= */
+.retailerSection {
+  border-top: 1px solid var(--color-line);
+  padding-top: 60px;
+}
+
+.retailerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.retailerEyebrow {
+  color: var(--color-gold);
+  font-size: 10px;
+  letter-spacing: 2.2px;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.retailerTitle {
+  font-size: clamp(26px, 2.5vw, 36px);
+  color: #efefec;
+  letter-spacing: -1px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.retailerSubtitle {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #a4a79e;
+  max-width: 440px;
+  margin: 0;
+}
+
+.mobileSwipeHint {
+  display: none;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--color-gold);
+  font-weight: 600;
+  text-transform: uppercase;
+  margin: 0 0 16px;
+  text-align: center;
+}
+
+/* 3-Column Grid on Desktop, Horizontal Touch Scroll on Mobile */
+.retailerGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.retailerCard {
+  background: var(--color-surface);
+  border: 1px solid rgba(199, 169, 103, 0.25);
+  border-radius: var(--radius-md);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.retailerCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(199, 169, 103, 0.55);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6);
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.platformBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #efefec;
+  letter-spacing: 0.3px;
+}
+
+.platformBadge svg {
+  color: var(--color-gold);
+  flex-shrink: 0;
+}
+
+.editionTag {
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  color: var(--color-gold);
+  background: rgba(199, 169, 103, 0.08);
+  border: 1px solid rgba(199, 169, 103, 0.3);
+  padding: 4px 10px;
+  border-radius: 9999px;
+  text-transform: uppercase;
+}
+
+.editionName {
+  font-size: 22px;
+  color: #f5f5f1;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin: 0 0 6px;
+}
+
+.formatLabel {
+  font-size: 12.5px;
+  color: var(--color-gold);
+  font-weight: 600;
+  margin: 0 0 14px;
+}
+
+.cardDesc {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #b8bbb2;
+  margin: 0 0 20px;
+  min-height: 64px;
+}
+
+.featuresList {
+  list-style: none;
+  padding: 16px 0;
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+  margin: 0 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.featuresList li {
+  font-size: 12.5px;
+  color: #dcded7;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkIcon {
+  color: var(--color-gold);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+/* High-Contrast Gold Action Button */
+.orderButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 22px;
+  background: linear-gradient(135deg, #e4c988 0%, #c7a967 100%);
+  color: #0b0c09;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 235, 185, 0.4);
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(199, 169, 103, 0.35);
+  transition: all 0.25s ease;
+  width: 100%;
+}
+
+.orderButton:hover {
+  background: linear-gradient(135deg, #f0dcab 0%, #d8be80 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(199, 169, 103, 0.55);
+}
+
+.orderArrow {
+  font-size: 14px;
+}
+
 /* Responsive */
-@media (max-width: 992px) {
-  .purchaseGrid {
-    grid-template-columns: 1fr;
-    gap: 45px;
+@media (max-width: 1024px) {
+  .purchaseTopGrid {
+    gap: 40px;
   }
-  .purchaseCol:first-child {
+  .retailerGrid {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 800px) {
+  .wrap {
+    width: calc(100% - 28px);
+    margin: 0 auto;
+  }
+
+  .purchaseTopGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+  }
+
+  .purchaseLeft {
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
   }
+
   .heading {
     font-size: clamp(34px, 7vw, 46px);
     letter-spacing: -1.2px;
-  }
-  .description {
     text-align: center;
   }
+
+  .description {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .contactSignature {
     margin: 0 auto;
   }
+
   .purchaseCard {
-    max-width: 500px;
+    max-width: 460px;
     margin: 0 auto;
     width: 100%;
-    padding: 35px 30px;
+    padding: 35px 28px;
     align-items: center;
     text-align: center;
+    box-sizing: border-box;
+  }
+
+  .quickSpecs {
+    text-align: center;
+  }
+
+  .retailerSection {
+    padding-top: 45px;
+  }
+
+  .retailerHeader {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .retailerSubtitle {
+    text-align: center;
+    max-width: none;
+  }
+
+  .mobileSwipeHint {
+    display: block;
+  }
+
+  /* Horizontal Scroll Carousel on Mobile */
+  .retailerGrid {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    padding: 10px 4px 20px;
+    margin: 0 -14px;
+    padding-left: 14px;
+    padding-right: 14px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .retailerGrid::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .retailerGrid::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 4px;
+  }
+
+  .retailerGrid::-webkit-scrollbar-thumb {
+    background: rgba(199, 169, 103, 0.35);
+    border-radius: 4px;
+  }
+
+  .retailerCard {
+    flex: 0 0 85%;
+    max-width: 320px;
+    min-width: 270px;
+    scroll-snap-align: center;
+    box-sizing: border-box;
+  }
+
+  .cardDesc {
+    min-height: auto;
   }
 }
 
 @media (max-width: 520px) {
   .contactSection {
-    padding: 70px 0;
+    padding: 70px 0 80px;
   }
+
   .wrap {
-    width: calc(100% - 32px);
+    width: calc(100% - 28px);
+    margin: 0 auto;
   }
+
   .heading {
     font-size: clamp(28px, 8vw, 36px);
   }
+
   .lead {
     font-size: 18px;
+    text-align: center;
   }
+
   .contactSignature {
     width: 100%;
+    max-width: 360px;
     padding: 14px 16px;
   }
+
   .purchaseCard {
-    padding: 28px 20px;
+    max-width: 360px;
+    padding: 24px 16px;
   }
+
   .purchaseCard h3 {
     font-size: 26px;
   }
-  .purchaseRetailer {
-    padding: 12px 22px;
-    font-size: 12px;
+
+  .quickSpecs {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .retailerCard {
+    flex: 0 0 88%;
+    max-width: 310px;
+    min-width: 260px;
+    padding: 26px 20px;
+  }
+
+  .editionName {
+    font-size: 20px;
   }
 }

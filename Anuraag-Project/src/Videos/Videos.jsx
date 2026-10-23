@@ -57,10 +57,15 @@ export default function Videos() {
             A perspective<br />
             <span className={styles.muted}>worth sharing.</span>
           </h2>
-          <p>
-            Explore five video moments from Dr. Anuraag Guglaani.<br />
-            Select a reel to watch it on Instagram.
-          </p>
+          <a
+            href="https://www.instagram.com/anuraagguglaani/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.instagramProfileBtn}
+          >
+            <span>Open Instagram Profile</span>
+            <span className={styles.btnArrow}>↗</span>
+          </a>
         </div>
 
         {/* Reel Grid matching client 5 cards layout */}

@@ -41,6 +41,7 @@
 .rolesPortrait {
   position: sticky;
   top: 110px;
+  align-self: start;
 }
 
 .rolesPortrait h2 {
@@ -182,32 +183,74 @@
 
 /* Responsive */
 @media (max-width: 992px) {
+  .wrap {
+    width: calc(100% - 28px);
+    margin: 0 auto;
+  }
+  .eyebrow {
+    text-align: center;
+    margin-bottom: 24px;
+    width: 100%;
+  }
   .rolesGrid {
     grid-template-columns: 1fr;
-    gap: 45px;
+    gap: 40px;
+    width: 100%;
+    margin: 0 auto;
   }
   .rolesPortrait {
     position: relative;
     top: 0;
     text-align: center;
+    width: 100%;
+    margin: 0 auto;
   }
   .rolesPortrait h2 {
     font-size: clamp(32px, 7vw, 44px);
     letter-spacing: -1.2px;
+    text-align: center;
+  }
+  .rolesPortrait p {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
   .figure {
     height: 440px;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+  .rolesStack {
+    width: 100%;
     max-width: 480px;
     margin: 0 auto;
   }
   .roleCard {
     text-align: center;
   }
+  .academicRoles {
+    text-align: center;
+  }
   .academicRoles ul {
-    text-align: left;
-    max-width: 480px;
-    margin-left: auto;
-    margin-right: auto;
+    text-align: center;
+    max-width: 440px;
+    margin: 18px auto 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    list-style: none;
+  }
+  .academicRoles li {
+    padding-left: 0;
+    text-align: center;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: #dcded7;
+  }
+  .academicRoles li::before {
+    display: none;
+    content: none;
   }
 }
 
@@ -216,21 +259,29 @@
     padding: 70px 0;
   }
   .wrap {
-    width: calc(100% - 32px);
+    width: calc(100% - 28px);
+    margin: 0 auto;
   }
   .eyebrow {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
   }
   .figure {
+    max-width: 360px;
     height: 380px;
   }
   .figcaption {
     bottom: 20px;
     left: 20px;
     right: 20px;
+    text-align: center;
   }
   .figcaption b {
     font-size: 22px;
+  }
+  .academicRoles ul {
+    max-width: 360px;
+    gap: 14px;
+    margin: 16px auto 0;
   }
 }

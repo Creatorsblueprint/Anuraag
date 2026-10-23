@@ -32,8 +32,7 @@ export default function FAQ() {
       question: 'Can I view the back cover?',
       answer: (
         <p>
-          Yes. Click and hold the book, then drag left or right to rotate it through 360 degrees. On a phone, swipe the
-          book horizontally. The Back button also turns it to the original back cover.
+          Yes. Click directly on the book cover or use the interactive "View Back Cover" button to flip between the front and back covers in full detail.
         </p>
       )
     },

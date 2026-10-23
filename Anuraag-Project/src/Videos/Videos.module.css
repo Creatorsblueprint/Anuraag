@@ -60,12 +60,32 @@
   font-weight: 400;
 }
 
-.mediaHeading p {
-  font-size: 14.5px;
-  line-height: 1.8;
-  color: #babbb6;
-  margin: 0;
-  max-width: 380px;
+.instagramProfileBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 26px;
+  background: linear-gradient(135deg, #e4c988 0%, #c7a967 100%);
+  color: #0b0c09;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 235, 185, 0.4);
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(199, 169, 103, 0.35);
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.instagramProfileBtn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #f0dcab 0%, #d8be80 100%);
+  box-shadow: 0 8px 28px rgba(199, 169, 103, 0.55);
+}
+
+.btnArrow {
+  font-size: 14px;
 }
 
 /* 5 Reels Horizontal Grid */
@@ -241,27 +261,40 @@
 }
 
 @media (max-width: 800px) {
+  .wrap {
+    width: calc(100% - 28px);
+    margin: 0 auto;
+  }
   .sectionTop {
     flex-direction: column;
     align-items: center;
     text-align: center;
     gap: 12px;
+    margin-bottom: 30px;
   }
   .mediaHeading {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 16px;
+    gap: 14px;
+    width: 100%;
+    margin: 0 auto 35px;
   }
   .mediaHeading h2 {
     font-size: clamp(32px, 7vw, 44px);
     letter-spacing: -1.2px;
+    text-align: center;
   }
   .mediaHeading p {
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
   .reelGrid {
     grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
   }
   .reelCover {
     height: 300px;
@@ -273,7 +306,8 @@
     padding: 70px 0;
   }
   .wrap {
-    width: calc(100% - 32px);
+    width: calc(100% - 28px);
+    margin: 0 auto;
   }
   .reelGrid {
     grid-template-columns: 1fr;
@@ -285,8 +319,10 @@
   }
   .mediaBottom {
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
     align-items: center;
     text-align: center;
+    width: 100%;
+    margin: 25px auto 0;
   }
 }

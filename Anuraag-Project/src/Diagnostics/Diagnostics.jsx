@@ -140,7 +140,11 @@ export default function Diagnostics() {
             </div>
           </aside>
 
-          {/* Right 6 Pillars Grid */}
+          {/* Right 6 Pillars Grid — Horizontally scrollable on mobile */}
+          <div className={styles.mobileScrollHint} aria-hidden="true">
+            <span>Swipe cards to explore pillars &rarr;</span>
+          </div>
+
           <motion.div
             className={styles.expertiseGrid}
             variants={staggerContainer}

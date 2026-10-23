@@ -26,6 +26,19 @@
   text-decoration: none;
 }
 
+.brandLogo {
+  height: 44px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  display: block;
+  transition: opacity 0.25s ease;
+}
+
+.brand:hover .brandLogo {
+  opacity: 0.85;
+}
+
 .monogram {
   font-family: Georgia, serif;
   font-size: 38px;
@@ -158,11 +171,17 @@
 
 /* Responsive */
 @media (max-width: 900px) {
+  .wrap {
+    width: calc(100% - 28px);
+    margin: 0 auto;
+  }
   .footerTop {
     flex-direction: column;
     align-items: center;
     text-align: center;
     gap: 24px;
+    width: 100%;
+    margin: 0 auto;
   }
   .brand {
     justify-content: center;
@@ -172,6 +191,7 @@
   }
   .footerTagline {
     align-items: center;
+    text-align: center;
   }
   .socialRow {
     justify-content: center;
@@ -183,15 +203,19 @@
     padding: 50px 0 90px;
   }
   .wrap {
-    width: calc(100% - 32px);
+    width: calc(100% - 28px);
+    margin: 0 auto;
   }
   .creditLine {
     padding: 1.25rem 0;
+    text-align: center;
   }
   .footerBottom {
     flex-direction: column;
     gap: 10px;
     align-items: center;
     text-align: center;
+    width: 100%;
+    margin: 0 auto;
   }
 }

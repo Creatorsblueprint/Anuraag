@@ -53,6 +53,7 @@ export default function App() {
         'purchase': 'purchase',
         'contact': 'purchase',
         'order': 'purchase',
+        'top': 'top',
         'overview': 'overview',
         'home': 'overview'
       };
@@ -83,7 +84,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="appWrapper">
+    <div className="appWrapper" id="top">
       <Nav />
       <main>
         <Home />
