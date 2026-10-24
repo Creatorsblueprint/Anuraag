@@ -63,7 +63,7 @@ export default function Footer() {
               className={styles.socialLink}
               aria-label="Falcons of Majlis"
             >
-              <span>Falcons ↓</span>
+              <span>Falcons ↗</span>
             </a>
           </div>
 
