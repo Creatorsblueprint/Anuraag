@@ -65,11 +65,11 @@
   text-align: center;
 }
 
-/* 4 Edition Cards Grid */
+/* Edition Cards Grid (6 editions: 3x2 on desktop) */
 .retailerGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
   margin-bottom: 60px;
 }
 

@@ -71,6 +71,32 @@ export default function Contact() {
       ctaText: 'Order on Amazon',
       badgeType: 'amazon',
       isDigital: false
+    },
+    {
+      id: 'amazon-uk',
+      platform: 'Amazon UK',
+      tag: 'INTERNATIONAL',
+      edition: 'Collector’s Hardcover',
+      format: 'UK & International Delivery',
+      desc: 'Now officially available across the United Kingdom and Europe with direct Amazon dispatch and verified customer delivery.',
+      features: ['Amazon UK Dispatch', 'Official International Listing', 'Hardcover Edition'],
+      url: 'https://www.amazon.co.uk/dp/B0HNX3XY1K/',
+      ctaText: 'Order on Amazon UK',
+      badgeType: 'amazon',
+      isDigital: false
+    },
+    {
+      id: 'flipkart-edition',
+      platform: 'Flipkart',
+      tag: 'PAN-INDIA',
+      edition: 'Official Edition',
+      format: 'Paperback & Hardcover',
+      desc: 'Order directly via Flipkart across India with verified merchant guarantee, secure checkout, and doorstep delivery.',
+      features: ['Flipkart Verified', 'Fast Doorstep Delivery', 'Pan-India Availability'],
+      url: 'https://www.flipkart.com/you-not-fly/p/itm828ed247457a7?pid=9798907632547',
+      ctaText: 'Order on Flipkart',
+      badgeType: 'flipkart',
+      isDigital: false
     }
   ];
 
@@ -94,13 +120,13 @@ export default function Contact() {
             Choose your edition <span className={styles.goldText}>&amp; retailer.</span>
           </h2>
           <p className={styles.subtitle}>
-            Collector’s Hardcover and Field Paperback available now across verified retailers. Digital edition coming soon.
+            Collector’s Hardcover and Field Paperback available now across verified global retailers. Digital edition coming soon.
           </p>
         </motion.div>
 
         <p className={styles.mobileSwipeHint}>Swipe editions horizontally &rarr;</p>
 
-        {/* 4 Edition Cards Grid / Horizontal Carousel */}
+        {/* Edition Cards Grid / Horizontal Carousel */}
         <motion.div
           className={styles.retailerGrid}
           variants={staggerContainer}
@@ -120,6 +146,12 @@ export default function Contact() {
                   ) : item.badgeType === 'amazon' ? (
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
                       <path d="M15.93 17.09c-2.77 2.05-6.8 3.16-10.3 3.16-4.9 0-9.3-1.87-12.63-5-.26-.25-.03-.59.28-.4 3.6 2.1 8 3.36 12.56 3.36 3.1 0 6.55-.7 9.69-2.18.47-.23.86.32.4.67zM16.92 15.6c-.35-.45-2.34-.21-3.23-.1-.27.03-.31-.2-.07-.37 1.54-1.12 4.07-.8 4.38-.4.32.42-.08 2.97-1.53 4.22-.22.19-.44.09-.34-.16.32-.82.97-2.94.79-3.19z" />
+                    </svg>
+                  ) : item.badgeType === 'flipkart' ? (
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                      <line x1="3" y1="6" x2="21" y2="6" />
+                      <path d="M16 10a4 4 0 0 1-8 0" />
                     </svg>
                   ) : (
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">

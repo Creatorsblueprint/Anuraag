@@ -22,7 +22,7 @@ export default function FAQ() {
       answer: (
         <>
           <p>
-            Collector’s Hardcover and Field Paperback editions are available now across Notion Press and Amazon India, with digital purchase details coming soon. The purchase section below provides direct retailer links to choose your edition.
+            Collector’s Hardcover and Field Paperback editions are available now across Notion Press, Amazon India, Amazon UK, and Flipkart, with digital purchase details coming soon. The purchase section below provides direct retailer links to choose your edition.
           </p>
           <a
             href="#purchase"
