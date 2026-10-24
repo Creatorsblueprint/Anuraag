@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '../animations';
+import { trackBookPurchaseClick, trackModalOpen } from '../utils/analytics';
 import EbookModal from '../Ebook/EbookModal';
 import DigitalCheckoutModal from './DigitalCheckoutModal';
 import styles from './Contact.module.css';
@@ -181,6 +182,7 @@ export default function Contact() {
                   type="button"
                   onClick={() => {
                     if (!item.isDisabled) {
+                      trackModalOpen('digital_checkout');
                       setIsCheckoutOpen(true);
                     }
                   }}
@@ -197,6 +199,14 @@ export default function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.orderButton}
+                  onClick={() => {
+                    trackBookPurchaseClick({
+                      retailer: item.platform,
+                      edition: item.edition,
+                      format: item.format,
+                      url: item.url
+                    });
+                  }}
                 >
                   <span>{item.ctaText}</span>
                   <span className={styles.orderArrow}>↗</span>

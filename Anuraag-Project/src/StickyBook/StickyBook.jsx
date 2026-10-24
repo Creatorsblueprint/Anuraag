@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { trackCtaClick } from '../utils/analytics';
 import styles from './StickyBook.module.css';
 
 export default function StickyBook() {
@@ -43,6 +44,7 @@ export default function StickyBook() {
 
   const handleScrollTo = (e, targetId) => {
     e.preventDefault();
+    trackCtaClick('Get the book', 'sticky_floating_bar', targetId);
     const el = document.querySelector(targetId);
     if (el) {
       const header = document.querySelector('header');

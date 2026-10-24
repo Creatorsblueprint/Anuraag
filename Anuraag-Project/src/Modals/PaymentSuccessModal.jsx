@@ -1,9 +1,16 @@
 import React, { useEffect } from 'react';
 import styles from './PaymentSuccessModal.module.css';
+import { trackDigitalPurchaseSuccess } from '../utils/analytics';
 
 export default function PaymentSuccessModal({ isOpen, onClose }) {
   useEffect(() => {
     if (!isOpen) return;
+
+    // Track digital e-book purchase conversion
+    trackDigitalPurchaseSuccess({
+      currency: 'AED',
+      value: 15,
+    });
 
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') onClose();

@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Footer.module.css';
+import { trackSocialClick } from '../utils/analytics';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -37,6 +38,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className={styles.socialLink}
               aria-label="LinkedIn"
+              onClick={() => trackSocialClick('LinkedIn', 'http://www.linkedin.com/in/anuraagguglaani')}
             >
               <span>LinkedIn ↗</span>
             </a>
@@ -46,6 +48,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className={styles.socialLink}
               aria-label="Instagram"
+              onClick={() => trackSocialClick('Instagram', 'https://www.instagram.com/anuraagguglaani/')}
             >
               <span>Instagram ↗</span>
             </a>
@@ -55,6 +58,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className={styles.socialLink}
               aria-label="Threads"
+              onClick={() => trackSocialClick('Threads', 'https://www.threads.com/@anuraagguglaani')}
             >
               <span>Threads ↗</span>
             </a>
@@ -62,6 +66,7 @@ export default function Footer() {
               href="#falcons"
               className={styles.socialLink}
               aria-label="Falcons of Majlis"
+              onClick={() => trackSocialClick('Falcons of Majlis', '#falcons')}
             >
               <span>Falcons ↗</span>
             </a>

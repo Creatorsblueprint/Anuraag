@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { trackPageView, trackNavClick, trackCtaClick } from '../utils/analytics';
 import styles from './Nav.module.css';
 
 export default function Nav() {
@@ -41,6 +42,7 @@ export default function Nav() {
 
               if (currentPath !== expectedPath && !window.location.search.includes('p=')) {
                 window.history.replaceState(null, '', targetPath);
+                trackPageView(targetPath, `Dr. Anuraag Guglaani — ${sectionId}`);
               }
             }, 80);
 
@@ -57,7 +59,7 @@ export default function Nav() {
     };
   }, []);
 
-  const handleNavClick = (e, href) => {
+  const handleNavClick = (e, href, label, location = 'header') => {
     e.preventDefault();
     setMobileMenuOpen(false);
 
@@ -65,6 +67,9 @@ export default function Nav() {
     const newPath = sectionId === 'overview' ? '/' : `/${sectionId}`;
     window.history.pushState(null, '', newPath);
     setActiveSection(sectionId);
+
+    trackNavClick(label || sectionId, href, location);
+    trackPageView(newPath, `Dr. Anuraag Guglaani — ${label || sectionId}`);
 
     setTimeout(() => {
       const target = document.querySelector(href);
@@ -85,7 +90,7 @@ export default function Nav() {
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={styles.headerInner}>
-        <a href="#overview" onClick={(e) => handleNavClick(e, '#overview')} className={styles.brand} aria-label="Dr. Anuraag Guglaani home">
+        <a href="#overview" onClick={(e) => handleNavClick(e, '#overview', 'Home Logo', 'brand_logo')} className={styles.brand} aria-label="Dr. Anuraag Guglaani home">
           <img
             src="/logos/name_logo_white.png"
             alt="Dr. Anuraag Guglaani"
@@ -98,7 +103,7 @@ export default function Nav() {
             <a
               key={link.id}
               href={link.href}
-              onClick={(e) => handleNavClick(e, link.href)}
+              onClick={(e) => handleNavClick(e, link.href, link.label, 'desktop_nav')}
               className={`${styles.navLink} ${activeSection === link.id ? styles.active : ''}`}
             >
               {link.label}
@@ -109,7 +114,10 @@ export default function Nav() {
         <div className={styles.desktopAction}>
           <a
             href="#purchase"
-            onClick={(e) => handleNavClick(e, '#purchase')}
+            onClick={(e) => {
+              trackCtaClick('Get the Book', 'header_desktop', '#purchase');
+              handleNavClick(e, '#purchase', 'Get the Book', 'header_desktop');
+            }}
             className={styles.navContact}
           >
             <span>Get the Book</span>
@@ -144,7 +152,7 @@ export default function Nav() {
                 <a
                   key={link.id}
                   href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
+                  onClick={(e) => handleNavClick(e, link.href, link.label, 'mobile_menu')}
                   className={`${styles.mobileLink} ${activeSection === link.id ? styles.mobileActive : ''}`}
                 >
                   <span>{link.label}</span>
@@ -156,7 +164,10 @@ export default function Nav() {
             <div className={styles.mobileMenuBottom}>
               <a
                 href="#purchase"
-                onClick={(e) => handleNavClick(e, '#purchase')}
+                onClick={(e) => {
+                  trackCtaClick('Get the Book', 'mobile_menu', '#purchase');
+                  handleNavClick(e, '#purchase', 'Get the Book', 'mobile_menu');
+                }}
                 className={styles.mobileCtaBtn}
               >
                 <span>Get the Book</span>

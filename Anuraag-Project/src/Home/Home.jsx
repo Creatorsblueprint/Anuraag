@@ -1,14 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { fadeInUp, fadeInScale, staggerContainer } from '../animations';
+import { trackCtaClick, trackPageView } from '../utils/analytics';
 import styles from './Home.module.css';
 
 export default function Home() {
-  const handleScrollTo = (e, targetId) => {
+  const handleScrollTo = (e, targetId, ctaName = '') => {
     e.preventDefault();
     const sectionId = targetId.replace('#', '');
     const newPath = sectionId === 'overview' ? '/' : `/${sectionId}`;
     window.history.pushState(null, '', newPath);
+
+    if (ctaName) {
+      trackCtaClick(ctaName, 'hero_section', targetId);
+    }
+    trackPageView(newPath, `Dr. Anuraag Guglaani — ${sectionId}`);
 
     const el = document.querySelector(targetId);
     if (el) {
@@ -81,7 +87,7 @@ export default function Home() {
               <a
                 className={`${styles.button} ${styles.gold}`}
                 href="#book"
-                onClick={(e) => handleScrollTo(e, '#book')}
+                onClick={(e) => handleScrollTo(e, '#book', 'Discover the book')}
               >
                 <span>Discover the book</span>
                 <span className={styles.btnArrow}>↗</span>
@@ -90,7 +96,7 @@ export default function Home() {
               <a
                 className={styles.textLink}
                 href="#story"
-                onClick={(e) => handleScrollTo(e, '#story')}
+                onClick={(e) => handleScrollTo(e, '#story', 'Meet the author')}
               >
                 <span>Meet the author</span>
                 <span className={styles.btnArrowDown}>↓</span>
@@ -119,7 +125,7 @@ export default function Home() {
           <motion.a
             className={styles.heroBookCard}
             href="#book"
-            onClick={(e) => handleScrollTo(e, '#book')}
+            onClick={(e) => handleScrollTo(e, '#book', 'Hero Floating Book Card')}
             variants={fadeInUp}
             initial="hidden"
             animate="visible"

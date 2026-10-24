@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './DigitalCheckoutModal.module.css';
+import { trackDigitalCheckoutBegin } from '../utils/analytics';
 
 export default function DigitalCheckoutModal({ isOpen, onClose }) {
   const [email, setEmail] = useState('');
@@ -71,6 +72,11 @@ export default function DigitalCheckoutModal({ isOpen, onClose }) {
 
     setIsLoading(true);
     setServerError('');
+    trackDigitalCheckoutBegin({
+      userEmail: email.trim(),
+      currency: 'AED',
+      value: 15,
+    });
 
     try {
       // Determine base URL dynamically (supports both localhost and production deployment)

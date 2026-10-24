@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '../animations';
+import { trackCtaClick, trackModalOpen } from '../utils/analytics';
 import EbookModal from './EbookModal';
 import styles from './Ebook.module.css';
 
@@ -60,6 +61,7 @@ export default function Ebook() {
 
   const handleScrollTo = (e, targetId) => {
     e.preventDefault();
+    trackCtaClick('Get the book', 'ebook_section', targetId);
     const el = document.querySelector(targetId);
     if (el) {
       const header = document.querySelector('header');
@@ -222,7 +224,10 @@ export default function Ebook() {
               <button
                 type="button"
                 className={styles.sampleButton}
-                onClick={() => setIsModalOpen(true)}
+                onClick={() => {
+                  trackModalOpen('sample_reader');
+                  setIsModalOpen(true);
+                }}
               >
                 <span>Read a sample</span>
                 <span className={styles.sampleIcon}>📖</span>
