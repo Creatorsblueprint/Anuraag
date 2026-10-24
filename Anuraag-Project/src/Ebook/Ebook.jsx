@@ -245,7 +245,7 @@ export default function Ebook() {
             </div>
 
             {/* Visible Pause / Resume Control */}
-            <button
+            {/* <button
               type="button"
               className={`${styles.pauseControlBtn} ${isPaused ? styles.isPausedState : ''}`}
               onClick={() => setIsPaused(!isPaused)}
@@ -254,7 +254,7 @@ export default function Ebook() {
               <span className={styles.pauseIcon}>{isPaused ? '▶' : '⏸'}</span>
               <span>{isPaused ? 'Resume' : 'Pause'}</span>
               {!isPaused && <span className={styles.pulseDot} />}
-            </button>
+            </button> */}
           </div>
 
           <div className={styles.bookThemes} role="tablist">
