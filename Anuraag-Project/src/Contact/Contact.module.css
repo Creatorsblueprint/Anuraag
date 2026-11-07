@@ -65,12 +65,13 @@
   text-align: center;
 }
 
-/* Edition Cards Grid (6 editions: 3x2 on desktop) */
+/* Edition Cards Grid (4 primary editions: 2x2 or 4x1 desktop) */
 .retailerGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
-  margin-bottom: 60px;
+  max-width: 1040px;
+  margin: 0 auto 60px;
 }
 
 .retailerCard {
@@ -184,6 +185,110 @@
   font-weight: 700;
   font-size: 12px;
   flex-shrink: 0;
+}
+
+/* Amazon Global Hub Card & Interactive Selectors */
+.amazonHubCard {
+  border-color: rgba(199, 169, 103, 0.45);
+  background: linear-gradient(180deg, rgba(25, 26, 23, 0.98) 0%, rgba(18, 19, 16, 0.98) 100%);
+  position: relative;
+}
+
+.selectorBlock {
+  margin: 0 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.selectorLabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.regionPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.regionPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #c8cbc2;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 9px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  line-height: 1;
+}
+
+.regionPill:hover {
+  background: rgba(199, 169, 103, 0.12);
+  border-color: rgba(199, 169, 103, 0.4);
+  color: #efefec;
+  transform: translateY(-1px);
+}
+
+.regionPillActive {
+  background: rgba(199, 169, 103, 0.22);
+  border-color: var(--color-gold);
+  color: #fff;
+  box-shadow: 0 0 10px rgba(199, 169, 103, 0.3);
+}
+
+.flagIcon {
+  font-size: 13px;
+  line-height: 1;
+}
+
+.formatToggleGroup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.formatToggleBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #b2b5ab;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.formatToggleBtn:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(199, 169, 103, 0.3);
+  color: #efefec;
+}
+
+.formatToggleBtnActive {
+  background: rgba(199, 169, 103, 0.15);
+  border-color: var(--color-gold);
+  color: #f5f5f1;
+}
+
+.formatRadio {
+  color: var(--color-gold);
+  font-size: 10px;
 }
 
 /* High-Contrast Gold Action Button */
