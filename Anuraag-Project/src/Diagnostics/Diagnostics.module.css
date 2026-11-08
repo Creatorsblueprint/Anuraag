@@ -285,68 +285,204 @@
   box-shadow: 0 0 8px rgba(199, 169, 103, 0.5);
 }
 
-.mobileScrollHint {
+/* Pillar Tabs Navigation */
+.pillarTabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid var(--color-line);
+  padding-bottom: 16px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.pillarTabs::-webkit-scrollbar {
   display: none;
 }
 
-/* Right Grid */
-.expertiseGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
-
-.expertiseItem {
-  padding: 36px 32px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-md);
-  transition: all 0.3s ease;
+.pillarTabBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  color: #a4a79e;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 500;
   cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.pillarTabBtn:hover {
+  background: rgba(199, 169, 103, 0.08);
+  border-color: rgba(199, 169, 103, 0.3);
+  color: #efefec;
+}
+
+.pillarTabBtnActive {
+  background: rgba(199, 169, 103, 0.16);
+  border-color: var(--color-gold);
+  color: #f5f5f1;
+  box-shadow: 0 4px 18px rgba(199, 169, 103, 0.2);
+}
+
+.tabNum {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--color-gold);
+}
+
+.tabTitle {
+  letter-spacing: 0.2px;
+}
+
+.activeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  box-shadow: 0 0 8px var(--color-gold);
+}
+
+.goldPill {
+  font-size: 8px;
+  letter-spacing: 1.2px;
+  padding: 3px 8px;
+  background: rgba(199, 169, 103, 0.15);
+  border: 1px solid rgba(199, 169, 103, 0.35);
+  border-radius: 9999px;
+  color: var(--color-gold);
+  font-weight: 700;
+}
+
+/* Right Detail Card */
+.pillarDetailCard {
+  background: var(--color-surface);
+  border: 1px solid rgba(199, 169, 103, 0.28);
+  border-radius: var(--radius-lg);
+  padding: 40px 38px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+  min-height: 590px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
-  overflow: hidden; /* Ensures highlight line stays cleanly within the card borders */
+  overflow: hidden;
 }
 
-.expertiseItem:hover,
-.expertiseItemActive {
-  border-color: rgba(199, 169, 103, 0.5);
-  background: var(--color-surface-elevated);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-  transform: translateY(-2px);
-}
-
-.expertiseItemActive::before {
+.pillarDetailCard::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 3px;
-  background: var(--color-gold);
+  background: linear-gradient(90deg, var(--color-gold), transparent 80%);
 }
 
-.expertiseItem span {
-  font-size: 12px;
-  letter-spacing: 2px;
-  color: var(--color-gold);
-  font-weight: 700;
-  display: block;
+.detailPane {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.pillarBadgeGroup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   margin-bottom: 14px;
 }
 
-.expertiseItem h3 {
-  font-size: 20px;
-  color: #efefec;
-  margin: 0 0 12px;
-  letter-spacing: -0.4px;
-  font-weight: 500;
-  line-height: 1.3;
+.pillarNumBadge {
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 800;
+  color: var(--color-gold);
 }
 
-.expertiseItem p {
+.tagBadge {
+  font-size: 8.5px;
+  letter-spacing: 1.2px;
+  color: #c8cbc2;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.paneHeadline {
+  font-size: clamp(24px, 2.4vw, 32px);
+  color: #efefec;
+  font-weight: 500;
+  letter-spacing: -0.6px;
+  line-height: 1.25;
+  margin: 0 0 14px;
+}
+
+.paneDesc {
+  font-size: 14.5px;
+  line-height: 1.8;
+  color: #b8bbb2;
+  margin: 0;
+}
+
+.frameworkPoints {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  padding: 24px;
+}
+
+.pointsLabel {
+  font-size: 10px;
+  letter-spacing: 1.8px;
+  color: var(--color-gold);
+  font-weight: 700;
+  margin: 0 0 16px;
+}
+
+.pointsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.pointsList li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
   font-size: 13.5px;
-  line-height: 1.75;
-  color: #c4c6bf;
+  line-height: 1.6;
+  color: #dcded7;
+}
+
+.pointCheck {
+  color: var(--color-gold);
+  font-size: 11px;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.quoteBox {
+  border-left: 2px solid var(--color-gold);
+  padding-left: 18px;
+  margin-top: 6px;
+}
+
+.quoteBox p {
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.6;
+  color: #efefec;
   margin: 0;
 }
 
@@ -354,14 +490,22 @@
 @media (max-width: 1100px) {
   .expertiseExperience {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
   }
   .expertiseVisual {
     position: relative;
     top: 0;
-    max-width: 500px;
+    max-width: 520px;
     margin: 0 auto;
     width: 100%;
+    min-height: 520px;
+  }
+  .pillarDetailCard {
+    max-width: 520px;
+    margin: 0 auto;
+    width: 100%;
+    min-height: auto;
+    padding: 32px 26px;
   }
 }
 
@@ -381,10 +525,10 @@
     text-align: center;
     gap: 16px;
     width: 100%;
-    margin: 0 auto 40px;
+    margin: 0 auto 36px;
   }
   .splitHeading h2 {
-    font-size: clamp(30px, 6.5vw, 42px);
+    font-size: clamp(28px, 6.5vw, 38px);
     letter-spacing: -1.2px;
     text-align: center;
   }
@@ -393,111 +537,19 @@
     margin-left: auto;
     margin-right: auto;
   }
-  .expertiseExperience {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    width: 100%;
-    margin: 0 auto;
-  }
-  .expertiseVisual {
-    position: relative;
-    top: 0;
-    max-width: 460px;
-    margin: 0 auto;
-    width: 100%;
-    box-sizing: border-box;
-    text-align: center;
-  }
 
-  .mobileScrollHint {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    letter-spacing: 1.8px;
-    color: var(--color-gold);
-    text-transform: uppercase;
-    font-weight: 700;
-    margin-top: 24px;
-    margin-bottom: -14px;
-    opacity: 0.85;
-    text-align: center;
-    width: 100%;
-  }
-
-  /* Horizontal Scrolling Cards for Mobile View Only */
-  .expertiseGrid {
-    display: flex;
-    flex-direction: row;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    gap: 16px;
-    padding: 10px 14px 22px;
-    margin: 28px -14px 0;
-    width: calc(100% + 28px);
-    max-width: none;
-    box-sizing: border-box;
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-gold) rgba(255, 255, 255, 0.06);
-  }
-
-  .expertiseGrid::-webkit-scrollbar {
-    height: 4px;
-  }
-
-  .expertiseGrid::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.06);
-    border-radius: 4px;
-    margin: 0 14px;
-  }
-
-  .expertiseGrid::-webkit-scrollbar-thumb {
-    background: var(--color-gold);
-    border-radius: 4px;
-  }
-
-  .expertiseItem {
-    flex: 0 0 82%;
-    max-width: 320px;
-    min-width: 260px;
-    scroll-snap-align: center;
-    padding: 28px 22px;
-    text-align: left;
-    border: 1px solid var(--color-line);
-    border-radius: var(--radius-md);
-    display: flex;
-    flex-direction: column;
+  .pillarTabs {
     justify-content: flex-start;
-    box-sizing: border-box;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 10px;
+    margin-bottom: 24px;
+  }
+  .pillarTabBtn {
     flex-shrink: 0;
-  }
-
-  .expertiseItemActive::before {
-    height: 3px;
-  }
-
-  .expertiseItem span {
-    text-align: left;
-    font-size: 11px;
-    letter-spacing: 2px;
-    margin-bottom: 12px;
-  }
-
-  .expertiseItem h3 {
-    font-size: 19px;
-    line-height: 1.3;
-    letter-spacing: -0.4px;
-    margin: 0 0 10px;
-    text-align: left;
-  }
-
-  .expertiseItem p {
-    font-size: 13.5px;
-    line-height: 1.65;
-    text-align: left;
-    margin: 0;
+    padding: 10px 16px;
+    font-size: 12.5px;
   }
 }
 
@@ -510,9 +562,9 @@
     margin: 0 auto;
   }
   .expertiseVisual {
-    min-height: 480px;
+    min-height: 460px;
     padding: 24px 16px 20px;
-    max-width: 380px;
+    max-width: 100%;
   }
   .orbitSystem {
     width: 210px;
@@ -542,21 +594,27 @@
     font-size: 18px;
     min-height: 46px;
   }
-  .expertiseGrid {
-    padding: 8px 14px 20px;
-    gap: 14px;
-  }
-  .expertiseItem {
-    flex: 0 0 84%;
-    min-width: 250px;
-    max-width: 300px;
+
+  .pillarDetailCard {
     padding: 24px 18px;
+    max-width: 100%;
   }
-  .expertiseItem h3 {
-    font-size: 18px;
+  .paneHeadline {
+    font-size: 21px;
+    line-height: 1.3;
   }
-  .expertiseItem p {
+  .paneDesc {
     font-size: 13px;
-    line-height: 1.6;
+    line-height: 1.65;
+  }
+  .frameworkPoints {
+    padding: 18px 14px;
+  }
+  .pointsList li {
+    font-size: 12.5px;
+    gap: 8px;
+  }
+  .quoteBox p {
+    font-size: 12.5px;
   }
 }

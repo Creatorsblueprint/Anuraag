@@ -10,10 +10,10 @@ export default function Nav() {
 
   const navLinks = [
     { label: 'The Book', href: '#book', id: 'book' },
-    { label: 'The Man', href: '#story', id: 'story' },
-    { label: 'The Work', href: '#expertise', id: 'expertise' },
+    { label: 'The Story', href: '#story', id: 'story' },
+    { label: 'The Practice', href: '#expertise', id: 'expertise' },
+    { label: 'Leadership', href: '#roles', id: 'roles' },
     { label: 'The Falcon', href: '#falcons', id: 'falcons' },
-    // { label: 'Videos', href: '#videos', id: 'videos' },
     { label: 'Recognition', href: '#recognition', id: 'recognition' }
   ];
 
@@ -24,7 +24,7 @@ export default function Nav() {
       setScrolled(window.scrollY > 40);
 
       const scrollPosition = window.scrollY + 140;
-      const sections = ['overview', 'book', 'story', 'expertise', 'falcons', 'videos', 'recognition', 'faq', 'purchase'];
+      const sections = ['overview', 'book', 'story', 'expertise', 'roles', 'falcons', 'videos', 'recognition', 'faq', 'purchase'];
 
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);

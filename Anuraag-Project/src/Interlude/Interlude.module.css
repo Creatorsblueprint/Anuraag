@@ -91,33 +91,70 @@
 }
 
 @media (max-width: 800px) {
+  .flightInterlude {
+    min-height: auto;
+  }
+
   .wrap {
     width: calc(100% - 28px);
     margin: 0 auto;
-    padding: 60px 0;
+    padding: 56px 0 52px;
   }
+
   .flightCopy {
     align-items: center;
     text-align: center;
     width: 100%;
     margin: 0 auto;
   }
+
   .eyebrow {
     text-align: center;
     margin: 0 auto 16px;
+    font-size: 9.5px;
+    letter-spacing: 2.2px;
   }
+
   .flightTitle {
-    font-size: clamp(32px, 8vw, 44px);
-    letter-spacing: -2px;
+    font-size: clamp(30px, 7.8vw, 42px);
+    line-height: 1.15;
+    letter-spacing: -1.8px;
     text-align: center;
-    margin: 0 auto 25px;
+    margin: 0 auto 24px;
   }
+
   .flightFooter {
-    font-size: 8px;
-    gap: 15px;
+    font-size: 8.5px;
+    gap: 14px;
     justify-content: center;
     margin: 0 auto;
     text-align: center;
     width: 100%;
+    letter-spacing: 1.8px;
+  }
+}
+
+@media (max-width: 520px) {
+  .wrap {
+    width: calc(100% - 24px);
+    padding: 48px 0 44px;
+  }
+
+  .eyebrow {
+    margin-bottom: 14px;
+    font-size: 9px;
+  }
+
+  .flightTitle {
+    font-size: 28px;
+    margin-bottom: 20px;
+    line-height: 1.18;
+    letter-spacing: -1px;
+  }
+
+  .flightFooter {
+    font-size: 8px;
+    gap: 10px;
+    letter-spacing: 1.4px;
   }
 }
