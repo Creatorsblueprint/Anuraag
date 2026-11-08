@@ -117,7 +117,7 @@
 
 .falconFeaturePortrait figcaption strong {
   font-size: clamp(28px, 3vw, 42px);
-  color: var(--color-text-primary);
+  color: #efefec;
   font-weight: 500;
   letter-spacing: -0.8px;
   display: block;
@@ -127,7 +127,7 @@
 .falconFeaturePortrait figcaption small {
   font-size: 9px;
   letter-spacing: 2px;
-  color: var(--color-text-muted);
+  color: #b2b5ab;
   display: block;
   margin-top: 10px;
   font-weight: 600;
@@ -292,7 +292,7 @@
 .eventWide figcaption b,
 .eventCandid figcaption b {
   font-size: 18px;
-  color: var(--color-text-primary);
+  color: #efefec;
   font-weight: 500;
   letter-spacing: -0.4px;
   display: block;

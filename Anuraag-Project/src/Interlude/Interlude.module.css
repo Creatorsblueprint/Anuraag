@@ -20,7 +20,7 @@
 .sceneOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, #10110e 0%, rgba(10, 10, 10, 0.4) 40%, rgba(10, 10, 10, 0.85) 100%);
+  background: linear-gradient(180deg, rgba(16, 17, 14, 0.95) 0%, rgba(10, 10, 10, 0.5) 40%, rgba(10, 10, 10, 0.9) 100%);
   pointer-events: none;
 }
 
@@ -51,7 +51,7 @@
   line-height: 1.08;
   letter-spacing: -3.5px;
   font-weight: 500;
-  color: var(--color-text-primary);
+  color: #efefec;
   margin-bottom: 45px;
 }
 
@@ -66,7 +66,7 @@
   gap: 25px;
   font-size: 10px;
   letter-spacing: 2.2px;
-  color: var(--color-text-secondary);
+  color: #c4c7bc;
   font-weight: 600;
   max-width: 650px;
 }
@@ -157,13 +157,4 @@
     gap: 10px;
     letter-spacing: 1.4px;
   }
-}
-
-:global([data-theme="light"]) .sceneOverlay {
-  background: linear-gradient(180deg, var(--color-surface) 0%, rgba(249, 248, 244, 0.45) 40%, var(--color-bg) 100%);
-}
-
-:global([data-theme="light"]) .sceneImage {
-  filter: brightness(0.92) contrast(1.05);
-  opacity: 0.25;
 }
