@@ -1,7 +1,7 @@
 .modalOverlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.85);
+  background: var(--color-modal-overlay);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   z-index: 9999;
@@ -18,12 +18,12 @@
 }
 
 .modalContainer {
-  background: #0d0f0b;
-  border: 1px solid rgba(199, 169, 103, 0.3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-gold-border);
   border-radius: 16px;
   width: 100%;
   max-width: 520px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(199, 169, 103, 0.15);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4), 0 0 40px var(--color-gold-glow);
   position: relative;
   overflow: hidden;
   animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -44,9 +44,9 @@
   position: absolute;
   top: 16px;
   right: 16px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #c4c6bf;
+  background: var(--color-gold-bg);
+  border: 1px solid var(--color-gold-border);
+  color: var(--color-text-primary);
   width: 34px;
   height: 34px;
   border-radius: 50%;
@@ -58,14 +58,14 @@
 }
 
 .closeButton:hover {
-  background: rgba(199, 169, 103, 0.2);
+  background: var(--color-gold);
   color: #fff;
-  border-color: rgba(199, 169, 103, 0.4);
+  border-color: var(--color-gold);
 }
 
 .modalHeader {
   padding: 26px 28px 18px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--color-line);
 }
 
 .modalEyebrow {
@@ -79,7 +79,7 @@
 
 .modalTitle {
   font-size: 24px;
-  color: #f5f5f1;
+  color: var(--color-text-primary);
   font-weight: 600;
   letter-spacing: -0.5px;
   margin: 0;
@@ -97,8 +97,8 @@
   display: flex;
   align-items: center;
   gap: 18px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-line);
   border-radius: 12px;
   padding: 14px 16px;
 }
@@ -108,8 +108,8 @@
   height: 84px;
   object-fit: cover;
   border-radius: 4px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(199, 169, 103, 0.3);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--color-gold-border);
   flex-shrink: 0;
 }
 
@@ -120,13 +120,13 @@
 .productTitle {
   font-size: 15px;
   font-weight: 700;
-  color: #efefec;
+  color: var(--color-text-primary);
   margin: 0 0 4px;
 }
 
 .productDesc {
   font-size: 11px;
-  color: #a4a79e;
+  color: var(--color-text-secondary);
   line-height: 1.4;
   margin: 0 0 6px;
 }
@@ -141,7 +141,7 @@
   font-size: 9px;
   letter-spacing: 1px;
   color: var(--color-gold, #c7a967);
-  background: rgba(199, 169, 103, 0.12);
+  background: var(--color-gold-bg);
   padding: 2px 8px;
   border-radius: 4px;
   font-weight: 700;
@@ -150,7 +150,7 @@
 .priceTag {
   font-size: 15px;
   font-weight: 700;
-  color: #fff;
+  color: var(--color-gold);
 }
 
 /* Form Section */
@@ -163,14 +163,14 @@
 .label {
   font-size: 12px;
   font-weight: 600;
-  color: #dcded7;
+  color: var(--color-text-primary);
   display: flex;
   justify-content: space-between;
 }
 
 .labelHint {
   font-size: 11px;
-  color: #8b8e84;
+  color: var(--color-text-muted);
   font-weight: 400;
 }
 
@@ -183,10 +183,10 @@
 .emailInput {
   width: 100%;
   padding: 13px 16px 13px 42px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: var(--color-surface-dim);
+  border: 1px solid var(--color-line);
   border-radius: 8px;
-  color: #fff;
+  color: var(--color-text-primary);
   font-size: 14px;
   font-family: inherit;
   transition: all 0.25s ease;
@@ -196,8 +196,8 @@
 .emailInput:focus {
   outline: none;
   border-color: var(--color-gold, #c7a967);
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 0 3px rgba(199, 169, 103, 0.2);
+  background: var(--color-surface);
+  box-shadow: 0 0 0 3px var(--color-gold-bg);
 }
 
 .inputError {
@@ -208,7 +208,7 @@
 .mailIcon {
   position: absolute;
   left: 14px;
-  color: #8b8e84;
+  color: var(--color-text-muted);
   pointer-events: none;
   font-size: 14px;
   display: grid;
@@ -236,7 +236,7 @@
 
 .benefitsList li {
   font-size: 11px;
-  color: #b0b3aa;
+  color: var(--color-text-secondary);
   display: flex;
   align-items: center;
   gap: 8px;

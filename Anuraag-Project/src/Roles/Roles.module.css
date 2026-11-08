@@ -56,13 +56,13 @@
   font-size: clamp(34px, 3.5vw, 50px);
   letter-spacing: -1.8px;
   line-height: 1.15;
-  color: #efefec;
+  color: var(--color-text-primary);
   font-weight: 500;
   margin: 0 0 35px;
 }
 
 .muted {
-  color: #a4a79e;
+  color: var(--color-text-muted);
   font-weight: 400;
 }
 
@@ -113,7 +113,7 @@
 
 .figcaption b {
   font-size: 26px;
-  color: #efefec;
+  color: var(--color-text-primary);
   font-weight: 500;
   letter-spacing: -0.5px;
   display: block;
@@ -151,10 +151,10 @@
   align-items: center;
   gap: 8px;
   padding: 10px 18px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--color-surface-dim);
+  border: 1px solid var(--color-line);
   border-radius: var(--radius-sm);
-  color: #a4a79e;
+  color: var(--color-text-muted);
   font-family: inherit;
   font-size: 13px;
   font-weight: 500;
@@ -165,15 +165,15 @@
 }
 
 .tabBtn:hover {
-  background: rgba(199, 169, 103, 0.08);
-  border-color: rgba(199, 169, 103, 0.3);
-  color: #efefec;
+  background: var(--color-gold-bg);
+  border-color: var(--color-gold-border);
+  color: var(--color-text-primary);
 }
 
 .tabBtnActive {
-  background: rgba(199, 169, 103, 0.15);
+  background: var(--color-gold-bg);
   border-color: var(--color-gold);
-  color: #f5f5f1;
+  color: var(--color-text-primary);
   box-shadow: 0 4px 14px rgba(199, 169, 103, 0.2);
 }
 
@@ -221,12 +221,12 @@
   align-items: flex-start;
   gap: 10px;
   padding: 12px 14px;
-  background: rgba(255, 255, 255, 0.025);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: var(--color-surface-dim);
+  border: 1px solid var(--color-line);
   border-radius: var(--radius-sm);
   font-size: 12.5px;
   line-height: 1.5;
-  color: #dcded7;
+  color: var(--color-text-secondary);
   transition: border-color 0.2s ease, transform 0.2s ease;
   box-sizing: border-box;
   width: 100%;
@@ -235,7 +235,7 @@
 }
 
 .academicPill:hover {
-  border-color: rgba(199, 169, 103, 0.35);
+  border-color: var(--color-gold-border);
   transform: translateY(-2px);
 }
 
@@ -277,7 +277,7 @@
 
 .roleCard h3 {
   font-size: clamp(20px, 2vw, 25px);
-  color: #f5f5f1;
+  color: var(--color-text-primary);
   margin: 0 0 10px;
   letter-spacing: -0.5px;
   font-weight: 500;
@@ -287,7 +287,7 @@
 .roleCard p {
   font-size: 13.5px;
   line-height: 1.8;
-  color: #c4c6bf;
+  color: var(--color-text-secondary);
   margin: 0;
   word-break: break-word;
   overflow-wrap: break-word;
@@ -305,7 +305,7 @@
 
 .academicRoles li {
   font-size: 13px;
-  color: #dcded7;
+  color: var(--color-text-secondary);
   padding-left: 20px;
   position: relative;
   line-height: 1.6;

@@ -1,9 +1,11 @@
 import React from 'react';
 import styles from './Footer.module.css';
 import { trackSocialClick } from '../utils/analytics';
+import { useTheme } from '../utils/ThemeContext';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const { theme } = useTheme();
 
   const handleScrollToTop = (e) => {
     e.preventDefault();
@@ -20,7 +22,7 @@ export default function Footer() {
         <div className={styles.footerTop}>
           <a href="#overview" className={styles.brand} aria-label="Dr. Anuraag Guglaani home">
             <img
-              src="/logos/name_logo_white.png"
+              src={theme === 'light' ? '/logos/name_logo.PNG' : '/logos/name_logo_white.png'}
               alt="Dr. Anuraag Guglaani"
               className={styles.brandLogo}
             />

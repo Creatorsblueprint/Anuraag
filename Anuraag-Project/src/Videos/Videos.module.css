@@ -34,7 +34,7 @@
 .smallNote {
   font-size: 9px;
   letter-spacing: 1.8px;
-  color: #a4a79e;
+  color: var(--color-text-muted);
   font-weight: 600;
 }
 
@@ -50,13 +50,13 @@
   font-size: clamp(34px, 3.5vw, 50px);
   letter-spacing: -1.8px;
   line-height: 1.15;
-  color: #efefec;
+  color: var(--color-text-primary);
   font-weight: 500;
   margin: 0;
 }
 
 .muted {
-  color: #a4a79e;
+  color: var(--color-text-muted);
   font-weight: 400;
 }
 
@@ -197,7 +197,7 @@
   z-index: 2;
   font-size: 8px;
   letter-spacing: 1.5px;
-  color: #c4c6bf;
+  color: var(--color-text-secondary);
   font-weight: 600;
 }
 
@@ -225,7 +225,7 @@
 
 .reelCaption b {
   font-size: 13px;
-  color: #efefec;
+  color: var(--color-text-primary);
   font-weight: 600;
 }
 
@@ -249,7 +249,7 @@
   border-top: 1px solid var(--color-line);
   font-size: 10px;
   letter-spacing: 2px;
-  color: #888b82;
+  color: var(--color-text-muted);
   font-weight: 600;
 }
 

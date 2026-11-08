@@ -1,5 +1,5 @@
 .bookSection {
-  background: #10110e;
+  background: var(--color-surface);
   border-bottom: 1px solid var(--color-line);
 }
 
@@ -34,7 +34,7 @@
 .smallNote {
   font-size: 9px;
   letter-spacing: 1.8px;
-  color: #9ea194;
+  color: var(--color-text-muted);
   font-weight: 600;
 }
 
@@ -153,8 +153,8 @@
 }
 
 .flipBtn {
-  background: rgba(22, 26, 20, 0.9);
-  border: 1px solid rgba(199, 169, 103, 0.45);
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-gold-border);
   padding: 8px 18px;
   border-radius: var(--radius-pill);
   color: var(--color-gold);
@@ -171,7 +171,7 @@
 }
 
 .flipBtn:hover {
-  background: rgba(35, 40, 28, 0.95);
+  background: var(--color-surface-card);
   border-color: var(--color-gold);
   transform: translateY(-2px);
   box-shadow: 0 4px 18px rgba(199, 169, 103, 0.3);
@@ -184,7 +184,7 @@
 .clickHint {
   font-size: 9px;
   letter-spacing: 1.8px;
-  color: #8c8f85;
+  color: var(--color-text-muted);
   text-transform: uppercase;
   font-weight: 600;
 }
@@ -217,7 +217,7 @@
 
 .strike {
   position: relative;
-  color: #b2b2aa;
+  color: var(--color-text-muted);
   padding: 0 4px;
 }
 
@@ -249,7 +249,7 @@
 .lead {
   font-size: 17px;
   line-height: 1.55;
-  color: #f5f5f1;
+  color: var(--color-text-primary);
   font-weight: 500;
   margin-bottom: 14px;
 }
@@ -257,14 +257,14 @@
 .bookDescriptionText {
   font-size: 14px;
   line-height: 1.8;
-  color: #c4c7bc;
+  color: var(--color-text-secondary);
   margin: 0 0 16px;
 }
 
 /* Reader Benefits Card: What Will I Gain? */
 .readerBenefits {
-  background: rgba(18, 22, 26, 0.65);
-  border: 1px solid rgba(199, 169, 103, 0.25);
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-gold-border);
   border-left: 3px solid var(--color-gold);
   padding: 16px 20px;
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
@@ -289,7 +289,7 @@
   flex-direction: column;
   gap: 10px;
   font-size: 13.5px;
-  color: #e1e3dc;
+  color: var(--color-text-secondary);
 }
 
 .benefitsList li {
@@ -357,10 +357,10 @@
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.5px;
-  border: 1px solid rgba(199, 169, 103, 0.45);
+  border: 1px solid var(--color-gold-border);
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.05);
-  color: #f5f5f1;
+  background: var(--color-gold-bg);
+  color: var(--color-text-primary);
   cursor: pointer;
   transition: all 0.25s ease;
 }
@@ -379,7 +379,7 @@
 
 .bookPublisher {
   font-size: 10px;
-  color: #9ea194;
+  color: var(--color-text-muted);
   display: block;
   margin-top: 14px;
 }
@@ -387,7 +387,7 @@
 /* Themes Explorer with Header Row & Pause Control */
 .themesExplorer {
   margin-top: 80px;
-  border-top: 1px solid #383a30;
+  border-top: 1px solid var(--color-line);
   padding-top: 40px;
 }
 
@@ -415,9 +415,9 @@
   gap: 8px;
   padding: 6px 14px;
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #c4c7bc;
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-line);
+  color: var(--color-text-secondary);
   font-size: 10.5px;
   font-weight: 600;
   letter-spacing: 1px;
@@ -449,8 +449,8 @@
 }
 
 .bookThemes {
-  border-top: 1px solid #383a30;
-  border-bottom: 1px solid #383a30;
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   padding: 0;
@@ -459,13 +459,13 @@
 .themeTabBtn {
   background: transparent;
   border: none;
-  border-right: 1px solid #383a30;
+  border-right: 1px solid var(--color-line);
   padding: 24px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  color: #a8aba1;
+  color: var(--color-text-muted);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 2px;
@@ -501,8 +501,8 @@
 .themePanel {
   position: relative;
   padding: 45px 35px;
-  background: rgba(22, 24, 19, 0.6);
-  border: 1px solid rgba(199, 169, 103, 0.2);
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-gold-border);
   border-radius: var(--radius-md);
   margin-top: 25px;
   display: flex;
@@ -517,7 +517,7 @@
   bottom: -15px;
   font-size: 110px;
   font-weight: 800;
-  color: rgba(255, 255, 255, 0.03);
+  color: var(--color-border);
   pointer-events: none;
   line-height: 1;
 }
@@ -531,12 +531,12 @@
 
 .themePanelIndex span {
   font-size: 14px;
-  color: #7b7f6c;
+  color: var(--color-text-muted);
 }
 
 .themePanelContent h3 {
   font-size: 22px;
-  color: #efefec;
+  color: var(--color-text-primary);
   margin-bottom: 12px;
   letter-spacing: -0.5px;
 }
@@ -544,7 +544,7 @@
 .themePanelContent p {
   font-size: 14px;
   line-height: 1.8;
-  color: #c4c7bc;
+  color: var(--color-text-secondary);
   margin: 0;
   max-width: 780px;
 }
@@ -558,7 +558,7 @@
   font-weight: 400;
   margin: 80px auto 0;
   max-width: 1000px;
-  color: #efefec;
+  color: var(--color-text-primary);
 }
 
 .bookQuote span {
@@ -571,7 +571,7 @@
   font-style: normal;
   letter-spacing: 2px;
   margin-top: 25px;
-  color: #9ea194;
+  color: var(--color-text-muted);
 }
 
 /* Responsive */

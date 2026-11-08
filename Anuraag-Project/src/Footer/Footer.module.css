@@ -1,5 +1,5 @@
 .footer {
-  background-color: #0a0a0a;
+  background-color: var(--color-surface);
   border-top: 1px solid var(--color-line);
   padding: 60px 0 110px;
 }
@@ -44,7 +44,7 @@
   font-size: 38px;
   line-height: 1;
   letter-spacing: -4px;
-  color: #efefec;
+  color: var(--color-text-primary);
 }
 
 .monogram span {
@@ -57,9 +57,9 @@
   font-weight: 600;
   letter-spacing: 1.7px;
   line-height: 1.6;
-  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid var(--color-line);
   padding-left: 15px;
-  color: #efefec;
+  color: var(--color-text-primary);
 }
 
 .footerTagline {
@@ -76,7 +76,7 @@
 
 .brandMotto {
   font-size: 11px;
-  color: #a8aba1;
+  color: var(--color-text-muted);
   margin: 3px 0 0;
 }
 
@@ -89,7 +89,7 @@
 
 .socialLink {
   font-size: 11px;
-  color: #c4c7bc;
+  color: var(--color-text-secondary);
   text-decoration: none;
   font-weight: 600;
   letter-spacing: 0.5px;
@@ -106,7 +106,7 @@
   gap: 8px;
   font-size: 9px;
   letter-spacing: 1.8px;
-  color: #9ea194;
+  color: var(--color-text-muted);
   text-decoration: none;
   text-transform: uppercase;
   font-weight: 600;
@@ -134,7 +134,7 @@
 
 .developerCredit {
   font-size: 11px;
-  color: #9ea194;
+  color: var(--color-text-muted);
   letter-spacing: 0.8px;
 }
 
@@ -147,7 +147,7 @@
 }
 
 .creditLink:hover {
-  color: #e1c68e;
+  color: var(--color-gold-light);
 }
 
 /* Footer Bottom Bar */
@@ -156,17 +156,17 @@
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid var(--color-line);
   padding-top: 22px;
   font-size: 10px;
-  color: #7c8070;
+  color: var(--color-text-muted);
   letter-spacing: 0.8px;
 }
 
 .footerBottom span:last-child {
   font-size: 8px;
   letter-spacing: 2px;
-  color: #9ea194;
+  color: var(--color-text-muted);
 }
 
 /* Responsive */

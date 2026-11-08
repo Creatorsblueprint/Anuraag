@@ -2,7 +2,7 @@
   position: fixed;
   inset: 0;
   z-index: 1000;
-  background: rgba(6, 8, 10, 0.88);
+  background: var(--color-modal-overlay);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   display: flex;
@@ -18,8 +18,8 @@
 }
 
 .modalContainer {
-  background: #0d1014;
-  border: 1px solid rgba(199, 169, 103, 0.35);
+  background: var(--color-surface);
+  border: 1px solid var(--color-gold-border);
   border-radius: var(--radius-md);
   width: 100%;
   max-width: 920px;
@@ -27,7 +27,7 @@
   max-height: 840px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 30px rgba(199, 169, 103, 0.15);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4), 0 0 30px var(--color-gold-glow);
   overflow: hidden;
   position: relative;
   animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -51,7 +51,7 @@
   align-items: center;
   padding: 18px 26px;
   border-bottom: 1px solid var(--color-line);
-  background: rgba(18, 22, 28, 0.95);
+  background: var(--color-surface-elevated);
   flex-shrink: 0;
 }
 
@@ -71,7 +71,7 @@
 .modalTitle {
   font-size: 18px;
   font-weight: 600;
-  color: #f5f5f1;
+  color: var(--color-text-primary);
   margin-top: 3px;
   letter-spacing: -0.3px;
 }
@@ -106,9 +106,9 @@
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #dcded7;
+  background: var(--color-gold-bg);
+  border: 1px solid var(--color-gold-border);
+  color: var(--color-text-primary);
   font-size: 18px;
   line-height: 1;
   display: grid;
@@ -118,7 +118,7 @@
 }
 
 .closeButton:hover {
-  background: rgba(199, 169, 103, 0.2);
+  background: var(--color-gold-bg);
   border-color: var(--color-gold);
   color: var(--color-gold);
   transform: rotate(90deg);
@@ -130,7 +130,7 @@
   width: 100%;
   height: 100%;
   position: relative;
-  background: #14171d;
+  background: var(--color-surface-dim);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -141,7 +141,7 @@
   width: 100%;
   height: 100%;
   border: none;
-  background: #181c22;
+  background: var(--color-surface-dim);
 }
 
 /* Styled PDF Document Layout (before/fallback for GCP URL) */
@@ -159,7 +159,7 @@
 }
 
 .pdfDocContainer::-webkit-scrollbar-thumb {
-  background: rgba(199, 169, 103, 0.3);
+  background: var(--color-gold-border);
   border-radius: 3px;
 }
 
@@ -167,13 +167,13 @@
 .pdfPageSheet {
   width: 90%;
   max-width: 680px;
-  background: #181b22;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
   border-radius: 4px;
   margin-top: 24px;
   padding: 44px 50px 36px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-  color: #d6d8d0;
+  box-shadow: var(--shadow-subtle);
+  color: var(--color-text-secondary);
   font-size: 14.5px;
   line-height: 1.85;
 }
@@ -183,8 +183,8 @@
   justify-content: space-between;
   font-size: 9px;
   letter-spacing: 2px;
-  color: #7b8074;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--color-text-muted);
+  border-bottom: 1px solid var(--color-line);
   padding-bottom: 14px;
   margin-bottom: 30px;
   font-weight: 600;
@@ -202,7 +202,7 @@
 .chapterHeading {
   font-family: Georgia, serif;
   font-size: 26px;
-  color: #f5f5f1;
+  color: var(--color-text-primary);
   letter-spacing: -0.5px;
   margin-bottom: 22px;
   font-weight: 500;
@@ -219,7 +219,7 @@
 .verdictQuote {
   font-size: 22px;
   letter-spacing: 1px;
-  color: #f5f5f1;
+  color: var(--color-text-primary);
   margin-bottom: 18px;
   font-weight: 700;
 }
@@ -229,7 +229,7 @@
 }
 
 .pdfAxiomBox {
-  background: rgba(199, 169, 103, 0.06);
+  background: var(--color-gold-bg);
   border-left: 3px solid var(--color-gold);
   padding: 14px 20px;
   margin: 22px 0;
@@ -238,7 +238,7 @@
 
 .pdfAxiomBox p {
   font-style: italic;
-  color: #efefec;
+  color: var(--color-text-primary);
   margin: 0;
   font-size: 14px;
 }
@@ -258,8 +258,8 @@
   justify-content: space-between;
   font-size: 9px;
   letter-spacing: 1.5px;
-  color: #7b8074;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--color-text-muted);
+  border-top: 1px solid var(--color-line);
   padding-top: 16px;
   margin-top: 36px;
 }
@@ -267,7 +267,7 @@
 /* Modal Footer */
 .modalFooter {
   padding: 14px 26px;
-  background: rgba(14, 18, 22, 0.98);
+  background: var(--color-surface-elevated);
   border-top: 1px solid var(--color-line);
   display: flex;
   justify-content: space-between;
@@ -277,7 +277,7 @@
 
 .footerNote {
   font-size: 11px;
-  color: #9ea194;
+  color: var(--color-text-muted);
 }
 
 .footerCtaBtn {

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { trackPageView, trackNavClick, trackCtaClick } from '../utils/analytics';
+import { useTheme } from '../utils/ThemeContext';
 import styles from './Nav.module.css';
 
 export default function Nav() {
+  const { theme, toggleTheme, isDark } = useTheme();
   const [activeSection, setActiveSection] = useState('overview');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -92,7 +94,7 @@ export default function Nav() {
       <div className={styles.headerInner}>
         <a href="#overview" onClick={(e) => handleNavClick(e, '#overview', 'Home Logo', 'brand_logo')} className={styles.brand} aria-label="Dr. Anuraag Guglaani home">
           <img
-            src="/logos/name_logo_white.png"
+            src={isDark ? '/logos/name_logo_white.png' : '/logos/name_logo.PNG'}
             alt="Dr. Anuraag Guglaani"
             className={styles.brandLogo}
           />
@@ -112,6 +114,22 @@ export default function Nav() {
         </nav>
 
         <div className={styles.desktopAction}>
+          {/* Light / Dark Mode Toggle Button */}
+          <button
+            type="button"
+            onClick={toggleTheme}
+            className={styles.themeToggleBtn}
+            aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+            title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+          >
+            {isDark ? (
+              <span className={styles.themeIcon} role="img" aria-label="Sun">☀️</span>
+            ) : (
+              <span className={styles.themeIcon} role="img" aria-label="Moon">🌙</span>
+            )}
+            <span className={styles.themeLabel}>{isDark ? 'LIGHT' : 'DARK'}</span>
+          </button>
+
           <a
             href="#purchase"
             onClick={(e) => {
@@ -126,16 +144,27 @@ export default function Nav() {
         </div>
 
         {/* Retained 3-line hamburger menu with animated open/close state */}
-        <button
-          className={`${styles.mobileToggle} ${mobileMenuOpen ? styles.toggleOpen : ''}`}
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle Navigation Menu"
-          aria-expanded={mobileMenuOpen}
-        >
-          <span className={styles.hamburgerLine} />
-          <span className={styles.hamburgerLine} />
-          <span className={styles.hamburgerLine} />
-        </button>
+        <div className={styles.mobileRightActions}>
+          <button
+            type="button"
+            onClick={toggleTheme}
+            className={styles.mobileThemeToggleBtn}
+            aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+          >
+            <span>{isDark ? '☀️' : '🌙'}</span>
+          </button>
+
+          <button
+            className={`${styles.mobileToggle} ${mobileMenuOpen ? styles.toggleOpen : ''}`}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle Navigation Menu"
+            aria-expanded={mobileMenuOpen}
+          >
+            <span className={styles.hamburgerLine} />
+            <span className={styles.hamburgerLine} />
+            <span className={styles.hamburgerLine} />
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>
