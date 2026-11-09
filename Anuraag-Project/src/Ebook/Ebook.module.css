@@ -124,13 +124,11 @@
 .bookSheen {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    115deg,
-    rgba(255, 255, 255, 0.12) 0%,
-    rgba(255, 255, 255, 0.04) 30%,
-    transparent 60%,
-    rgba(0, 0, 0, 0.25) 100%
-  );
+  background: linear-gradient(115deg,
+      rgba(255, 255, 255, 0.12) 0%,
+      rgba(255, 255, 255, 0.04) 30%,
+      transparent 60%,
+      rgba(0, 0, 0, 0.25) 100%);
   pointer-events: none;
 }
 
@@ -166,8 +164,8 @@
   gap: 8px;
   cursor: pointer;
   transition: all 0.25s ease;
-  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 
 .flipBtn:hover {
@@ -579,9 +577,11 @@
   .bookLayout {
     gap: 35px;
   }
+
   .bookShowcase {
     width: 280px;
   }
+
   .bookStage {
     min-height: 520px;
   }
@@ -592,6 +592,7 @@
     width: calc(100% - 28px);
     margin: 0 auto;
   }
+
   .sectionTop {
     flex-direction: column;
     align-items: center;
@@ -599,6 +600,7 @@
     gap: 10px;
     margin-bottom: 35px;
   }
+
   .bookLayout {
     grid-template-columns: 1fr;
     gap: 35px;
@@ -606,6 +608,7 @@
     width: 100%;
     margin: 0 auto;
   }
+
   .bookCopy {
     align-items: center;
     text-align: center;
@@ -613,15 +616,18 @@
     max-width: 540px;
     margin: 0 auto;
   }
+
   .launchTag {
     justify-content: center;
     margin: 0 auto 20px;
   }
+
   .bookCopy h2 {
     font-size: clamp(44px, 11vw, 64px);
     letter-spacing: -2.5px;
     text-align: center;
   }
+
   .bookSubtitle,
   .lead,
   .bookDescriptionText {
@@ -629,6 +635,7 @@
     margin-left: auto;
     margin-right: auto;
   }
+
   .bookActions {
     display: flex;
     flex-direction: column;
@@ -639,6 +646,7 @@
     max-width: 320px;
     margin: 10px auto 0;
   }
+
   .button {
     width: 100%;
     max-width: 280px;
@@ -647,6 +655,7 @@
     box-sizing: border-box;
     text-align: center;
   }
+
   .sampleButton {
     width: 100%;
     max-width: 280px;
@@ -655,29 +664,36 @@
     box-sizing: border-box;
     text-align: center;
   }
+
   .bookPublisher {
     text-align: center;
     margin-top: 14px;
     width: 100%;
   }
+
   .bookStage {
     min-height: 440px;
-    grid-row: 1; /* Place the book cover prominent above the copy on mobile */
+    grid-row: 1;
+    /* Place the book cover prominent above the copy on mobile */
     width: 100%;
     margin: 0 auto;
   }
+
   .book3DCard {
     width: 250px;
   }
+
   .bookThemes {
     grid-template-columns: 1fr 1fr;
     width: 100%;
     max-width: 480px;
     margin: 40px auto 0;
   }
+
   .themeTabBtn:nth-child(2) {
     border-right: none;
   }
+
   .themePanel {
     flex-direction: column;
     align-items: center;
@@ -689,9 +705,11 @@
     margin: 20px auto 0;
     box-sizing: border-box;
   }
+
   .themePanelContent {
     text-align: center;
   }
+
   .themePanelContent h3,
   .themePanelContent p {
     text-align: center;
@@ -712,23 +730,28 @@
     text-align: center;
     box-sizing: border-box;
   }
+
   .benefitsTitle {
     text-align: center;
     margin-bottom: 16px;
     font-size: 9px;
   }
+
   .benefitsList {
     gap: 18px;
     text-align: center;
   }
+
   .benefitsList li {
     display: block;
     text-align: center;
     line-height: 1.6;
     padding: 2px 4px;
   }
+
   .bulletStar {
-    display: none; /* Removed star point on mobile view as requested */
+    display: none;
+    /* Removed star point on mobile view as requested */
   }
 }
 
@@ -737,34 +760,42 @@
     width: calc(100% - 28px);
     margin: 0 auto;
   }
+
   .bookCopy h2 {
     font-size: clamp(38px, 12vw, 50px);
     letter-spacing: -1.8px;
   }
+
   .bookSubtitle {
     font-size: 19px;
   }
+
   .lead {
     font-size: 16px;
   }
+
   .readerBenefits {
     width: 100%;
     max-width: 380px;
     padding: 20px 16px;
     margin: 18px auto 26px;
   }
+
   .benefitsList {
     gap: 20px;
   }
+
   .benefitsList li {
     font-size: 13px;
     line-height: 1.65;
   }
+
   .bookThemes {
     grid-template-columns: 1fr;
     max-width: 380px;
     margin: 30px auto 0;
   }
+
   .themeTabBtn {
     border-right: none;
     border-bottom: 1px solid #383a30;
@@ -772,10 +803,12 @@
     justify-content: center;
     text-align: center;
   }
+
   .themePanel {
     max-width: 380px;
     padding: 22px 14px;
   }
+
   .bookQuote {
     font-size: 22px;
     letter-spacing: -0.6px;
