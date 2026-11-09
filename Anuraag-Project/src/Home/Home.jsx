@@ -45,7 +45,7 @@ export default function Home() {
         <img
           className={styles.heroTexture}
           src="/client_images/hero_texture_backdrop.jpg"
-          alt=""
+          alt="Luxury architectural texture background"
           aria-hidden="true"
         />
 
