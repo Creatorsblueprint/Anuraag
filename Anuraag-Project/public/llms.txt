@@ -30,7 +30,7 @@ Dr. Anuraag Guglaani is a seasoned group CEO, multi-family office leader, ventur
 ## Navigation & Sections
 - **Overview**: https://dranuraagguglaani.com/
 - **The Book**: https://dranuraagguglaani.com/book
-- **The Story**: https://dranuraagguglaani.com/story
+- **The Story / About**: https://dranuraagguglaani.com/about (or https://dranuraagguglaani.com/story)
 - **The Practice (Governance & A2G)**: https://dranuraagguglaani.com/expertise
 - **Leadership & Academic Roles**: https://dranuraagguglaani.com/roles
 - **Falcons of Majlis**: https://dranuraagguglaani.com/falcons
