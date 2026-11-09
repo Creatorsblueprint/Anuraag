@@ -34,8 +34,19 @@
       send_page_view: false
     });
   </script>
-  <script type="module" crossorigin src="/assets/index-BrEg1bt1.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-CCEKZNAw.css">
+
+  <!-- Anti-FOUC Theme Initializer -->
+  <script>
+    (function() {
+      try {
+        var savedTheme = localStorage.getItem('theme');
+        var theme = savedTheme || 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {}
+    })();
+  </script>
+  <script type="module" crossorigin src="/assets/index-m2HPDqOl.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-c9MdWwfx.css">
 </head>
 
 <body>
