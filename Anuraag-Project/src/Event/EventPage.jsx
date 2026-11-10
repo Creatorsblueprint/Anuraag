@@ -6,7 +6,15 @@ import { useTheme } from '../utils/ThemeContext';
 import styles from './EventPage.module.css';
 
 // Event details shown on the page. Kept in one place so they are easy to update.
-const EVENT_DATE_LABEL = '22 November 2026';
+// PLACEHOLDERS: "name" and "timeLabel" are not finalised yet. Leave them as ''
+// and the page shows a neutral fallback; fill them in once confirmed.
+// (The confirmation email has its own copy of these details in the backend .env.)
+const EVENT = {
+  name: '', // e.g. 'The Family Business Masterclass'
+  dateLabel: '22 November 2026',
+  timeLabel: '', // e.g. '6:00 PM GST'
+  formatLabel: 'Online via Zoom'
+};
 
 // The form starts empty. One object holds every field so we can add fields easily.
 const EMPTY_FORM = { name: '', email: '', phone: '' };
@@ -158,14 +166,32 @@ export default function EventPage() {
         <motion.div className={styles.wrap} variants={fadeInUp} initial="hidden" animate="visible">
           {/* Page heading, styled like the section headers on the home page */}
           <div className={styles.sectionHeader}>
-            <p className={styles.eyebrow}>EVENT · {EVENT_DATE_LABEL.toUpperCase()}</p>
+            <p className={styles.eyebrow}>
+              {(EVENT.name || 'Event').toUpperCase()} · {EVENT.dateLabel.toUpperCase()}
+            </p>
             <h1 className={styles.heading}>
               Reserve <span className={styles.goldText}>your seat.</span>
             </h1>
             <p className={styles.subtitle}>
-              Fill in your details below to register for the event on {EVENT_DATE_LABEL}.
+              Fill in your details below to register for {EVENT.name || 'the event'} on {EVENT.dateLabel}.
             </p>
           </div>
+
+          {/* Key facts about the event: date, time and where it takes place */}
+          <dl className={styles.detailsRow}>
+            <div className={styles.detailItem}>
+              <dt>Date</dt>
+              <dd>{EVENT.dateLabel}</dd>
+            </div>
+            <div className={styles.detailItem}>
+              <dt>Time</dt>
+              <dd>{EVENT.timeLabel || 'To be announced'}</dd>
+            </div>
+            <div className={styles.detailItem}>
+              <dt>Where</dt>
+              <dd>{EVENT.formatLabel}</dd>
+            </div>
+          </dl>
 
           {/* Registration form card. noValidate turns off the browser's own
               popups so our styled error messages are shown instead.
@@ -176,8 +202,11 @@ export default function EventPage() {
               <span className={styles.successIcon} aria-hidden="true">✓</span>
               <h2 className={styles.successTitle}>You are registered.</h2>
               <p className={styles.successText}>
-                Thank you, {form.name.trim()}. Your seat for {EVENT_DATE_LABEL} is reserved under{' '}
+                Thank you, {form.name.trim()}. Your seat for {EVENT.dateLabel} is reserved under{' '}
                 <strong>{form.email.trim()}</strong>.
+              </p>
+              <p className={styles.successText}>
+                Your Zoom joining link will be sent to this email address before the event.
               </p>
               <a href="/" className={styles.submitBtn}>
                 <span>Back to main site</span>
@@ -280,6 +309,10 @@ export default function EventPage() {
                 </>
               )}
             </button>
+
+            <p className={styles.formNote}>
+              The Zoom joining link will be emailed to registered attendees before the event.
+            </p>
           </form>
           )}
         </motion.div>

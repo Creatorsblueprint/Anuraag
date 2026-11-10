@@ -87,6 +87,45 @@
   margin: 0;
 }
 
+/* Date / Time / Where facts shown between the heading and the form */
+.detailsRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 0 0 20px;
+}
+
+.detailItem {
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  padding: 12px 10px;
+  text-align: center;
+}
+
+.detailItem dt {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 2px;
+}
+
+.detailItem dd {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+/* Small grey note under the Register button */
+.formNote {
+  font-size: 11px;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
 /* Form card: same surface, border and glow as the checkout modal */
 .card {
   background: var(--color-surface);
@@ -271,5 +310,10 @@
 
   .card {
     padding: 20px;
+  }
+
+  /* Stack the three event facts on narrow screens */
+  .detailsRow {
+    grid-template-columns: 1fr;
   }
 }
