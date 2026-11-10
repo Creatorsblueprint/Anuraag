@@ -3,21 +3,25 @@ import { motion } from 'framer-motion';
 import { fadeInUp } from '../animations';
 import { trackPageView } from '../utils/analytics';
 import { useTheme } from '../utils/ThemeContext';
+import { COUNTRIES } from './countries';
 import styles from './EventPage.module.css';
 
 // Event details shown on the page. Kept in one place so they are easy to update.
-// PLACEHOLDERS: "name" and "timeLabel" are not finalised yet. Leave them as ''
-// and the page shows a neutral fallback; fill them in once confirmed.
-// (The confirmation email has its own copy of these details in the backend .env.)
+// These come from the official event poster.
+// (The confirmation email has its own copy of these details in the backend: server.js.)
 const EVENT = {
-  name: '', // e.g. 'The Family Business Masterclass'
+  eyebrow: 'World Record Attempt',
+  title: 'Most Nationalities Participating in a',
+  titleHighlight: 'Digital Book Launch', // shown in gold at the end of the title
+  host: 'Dr. Anuraag Guglaani',
+  bookTitle: 'You Will Not Fly: Grounded at Twenty, Airborne Ever Since',
   dateLabel: '22 November 2026',
-  timeLabel: '', // e.g. '6:00 PM GST'
+  timeLabel: '3:00 PM GST',
   formatLabel: 'Online via Zoom'
 };
 
 // The form starts empty. One object holds every field so we can add fields easily.
-const EMPTY_FORM = { name: '', email: '', phone: '' };
+const EMPTY_FORM = { name: '', email: '', nationality: '', phone: '' };
 
 // Same email pattern the existing checkout form uses (DigitalCheckoutModal.jsx).
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -48,6 +52,13 @@ function validateField(field, value) {
   if (field === 'email') {
     if (!trimmed) return 'Email address is required.';
     if (!EMAIL_REGEX.test(trimmed)) return 'Please enter a valid email address (e.g. name@example.com).';
+  }
+
+  if (field === 'nationality') {
+    // Required: the world record counts nationalities, so every registrant needs one.
+    // It must be one of the dropdown options (COUNTRIES).
+    if (!trimmed) return 'Please select your nationality.';
+    if (!COUNTRIES.includes(trimmed)) return 'Please choose a nationality from the list.';
   }
 
   if (field === 'phone') {
@@ -116,6 +127,7 @@ export default function EventPage() {
         body: JSON.stringify({
           name: form.name.trim(),
           email: form.email.trim(),
+          nationality: form.nationality.trim(),
           phone: form.phone.trim()
         })
       });
@@ -167,13 +179,14 @@ export default function EventPage() {
           {/* Page heading, styled like the section headers on the home page */}
           <div className={styles.sectionHeader}>
             <p className={styles.eyebrow}>
-              {(EVENT.name || 'Event').toUpperCase()} · {EVENT.dateLabel.toUpperCase()}
+              {EVENT.eyebrow.toUpperCase()} · {EVENT.dateLabel.toUpperCase()}
             </p>
             <h1 className={styles.heading}>
-              Reserve <span className={styles.goldText}>your seat.</span>
+              {EVENT.title} <span className={styles.goldText}>{EVENT.titleHighlight}</span>
             </h1>
             <p className={styles.subtitle}>
-              Fill in your details below to register for {EVENT.name || 'the event'} on {EVENT.dateLabel}.
+              Join {EVENT.host}, The Family Business Doctor, for the digital launch of{' '}
+              <em>{EVENT.bookTitle}</em>. Register below to take part and represent your nationality.
             </p>
           </div>
 
@@ -185,7 +198,7 @@ export default function EventPage() {
             </div>
             <div className={styles.detailItem}>
               <dt>Time</dt>
-              <dd>{EVENT.timeLabel || 'To be announced'}</dd>
+              <dd>{EVENT.timeLabel}</dd>
             </div>
             <div className={styles.detailItem}>
               <dt>Where</dt>
@@ -203,7 +216,7 @@ export default function EventPage() {
               <h2 className={styles.successTitle}>You are registered.</h2>
               <p className={styles.successText}>
                 Thank you, {form.name.trim()}. Your seat for {EVENT.dateLabel} is reserved under{' '}
-                <strong>{form.email.trim()}</strong>.
+                <strong>{form.email.trim()}</strong>, representing <strong>{form.nationality}</strong>.
               </p>
               <p className={styles.successText}>
                 Your Zoom joining link will be sent to this email address before the event.
@@ -258,6 +271,35 @@ export default function EventPage() {
               {errors.email && (
                 <p className={styles.errorText} id="event-email-error" role="alert">
                   <span aria-hidden="true">⚠</span> {errors.email}
+                </p>
+              )}
+            </div>
+
+            {/* Nationality: a dropdown, so everyone from the same country is
+                recorded with exactly the same spelling (needed for the record count). */}
+            <div className={styles.formGroup}>
+              <label htmlFor="event-nationality" className={styles.label}>Nationality</label>
+              <select
+                id="event-nationality"
+                name="nationality"
+                value={form.nationality}
+                onChange={handleChange}
+                className={`${styles.input} ${styles.select} ${errors.nationality ? styles.inputError : ''}`}
+                autoComplete="country-name"
+                disabled={isSubmitting}
+                aria-invalid={Boolean(errors.nationality)}
+                aria-describedby={errors.nationality ? 'event-nationality-error' : undefined}
+                required
+              >
+                {/* Empty first option acts as the placeholder */}
+                <option value="">Select your nationality</option>
+                {COUNTRIES.map((country) => (
+                  <option key={country} value={country}>{country}</option>
+                ))}
+              </select>
+              {errors.nationality && (
+                <p className={styles.errorText} id="event-nationality-error" role="alert">
+                  <span aria-hidden="true">⚠</span> {errors.nationality}
                 </p>
               )}
             </div>

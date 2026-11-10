@@ -67,10 +67,11 @@
   margin: 0 0 14px;
 }
 
+/* Slightly smaller than the home-page headings because the event title is long */
 .heading {
-  font-size: clamp(34px, 3.8vw, 52px);
-  letter-spacing: -1.8px;
-  line-height: 1.15;
+  font-size: clamp(26px, 3vw, 38px);
+  letter-spacing: -1px;
+  line-height: 1.2;
   color: var(--color-text-primary);
   font-weight: 500;
   margin: 0 0 16px;
@@ -168,6 +169,17 @@
   font-size: 14px;
   font-family: inherit;
   transition: all 0.25s ease;
+}
+
+/* Dropdown (Nationality): reuses the .input look, plus a pointer cursor */
+.select {
+  cursor: pointer;
+}
+
+/* Colours for the opened dropdown list, so it matches the dark/light theme */
+.select option {
+  background: var(--color-surface);
+  color: var(--color-text-primary);
 }
 
 .input::placeholder {
