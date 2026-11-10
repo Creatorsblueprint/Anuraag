@@ -14,6 +14,19 @@ const EMPTY_FORM = { name: '', email: '', phone: '' };
 // Same email pattern the existing checkout form uses (DigitalCheckoutModal.jsx).
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+// Works out the full address of the backend registration endpoint.
+// Same rule as DigitalCheckoutModal.jsx: use VITE_BACKEND_URL when it is set
+// (.env.production), otherwise the local backend while developing.
+function getRegisterUrl() {
+  const isLocal =
+    window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+  const defaultBackend = isLocal
+    ? 'http://localhost:8080'
+    : 'https://anuraagbackend-648711352735.me-west1.run.app';
+  const baseUrl = (import.meta.env.VITE_BACKEND_URL || defaultBackend).replace(/\/$/, '');
+  return `${baseUrl}/api/events/register`;
+}
+
 // Checks one field and returns an error message, or '' when the value is fine.
 function validateField(field, value) {
   const trimmed = value.trim();
@@ -44,14 +57,16 @@ function validateField(field, value) {
 /**
  * EventPage — standalone registration page shown at /event.
  * App.jsx renders this INSTEAD of the long single-scroll home page.
- * Section 1 scope: page shell + form UI + client-side validation only.
- * Sending the registration to the backend is added in a later section.
+ * The form is validated here first, then sent to the backend
+ * (POST /api/events/register), which validates again and saves it.
  */
 export default function EventPage() {
   const { isDark } = useTheme();
   const [form, setForm] = useState(EMPTY_FORM);
   const [errors, setErrors] = useState({});
-  const [isValidated, setIsValidated] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false); // true while waiting for the backend
+  const [serverError, setServerError] = useState(''); // message shown when the backend says no
+  const [isRegistered, setIsRegistered] = useState(false); // true once the backend saved it
 
   // Report the page view once, the same way the rest of the site does.
   useEffect(() => {
@@ -63,13 +78,13 @@ export default function EventPage() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
-    setIsValidated(false);
+    if (serverError) setServerError('');
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }));
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault(); // stop the browser from reloading the page
 
     // Validate every field and keep only the ones that have an error.
@@ -82,9 +97,44 @@ export default function EventPage() {
 
     if (Object.keys(nextErrors).length > 0) return;
 
-    // TODO (next section): POST the trimmed form values to the backend here.
-    // For now we only confirm that the details passed validation.
-    setIsValidated(true);
+    // The form is valid, so send it to the backend.
+    setIsSubmitting(true); // disables the form and shows the spinner
+    setServerError('');
+
+    try {
+      const res = await fetch(getRegisterUrl(), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name.trim(),
+          email: form.email.trim(),
+          phone: form.phone.trim()
+        })
+      });
+
+      // The backend always answers with JSON; fall back to {} if it could not be read.
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok) {
+        // Saved: swap the form for the success message.
+        setIsRegistered(true);
+        return;
+      }
+
+      // 400 = the backend rejected some fields. It sends one message per field
+      // in data.errors, which we show under the matching inputs.
+      if (data.errors && typeof data.errors === 'object') {
+        setErrors(data.errors);
+      }
+      // Any other problem (e.g. 409 = email already registered) has a message in data.error.
+      setServerError(data.error || 'Something went wrong. Please try again shortly.');
+    } catch (err) {
+      // fetch itself failed: no internet, or the backend is not reachable.
+      console.error('Event registration request failed:', err);
+      setServerError('Unable to reach the registration server. Please check your connection and try again.');
+    } finally {
+      setIsSubmitting(false); // runs after success and failure alike
+    }
   };
 
   return (
@@ -118,7 +168,22 @@ export default function EventPage() {
           </div>
 
           {/* Registration form card. noValidate turns off the browser's own
-              popups so our styled error messages are shown instead. */}
+              popups so our styled error messages are shown instead.
+              Once the backend has saved the registration, a success card
+              is shown in place of the form. */}
+          {isRegistered ? (
+            <div className={`${styles.card} ${styles.successCard}`} role="status">
+              <span className={styles.successIcon} aria-hidden="true">✓</span>
+              <h2 className={styles.successTitle}>You are registered.</h2>
+              <p className={styles.successText}>
+                Thank you, {form.name.trim()}. Your seat for {EVENT_DATE_LABEL} is reserved under{' '}
+                <strong>{form.email.trim()}</strong>.
+              </p>
+              <a href="/" className={styles.submitBtn}>
+                <span>Back to main site</span>
+              </a>
+            </div>
+          ) : (
           <form className={styles.card} onSubmit={handleSubmit} noValidate>
             <div className={styles.formGroup}>
               <label htmlFor="event-name" className={styles.label}>Full Name</label>
@@ -131,6 +196,7 @@ export default function EventPage() {
                 onChange={handleChange}
                 className={`${styles.input} ${errors.name ? styles.inputError : ''}`}
                 autoComplete="name"
+                disabled={isSubmitting}
                 maxLength={100}
                 aria-invalid={Boolean(errors.name)}
                 aria-describedby={errors.name ? 'event-name-error' : undefined}
@@ -154,6 +220,7 @@ export default function EventPage() {
                 onChange={handleChange}
                 className={`${styles.input} ${errors.email ? styles.inputError : ''}`}
                 autoComplete="email"
+                disabled={isSubmitting}
                 maxLength={254}
                 aria-invalid={Boolean(errors.email)}
                 aria-describedby={errors.email ? 'event-email-error' : undefined}
@@ -180,6 +247,7 @@ export default function EventPage() {
                 onChange={handleChange}
                 className={`${styles.input} ${errors.phone ? styles.inputError : ''}`}
                 autoComplete="tel"
+                disabled={isSubmitting}
                 maxLength={25}
                 aria-invalid={Boolean(errors.phone)}
                 aria-describedby={errors.phone ? 'event-phone-error' : undefined}
@@ -191,18 +259,29 @@ export default function EventPage() {
               )}
             </div>
 
-            <button type="submit" className={styles.submitBtn}>
-              <span>Register</span>
-              <span aria-hidden="true">↗</span>
-            </button>
-
-            {/* Temporary notice until the backend is connected in the next section */}
-            {isValidated && (
-              <div className={styles.notice} role="status">
-                Your details look good. Online registration is not connected yet, so nothing has been submitted.
+            {/* Message from the backend, e.g. "email already registered" or a connection problem */}
+            {serverError && (
+              <div className={styles.serverAlert} role="alert">
+                {serverError}
               </div>
             )}
+
+            {/* Disabled while sending so the form cannot be submitted twice */}
+            <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
+              {isSubmitting ? (
+                <>
+                  <span className={styles.spinner} aria-hidden="true" />
+                  <span>Registering...</span>
+                </>
+              ) : (
+                <>
+                  <span>Register</span>
+                  <span aria-hidden="true">↗</span>
+                </>
+              )}
+            </button>
           </form>
+          )}
         </motion.div>
       </main>
 

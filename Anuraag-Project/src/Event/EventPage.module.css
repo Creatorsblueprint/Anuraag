@@ -175,21 +175,76 @@
   margin-top: 4px;
 }
 
-.submitBtn:hover {
+.submitBtn:hover:not(:disabled) {
   transform: translateY(-2px);
   background: linear-gradient(135deg, #f0dcab 0%, #d8be80 100%);
   box-shadow: 0 8px 28px rgba(199, 169, 103, 0.55);
 }
 
-/* Neutral gold notice shown after the form passes validation */
-.notice {
-  background: var(--color-gold-bg);
-  border: 1px solid var(--color-gold-border);
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Small spinning circle shown inside the button while the form is sending */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(11, 12, 9, 0.3);
+  border-top-color: #0b0c09;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Red box for an error message that came back from the backend */
+.serverAlert {
+  background: rgba(239, 83, 80, 0.1);
+  border: 1px solid rgba(239, 83, 80, 0.3);
   border-radius: 8px;
   padding: 10px 14px;
   font-size: 12px;
   line-height: 1.5;
+  color: #ef5350;
+}
+
+/* Success card shown in place of the form after registering */
+.successCard {
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+}
+
+.successIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--color-gold-bg);
+  border: 1px solid var(--color-gold-border);
+  color: var(--color-gold);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.successTitle {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+}
+
+.successText {
+  font-size: 14px;
+  line-height: 1.7;
   color: var(--color-text-secondary);
+  overflow-wrap: anywhere;
 }
 
 .footer {
