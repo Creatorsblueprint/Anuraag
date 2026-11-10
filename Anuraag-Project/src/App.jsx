@@ -15,9 +15,23 @@ import StickyBook from './StickyBook/StickyBook';
 import Footer from './Footer/Footer';
 import PaymentSuccessModal from './Modals/PaymentSuccessModal';
 import PaymentCancelModal from './Modals/PaymentCancelModal';
+import EventPage from './Event/EventPage';
 import './App.css';
 
+// Returns the current route as a clean lowercase string, e.g. "/Event/" -> "event".
+// "?p=..." is how public/404.html passes the original path on the live (static) host.
+function getCleanPath() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const rawPath = urlParams.get('p') || window.location.pathname;
+  // Keep only the path part (drop any "?query" or "#hash" that came inside ?p=)
+  return rawPath.split(/[?#]/)[0].replace(/^\/+|\/+$/g, '').toLowerCase();
+}
+
 export default function App() {
+  // /event is a standalone page, unlike the other routes which scroll to a
+  // section of the home page. When true we render EventPage instead (see below).
+  const isEventPage = getCleanPath() === 'event';
+
   const [isSuccessOpen, setIsSuccessOpen] = React.useState(false);
   const [isCancelOpen, setIsCancelOpen] = React.useState(false);
 
@@ -32,6 +46,16 @@ export default function App() {
     } else if (paymentStatus === 'cancel') {
       setIsCancelOpen(true);
     }
+
+    // Standalone event page: just tidy the address bar ("/?p=/event" -> "/event")
+    // and skip the section-scrolling logic below, which only applies to the home page.
+    if (isEventPage) {
+      if (urlParams.has('p')) {
+        window.history.replaceState(null, '', '/event');
+      }
+      return;
+    }
+
     let targetPath = urlParams.get('p') || window.location.pathname;
 
     if (targetPath) {
@@ -101,7 +125,13 @@ export default function App() {
         }, 150);
       }
     }
-  }, []);
+  }, [isEventPage]);
+
+  // Show the registration page on its own, without the home page sections.
+  // (This return must stay below the hooks above: hooks have to run on every render.)
+  if (isEventPage) {
+    return <EventPage />;
+  }
 
   const handleClosePaymentModal = () => {
     setIsSuccessOpen(false);
