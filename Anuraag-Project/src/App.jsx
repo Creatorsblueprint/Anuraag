@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Nav from './Nav/Nav';
 import Home from './Home/Home';
 import Ebook from './Ebook/Ebook';
@@ -16,120 +16,120 @@ import Footer from './Footer/Footer';
 import PaymentSuccessModal from './Modals/PaymentSuccessModal';
 import PaymentCancelModal from './Modals/PaymentCancelModal';
 import EventPage from './Event/EventPage';
+import PlaceholderPage from './Pages/PlaceholderPage';
+import { PAGE_CONTENT } from './Pages/pageContent';
+import { useRoute } from './router/router';
+import { PAGES, HOME_SECTIONS } from './router/routes';
+import { trackPageView } from './utils/analytics';
 import './App.css';
 
-// Returns the current route as a clean lowercase string, e.g. "/Event/" -> "event".
-// "?p=..." is how public/404.html passes the original path on the live (static) host.
-function getCleanPath() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const rawPath = urlParams.get('p') || window.location.pathname;
-  // Keep only the path part (drop any "?query" or "#hash" that came inside ?p=)
-  return rawPath.split(/[?#]/)[0].replace(/^\/+|\/+$/g, '').toLowerCase();
+// Returns the sections that make up one page.
+// "page" is one of the names listed in router/routes.js (PAGES).
+function renderPage(page) {
+  // About: the existing story, roles and recognition sections.
+  if (page === 'about') {
+    return (
+      <>
+        <Story />
+        <Roles />
+        <Recognition />
+      </>
+    );
+  }
+
+  // Book: the existing book, questions and purchase sections.
+  if (page === 'book') {
+    return (
+      <>
+        <Ebook />
+        <FAQ />
+        <Contact />
+      </>
+    );
+  }
+
+  // Pages that do not have their full content yet (Speaking, Insights...).
+  if (PAGE_CONTENT[page]) {
+    return <PlaceholderPage content={PAGE_CONTENT[page]} />;
+  }
+
+  // Home: the full long page, unchanged for now.
+  return (
+    <>
+      <Home />
+      <Ebook />
+      <Interlude />
+      <Story />
+      <Diagnostics />
+      <Roles />
+      <Falcons />
+      <Recognition />
+      <Videos />
+      <FAQ />
+      <Contact />
+    </>
+  );
 }
 
 export default function App() {
-  // /event is a standalone page, unlike the other routes which scroll to a
-  // section of the home page. When true we render EventPage instead (see below).
-  const isEventPage = getCleanPath() === 'event';
+  // The current address: path = which page, hash = which section (if any).
+  const { path, hash, visit } = useRoute();
 
-  const [isSuccessOpen, setIsSuccessOpen] = React.useState(false);
-  const [isCancelOpen, setIsCancelOpen] = React.useState(false);
+  // Which page to draw. An address we do not know shows the home page.
+  const currentPage = PAGES[path] || PAGES[''];
+  const page = currentPage.page;
 
+  // Stripe sends the buyer back with "?payment=success" or "?payment=cancel"
+  // in the address. Each popup starts open when its word is there.
+  // (The function inside useState runs only once, when the app first loads.)
+  const [isSuccessOpen, setIsSuccessOpen] = useState(
+    () => new URLSearchParams(window.location.search).get('payment') === 'success'
+  );
+  const [isCancelOpen, setIsCancelOpen] = useState(
+    () => new URLSearchParams(window.location.search).get('payment') === 'cancel'
+  );
+
+  // Runs every time the visitor arrives at an address (first load and every navigation).
   useEffect(() => {
-    // 1. Check if redirected from 404.html via /?p=... or direct pathname
-    const urlParams = new URLSearchParams(window.location.search);
+    document.title = currentPage.title; // text in the browser tab
 
-    // Check payment callback status
-    const paymentStatus = urlParams.get('payment');
-    if (paymentStatus === 'success') {
-      setIsSuccessOpen(true);
-    } else if (paymentStatus === 'cancel') {
-      setIsCancelOpen(true);
+    // Report page changes to analytics. Not on the first load (visit 0): the
+    // analytics tag already counts that one. The event page reports its own view.
+    if (visit > 0 && page !== 'event') {
+      trackPageView(`/${path}`, currentPage.title);
     }
 
-    // Standalone event page: just tidy the address bar ("/?p=/event" -> "/event")
-    // and skip the section-scrolling logic below, which only applies to the home page.
-    if (isEventPage) {
-      if (urlParams.has('p')) {
-        window.history.replaceState(null, '', '/event');
-      }
+    // Where to scroll: a section named in the address ("/book#purchase"),
+    // or an older short address such as /falcons (see HOME_SECTIONS).
+    const sectionId = hash || HOME_SECTIONS[path];
+
+    if (!sectionId) {
+      window.scrollTo(0, 0); // a new page starts at the top
       return;
     }
 
-    let targetPath = urlParams.get('p') || window.location.pathname;
+    // Wait a moment so the page is drawn, then scroll to the section,
+    // leaving room for the sticky header at the top.
+    const timer = setTimeout(() => {
+      const targetEl = document.getElementById(sectionId);
+      if (targetEl) {
+        const header = document.querySelector('header');
+        const headerHeight = header ? header.offsetHeight : 80;
+        const elementPosition = targetEl.getBoundingClientRect().top + window.scrollY;
 
-    if (targetPath) {
-      // Normalize path (e.g. "/ebook/" -> "ebook")
-      const cleanPath = targetPath.replace(/^\/+|\/+$/g, '').toLowerCase();
-
-      // Route aliases mapping to section element IDs
-      const routeMap = {
-        'book': 'book',
-        'ebook': 'book',
-        'you-will-not-fly': 'book',
-        'the-living-charter': 'book',
-        'story': 'story',
-        'about': 'story',
-        'about-me': 'story',
-        'about-us': 'story',
-        'the-man': 'story',
-        'the-story': 'story',
-        'lectern': 'story',
-        'academic': 'story',
-        'expertise': 'expertise',
-        'the-work': 'expertise',
-        'work': 'expertise',
-        'pillars': 'expertise',
-        'six-verbs': 'expertise',
-        'diagnostics': 'expertise',
-        'leadership': 'roles',
-        'roles': 'roles',
-        'practice': 'expertise',
-        'the-practice': 'expertise',
-        'falcons': 'falcons',
-        'falcons-of-majlis': 'falcons',
-        'videos': 'videos',
-        'media': 'videos',
-        'recognition': 'recognition',
-        'honors': 'recognition',
-        'affiliations': 'recognition',
-        'faq': 'faq',
-        'purchase': 'purchase',
-        'contact': 'purchase',
-        'order': 'purchase',
-        'top': 'top',
-        'overview': 'overview',
-        'home': 'overview'
-      };
-
-      const sectionId = routeMap[cleanPath];
-
-      if (sectionId) {
-        // Clean URL in browser address bar without reload
-        window.history.replaceState(null, '', `/${cleanPath}`);
-
-        // Scroll to the targeted section factoring in sticky header height
-        setTimeout(() => {
-          const targetEl = document.getElementById(sectionId);
-          if (targetEl) {
-            const header = document.querySelector('header');
-            const headerHeight = header ? header.offsetHeight : 80;
-            const elementPosition = targetEl.getBoundingClientRect().top + window.scrollY;
-            const offsetPosition = elementPosition - headerHeight;
-
-            window.scrollTo({
-              top: Math.max(0, offsetPosition),
-              behavior: 'smooth'
-            });
-          }
-        }, 150);
+        window.scrollTo({
+          top: Math.max(0, elementPosition - headerHeight),
+          behavior: 'smooth'
+        });
       }
-    }
-  }, [isEventPage]);
+    }, 150);
 
-  // Show the registration page on its own, without the home page sections.
+    return () => clearTimeout(timer); // cancel if the visitor moves on before it fires
+  }, [path, hash, visit, page, currentPage.title]);
+
+  // The event registration page stands on its own, with its own simple header.
   // (This return must stay below the hooks above: hooks have to run on every render.)
-  if (isEventPage) {
+  if (page === 'event') {
     return <EventPage />;
   }
 
@@ -141,23 +141,17 @@ export default function App() {
     window.history.replaceState(null, '', cleanUrl || '/');
   };
 
+  // The floating "Get the book" bar only makes sense where the book is sold.
+  const showStickyBook = page === 'home' || page === 'book';
+
   return (
     <div className="appWrapper" id="top">
-      <Nav />
-      <main>
-        <Home />
-        <Ebook />
-        <Interlude />
-        <Story />
-        <Diagnostics />
-        <Roles />
-        <Falcons />
-        <Recognition />
-        <Videos />
-        <FAQ />
-        <Contact />
-      </main>
-      <StickyBook />
+      <Nav currentPath={path} />
+      {/* key={page} makes React build the page fresh when the page changes,
+          so entrance animations play again and old page state is not kept. */}
+      <main key={page}>{renderPage(page)}</main>
+      {/* Its own key (different from <main>'s) so it also starts fresh per page */}
+      {showStickyBook && <StickyBook key={`sticky-${page}`} />}
       <Footer />
 
       {/* Payment Feedback Modals */}

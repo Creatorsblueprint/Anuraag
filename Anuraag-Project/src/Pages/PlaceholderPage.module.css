@@ -1,0 +1,74 @@
+/* Simple centred page used until a page gets its full content.
+   Uses the shared design tokens from index.css, so it follows the
+   dark and light themes automatically. */
+
+.page {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 110px 24px 130px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 640px;
+  text-align: center;
+}
+
+/* Small gold label above the heading (same style as the home page sections) */
+.eyebrow {
+  color: var(--color-gold);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.3px;
+  line-height: 1.5;
+  margin: 0 0 16px;
+}
+
+.heading {
+  font-size: clamp(30px, 4vw, 46px);
+  font-weight: 500;
+  letter-spacing: -1px;
+  line-height: 1.15;
+  color: var(--color-text-primary);
+  margin: 0 0 18px;
+}
+
+.text {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+  margin: 0 0 32px;
+}
+
+/* Gold pill button, same look as the main button in the header */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 26px;
+  background: linear-gradient(135deg, #e4c988 0%, #c7a967 100%);
+  color: #0b0c09;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  border: 1px solid rgba(255, 235, 185, 0.4);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 6px 20px rgba(199, 169, 103, 0.35);
+  transition: all 0.25s ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #f0dcab 0%, #d8be80 100%);
+  box-shadow: 0 8px 28px rgba(199, 169, 103, 0.55);
+}
+
+/* Phones: less empty space above and below */
+@media (max-width: 800px) {
+  .page {
+    padding: 64px 20px 80px;
+  }
+}

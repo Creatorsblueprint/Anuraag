@@ -1,7 +1,7 @@
-import React from 'react';
 import styles from './Footer.module.css';
 import { trackSocialClick } from '../utils/analytics';
 import { useTheme } from '../utils/ThemeContext';
+import Link from '../router/Link';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -20,13 +20,14 @@ export default function Footer() {
       <div className={styles.wrap}>
         {/* Top Row: Brand & Quick Navigation */}
         <div className={styles.footerTop}>
-          <a href="#overview" className={styles.brand} aria-label="Dr. Anuraag Guglaani home">
+          {/* <Link> so the logo also works from pages other than the home page */}
+          <Link to="/" className={styles.brand} aria-label="Dr. Anuraag Guglaani home">
             <img
               src={theme === 'light' ? '/logos/name_logo.PNG' : '/logos/name_logo_white.png'}
               alt="Dr. Anuraag Guglaani"
               className={styles.brandLogo}
             />
-          </a>
+          </Link>
 
           <div className={styles.footerTagline}>
             <span>AUTHOR · INVESTOR · PROFESSOR</span>
@@ -64,14 +65,15 @@ export default function Footer() {
             >
               <span>Threads ↗</span>
             </a>
-            <a
-              href="#falcons"
+            {/* /falcons opens the home page and scrolls to the Falcons section */}
+            <Link
+              to="/falcons"
               className={styles.socialLink}
               aria-label="Falcons of Majlis"
-              onClick={() => trackSocialClick('Falcons of Majlis', '#falcons')}
+              onClick={() => trackSocialClick('Falcons of Majlis', '/falcons')}
             >
               <span>Falcons ↗</span>
-            </a>
+            </Link>
           </div>
 
           <a href="#top" onClick={handleScrollToTop} className={styles.backToTop}>

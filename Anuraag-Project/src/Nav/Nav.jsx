@@ -1,115 +1,81 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { trackPageView, trackNavClick, trackCtaClick } from '../utils/analytics';
+import { trackNavClick, trackCtaClick } from '../utils/analytics';
 import { useTheme } from '../utils/ThemeContext';
+import Link from '../router/Link';
+import { MENU_LINKS } from '../router/routes';
 import styles from './Nav.module.css';
 
-export default function Nav() {
-  const { theme, toggleTheme, isDark } = useTheme();
-  const [activeSection, setActiveSection] = useState('overview');
+// The two buttons in the header.
+// "Start a Conversation" is the main one; "Get the Book" opens the Book page
+// and scrolls to its purchase section.
+const PRIMARY_CTA = { label: 'Start a Conversation', to: '/contact' };
+const SECONDARY_CTA = { label: 'Get the Book', to: '/book#purchase' };
+
+/**
+ * Nav — the sticky header shown on every page (except the event page).
+ *
+ * Props:
+ *   currentPath - the current page address without slashes, e.g. "speaking"
+ *                 ("" on the home page). Used to highlight the active link.
+ */
+export default function Nav({ currentPath }) {
+  const { toggleTheme, isDark } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  const navLinks = [
-    { label: 'The Book', href: '#book', id: 'book' },
-    { label: 'The Story', href: '#story', id: 'story' },
-    { label: 'The Practice', href: '#expertise', id: 'expertise' },
-    { label: 'Leadership', href: '#roles', id: 'roles' },
-    { label: 'The Falcon', href: '#falcons', id: 'falcons' },
-    { label: 'Recognition', href: '#recognition', id: 'recognition' }
-  ];
-
+  // Adds a stronger border and shadow to the header once the page is scrolled.
   useEffect(() => {
-    let scrollTimeout;
-
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
-
-      const scrollPosition = window.scrollY + 140;
-      const sections = ['overview', 'book', 'story', 'expertise', 'roles', 'falcons', 'videos', 'recognition', 'faq', 'purchase'];
-
-      for (const sectionId of sections) {
-        const el = document.getElementById(sectionId);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(sectionId);
-
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-              const currentPath = window.location.pathname.replace(/^\/+|\/+$/g, '').toLowerCase();
-              const targetPath = sectionId === 'overview' ? '/' : `/${sectionId}`;
-              const expectedPath = sectionId === 'overview' ? '' : sectionId;
-
-              if (currentPath !== expectedPath && !window.location.search.includes('p=')) {
-                window.history.replaceState(null, '', targetPath);
-                trackPageView(targetPath, `Dr. Anuraag Guglaani — ${sectionId}`);
-              }
-            }, 80);
-
-            break;
-          }
-        }
-      }
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 40);
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      clearTimeout(scrollTimeout);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (e, href, label, location = 'header') => {
-    e.preventDefault();
+  // True when a menu link points at the page being shown ("/about" vs "about").
+  const isActive = (to) => to === `/${currentPath}`;
+
+  // Runs when a menu link is clicked: close the phone menu and report the click.
+  // (Moving to the page itself is done by <Link>.)
+  const handleLinkClick = (link, location) => {
     setMobileMenuOpen(false);
+    trackNavClick(link.label, link.to, location);
+  };
 
-    const sectionId = href.replace('#', '');
-    const newPath = sectionId === 'overview' ? '/' : `/${sectionId}`;
-    window.history.pushState(null, '', newPath);
-    setActiveSection(sectionId);
-
-    trackNavClick(label || sectionId, href, location);
-    trackPageView(newPath, `Dr. Anuraag Guglaani — ${label || sectionId}`);
-
-    setTimeout(() => {
-      const target = document.querySelector(href);
-      if (target) {
-        const header = document.querySelector(`.${styles.header}`);
-        const headerHeight = header ? header.offsetHeight : 80;
-        const elementPosition = target.getBoundingClientRect().top + window.scrollY;
-        const offsetPosition = elementPosition - headerHeight;
-
-        window.scrollTo({
-          top: Math.max(0, offsetPosition),
-          behavior: 'smooth'
-        });
-      }
-    }, 100);
+  // Same for the two buttons, reported to analytics as button ("CTA") clicks.
+  const handleCtaClick = (cta, location) => {
+    setMobileMenuOpen(false);
+    trackCtaClick(cta.label, location, cta.to);
   };
 
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={styles.headerInner}>
-        <a href="#overview" onClick={(e) => handleNavClick(e, '#overview', 'Home Logo', 'brand_logo')} className={styles.brand} aria-label="Dr. Anuraag Guglaani home">
+        <Link
+          to="/"
+          onClick={() => handleLinkClick({ label: 'Home Logo', to: '/' }, 'brand_logo')}
+          className={styles.brand}
+          aria-label="Dr. Anuraag Guglaani home"
+        >
           <img
             src={isDark ? '/logos/name_logo_white.png' : '/logos/name_logo.PNG'}
             alt="Dr. Anuraag Guglaani"
             className={styles.brandLogo}
           />
-        </a>
+        </Link>
 
+        {/* Menu links for wide screens */}
         <nav aria-label="Main Navigation" className={styles.desktopNav}>
-          {navLinks.map((link) => (
-            <a
-              key={link.id}
-              href={link.href}
-              onClick={(e) => handleNavClick(e, link.href, link.label, 'desktop_nav')}
-              className={`${styles.navLink} ${activeSection === link.id ? styles.active : ''}`}
+          {MENU_LINKS.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              onClick={() => handleLinkClick(link, 'desktop_nav')}
+              className={`${styles.navLink} ${isActive(link.to) ? styles.active : ''}`}
+              aria-current={isActive(link.to) ? 'page' : undefined}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -122,25 +88,27 @@ export default function Nav() {
             aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
             title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
           >
-            {isDark ? (
-              <span className={styles.themeIcon} role="img" aria-label="Sun">☀️</span>
-            ) : (
-              <span className={styles.themeIcon} role="img" aria-label="Moon">🌙</span>
-            )}
-            <span className={styles.themeLabel}>{isDark ? 'LIGHT' : 'DARK'}</span>
+            <span className={styles.themeIcon} aria-hidden="true">{isDark ? '☀️' : '🌙'}</span>
           </button>
 
-          <a
-            href="#purchase"
-            onClick={(e) => {
-              trackCtaClick('Get the Book', 'header_desktop', '#purchase');
-              handleNavClick(e, '#purchase', 'Get the Book', 'header_desktop');
-            }}
+          {/* Secondary button: quieter outline style */}
+          <Link
+            to={SECONDARY_CTA.to}
+            onClick={() => handleCtaClick(SECONDARY_CTA, 'header_desktop')}
             className={styles.navContact}
           >
-            <span>Get the Book</span>
+            <span>{SECONDARY_CTA.label}</span>
+          </Link>
+
+          {/* Primary button: solid gold so it stands out most */}
+          <Link
+            to={PRIMARY_CTA.to}
+            onClick={() => handleCtaClick(PRIMARY_CTA, 'header_desktop')}
+            className={styles.navPrimary}
+          >
+            <span>{PRIMARY_CTA.label}</span>
             <span className={styles.arrowIcon}>↗</span>
-          </a>
+          </Link>
         </div>
 
         {/* Retained 3-line hamburger menu with animated open/close state */}
@@ -167,6 +135,7 @@ export default function Nav() {
         </div>
       </div>
 
+      {/* Full-screen menu for phones and tablets */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -177,31 +146,37 @@ export default function Nav() {
             transition={{ duration: 0.25, ease: 'easeOut' }}
           >
             <div className={styles.mobileLinksList}>
-              {navLinks.map((link) => (
-                <a
-                  key={link.id}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href, link.label, 'mobile_menu')}
-                  className={`${styles.mobileLink} ${activeSection === link.id ? styles.mobileActive : ''}`}
+              {MENU_LINKS.map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  onClick={() => handleLinkClick(link, 'mobile_menu')}
+                  className={`${styles.mobileLink} ${isActive(link.to) ? styles.mobileActive : ''}`}
+                  aria-current={isActive(link.to) ? 'page' : undefined}
                 >
                   <span>{link.label}</span>
                   <span className={styles.mobileArrow}>&rarr;</span>
-                </a>
+                </Link>
               ))}
             </div>
 
             <div className={styles.mobileMenuBottom}>
-              <a
-                href="#purchase"
-                onClick={(e) => {
-                  trackCtaClick('Get the Book', 'mobile_menu', '#purchase');
-                  handleNavClick(e, '#purchase', 'Get the Book', 'mobile_menu');
-                }}
+              <Link
+                to={PRIMARY_CTA.to}
+                onClick={() => handleCtaClick(PRIMARY_CTA, 'mobile_menu')}
                 className={styles.mobileCtaBtn}
               >
-                <span>Get the Book</span>
+                <span>{PRIMARY_CTA.label}</span>
                 <span className={styles.arrowIcon}>↗</span>
-              </a>
+              </Link>
+
+              <Link
+                to={SECONDARY_CTA.to}
+                onClick={() => handleCtaClick(SECONDARY_CTA, 'mobile_menu')}
+                className={styles.mobileSecondaryBtn}
+              >
+                <span>{SECONDARY_CTA.label}</span>
+              </Link>
 
               <div className={styles.mobileMeta}>
                 <span>DR. ANURAAG GUGLAANI</span>
