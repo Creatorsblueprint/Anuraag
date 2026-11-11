@@ -4,6 +4,7 @@ import { fadeInUp } from '../animations';
 import { trackPageView } from '../utils/analytics';
 import { useTheme } from '../utils/ThemeContext';
 import { COUNTRIES } from './countries';
+import CountrySelect from './CountrySelect';
 import styles from './EventPage.module.css';
 
 // Event details shown on the page. Kept in one place so they are easy to update.
@@ -21,7 +22,7 @@ const EVENT = {
 };
 
 // The form starts empty. One object holds every field so we can add fields easily.
-const EMPTY_FORM = { name: '', email: '', nationality: '', phone: '' };
+const EMPTY_FORM = { name: '', email: '', nationality: '' };
 
 // Same email pattern the existing checkout form uses (DigitalCheckoutModal.jsx).
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -61,15 +62,6 @@ function validateField(field, value) {
     if (!COUNTRIES.includes(trimmed)) return 'Please choose a nationality from the list.';
   }
 
-  if (field === 'phone') {
-    // Phone is optional: only validate it when something was typed.
-    // Allows digits, spaces, dashes, brackets and a leading "+", with 7-15 digits in total.
-    const digitCount = trimmed.replace(/\D/g, '').length;
-    if (trimmed && (!/^\+?[\d\s\-()]+$/.test(trimmed) || digitCount < 7 || digitCount > 15)) {
-      return 'Please enter a valid phone number (e.g. +971 50 123 4567).';
-    }
-  }
-
   return '';
 }
 
@@ -92,16 +84,18 @@ export default function EventPage() {
     trackPageView('/event', 'Dr. Anuraag Guglaani — Event Registration');
   }, []);
 
-  // Runs on every keystroke: store the new value, and if that field
-  // already shows an error, re-check it so the message clears once fixed.
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  // Stores a new value for one field. If that field already shows an error,
+  // re-check it so the message clears once the value is fixed.
+  const updateField = (name, value) => {
     setForm((prev) => ({ ...prev, [name]: value }));
     if (serverError) setServerError('');
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }));
     }
   };
+
+  // Runs on every keystroke in the plain text boxes (name and email).
+  const handleChange = (e) => updateField(e.target.name, e.target.value);
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // stop the browser from reloading the page
@@ -127,8 +121,7 @@ export default function EventPage() {
         body: JSON.stringify({
           name: form.name.trim(),
           email: form.email.trim(),
-          nationality: form.nationality.trim(),
-          phone: form.phone.trim()
+          nationality: form.nationality.trim()
         })
       });
 
@@ -275,57 +268,23 @@ export default function EventPage() {
               )}
             </div>
 
-            {/* Nationality: a dropdown, so everyone from the same country is
-                recorded with exactly the same spelling (needed for the record count). */}
+            {/* Nationality: a searchable dropdown (see CountrySelect.jsx). Choosing
+                from a fixed list means everyone from the same country is recorded
+                with exactly the same spelling (needed for the record count). */}
             <div className={styles.formGroup}>
               <label htmlFor="event-nationality" className={styles.label}>Nationality</label>
-              <select
+              <CountrySelect
                 id="event-nationality"
-                name="nationality"
                 value={form.nationality}
-                onChange={handleChange}
-                className={`${styles.input} ${styles.select} ${errors.nationality ? styles.inputError : ''}`}
-                autoComplete="country-name"
+                onChange={(value) => updateField('nationality', value)}
+                options={COUNTRIES}
                 disabled={isSubmitting}
-                aria-invalid={Boolean(errors.nationality)}
-                aria-describedby={errors.nationality ? 'event-nationality-error' : undefined}
-                required
-              >
-                {/* Empty first option acts as the placeholder */}
-                <option value="">Select your nationality</option>
-                {COUNTRIES.map((country) => (
-                  <option key={country} value={country}>{country}</option>
-                ))}
-              </select>
+                hasError={Boolean(errors.nationality)}
+                describedBy={errors.nationality ? 'event-nationality-error' : undefined}
+              />
               {errors.nationality && (
                 <p className={styles.errorText} id="event-nationality-error" role="alert">
                   <span aria-hidden="true">⚠</span> {errors.nationality}
-                </p>
-              )}
-            </div>
-
-            <div className={styles.formGroup}>
-              <label htmlFor="event-phone" className={styles.label}>
-                <span>Phone Number</span>
-                <span className={styles.labelHint}>Optional</span>
-              </label>
-              <input
-                id="event-phone"
-                name="phone"
-                type="tel"
-                placeholder="+971 50 123 4567"
-                value={form.phone}
-                onChange={handleChange}
-                className={`${styles.input} ${errors.phone ? styles.inputError : ''}`}
-                autoComplete="tel"
-                disabled={isSubmitting}
-                maxLength={25}
-                aria-invalid={Boolean(errors.phone)}
-                aria-describedby={errors.phone ? 'event-phone-error' : undefined}
-              />
-              {errors.phone && (
-                <p className={styles.errorText} id="event-phone-error" role="alert">
-                  <span aria-hidden="true">⚠</span> {errors.phone}
                 </p>
               )}
             </div>

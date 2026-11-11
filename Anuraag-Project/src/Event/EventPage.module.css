@@ -153,11 +153,6 @@
   justify-content: space-between;
 }
 
-.labelHint {
-  font-size: 11px;
-  color: var(--color-text-muted);
-  font-weight: 400;
-}
 
 .input {
   width: 100%;
@@ -171,15 +166,50 @@
   transition: all 0.25s ease;
 }
 
-/* Dropdown (Nationality): reuses the .input look, plus a pointer cursor */
-.select {
+/* Searchable dropdown (Nationality, CountrySelect.jsx).
+   The wrapper is the anchor that the floating list is positioned against. */
+.combo {
+  position: relative;
+}
+
+/* The list of matching countries, floating just below the text box */
+.optionList {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 10;
+  max-height: 220px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: var(--color-surface);
+  border: 1px solid var(--color-gold-border);
+  border-radius: 8px;
+  box-shadow: var(--shadow-subtle);
+}
+
+.option {
+  padding: 9px 10px;
+  border-radius: 6px;
+  font-size: 13.5px;
+  color: var(--color-text-primary);
   cursor: pointer;
 }
 
-/* Colours for the opened dropdown list, so it matches the dark/light theme */
-.select option {
-  background: var(--color-surface);
-  color: var(--color-text-primary);
+/* Highlight under the mouse, and for the option reached with the arrow keys */
+.option:hover,
+.optionActive {
+  background: var(--color-gold-bg);
+  color: var(--color-gold);
+}
+
+/* Shown when nothing matches the typed text */
+.noOption {
+  padding: 9px 10px;
+  font-size: 13px;
+  color: var(--color-text-muted);
 }
 
 .input::placeholder {
