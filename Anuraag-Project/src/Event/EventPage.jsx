@@ -83,6 +83,39 @@ export default function EventPage() {
   // Report the page view once, the same way the rest of the site does.
   useEffect(() => {
     trackPageView('/event', 'Dr. Anuraag Guglaani — Event Registration');
+
+    // Update document title and OpenGraph / Twitter meta tags dynamically
+    const originalTitle = document.title;
+    document.title = 'Digital Book Launch & World Record Attempt | Dr. Anuraag Guglaani';
+
+    const metaUpdates = [
+      { selector: 'meta[property="og:title"]', attr: 'content', val: 'Digital Book Launch & World Record Attempt | Dr. Anuraag Guglaani' },
+      { selector: 'meta[property="og:url"]', attr: 'content', val: 'https://dranuraagguglaani.com/event' },
+      { selector: 'meta[property="og:description"]', attr: 'content', val: 'Join the official World Record Attempt for Most Nationalities in a Digital Book Launch on 22 Nov 2026 at 3:00 PM GST.' },
+      { selector: 'meta[property="og:image"]', attr: 'content', val: 'https://dranuraagguglaani.com/event_og_image.jpg' },
+      { selector: 'meta[name="twitter:title"]', attr: 'content', val: 'Digital Book Launch & World Record Attempt | Dr. Anuraag Guglaani' },
+      { selector: 'meta[name="twitter:url"]', attr: 'content', val: 'https://dranuraagguglaani.com/event' },
+      { selector: 'meta[name="twitter:description"]', attr: 'content', val: 'Join the official World Record Attempt for Most Nationalities in a Digital Book Launch on 22 Nov 2026 at 3:00 PM GST.' },
+      { selector: 'meta[name="twitter:image"]', attr: 'content', val: 'https://dranuraagguglaani.com/event_og_image.jpg' },
+      { selector: 'link[rel="canonical"]', attr: 'href', val: 'https://dranuraagguglaani.com/event' },
+    ];
+
+    const prevValues = metaUpdates.map(({ selector, attr }) => {
+      const el = document.querySelector(selector);
+      return { el, attr, prev: el ? el.getAttribute(attr) : null };
+    });
+
+    metaUpdates.forEach(({ selector, attr, val }) => {
+      const el = document.querySelector(selector);
+      if (el) el.setAttribute(attr, val);
+    });
+
+    return () => {
+      document.title = originalTitle;
+      prevValues.forEach(({ el, attr, prev }) => {
+        if (el && prev !== null) el.setAttribute(attr, prev);
+      });
+    };
   }, []);
 
   // Stores a new value for one field. If that field already shows an error,
