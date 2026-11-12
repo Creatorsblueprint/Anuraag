@@ -135,7 +135,8 @@ export default function Home() {
             </span>
             <span className={styles.cardContent}>
               <small>THE NEW BOOK</small>
-              <strong>You Will Not Fly</strong>
+              {/* "Not" is crossed out with a gold line, like the big title in the book section */}
+              <strong>You Will <span className={styles.strike}>Not</span> Fly</strong>
               <em>Grounded at Twenty. Airborne Ever Since.</em>
             </span>
             <span className={styles.cardArrow}>↗</span>

@@ -358,4 +358,43 @@
   .detailsRow {
     grid-template-columns: 1fr;
   }
+
+  /* On phones the form comes right after the title, so nobody has to scroll
+     to find it. The description and the date/time facts move below the form.
+     How: the wrapper becomes a column and each piece gets an "order" number
+     (lower numbers are shown first). "display: contents" makes the heading
+     block's children (eyebrow, title, description) count as separate pieces. */
+  .wrap {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sectionHeader {
+    display: contents;
+  }
+
+  .eyebrow,
+  .heading {
+    order: 1;
+    text-align: center;
+  }
+
+  .heading {
+    margin-bottom: 24px;
+  }
+
+  .card {
+    order: 2;
+  }
+
+  .subtitle {
+    order: 3;
+    text-align: center;
+    margin: 28px 0 20px;
+  }
+
+  .detailsRow {
+    order: 4;
+    margin-bottom: 0;
+  }
 }

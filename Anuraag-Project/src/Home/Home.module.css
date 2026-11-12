@@ -312,6 +312,24 @@
   margin: 3px 0;
 }
 
+/* The crossed-out "Not" in the book title: greyed word with a slanted gold line
+   drawn over it (a small copy of the .strike style in Ebook.module.css) */
+.strike {
+  position: relative;
+  color: var(--color-text-muted);
+}
+
+.strike::after {
+  content: '';
+  position: absolute;
+  left: -8%;
+  right: -8%;
+  top: 52%;
+  height: 2px;
+  background: var(--color-gold);
+  transform: rotate(-11deg);
+}
+
 .cardContent em {
   font-size: 10px;
   font-style: normal;
