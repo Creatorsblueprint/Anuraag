@@ -6,6 +6,7 @@ import { useTheme } from '../utils/ThemeContext';
 import { COUNTRIES } from './countries';
 import CountrySelect from './CountrySelect';
 import styles from './EventPage.module.css';
+import { strikeNot } from '../utils/strikeNot';
 
 // Event details shown on the page. Kept in one place so they are easy to update.
 // These come from the official event poster.
@@ -179,7 +180,7 @@ export default function EventPage() {
             </h1>
             <p className={styles.subtitle}>
               Join {EVENT.host}, The Family Business Doctor, for the digital launch of{' '}
-              <em>{EVENT.bookTitle}</em>. Register below to take part and represent your nationality.
+              <em>{strikeNot(EVENT.bookTitle)}</em>. Register below to take part and represent your nationality.
             </p>
           </div>
 

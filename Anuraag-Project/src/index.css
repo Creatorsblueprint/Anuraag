@@ -205,3 +205,24 @@ input, textarea, select {
     box-sizing: border-box !important;
   }
 }
+
+/* The crossed-out "Not" in the book title "You Will Not Fly".
+   Used by strikeNot() in utils/strikeNot.jsx. The word is slightly faded and a
+   slanted gold line is drawn over it. Sizes are in "em" (relative to the text
+   size), so the line fits small labels and large headings alike. */
+.strikeNot {
+  position: relative;
+  display: inline-block;
+  opacity: 0.75;
+}
+
+.strikeNot::after {
+  content: '';
+  position: absolute;
+  left: -8%;
+  right: -8%;
+  top: 52%;
+  height: max(1.5px, 0.09em);
+  background: var(--color-gold);
+  transform: rotate(-11deg);
+}

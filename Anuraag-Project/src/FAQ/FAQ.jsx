@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '../animations';
 import styles from './FAQ.module.css';
+import { strikeNot } from '../utils/strikeNot';
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(0);
@@ -122,7 +123,7 @@ export default function FAQ() {
           </span>
           <span className={styles.cardInfo}>
             <small>A NEW CHAPTER</small>
-            <strong>You Will Not Fly</strong>
+            <strong>{strikeNot('You Will Not Fly')}</strong>
             <em>Grounded at Twenty. Airborne Ever Since.</em>
             <b>Discover the book ↗</b>
           </span>
@@ -151,7 +152,8 @@ export default function FAQ() {
                 className={styles.faqHeader}
                 aria-expanded={isOpen}
               >
-                <span className={styles.questionText}>{faq.question}</span>
+                {/* strikeNot crosses out "Not" when the question names the book */}
+                <span className={styles.questionText}>{strikeNot(faq.question)}</span>
                 <span className={styles.toggleIcon}>{isOpen ? '−' : '+'}</span>
               </button>
 

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import styles from './EbookModal.module.css';
+import { strikeNot } from '../utils/strikeNot';
 
 // =========================================================================
 // GCP BUCKET PDF PREVIEW URL
@@ -64,7 +65,7 @@ export default function EbookModal({ isOpen, onClose }) {
           <div className={styles.headerLeft}>
             <span className={styles.modalEyebrow}>BOOK PREVIEW · PDF DOCUMENT</span>
             <h2 id="modal-pdf-title" className={styles.modalTitle}>
-              You Will Not Fly: Sample Pages
+              {strikeNot('You Will Not Fly: Sample Pages')}
             </h2>
           </div>
 
@@ -106,7 +107,7 @@ export default function EbookModal({ isOpen, onClose }) {
             <div className={styles.pdfDocContainer}>
               <div className={styles.pdfPageSheet}>
                 <div className={styles.pdfPageHeader}>
-                  <span>YOU WILL NOT FLY · DR. ANURAAG GUGLAANI</span>
+                  <span>{strikeNot('YOU WILL NOT FLY · DR. ANURAAG GUGLAANI')}</span>
                   <span>SAMPLE PREVIEW</span>
                 </div>
 
@@ -132,7 +133,7 @@ export default function EbookModal({ isOpen, onClose }) {
 
                   <div className={styles.pdfAxiomBox}>
                     <p>“A Verdict is not a Destiny. A Title is a Noun. What you can do is a Verb.”</p>
-                    <small>FROM: YOU WILL NOT FLY</small>
+                    <small>{strikeNot('FROM: YOU WILL NOT FLY')}</small>
                   </div>
 
                   <p>

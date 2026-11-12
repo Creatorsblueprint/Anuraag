@@ -4,6 +4,7 @@ import { fadeInUp, staggerContainer } from '../animations';
 import { trackCtaClick, trackModalOpen } from '../utils/analytics';
 import EbookModal from './EbookModal';
 import styles from './Ebook.module.css';
+import { strikeNot } from '../utils/strikeNot';
 
 export default function Ebook() {
   const [activeTheme, setActiveTheme] = useState('business');
@@ -306,7 +307,7 @@ export default function Ebook() {
         <blockquote className={styles.bookQuote}>
           “A Verdict is not a Destiny.<br />
           A Title is a Noun. <span>What you can do is a Verb.</span>”
-          <cite>FROM YOU WILL NOT FLY</cite>
+          <cite>{strikeNot('FROM YOU WILL NOT FLY')}</cite>
         </blockquote>
       </div>
 
