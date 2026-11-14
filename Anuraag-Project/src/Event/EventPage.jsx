@@ -248,6 +248,11 @@ export default function EventPage() {
               <p className={styles.successText}>
                 Your Zoom joining link will be sent to this email address before the event.
               </p>
+              {/* Some email apps put the confirmation in the spam folder, so tell
+                  people where to look. (Reuses the small grey note style.) */}
+              <p className={styles.formNote}>
+                Can&apos;t find the email? Check your spam or junk folder.
+              </p>
               <a href="/" className={styles.submitBtn}>
                 <span>Back to main site</span>
               </a>
