@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './DigitalCheckoutModal.module.css';
 import { trackDigitalCheckoutBegin } from '../utils/analytics';
+import { strikeNot } from '../utils/strikeNot';
 
 export default function DigitalCheckoutModal({ isOpen, onClose }) {
   const [email, setEmail] = useState('');
@@ -171,7 +172,7 @@ export default function DigitalCheckoutModal({ isOpen, onClose }) {
               className={styles.bookThumb}
             />
             <div className={styles.productDetails}>
-              <h3 className={styles.productTitle}>You Will Not Fly</h3>
+              <h3 className={styles.productTitle}>{strikeNot('You Will Not Fly')}</h3>
               <p className={styles.productDesc}>
                 Complete Digital Edition &amp; High-Resolution Interactive PDF.
               </p>

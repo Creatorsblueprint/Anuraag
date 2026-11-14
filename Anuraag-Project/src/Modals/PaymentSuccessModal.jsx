@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import styles from './PaymentSuccessModal.module.css';
 import { trackDigitalPurchaseSuccess } from '../utils/analytics';
+import { strikeNot } from '../utils/strikeNot';
 
 export default function PaymentSuccessModal({ isOpen, onClose }) {
   useEffect(() => {
@@ -52,7 +53,7 @@ export default function PaymentSuccessModal({ isOpen, onClose }) {
             className={styles.pillThumb}
           />
           <div className={styles.pillText}>
-            <strong>You Will Not Fly</strong>
+            <strong>{strikeNot('You Will Not Fly')}</strong>
             <span>Digital E-Book &amp; Interactive PDF Edition</span>
           </div>
         </div>

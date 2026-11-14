@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { trackCtaClick } from '../utils/analytics';
 import styles from './StickyBook.module.css';
+import { strikeNot } from '../utils/strikeNot';
 
 export default function StickyBook() {
   const [scrolledPastHero, setScrolledPastHero] = useState(false);
@@ -67,7 +68,7 @@ export default function StickyBook() {
       <div className={styles.bookInfoGroup}>
         <div className={styles.bookTitles}>
           <small>THE NEW BOOK</small>
-          <strong>You Will Not Fly</strong>
+          <strong>{strikeNot('You Will Not Fly')}</strong>
         </div>
       </div>
 
