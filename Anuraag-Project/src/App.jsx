@@ -18,6 +18,7 @@ import PaymentCancelModal from './Modals/PaymentCancelModal';
 import EventPage from './Event/EventPage';
 import PlaceholderPage from './Pages/PlaceholderPage';
 import { PAGE_CONTENT } from './Pages/pageContent';
+import PreviewSignup from './Pages/PreviewSignup';
 import { useRoute } from './router/router';
 import { PAGES, HOME_SECTIONS } from './router/routes';
 import { trackPageView } from './utils/analytics';
@@ -37,11 +38,13 @@ function renderPage(page) {
     );
   }
 
-  // Book: the existing book, questions and purchase sections.
+  // Book: the existing book, questions and purchase sections, plus the
+  // sign-up for the free preview.
   if (page === 'book') {
     return (
       <>
         <Ebook />
+        <PreviewSignup />
         <FAQ />
         <Contact />
       </>

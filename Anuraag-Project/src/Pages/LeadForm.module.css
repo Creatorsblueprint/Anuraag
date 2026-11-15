@@ -1,0 +1,205 @@
+/* Styles for LeadForm.jsx. Same look as the event registration form
+   (EventPage.module.css), using the shared design tokens from index.css
+   so it follows the dark and light themes automatically. */
+
+/* The box around the form */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 28px;
+  text-align: left;
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-gold-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-subtle);
+}
+
+/* One label + box + error message */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.input {
+  width: 100%;
+  padding: 13px 16px;
+  background: var(--color-surface-dim);
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  color: var(--color-text-primary);
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.25s ease;
+}
+
+.input::placeholder {
+  color: var(--color-text-faint);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  background: var(--color-surface);
+  box-shadow: 0 0 0 3px var(--color-gold-bg);
+}
+
+/* The message box can be made taller by the visitor, but not wider */
+.textarea {
+  resize: vertical;
+  min-height: 110px;
+  line-height: 1.6;
+}
+
+/* Red outline for a field that failed validation */
+.inputError,
+.inputError:focus {
+  border-color: #e57373;
+  box-shadow: 0 0 0 3px rgba(229, 115, 115, 0.2);
+}
+
+.errorText {
+  margin: 0;
+  font-size: 11px;
+  color: #ef5350;
+}
+
+/* Spam trap box: moved far off the screen so people never see it */
+.trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+/* Tick box with its text beside it */
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.consent input {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  accent-color: var(--color-gold);
+  cursor: pointer;
+}
+
+/* Red box for an error message that came back from the backend */
+.serverAlert {
+  background: rgba(239, 83, 80, 0.1);
+  border: 1px solid rgba(239, 83, 80, 0.3);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #ef5350;
+}
+
+/* Gold pill button: same look as the other main buttons */
+.submitBtn {
+  width: 100%;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #e4c988 0%, #c7a967 100%);
+  color: #0b0c09;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: inherit;
+  letter-spacing: 0.5px;
+  border: 1px solid rgba(255, 235, 185, 0.4);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 6px 20px rgba(199, 169, 103, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.submitBtn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #f0dcab 0%, #d8be80 100%);
+  box-shadow: 0 8px 28px rgba(199, 169, 103, 0.55);
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Small spinning circle shown inside the button while the form is sending */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(11, 12, 9, 0.3);
+  border-top-color: #0b0c09;
+  border-radius: 50%;
+  animation: leadSpin 0.7s linear infinite;
+}
+
+@keyframes leadSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Thank-you card shown in place of the form after sending */
+.successCard {
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.successIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--color-gold-bg);
+  border: 1px solid var(--color-gold-border);
+  color: var(--color-gold);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.successTitle {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+}
+
+.successText {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+/* Phones: less padding inside the box */
+@media (max-width: 800px) {
+  .card {
+    padding: 20px;
+  }
+}

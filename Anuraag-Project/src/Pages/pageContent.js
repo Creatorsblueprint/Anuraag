@@ -4,6 +4,8 @@
 //   eyebrow - small gold label above the heading
 //   title   - the page heading
 //   text    - one or two sentences under the heading
+//   form    - settings for a form under the text (see LeadForm.jsx); optional
+//   comingSoon - a short note in a dashed box about something still to come; optional
 //   cta     - the button: its label and where it goes (leave out for no button)
 export const PAGE_CONTENT = {
   speaking: {
@@ -27,7 +29,15 @@ export const PAGE_CONTENT = {
   insights: {
     eyebrow: 'Insights',
     title: 'Articles and ideas',
-    text: 'Articles on family business, leadership and governance are being added to this page.',
+    text: 'Articles on family business, leadership and governance are being added to this page. Leave your email to get a monthly update when new ones are published.',
+    form: {
+      source: 'updates',
+      consentLabel: 'I agree to receive email updates from Dr. Anuraag Guglaani. I can unsubscribe at any time.',
+      consentRequired: true,
+      buttonLabel: 'Subscribe',
+      successTitle: 'You are subscribed.',
+      successText: 'Thank you. New articles and updates will be sent to your email.'
+    },
     cta: { label: 'Get the Book', to: '/book' }
   },
   'media-kit': {
@@ -39,7 +49,17 @@ export const PAGE_CONTENT = {
   contact: {
     eyebrow: 'Contact',
     title: 'Start a conversation',
-    text: 'The inquiry form is being added to this page. Until then, the quickest way to reach Dr. Anuraag Guglaani is on LinkedIn.',
+    text: 'For speaking, board, advisory and academic inquiries, send a message below and the team will reply by email.',
+    form: {
+      source: 'contact',
+      showName: true,
+      showMessage: true,
+      consentLabel: 'Also send me occasional updates from Dr. Anuraag Guglaani. (Optional)',
+      buttonLabel: 'Send Message',
+      successTitle: 'Message sent.',
+      successText: 'Thank you. The team will reply to you by email.'
+    },
+    comingSoon: 'Online booking for consultations is being added to this page.',
     cta: { label: 'Message on LinkedIn', to: 'https://www.linkedin.com/in/anuraagguglaani', external: true }
   }
 };

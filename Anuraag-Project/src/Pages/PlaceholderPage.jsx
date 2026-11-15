@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { fadeInUp } from '../animations';
 import Link from '../router/Link';
+import LeadForm from './LeadForm';
 import styles from './PlaceholderPage.module.css';
 
 /**
@@ -9,10 +10,11 @@ import styles from './PlaceholderPage.module.css';
  * menu links already lead somewhere real.
  *
  * Props:
- *   content - one entry from pageContent.js: { eyebrow, title, text, cta }
+ *   content - one entry from pageContent.js:
+ *             { eyebrow, title, text, form, comingSoon, cta }
  */
 export default function PlaceholderPage({ content }) {
-  const { eyebrow, title, text, cta } = content;
+  const { eyebrow, title, text, form, comingSoon, cta } = content;
 
   return (
     <section className={styles.page}>
@@ -20,6 +22,18 @@ export default function PlaceholderPage({ content }) {
         <p className={styles.eyebrow}>{eyebrow.toUpperCase()}</p>
         <h1 className={styles.heading}>{title}</h1>
         <p className={styles.text}>{text}</p>
+
+        {/* Optional form (Contact and Insights pages). "form" holds the
+            settings for LeadForm; {...form} passes each one on as a prop. */}
+        {form && (
+          <div className={styles.formSlot}>
+            <LeadForm {...form} />
+          </div>
+        )}
+
+        {/* Optional note about something that is still to come
+            (e.g. online booking on the Contact page). */}
+        {comingSoon && <p className={styles.comingSoon}>{comingSoon}</p>}
 
         {/* A link to another website opens in a new tab; a link to one of our
             own pages uses <Link> so the site does not reload. */}
