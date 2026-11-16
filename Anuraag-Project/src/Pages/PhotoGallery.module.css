@@ -1,0 +1,130 @@
+/* Styles for PhotoGallery.jsx. Uses the shared design tokens from index.css,
+   so it follows the dark and light themes automatically. */
+
+.section {
+  display: flex;
+  justify-content: center;
+  padding: 88px 24px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1080px;
+}
+
+/* Top of the section, centred */
+.header {
+  max-width: 620px;
+  margin: 0 auto 44px;
+  text-align: center;
+}
+
+/* Small gold label above the heading (same style as the other pages) */
+.eyebrow {
+  color: var(--color-gold);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.3px;
+  line-height: 1.5;
+  margin: 0 0 16px;
+}
+
+.heading {
+  font-size: clamp(26px, 3.4vw, 38px);
+  font-weight: 500;
+  letter-spacing: -0.8px;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+  margin: 0 0 14px;
+}
+
+.text {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* The number of columns comes from the component (see "--columns" there) */
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  gap: 16px;
+}
+
+.card {
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  overflow: hidden; /* keeps the photograph inside the rounded corners */
+  transition: border-color 0.25s ease;
+}
+
+.card:hover {
+  border-color: var(--color-gold-border);
+}
+
+.figure {
+  margin: 0;
+}
+
+/* Every photograph gets the same 4:5 box so the rows line up. "cover" fills
+   the box and trims what does not fit; "top" keeps heads from being cut. */
+.photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: top;
+}
+
+.caption {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px 16px;
+}
+
+.captionTitle {
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-text-primary);
+}
+
+.captionMeta {
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-gold);
+}
+
+/* Tablets: three per row */
+@media (max-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Phones: two per row, less empty space */
+@media (max-width: 700px) {
+  .section {
+    padding: 56px 20px;
+  }
+
+  .header {
+    margin-bottom: 32px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .caption {
+    padding: 10px 12px 12px;
+  }
+}

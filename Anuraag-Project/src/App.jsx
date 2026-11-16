@@ -20,6 +20,8 @@ import PlaceholderPage from './Pages/PlaceholderPage';
 import ContentPage from './Pages/ContentPage';
 import { PAGE_CONTENT } from './Pages/pageContent';
 import PreviewSignup from './Pages/PreviewSignup';
+import PhotoGallery from './Pages/PhotoGallery';
+import { BOOK_ON_STAGE, IN_GOOD_COMPANY } from './Pages/photoGalleries';
 import { useRoute } from './router/router';
 import { PAGES, HOME_SECTIONS } from './router/routes';
 import { trackPageView } from './utils/analytics';
@@ -28,24 +30,27 @@ import './App.css';
 // Returns the sections that make up one page.
 // "page" is one of the names listed in router/routes.js (PAGES).
 function renderPage(page) {
-  // About: the existing story, roles and recognition sections.
+  // About: the existing story, roles and recognition sections, then
+  // photographs of Dr. Guglaani with leaders he has met.
   if (page === 'about') {
     return (
       <>
         <Story />
         <Roles />
         <Recognition />
+        <PhotoGallery gallery={IN_GOOD_COMPANY} />
       </>
     );
   }
 
   // Book: the existing book, questions and purchase sections, plus the
-  // sign-up for the free preview.
+  // sign-up for the free preview and photographs of the book at events.
   if (page === 'book') {
     return (
       <>
         <Ebook />
         <PreviewSignup />
+        <PhotoGallery gallery={BOOK_ON_STAGE} />
         <FAQ />
         <Contact />
       </>
