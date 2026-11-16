@@ -17,6 +17,7 @@ import PaymentSuccessModal from './Modals/PaymentSuccessModal';
 import PaymentCancelModal from './Modals/PaymentCancelModal';
 import EventPage from './Event/EventPage';
 import PlaceholderPage from './Pages/PlaceholderPage';
+import ContentPage from './Pages/ContentPage';
 import { PAGE_CONTENT } from './Pages/pageContent';
 import PreviewSignup from './Pages/PreviewSignup';
 import { useRoute } from './router/router';
@@ -51,9 +52,13 @@ function renderPage(page) {
     );
   }
 
-  // Pages that do not have their full content yet (Speaking, Insights...).
-  if (PAGE_CONTENT[page]) {
-    return <PlaceholderPage content={PAGE_CONTENT[page]} />;
+  // Simple pages whose text lives in pageContent.js.
+  // A page with "sections" (Speaking, Board & Advisory, Academic, Media Kit)
+  // is drawn as lists of cards; the others (Insights, Contact) as a short
+  // centred page.
+  const content = PAGE_CONTENT[page];
+  if (content) {
+    return content.sections ? <ContentPage content={content} /> : <PlaceholderPage content={content} />;
   }
 
   // Home: the full long page, unchanged for now.

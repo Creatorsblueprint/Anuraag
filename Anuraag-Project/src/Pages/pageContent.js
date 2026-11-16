@@ -1,29 +1,205 @@
-// Text for the pages that do not have their full content yet.
-// Each one is drawn by PlaceholderPage.jsx. When a page gets its real content
-// (later phases), it gets its own component and its entry here is removed.
+// Text for the simple pages of the site.
+// A page with "sections" is drawn by ContentPage.jsx; the others (still
+// waiting for their full content) are drawn by PlaceholderPage.jsx.
+// The Speaking, Board & Advisory, Academic and Media Kit text comes from
+// Dr. Guglaani's public LinkedIn profile (November 2026).
 //   eyebrow - small gold label above the heading
 //   title   - the page heading
 //   text    - one or two sentences under the heading
+//   sections - lists of cards under the text. A page that has this is drawn by
+//              ContentPage.jsx instead. Each section: { heading, items }, and each
+//              item: { title, meta, text } (meta and text are optional)
 //   form    - settings for a form under the text (see LeadForm.jsx); optional
 //   comingSoon - a short note in a dashed box about something still to come; optional
 //   cta     - the button: its label and where it goes (leave out for no button)
 export const PAGE_CONTENT = {
   speaking: {
     eyebrow: 'Speaking',
-    title: 'Keynotes and conference talks',
-    text: 'For conference producers and event organisers. Topics, formats and past talks are being added to this page.',
-    cta: { label: 'Start a Conversation', to: '/contact' }
+    title: 'Keynotes, panels and juries',
+    text: 'Dr. Guglaani speaks on family business, transformation and turnaround, entrepreneurship and investment, and the link between universities and industry, drawing on work across 26 industries and 35 countries.',
+    sections: [
+      {
+        heading: 'Recent and upcoming',
+        items: [
+          {
+            title: 'QS Higher Ed Summit: Middle East 2026',
+            meta: 'Speaker · Abu Dhabi · 22–24 November 2026',
+            text: 'How to move beyond collaboration and build university–industry partnerships that drive growth.'
+          },
+          {
+            title: 'Education Investment MENA 2026',
+            meta: 'Panellist · GESS Dubai',
+            text: 'Panel: “How Can Education Ecosystems Help Build the Workforce of Tomorrow?”'
+          },
+          {
+            title: 'StartUp Spotlight',
+            meta: 'Jury member · Education Investment MENA 2026',
+            text: 'Judged six education startups from six countries pitching to investors.'
+          },
+          {
+            title: 'Falcons of Majlis',
+            meta: 'Falcon (investor) · United Arab Emirates',
+            text: 'An investor on the UAE’s televised startup funding show.'
+          }
+        ]
+      },
+      {
+        heading: 'Topics',
+        items: [
+          {
+            title: 'Family business',
+            text: 'Governance, succession and generational change in family-owned groups.'
+          },
+          {
+            title: 'Transformation and turnaround',
+            text: 'Making businesses profitable, scalable, sustainable and investable.'
+          },
+          {
+            title: 'Entrepreneurship and investment',
+            text: 'What founders need to show, and what investors should look for.'
+          },
+          {
+            title: 'Education and industry',
+            text: 'Connecting universities, business and government to build future talent.'
+          }
+        ]
+      }
+    ],
+    cta: { label: 'Invite Dr. Guglaani to Speak', to: '/contact' }
   },
   'board-advisory': {
     eyebrow: 'Board & Advisory',
-    title: 'Board and advisory work',
-    text: 'For family business chairs, founders and investors. Details of board and advisory engagements are being added to this page.',
+    title: 'Board and advisory roles',
+    text: 'Dr. Guglaani serves on the boards of family business groups and institutions across the Middle East, Africa, Asia and North America, and mentors the next generation of directors and founders.',
+    sections: [
+      {
+        heading: 'Current board roles',
+        items: [
+          {
+            title: 'Chairperson of the Board',
+            meta: 'Wazir Holdings · 2022 – present',
+            text: 'A multi-family office formed by eight large family business groups.'
+          },
+          {
+            title: 'Board Member',
+            meta: 'Wazir Advisors UAE · 2022 – present',
+            text: 'A strategy and business transformation firm covering the Middle East, South Asia and Africa.'
+          },
+          {
+            title: 'Board Member',
+            meta: 'Asmara Holdings · 2022 – present',
+            text: 'A family-owned multinational group based in Dubai, with business units in more than 20 countries.'
+          },
+          {
+            title: 'Board Member',
+            meta: 'ADAM Global · 2026 – present',
+            text: 'Including ADAM Global Network and ADAM Global Auditing & Accounting.'
+          },
+          {
+            title: 'Board Member',
+            meta: 'International Business and Investment Union · 2025 – present'
+          },
+          {
+            title: 'Board Member',
+            meta: 'Pan African Leadership and Entrepreneurship Development Centre · 2023 – present',
+            text: 'A non-governmental organisation working to increase trade and investment in Africa.'
+          }
+        ]
+      },
+      {
+        heading: 'Mentoring',
+        items: [
+          {
+            title: 'Board and Directorship Mentor',
+            meta: 'MentorMyBoard · 2025 – present',
+            text: 'Training and mentoring aspiring directors for board-level positions.'
+          },
+          {
+            title: 'Mentor',
+            meta: 'Startup World Cup · 2025 – present',
+            text: 'A global startup pitch competition with regional events in more than 60 countries.'
+          }
+        ]
+      },
+      {
+        heading: 'Executive career',
+        items: [
+          { title: 'Chief Executive Officer', meta: 'Easa Saleh Al Gurg Group · Dubai · 2011 – 2016' },
+          { title: 'Senior Partner', meta: 'Global audit, tax and consulting firms · 2017 – 2022' },
+          { title: 'Group Chief Operating Officer', meta: 'Nehmeh · Doha · 2016 – 2017' },
+          { title: 'Director', meta: 'Abdul Latif Jameel · Saudi Arabia · 2009 – 2011' },
+          { title: 'Group General Manager, GCC Operations', meta: 'Jumbo Electronics · UAE · 2005 – 2009' },
+          { title: 'Group General Manager', meta: 'OTE Group · Muscat · 2001 – 2005' }
+        ]
+      }
+    ],
     cta: { label: 'Start a Conversation', to: '/contact' }
   },
   academic: {
     eyebrow: 'Academic',
     title: 'Academic leadership and teaching',
-    text: 'For university leaders and academic boards. Teaching, research and academic roles are being added to this page.',
+    text: 'Dr. Guglaani teaches future business leaders and entrepreneurs, and helps universities connect their strategy and curriculum to what industry needs.',
+    sections: [
+      {
+        heading: 'Teaching and governance',
+        items: [
+          {
+            title: 'Adjunct Professor',
+            meta: 'American University of Ras Al Khaimah · 2026 – present',
+            text: 'Entrepreneurship, International Business (MBA), Service Marketing and Data Analytics.'
+          },
+          {
+            title: 'Chair, KITE Advisory Board',
+            meta: 'American University of Ras Al Khaimah · 2025 – present'
+          },
+          {
+            title: 'Member, Business Advisory Council',
+            meta: 'American University of Ras Al Khaimah · 2025 – present'
+          },
+          {
+            title: 'Programme Review Committee, Management',
+            meta: 'Symbiosis International University Dubai · 2025 – present'
+          },
+          {
+            title: 'Vice Chair, PADIA',
+            meta: 'Dubai International Academy · 2021 – present'
+          }
+        ]
+      },
+      {
+        heading: 'Education',
+        items: [
+          {
+            title: 'Doctorate, Information Management Systems',
+            meta: 'American Heritage University',
+            text: 'Intelligent automation and technology governance.'
+          },
+          {
+            title: 'Master of Business Administration',
+            meta: 'Symbiosis Institute of Management Studies',
+            text: 'Specialisation in Finance and Marketing.'
+          },
+          {
+            title: 'Executive programmes',
+            meta: 'IMD · INSEAD · New York University · IIM Ahmedabad',
+            text: 'Organisational leadership, wealth management and investment leadership.'
+          },
+          {
+            title: 'Fellowship, Management and Leadership',
+            meta: 'Chartered Management Institute'
+          },
+          {
+            title: 'Air Force officer training',
+            meta: 'National Defence Academy, Khadakvasla',
+            text: 'Trained as a fighter pilot and military officer. The story behind the book.'
+          },
+          {
+            title: 'Certified Information Security Manager (CISM)',
+            meta: 'ISACA, USA'
+          }
+        ]
+      }
+    ],
     cta: { label: 'Start a Conversation', to: '/contact' }
   },
   insights: {
@@ -43,8 +219,36 @@ export const PAGE_CONTENT = {
   'media-kit': {
     eyebrow: 'Media Kit',
     title: 'Media and speaker kit',
-    text: 'Biography, photographs and speaker details for organisers and journalists are being added to this page.',
-    cta: { label: 'Start a Conversation', to: '/contact' }
+    text: 'Dr. Anuraag Guglaani, The Family Business Doctor, is a transformation and turnaround expert, Group CEO, chairperson and investor-operator who has worked across 26 industries and 35 countries. He is an adjunct professor, a Falcon on Falcons of Majlis and the author of You Will Not Fly.',
+    sections: [
+      {
+        heading: 'At a glance',
+        items: [
+          { title: '26 industries, 35 countries', text: 'Operating, investing in and transforming businesses.' },
+          { title: 'The Family Business Doctor', text: 'Board member and advisor to family business groups.' },
+          { title: 'Author', text: 'You Will Not Fly: Grounded at Twenty, Airborne Ever Since.' },
+          { title: 'Based in Dubai', text: 'Working across the Middle East, Africa, Asia and North America.' }
+        ]
+      },
+      {
+        heading: 'Honours',
+        items: [
+          { title: 'US President’s Lifetime Achievement Award', meta: 'The White House, Washington DC' },
+          { title: 'President’s Volunteer Service Medal 2023', meta: 'AmeriCorps and the Office of the President, USA' },
+          { title: 'UAE International Excellence Award 2023', meta: 'Dubai' },
+          {
+            title: 'Transformational Leader, Lead Like Mandela Award 2023',
+            meta: 'World Youth Forum, under the patronage of H.E. Ndileka Mandela'
+          },
+          { title: 'Global Humanitarian Award 2023', meta: 'Global International Alliance, USA' },
+          {
+            title: 'Top 100 Change Maker 2020, 2021 and 2022',
+            meta: 'Pan African Leadership and Entrepreneurship Development Centre'
+          }
+        ]
+      }
+    ],
+    cta: { label: 'Media and Speaking Requests', to: '/contact' }
   },
   contact: {
     eyebrow: 'Contact',

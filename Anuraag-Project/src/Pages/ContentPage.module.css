@@ -1,0 +1,173 @@
+/* Styles for ContentPage.jsx (Speaking, Board & Advisory, Academic, Media Kit).
+   Uses the shared design tokens from index.css, so it follows the dark and
+   light themes automatically. */
+
+.page {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 96px 24px 120px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 880px;
+}
+
+/* Top of the page, centred */
+.header {
+  max-width: 660px;
+  margin: 0 auto 64px;
+  text-align: center;
+}
+
+/* Small gold label above the heading (same style as the other pages) */
+.eyebrow {
+  color: var(--color-gold);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.3px;
+  line-height: 1.5;
+  margin: 0 0 16px;
+}
+
+.heading {
+  font-size: clamp(30px, 4vw, 46px);
+  font-weight: 500;
+  letter-spacing: -1px;
+  line-height: 1.15;
+  color: var(--color-text-primary);
+  margin: 0 0 18px;
+}
+
+.intro {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* One section = a heading and its list of cards */
+.section {
+  margin-bottom: 56px;
+}
+
+/* Section heading with a thin gold line running to the right of it */
+.sectionHeading {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 0 22px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.sectionHeading::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-gold-border);
+}
+
+/* Two cards side by side on wide screens */
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.item {
+  padding: 22px 24px;
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  transition: border-color 0.25s ease;
+}
+
+.item:hover {
+  border-color: var(--color-gold-border);
+}
+
+.itemTitle {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-text-primary);
+}
+
+/* Small gold line under the title: organisation, place or dates */
+.itemMeta {
+  margin: 6px 0 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  line-height: 1.5;
+  color: var(--color-gold);
+}
+
+.itemText {
+  margin: 10px 0 0;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+.ctaRow {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+/* Gold pill button, same look as the main button in the header */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 26px;
+  background: linear-gradient(135deg, #e4c988 0%, #c7a967 100%);
+  color: #0b0c09;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  border: 1px solid rgba(255, 235, 185, 0.4);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 6px 20px rgba(199, 169, 103, 0.35);
+  transition: all 0.25s ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #f0dcab 0%, #d8be80 100%);
+  box-shadow: 0 8px 28px rgba(199, 169, 103, 0.55);
+}
+
+/* Phones and small tablets: one card per row, less empty space */
+@media (max-width: 800px) {
+  .page {
+    padding: 56px 20px 80px;
+  }
+
+  .header {
+    margin-bottom: 44px;
+  }
+
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .list {
+    grid-template-columns: 1fr;
+  }
+
+  .item {
+    padding: 18px 20px;
+  }
+}
