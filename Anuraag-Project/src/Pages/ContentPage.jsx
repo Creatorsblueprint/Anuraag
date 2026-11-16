@@ -21,8 +21,9 @@ function withBookTitle(text) {
  * Props:
  *   content - one entry from pageContent.js:
  *     { eyebrow, title, text, sections, cta }
- *     sections - list of { heading, items }
+ *     sections - list of { heading, items } or { heading, images }
  *     items    - list of { title, meta, text }  (meta and text are optional)
+ *     images   - list of { src, title, meta }   (a picture gallery; meta is optional)
  */
 export default function ContentPage({ content }) {
   const { eyebrow, title, text, sections, cta } = content;
@@ -42,6 +43,34 @@ export default function ContentPage({ content }) {
         {sections.map((section) => (
           <div className={styles.section} key={section.heading}>
             <h2 className={styles.sectionHeading}>{section.heading}</h2>
+
+            {/* A section with "images" is a picture gallery: one framed
+                picture per entry, with its name and details underneath.
+                loading="lazy" makes the browser fetch a picture only when
+                the visitor scrolls near it, so the page opens quickly. */}
+            {section.images && (
+              <ul className={styles.gallery}>
+                {section.images.map((image) => (
+                  <li className={styles.galleryItem} key={image.src}>
+                    <figure className={styles.figure}>
+                      <img
+                        className={styles.galleryImage}
+                        src={image.src}
+                        alt={`${image.title}${image.meta ? `, ${image.meta}` : ''}`}
+                        loading="lazy"
+                      />
+                      <figcaption className={styles.caption}>
+                        <span className={styles.captionTitle}>{image.title}</span>
+                        {image.meta && <span className={styles.captionMeta}>{image.meta}</span>}
+                      </figcaption>
+                    </figure>
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {/* A section with "items" is a list of text cards. */}
+            {section.items && (
             <ul className={styles.list}>
               {/* The key joins title and meta, because several roles share
                   the title "Board Member". */}
@@ -53,6 +82,7 @@ export default function ContentPage({ content }) {
                 </li>
               ))}
             </ul>
+            )}
           </div>
         ))}
 

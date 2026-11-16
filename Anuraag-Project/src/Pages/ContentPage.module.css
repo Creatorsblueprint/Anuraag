@@ -119,6 +119,64 @@
   color: var(--color-text-muted);
 }
 
+/* Picture gallery: three pictures per row on wide screens */
+.gallery {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.galleryItem {
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  overflow: hidden; /* keeps the picture inside the rounded corners */
+  transition: border-color 0.25s ease;
+}
+
+.galleryItem:hover {
+  border-color: var(--color-gold-border);
+}
+
+.figure {
+  margin: 0;
+}
+
+/* Every picture gets the same 3:4 box. "contain" shows the whole picture
+   without cropping; the cream colour matches the pictures' own background,
+   so wide pictures do not show empty bars. */
+.galleryImage {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: contain;
+  background: #faf7f3;
+}
+
+.caption {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px 16px;
+}
+
+.captionTitle {
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-text-primary);
+}
+
+.captionMeta {
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-gold);
+}
+
 .ctaRow {
   display: flex;
   justify-content: center;
@@ -165,6 +223,16 @@
 
   .list {
     grid-template-columns: 1fr;
+  }
+
+  /* Two pictures per row on phones */
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .caption {
+    padding: 10px 12px 12px;
   }
 
   .item {

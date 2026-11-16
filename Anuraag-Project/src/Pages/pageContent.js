@@ -8,7 +8,9 @@
 //   text    - one or two sentences under the heading
 //   sections - lists of cards under the text. A page that has this is drawn by
 //              ContentPage.jsx instead. Each section: { heading, items }, and each
-//              item: { title, meta, text } (meta and text are optional)
+//              item: { title, meta, text } (meta and text are optional).
+//              A section can instead have "images" (a picture gallery):
+//              { heading, images }, each image: { src, title, meta }
 //   form    - settings for a form under the text (see LeadForm.jsx); optional
 //   comingSoon - a short note in a dashed box about something still to come; optional
 //   cta     - the button: its label and where it goes (leave out for no button)
@@ -25,6 +27,21 @@ export const PAGE_CONTENT = {
             title: 'QS Higher Ed Summit: Middle East 2026',
             meta: 'Speaker · Abu Dhabi · 22–24 November 2026',
             text: 'How to move beyond collaboration and build university–industry partnerships that drive growth.'
+          },
+          {
+            title: 'SME Governance Summit 2026',
+            meta: 'BSE, Mumbai · 26 August 2026',
+            text: 'Hosted by MentorMyBoard, on governance for small and mid-sized enterprises.'
+          },
+          {
+            title: 'RISE 2026',
+            meta: 'Speaker · Panaji, Goa · 19 June 2026',
+            text: 'The inaugural COGGE Leadership Forum, an initiative of the Vibrant Goa Foundation.'
+          },
+          {
+            title: 'IEEE ICERAI 2026',
+            meta: 'Paper · American University of Ras Al Khaimah · 1–3 April 2026',
+            text: 'A framework for deploying explainable AI and intelligent automation in family businesses and mid-sized enterprises.'
           },
           {
             title: 'Education Investment MENA 2026',
@@ -244,7 +261,38 @@ export const PAGE_CONTENT = {
           {
             title: 'Top 100 Change Maker 2020, 2021 and 2022',
             meta: 'Pan African Leadership and Entrepreneurship Development Centre'
-          }
+          },
+          {
+            title: 'The Legacy Circle 2025',
+            meta: 'Global Visionary in Business Transformation and Governance · Dubai'
+          },
+          {
+            title: 'International Excellence Award',
+            meta: 'IBI Union · Driving SME turnarounds and transformations across continents'
+          },
+          { title: 'Realtek Awards 2025', meta: 'Excellence in Professional Services · Dubai' },
+          { title: 'Indywood Business Excellence Award 2025', meta: 'Indywood Billionaires Club · Dubai' },
+          { title: 'Global Icon of the Year 2022', meta: 'Pan African Youth Leadership Foundation' },
+          { title: 'The Super 100', meta: 'GrayMatter in association with Gulf News' }
+        ]
+      },
+      {
+        // Picture gallery. The pictures are in public/awards (shrunk copies
+        // of the photos supplied by the client, November 2026).
+        heading: 'Awards and recognition',
+        images: [
+          { src: '/awards/legacy-circle-2025.jpg', title: 'The Legacy Circle', meta: 'Global Leadership Summit 2025' },
+          { src: '/awards/ibi-union-excellence.jpg', title: 'International Excellence Award', meta: 'IBI Union' },
+          { src: '/awards/realtek-awards-2025.jpg', title: 'Excellence in Professional Services', meta: 'Realtek Awards 2025' },
+          { src: '/awards/global-icon-2022.jpg', title: 'Global Icon of the Year', meta: 'Global Leaders Summit 2022' },
+          { src: '/awards/indywood-excellence-2025.jpg', title: 'Indywood Business Excellence Award', meta: 'Dubai 2025' },
+          { src: '/awards/uae-excellence-2023.jpg', title: 'International Excellence Award', meta: 'UAE 2023' },
+          { src: '/awards/paledec-changemakers.jpg', title: '100 Pan African Changemakers', meta: 'PALEDEC Certificate of Honor' },
+          { src: '/awards/paledec-recognition-2022.jpg', title: 'Special Recognition Award', meta: 'Pan African Summit, Zanzibar 2022' },
+          { src: '/awards/lead-like-mandela-2023.jpg', title: 'Lead Like Mandela Forum', meta: 'Guest speaker · 2023' },
+          { src: '/awards/fgdi-gulf-summit-2023.jpg', title: 'Outstanding Entrepreneur', meta: 'FGDI Gulf Summit & Awards 2023' },
+          { src: '/awards/gulf-news-super-100.jpg', title: 'The Super 100', meta: 'Gulf News · 30 May 2024' },
+          { src: '/awards/sme-governance-summit-2026.jpg', title: 'SME Governance Summit', meta: 'BSE, Mumbai · 2026' }
         ]
       }
     ],
