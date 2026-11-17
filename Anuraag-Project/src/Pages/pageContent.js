@@ -281,6 +281,21 @@ export const PAGE_CONTENT = {
         // of the photos supplied by the client, November 2026).
         heading: 'Awards and recognition',
         images: [
+          // Phone photos of the framed originals (no digital copies exist):
+          // only cropped, straightened and lightly brightened. The wording on
+          // the documents is exactly as printed.
+          {
+            src: '/awards/presidents-lifetime-achievement-2023.jpg',
+            title: "President's Lifetime Achievement Award",
+            meta: 'AmeriCorps and the Office of the US President · 2023'
+          },
+          {
+            src: '/awards/white-house-letter-2023.jpg',
+            title: 'Letter from the White House',
+            meta: "With the President's Lifetime Achievement Award · 2023"
+          },
+          { src: '/awards/uae-excellence-plate.jpg', title: 'International Excellence Awards U.A.E', meta: 'Honouring plate' },
+          { src: '/awards/super-100-profile.jpg', title: 'The Super 100 profile', meta: 'GrayMatter · Revolutionising family businesses' },
           { src: '/awards/legacy-circle-2025.jpg', title: 'The Legacy Circle', meta: 'Global Leadership Summit 2025' },
           { src: '/awards/ibi-union-excellence.jpg', title: 'International Excellence Award', meta: 'IBI Union' },
           { src: '/awards/realtek-awards-2025.jpg', title: 'Excellence in Professional Services', meta: 'Realtek Awards 2025' },
