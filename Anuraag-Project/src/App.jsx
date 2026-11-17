@@ -22,6 +22,9 @@ import { PAGE_CONTENT } from './Pages/pageContent';
 import PreviewSignup from './Pages/PreviewSignup';
 import PhotoGallery from './Pages/PhotoGallery';
 import { BOOK_ON_STAGE, IN_GOOD_COMPANY } from './Pages/photoGalleries';
+import EventBanner from './EventPromo/EventBanner';
+import EventCard from './EventPromo/EventCard';
+import EventPopup from './EventPromo/EventPopup';
 import { useRoute } from './router/router';
 import { PAGES, HOME_SECTIONS } from './router/routes';
 import { trackPageView } from './utils/analytics';
@@ -44,11 +47,13 @@ function renderPage(page) {
   }
 
   // Book: the existing book, questions and purchase sections, plus the
-  // sign-up for the free preview and photographs of the book at events.
+  // book launch card (until the event is over), the sign-up for the free
+  // preview and photographs of the book at events.
   if (page === 'book') {
     return (
       <>
         <Ebook />
+        <EventCard location="book" />
         <PreviewSignup />
         <PhotoGallery gallery={BOOK_ON_STAGE} />
         <FAQ />
@@ -66,10 +71,12 @@ function renderPage(page) {
     return content.sections ? <ContentPage content={content} /> : <PlaceholderPage content={content} />;
   }
 
-  // Home: the full long page, unchanged for now.
+  // Home: the full long page, with the book launch card right after the
+  // opening section (the card hides itself once the event is over).
   return (
     <>
       <Home />
+      <EventCard location="home" />
       <Ebook />
       <Interlude />
       <Story />
@@ -159,6 +166,10 @@ export default function App() {
 
   return (
     <div className="appWrapper" id="top">
+      {/* Book launch promotion on every page except the event page itself
+          (that page returns earlier, above). Both hide after the event. */}
+      <EventBanner />
+      <EventPopup />
       <Nav currentPath={path} />
       {/* key={page} makes React build the page fresh when the page changes,
           so entrance animations play again and old page state is not kept. */}

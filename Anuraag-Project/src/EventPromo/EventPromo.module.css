@@ -1,0 +1,296 @@
+/* Styles for the book launch promotion: EventBanner, EventCard and EventPopup.
+   Uses the shared design tokens from index.css, so it follows the dark and
+   light themes automatically. */
+
+/* ---------- Shared pieces ---------- */
+
+/* Small gold label above a heading (same style as the other pages) */
+.eyebrow {
+  color: var(--color-gold);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.3px;
+  line-height: 1.5;
+  margin: 0 0 12px;
+}
+
+/* Gold pill button, same look as the event page's register button */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #e4c988 0%, #c7a967 100%);
+  color: #0b0c09;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  border: 1px solid rgba(255, 235, 185, 0.4);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 6px 20px rgba(199, 169, 103, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 26px rgba(199, 169, 103, 0.45);
+}
+
+/* ---------- Banner (top of every page) ---------- */
+
+/* The whole strip is one link. It sits above the sticky header and scrolls
+   away with the page, so it does not take space while reading. */
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 9px 16px;
+  background: linear-gradient(135deg, #e4c988 0%, #c7a967 100%);
+  color: #0b0c09;
+  font-size: 13px;
+  line-height: 1.4;
+  text-decoration: none;
+  text-align: center;
+}
+
+.bannerText strong {
+  font-weight: 700;
+}
+
+.bannerAction {
+  font-weight: 700;
+  white-space: nowrap;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Phones get the short date only (see EventBanner.jsx) */
+.bannerShort {
+  display: none;
+}
+
+/* ---------- Card (Home and Book pages) ---------- */
+
+.cardSection {
+  display: flex;
+  justify-content: center;
+  padding: 72px 24px;
+}
+
+.card {
+  width: 100%;
+  max-width: 980px;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 40px;
+  align-items: center;
+  padding: 28px;
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-gold-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-gold);
+}
+
+.cardPoster {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+  margin: 0 0 14px;
+}
+
+.cardText {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin: 0 0 22px;
+}
+
+/* Date / Time / Where in three columns */
+.details {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: start;
+  gap: 32px;
+  margin: 0 0 26px;
+  padding: 16px 0 0;
+  border-top: 1px solid var(--color-line);
+}
+
+.details dt {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 4px;
+}
+
+.details dd {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+/* ---------- Pop-up ---------- */
+
+.popupOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000; /* above the header and the floating book bar */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: var(--color-modal-overlay);
+}
+
+.popup {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-gold-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-subtle);
+}
+
+.popupPoster {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.popupBody {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 36px 32px;
+}
+
+.popupTitle {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--color-text-primary);
+  margin: 0 0 12px;
+}
+
+.popupText {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0 0 24px;
+}
+
+.popupLater {
+  margin-top: 14px;
+  padding: 4px 0;
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.popupClose {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-glass);
+  color: var(--color-text-primary);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* ---------- Phones and small tablets ---------- */
+
+@media (max-width: 760px) {
+  .banner {
+    flex-direction: column;
+    gap: 2px;
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+
+  .bannerLong {
+    display: none;
+  }
+
+  .bannerShort {
+    display: inline;
+  }
+
+  .cardSection {
+    padding: 48px 16px;
+  }
+
+  /* Poster on top, text underneath */
+  .card {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 20px;
+  }
+
+  .cardPoster {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .details {
+    gap: 18px;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  /* Pop-up: a shorter strip of the poster on top, text underneath */
+  .popup {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+  }
+
+  .popupPoster {
+    height: 220px;
+    object-position: top;
+  }
+
+  .popupBody {
+    padding: 24px 20px 20px;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .popupTitle {
+    font-size: 21px;
+  }
+}
