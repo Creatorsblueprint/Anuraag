@@ -9,8 +9,8 @@
 //   photos  - each one: { src, title, meta }  (meta is optional)
 
 // Book page: the book at recent events.
-// The other people on stage are not named yet: their names and titles
-// still have to come from the client.
+// Names and event details confirmed by the client (17 November 2026).
+// Falcons of Majlis was filmed for the show, so those photos carry no date.
 export const BOOK_ON_STAGE = {
   id: 'on-stage',
   eyebrow: 'On Stage',
@@ -18,9 +18,9 @@ export const BOOK_ON_STAGE = {
   text: 'From its first launch at Falcons of Majlis to the Vibrant Goa Global Business Summit.',
   columns: 4,
   photos: [
-    { src: '/gallery/book-launch-falcons-1.jpg', title: 'First book launch', meta: 'Falcons of Majlis · November 2026' },
-    { src: '/gallery/book-launch-falcons-2.jpg', title: 'On stage with the book', meta: 'Falcons of Majlis · November 2026' },
-    { src: '/gallery/vibrant-goa-book.jpg', title: 'Presenting the book', meta: 'Vibrant Goa Global Business Summit · October 2026' },
+    { src: '/gallery/book-launch-falcons-1.jpg', title: 'With Chitrangada Singh', meta: 'Falcons of Majlis · First book launch' },
+    { src: '/gallery/book-launch-falcons-2.jpg', title: 'With Suniel Shetty', meta: 'Falcons of Majlis · First book launch' },
+    { src: '/gallery/vibrant-goa-book.jpg', title: 'With Dr. Pramod Sawant, Chief Minister of Goa', meta: 'Vibrant Goa Global Business Summit · October 2026' },
     { src: '/gallery/vibrant-goa-trophy.jpg', title: 'Honoured on stage', meta: 'Vibrant Goa Global Business Summit · October 2026' }
   ]
 };
