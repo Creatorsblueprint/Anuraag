@@ -245,8 +245,11 @@ export default function EventPage() {
                 Thank you, {form.name.trim()}. Your seat for {EVENT.dateLabel} is reserved under{' '}
                 <strong>{form.email.trim()}</strong>, representing <strong>{form.nationality}</strong>.
               </p>
+              {/* The confirmation email already contains the Zoom link (added by
+                  the backend), so say so rather than "will be sent later". */}
               <p className={styles.successText}>
-                Your Zoom joining link will be sent to this email address before the event.
+                A confirmation email with your Zoom joining link is on its way to this
+                address. We will also send you a reminder shortly before the event.
               </p>
               {/* Some email apps put the confirmation in the spam folder, so tell
                   people where to look. (Reuses the small grey note style.) */}
@@ -351,7 +354,7 @@ export default function EventPage() {
             </button>
 
             <p className={styles.formNote}>
-              The Zoom joining link will be emailed to registered attendees before the event.
+              Your Zoom joining link will be emailed to you as soon as you register.
             </p>
           </form>
           )}
