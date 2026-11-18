@@ -16,6 +16,11 @@
   text-align: center;
 }
 
+/* Wider column for a page with a photo beside its heading (PageHeader.jsx) */
+.wrapWide {
+  max-width: 880px;
+}
+
 /* Small gold label above the heading (same style as the home page sections) */
 .eyebrow {
   color: var(--color-gold);

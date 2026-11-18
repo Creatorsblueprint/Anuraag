@@ -60,6 +60,9 @@ function getLeadsUrl() {
  *   messageRequired - true when the Message box must be filled in (default true)
  *   messageLabel    - label above the Message box (default "Message")
  *   messagePlaceholder - grey hint text inside the Message box
+ *   messagePrefix   - text added in front of the message when it is sent, so
+ *                     the team can tell which page it came from, e.g.
+ *                     "[Board & Advisory page]" (optional)
  *   showSpeaking    - show the speaking invitation boxes: organisation, event,
  *                     date, city, format and audience size
  *   consentLabel    - text next to the tick box
@@ -75,6 +78,7 @@ export default function LeadForm({
   messageRequired = true,
   messageLabel = 'Message',
   messagePlaceholder = 'How can Dr. Guglaani help?',
+  messagePrefix = '',
   showSpeaking = false,
   consentLabel,
   consentRequired = false,
@@ -147,7 +151,8 @@ export default function LeadForm({
           source,
           name: form.name.trim(),
           email: form.email.trim(),
-          message: form.message.trim(),
+          // The prefix (if any) goes on its own line above the visitor's message.
+          message: messagePrefix ? `${messagePrefix}\n${form.message.trim()}` : form.message.trim(),
           consent: form.consent,
           website: form.website,
           // Only the speaking form sends the event details.
@@ -336,7 +341,8 @@ export default function LeadForm({
             onChange={handleChange}
             className={`${styles.input} ${styles.textarea} ${errors.message ? styles.inputError : ''}`}
             disabled={isSubmitting}
-            maxLength={2000}
+            // The backend allows 2000 characters in total, prefix included.
+            maxLength={2000 - (messagePrefix ? messagePrefix.length + 1 : 0)}
             aria-invalid={Boolean(errors.message)}
           />
           {errors.message && <p className={styles.errorText} role="alert">{errors.message}</p>}

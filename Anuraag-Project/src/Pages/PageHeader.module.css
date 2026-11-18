@@ -1,0 +1,85 @@
+/* Styles for PageHeader.jsx. Uses the shared design tokens from index.css,
+   so it follows the dark and light themes automatically. */
+
+/* Without a photo: centred text (the original look) */
+.header {
+  max-width: 660px;
+  margin: 0 auto 64px;
+  text-align: center;
+}
+
+/* With a photo: text on the left, photo on the right */
+.withHero {
+  max-width: none;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 56px;
+  align-items: center;
+  text-align: left;
+}
+
+/* Small gold label above the heading (same style as the other pages) */
+.eyebrow {
+  color: var(--color-gold);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.3px;
+  line-height: 1.5;
+  margin: 0 0 16px;
+}
+
+.heading {
+  font-size: clamp(30px, 4vw, 46px);
+  font-weight: 500;
+  letter-spacing: -1px;
+  line-height: 1.15;
+  color: var(--color-text-primary);
+  margin: 0 0 18px;
+}
+
+.intro {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Gold frame around the photo, slightly offset for depth */
+.photoFrame {
+  position: relative;
+  border-radius: var(--radius-lg);
+  padding: 8px;
+  border: 1px solid var(--color-gold-border);
+  background: var(--color-surface-card);
+  box-shadow: var(--shadow-gold);
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: calc(var(--radius-lg) - 6px);
+}
+
+/* Phones and small tablets: photo on top (smaller), centred text under it */
+@media (max-width: 800px) {
+  .header {
+    margin-bottom: 44px;
+  }
+
+  .withHero {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    text-align: center;
+  }
+
+  /* order: -1 moves the photo above the text */
+  .photoFrame {
+    order: -1;
+    width: 200px;
+    margin: 0 auto;
+    padding: 6px;
+  }
+}

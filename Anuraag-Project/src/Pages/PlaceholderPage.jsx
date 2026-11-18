@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { fadeInUp } from '../animations';
 import Link from '../router/Link';
 import LeadForm from './LeadForm';
+import PageHeader from './PageHeader';
 import styles from './PlaceholderPage.module.css';
 
 /**
@@ -11,17 +12,23 @@ import styles from './PlaceholderPage.module.css';
  *
  * Props:
  *   content - one entry from pageContent.js:
- *             { eyebrow, title, text, form, comingSoon, cta }
+ *             { eyebrow, title, text, hero, form, comingSoon, cta }
+ *             hero - optional photo beside the heading: { src, alt }
  */
 export default function PlaceholderPage({ content }) {
-  const { eyebrow, title, text, form, comingSoon, cta } = content;
+  const { eyebrow, title, text, hero, form, comingSoon, cta } = content;
 
   return (
     <section className={styles.page}>
-      <motion.div className={styles.wrap} variants={fadeInUp} initial="hidden" animate="visible">
-        <p className={styles.eyebrow}>{eyebrow.toUpperCase()}</p>
-        <h1 className={styles.heading}>{title}</h1>
-        <p className={styles.text}>{text}</p>
+      {/* A page with a photo gets a wider column, so text and photo fit side by side */}
+      <motion.div
+        className={`${styles.wrap} ${hero ? styles.wrapWide : ''}`}
+        variants={fadeInUp}
+        initial="hidden"
+        animate="visible"
+      >
+        {/* Label, heading, text and (optional) photo: see PageHeader.jsx */}
+        <PageHeader eyebrow={eyebrow} title={title} text={text} hero={hero} />
 
         {/* Optional form (Contact and Insights pages). "form" holds the
             settings for LeadForm; {...form} passes each one on as a prop. */}

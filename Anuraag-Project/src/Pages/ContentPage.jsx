@@ -3,6 +3,8 @@ import { fadeInUp } from '../animations';
 import Link from '../router/Link';
 import { strikeNot } from '../utils/strikeNot';
 import LeadForm from './LeadForm';
+import PageHeader from './PageHeader';
+import Icon from './Icon';
 import styles from './ContentPage.module.css';
 
 // The book title is always shown with "Not" crossed out (see strikeNot.jsx).
@@ -35,25 +37,24 @@ function FormSection({ form }) {
  *
  * Props:
  *   content - one entry from pageContent.js:
- *     { eyebrow, title, text, sections, form, cta }
- *     sections - list of { heading, items } or { heading, images }
+ *     { eyebrow, title, text, hero, sections, form, cta }
+ *     hero     - optional photo beside the heading: { src, alt }
+ *     sections - list of { heading, icon, items } or { heading, images }
+ *     icon     - optional small picture on every card of a section (see Icon.jsx)
  *     items    - list of { title, meta, text }  (meta and text are optional)
  *     images   - list of { src, title, meta }   (a picture gallery; meta is optional)
  *     form     - optional form under the sections:
  *                { id, heading, text, ...settings for LeadForm }
  */
 export default function ContentPage({ content }) {
-  const { eyebrow, title, text, sections, form, cta } = content;
+  const { eyebrow, title, text, hero, sections, form, cta } = content;
 
   return (
     <section className={styles.page}>
       <motion.div className={styles.wrap} variants={fadeInUp} initial="hidden" animate="visible">
-        {/* Top of the page: small gold label, heading and introduction */}
-        <header className={styles.header}>
-          <p className={styles.eyebrow}>{eyebrow.toUpperCase()}</p>
-          <h1 className={styles.heading}>{title}</h1>
-          <p className={styles.intro}>{withBookTitle(text)}</p>
-        </header>
+        {/* Top of the page: small gold label, heading, introduction and,
+            when the page has one, a photo beside them */}
+        <PageHeader eyebrow={eyebrow} title={title} text={withBookTitle(text)} hero={hero} />
 
         {/* One block per section. "map" repeats the block for every entry in
             the list; "key" lets React tell the repeated pieces apart. */}
@@ -92,10 +93,18 @@ export default function ContentPage({ content }) {
               {/* The key joins title and meta, because several roles share
                   the title "Board Member". */}
               {section.items.map((item) => (
-                <li className={styles.item} key={`${item.title} ${item.meta || ''}`}>
-                  <h3 className={styles.itemTitle}>{item.title}</h3>
-                  {item.meta && <p className={styles.itemMeta}>{item.meta}</p>}
-                  {item.text && <p className={styles.itemText}>{withBookTitle(item.text)}</p>}
+                <li className={`${styles.item} ${section.icon ? styles.itemWithIcon : ''}`} key={`${item.title} ${item.meta || ''}`}>
+                  {/* Small gold icon on the left, the same for the whole section */}
+                  {section.icon && (
+                    <span className={styles.itemIcon}>
+                      <Icon name={section.icon} />
+                    </span>
+                  )}
+                  <div>
+                    <h3 className={styles.itemTitle}>{item.title}</h3>
+                    {item.meta && <p className={styles.itemMeta}>{item.meta}</p>}
+                    {item.text && <p className={styles.itemText}>{withBookTitle(item.text)}</p>}
+                  </div>
                 </li>
               ))}
             </ul>

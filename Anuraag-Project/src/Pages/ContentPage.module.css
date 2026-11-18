@@ -14,38 +14,7 @@
   max-width: 880px;
 }
 
-/* Top of the page, centred */
-.header {
-  max-width: 660px;
-  margin: 0 auto 64px;
-  text-align: center;
-}
-
-/* Small gold label above the heading (same style as the other pages) */
-.eyebrow {
-  color: var(--color-gold);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 2.3px;
-  line-height: 1.5;
-  margin: 0 0 16px;
-}
-
-.heading {
-  font-size: clamp(30px, 4vw, 46px);
-  font-weight: 500;
-  letter-spacing: -1px;
-  line-height: 1.15;
-  color: var(--color-text-primary);
-  margin: 0 0 18px;
-}
-
-.intro {
-  font-size: 15px;
-  line-height: 1.75;
-  color: var(--color-text-secondary);
-  margin: 0;
-}
+/* (The top of the page is drawn by PageHeader.jsx, with its own styles.) */
 
 /* One section = a heading and its list of cards */
 .section {
@@ -92,6 +61,26 @@
 
 .item:hover {
   border-color: var(--color-gold-border);
+}
+
+/* A card with an icon: icon on the left, text on the right */
+.itemWithIcon {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+/* Round gold-tinted badge holding the icon */
+.itemIcon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-gold-bg);
+  border: 1px solid var(--color-gold-border);
+  color: var(--color-gold);
 }
 
 .itemTitle {
@@ -221,10 +210,6 @@
 @media (max-width: 800px) {
   .page {
     padding: 56px 20px 80px;
-  }
-
-  .header {
-    margin-bottom: 44px;
   }
 
   .section {

@@ -18,10 +18,13 @@ export const PAGE_CONTENT = {
   speaking: {
     eyebrow: 'Speaking',
     title: 'Keynotes, panels and juries',
+    // Photo beside the heading (cropped copies in public/heroes)
+    hero: { src: '/heroes/speaking.jpg', alt: 'Dr. Anuraag Guglaani speaking on stage' },
     text: 'Dr. Guglaani speaks on family business, transformation and turnaround, entrepreneurship and investment, and the link between universities and industry, drawing on work across 26 industries and 35 countries.',
     sections: [
       {
         heading: 'Recent and upcoming',
+        icon: 'mic', // small picture on each card (see Icon.jsx)
         items: [
           {
             title: 'QS Higher Ed Summit: Middle East 2026',
@@ -62,6 +65,7 @@ export const PAGE_CONTENT = {
       },
       {
         heading: 'Topics',
+        icon: 'bulb',
         items: [
           {
             title: 'Family business',
@@ -104,10 +108,12 @@ export const PAGE_CONTENT = {
   'board-advisory': {
     eyebrow: 'Board & Advisory',
     title: 'Board and advisory roles',
+    hero: { src: '/heroes/board-advisory.jpg', alt: 'Dr. Anuraag Guglaani in formal evening attire' },
     text: 'Dr. Guglaani serves on the boards of family business groups and institutions across the Middle East, Africa, Asia and North America, and mentors the next generation of directors and founders.',
     sections: [
       {
         heading: 'Current board roles',
+        icon: 'building',
         items: [
           {
             title: 'Chairperson of the Board',
@@ -142,6 +148,7 @@ export const PAGE_CONTENT = {
       },
       {
         heading: 'Mentoring',
+        icon: 'people',
         items: [
           {
             title: 'Board and Directorship Mentor',
@@ -157,6 +164,7 @@ export const PAGE_CONTENT = {
       },
       {
         heading: 'Executive career',
+        icon: 'briefcase',
         items: [
           { title: 'Chief Executive Officer', meta: 'Easa Saleh Al Gurg Group · Dubai · 2011 – 2016' },
           { title: 'Senior Partner', meta: 'Global audit, tax and consulting firms · 2017 – 2022' },
@@ -167,15 +175,32 @@ export const PAGE_CONTENT = {
         ]
       }
     ],
-    cta: { label: 'Start a Conversation', to: '/contact' }
+    // Enquiry form. Sent as a normal contact message; the prefix tells the
+    // team (in Zoho) that it came from this page.
+    form: {
+      id: 'enquire',
+      heading: 'Board and advisory enquiries',
+      text: 'Looking for a board member, chairperson or advisor? Send a short note and the team will reply by email.',
+      source: 'contact',
+      messagePrefix: '[Board & Advisory page]',
+      showName: true,
+      showMessage: true,
+      messagePlaceholder: 'Your organisation and the role you have in mind…',
+      consentLabel: 'Also send me occasional updates from Dr. Anuraag Guglaani. (Optional)',
+      buttonLabel: 'Send Enquiry',
+      successTitle: 'Enquiry sent.',
+      successText: 'Thank you. The team will reply to you by email.'
+    }
   },
   academic: {
     eyebrow: 'Academic',
     title: 'Academic leadership and teaching',
+    hero: { src: '/heroes/academic.jpg', alt: 'Dr. Anuraag Guglaani in a blue suit' },
     text: 'Dr. Guglaani teaches future business leaders and entrepreneurs, and helps universities connect their strategy and curriculum to what industry needs.',
     sections: [
       {
         heading: 'Teaching and governance',
+        icon: 'cap',
         items: [
           {
             title: 'Adjunct Professor',
@@ -202,6 +227,7 @@ export const PAGE_CONTENT = {
       },
       {
         heading: 'Education',
+        icon: 'book',
         items: [
           {
             title: 'Doctorate, Information Management Systems',
@@ -234,11 +260,26 @@ export const PAGE_CONTENT = {
         ]
       }
     ],
-    cta: { label: 'Start a Conversation', to: '/contact' }
+    // Enquiry form, as on the Board & Advisory page.
+    form: {
+      id: 'enquire',
+      heading: 'Academic enquiries',
+      text: 'For guest lectures, advisory boards, programme reviews and university partnerships, send a short note and the team will reply by email.',
+      source: 'contact',
+      messagePrefix: '[Academic page]',
+      showName: true,
+      showMessage: true,
+      messagePlaceholder: 'Your institution and what you have in mind…',
+      consentLabel: 'Also send me occasional updates from Dr. Anuraag Guglaani. (Optional)',
+      buttonLabel: 'Send Enquiry',
+      successTitle: 'Enquiry sent.',
+      successText: 'Thank you. The team will reply to you by email.'
+    }
   },
   insights: {
     eyebrow: 'Insights',
     title: 'Articles and ideas',
+    hero: { src: '/heroes/insights.jpg', alt: 'Dr. Anuraag Guglaani at the India Global Forum' },
     text: 'Articles on family business, leadership and governance are being added to this page. Leave your email to get a monthly update when new ones are published.',
     form: {
       source: 'updates',
@@ -257,6 +298,7 @@ export const PAGE_CONTENT = {
     sections: [
       {
         heading: 'At a glance',
+        icon: 'star',
         items: [
           { title: '26 industries, 35 countries', text: 'Operating, investing in and transforming businesses.' },
           { title: 'The Family Business Doctor', text: 'Board member and advisor to family business groups.' },
@@ -266,6 +308,7 @@ export const PAGE_CONTENT = {
       },
       {
         heading: 'Honours',
+        icon: 'award',
         items: [
           { title: 'US President’s Lifetime Achievement Award', meta: 'The White House, Washington DC' },
           { title: 'President’s Volunteer Service Medal 2023', meta: 'AmeriCorps and the Office of the President, USA' },
@@ -333,6 +376,7 @@ export const PAGE_CONTENT = {
   contact: {
     eyebrow: 'Contact',
     title: 'Start a conversation',
+    hero: { src: '/heroes/contact.jpg', alt: 'Portrait of Dr. Anuraag Guglaani' },
     text: 'For speaking, board, advisory and academic inquiries, send a message below and the team will reply by email.',
     form: {
       source: 'contact',
