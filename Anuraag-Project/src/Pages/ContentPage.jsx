@@ -39,10 +39,13 @@ function FormSection({ form }) {
  *   content - one entry from pageContent.js:
  *     { eyebrow, title, text, hero, sections, form, cta }
  *     hero     - optional photo beside the heading: { src, alt }
- *     sections - list of { heading, icon, items } or { heading, images }
+ *     sections - list of { heading, icon, items }, { heading, images, photos }
+ *                or { heading, quotes }
  *     icon     - optional small picture on every card of a section (see Icon.jsx)
  *     items    - list of { title, meta, text }  (meta and text are optional)
  *     images   - list of { src, title, meta }   (a picture gallery; meta is optional)
+ *     photos   - true for event photos and posters: taller boxes on a plain background
+ *     quotes   - list of { text, name, role }   (testimonials; role is optional)
  *     form     - optional form under the sections:
  *                { id, heading, text, ...settings for LeadForm }
  */
@@ -67,7 +70,7 @@ export default function ContentPage({ content }) {
                 loading="lazy" makes the browser fetch a picture only when
                 the visitor scrolls near it, so the page opens quickly. */}
             {section.images && (
-              <ul className={styles.gallery}>
+              <ul className={`${styles.gallery} ${section.photos ? styles.galleryPhotos : ''}`}>
                 {section.images.map((image) => (
                   <li className={styles.galleryItem} key={image.src}>
                     <figure className={styles.figure}>
@@ -78,7 +81,7 @@ export default function ContentPage({ content }) {
                         loading="lazy"
                       />
                       <figcaption className={styles.caption}>
-                        <span className={styles.captionTitle}>{image.title}</span>
+                        <span className={styles.captionTitle}>{withBookTitle(image.title)}</span>
                         {image.meta && <span className={styles.captionMeta}>{image.meta}</span>}
                       </figcaption>
                     </figure>
@@ -108,6 +111,24 @@ export default function ContentPage({ content }) {
                 </li>
               ))}
             </ul>
+            )}
+
+            {/* A section with "quotes" shows testimonials: the words in a
+                <blockquote>, the person's name and role underneath. */}
+            {section.quotes && (
+              <ul className={styles.quotes}>
+                {section.quotes.map((quote) => (
+                  <li className={styles.quote} key={quote.name}>
+                    <figure className={styles.figure}>
+                      <blockquote className={styles.quoteText}>“{quote.text}”</blockquote>
+                      <figcaption className={styles.quoteBy}>
+                        <span className={styles.captionTitle}>{quote.name}</span>
+                        {quote.role && <span className={styles.captionMeta}>{quote.role}</span>}
+                      </figcaption>
+                    </figure>
+                  </li>
+                ))}
+              </ul>
             )}
           </div>
         ))}

@@ -10,7 +10,10 @@
 //              ContentPage.jsx instead. Each section: { heading, items }, and each
 //              item: { title, meta, text } (meta and text are optional).
 //              A section can instead have "images" (a picture gallery):
-//              { heading, images }, each image: { src, title, meta }
+//              { heading, images }, each image: { src, title, meta }.
+//              Add "photos: true" for event photos and posters (taller boxes).
+//              Or "quotes" (testimonials): { heading, quotes }, each
+//              quote: { text, name, role } (role is optional)
 //   form    - settings for a form under the text (see LeadForm.jsx); optional
 //   comingSoon - a short note in a dashed box about something still to come; optional
 //   cta     - the button: its label and where it goes (leave out for no button)
@@ -32,6 +35,16 @@ export const PAGE_CONTENT = {
             text: 'How to move beyond collaboration and build university–industry partnerships that drive growth.'
           },
           {
+            title: 'NEXUS 2026: The Leadership Summit',
+            meta: 'Panellist · Le Royal Méridien, Abu Dhabi · 21 November 2026',
+            text: 'Hosted by the ICAI Abu Dhabi Chapter. Panel: “The New Capital Playbook: Deals, Decisions & Global Investment Opportunities”.'
+          },
+          {
+            title: 'Startup World Cup 2026 Grand Finale',
+            meta: 'Mentor · San Francisco · 4 November 2026',
+            text: 'A mentor at the grand finale of the global startup competition.'
+          },
+          {
             title: 'SME Governance Summit 2026',
             meta: 'BSE, Mumbai · 26 August 2026',
             text: 'Hosted by MentorMyBoard, on governance for small and mid-sized enterprises.'
@@ -42,9 +55,19 @@ export const PAGE_CONTENT = {
             text: 'The inaugural COGGE Leadership Forum, an initiative of the Vibrant Goa Foundation.'
           },
           {
+            title: 'Business Resilience and the Art of Staying Ahead',
+            meta: 'Speaker · AURAK (virtual) · 22 April 2026',
+            text: 'A talk for students of the American University of Ras Al Khaimah School of Business.'
+          },
+          {
             title: 'IEEE ICERAI 2026',
             meta: 'Paper · American University of Ras Al Khaimah · 1–3 April 2026',
             text: 'A framework for deploying explainable AI and intelligent automation in family businesses and mid-sized enterprises.'
+          },
+          {
+            title: 'ICPACT 2026',
+            meta: 'Paper · Amity University Dubai',
+            text: 'Research paper selected for the first International Conference on Partnerships, Advancement, Culture and Technology in Business.'
           },
           {
             title: 'Education Investment MENA 2026',
@@ -57,10 +80,36 @@ export const PAGE_CONTENT = {
             text: 'Judged six education startups from six countries pitching to investors.'
           },
           {
+            title: 'Arabian Business Exhibition',
+            meta: 'Fireside chat · Arabian Networking Group',
+            text: 'Topic: building profitable and scalable businesses in the UAE and beyond.'
+          },
+          {
             title: 'Falcons of Majlis',
             meta: 'Falcon (investor) · United Arab Emirates',
             text: 'An investor on the UAE’s televised startup funding show.'
           }
+        ]
+      },
+      {
+        // Event posters and stage photos, saved from Dr. Anuraag's own
+        // LinkedIn posts (November 2026). Files are in public/speaking.
+        // "photos" gives them a taller box than the award gallery (see ContentPage).
+        heading: 'From the stage',
+        photos: true,
+        images: [
+          { src: '/speaking/goa-book-launch.jpg', title: 'You Will Not Fly launched by the Chief Minister of Goa', meta: 'Dr. Pramod Sawant' },
+          { src: '/speaking/qs-higher-ed-summit-2026.jpg', title: 'QS Higher Ed Summit: Middle East 2026', meta: 'Abu Dhabi' },
+          { src: '/speaking/startup-world-cup-2026.jpg', title: 'Startup World Cup 2026 Grand Finale', meta: 'Mentor' },
+          { src: '/speaking/international-investors-summit.jpg', title: 'International Investors Summit', meta: 'Speaker' },
+          { src: '/speaking/sme-governance-summit-2026.jpg', title: 'SME Governance Summit 2026', meta: 'BSE, Mumbai' },
+          { src: '/speaking/keynote-parachuting.jpg', title: 'Parachuting Into New Terrain', meta: 'Keynote' },
+          { src: '/speaking/rise-2026-goa.jpg', title: 'RISE 2026', meta: 'Panaji, Goa' },
+          { src: '/speaking/aurak-book-presentation.jpg', title: 'Presenting the book at AURAK', meta: 'American University of Ras Al Khaimah' },
+          { src: '/speaking/icpact-amity-dubai-2026.jpg', title: 'ICPACT 2026', meta: 'Amity University Dubai' },
+          { src: '/speaking/gess-startup-spotlight-jury.jpg', title: 'StartUp Spotlight jury', meta: 'Education Investment MENA, GESS Dubai' },
+          { src: '/speaking/aurak-business-resilience.jpg', title: 'Business Resilience and the Art of Staying Ahead', meta: 'AURAK' },
+          { src: '/speaking/arabian-business-exhibition.jpg', title: 'Arabian Business Exhibition', meta: 'Fireside chat' }
         ]
       },
       {
@@ -82,6 +131,23 @@ export const PAGE_CONTENT = {
           {
             title: 'Education and industry',
             text: 'Connecting universities, business and government to build future talent.'
+          }
+        ]
+      },
+      {
+        // Short extracts, word for word, from the recommendations on
+        // Dr. Anuraag's public LinkedIn profile ("…" marks left-out words).
+        heading: 'What people say',
+        quotes: [
+          {
+            text: 'Known for his adeptness in transforming large business landscapes into process-driven entities… I would recommend his expertise in a heartbeat.',
+            name: 'Dave Crane',
+            role: 'Global keynote speaker and MC, ex-BBC'
+          },
+          {
+            text: 'A great inspiration for me during our days together at OTE group… great leadership and management capabilities and a true friend with empathy.',
+            name: 'Shaji Jacob',
+            role: 'Former colleague, OTE Group'
           }
         ]
       }
