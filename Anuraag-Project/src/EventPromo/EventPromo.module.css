@@ -40,15 +40,46 @@
 
 /* ---------- Banner (top of every page) ---------- */
 
-/* The whole strip is one link. It sits above the sticky header and scrolls
-   away with the page, so it does not take space while reading. */
+/* The strip: the gold background, with the close button pinned to the
+   right edge. It sits above the sticky header and scrolls away with the
+   page, so it does not take space while reading. */
+.bannerWrap {
+  position: relative;
+  background: linear-gradient(135deg, #e4c988 0%, #c7a967 100%);
+}
+
+/* The close button (✕) on the right of the strip */
+.bannerClose {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: #0b0c09;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.bannerClose:hover {
+  background: rgba(11, 12, 9, 0.1);
+}
+
+/* The link fills the strip. Extra padding on both sides keeps the centred
+   text clear of the close button. */
 .banner {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 18px;
-  padding: 9px 16px;
-  background: linear-gradient(135deg, #e4c988 0%, #c7a967 100%);
+  padding: 9px 48px;
   color: #0b0c09;
   font-size: 13px;
   line-height: 1.4;
@@ -238,7 +269,15 @@
     flex-direction: column;
     gap: 2px;
     font-size: 12px;
-    padding: 8px 12px;
+    padding: 8px 32px;
+  }
+
+  /* A smaller ✕ closer to the edge, so the text keeps more room */
+  .bannerClose {
+    right: 4px;
+    width: 26px;
+    height: 26px;
+    font-size: 12px;
   }
 
   .bannerLong {

@@ -25,6 +25,7 @@ import { BOOK_ON_STAGE, IN_GOOD_COMPANY } from './Pages/photoGalleries';
 import EventBanner from './EventPromo/EventBanner';
 import EventCard from './EventPromo/EventCard';
 import EventPopup from './EventPromo/EventPopup';
+import HomeHub from './HomeHub/HomeHub';
 import { useRoute } from './router/router';
 import { PAGES, HOME_SECTIONS } from './router/routes';
 import { trackPageView } from './utils/analytics';
@@ -72,12 +73,14 @@ function renderPage(page) {
   }
 
   // Home: the full long page, with the book launch card right after the
-  // opening section (the card hides itself once the event is over).
+  // opening section (the card hides itself once the event is over), and the
+  // "hub" of short previews of the inner pages right after the book.
   return (
     <>
       <Home />
       <EventCard location="home" />
       <Ebook />
+      <HomeHub />
       <Interlude />
       <Story />
       <Diagnostics />

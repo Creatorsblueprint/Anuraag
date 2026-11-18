@@ -1,0 +1,214 @@
+/* Styles for HomeHub.jsx (the page previews on the homepage).
+   Uses the shared design tokens from index.css, so it follows the dark and
+   light themes automatically. */
+
+.hub {
+  display: flex;
+  justify-content: center;
+  padding: 96px 24px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1080px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+/* Small gold label above the heading (same style as the other pages) */
+.eyebrow {
+  color: var(--color-gold);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.3px;
+  line-height: 1.5;
+  margin: 0 0 14px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.6vw, 42px);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+/* Title of one preview, e.g. "Speaking" */
+.blockTitle {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+/* "See more →" link at the end of each preview */
+.seeMore {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.seeMore:hover {
+  color: var(--color-gold);
+}
+
+/* ---------- Awards row ---------- */
+
+.awards {
+  margin-bottom: 24px;
+}
+
+/* Title on the left, "See more" on the right */
+.blockHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/* Four photos in a row */
+.awardList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.award {
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  overflow: hidden; /* keeps the photo inside the rounded corners */
+}
+
+/* Same box for every photo; "contain" shows the whole photo, uncropped */
+.awardImage {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  background: #faf7f3;
+}
+
+.awardTitle {
+  display: block;
+  padding: 12px 14px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-text-primary);
+}
+
+/* ---------- Page previews ---------- */
+
+/* Two preview boxes per row */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+/* One preview box: title, a short list, then "See more" at the bottom */
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 26px 28px;
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  transition: border-color 0.25s ease;
+}
+
+.panel:hover {
+  border-color: var(--color-gold-border);
+}
+
+/* Pushes "See more" to the bottom so the boxes in a row line up */
+.panel .seeMore {
+  margin-top: auto;
+}
+
+.itemList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.itemTitle {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-text-primary);
+}
+
+.itemMeta {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+.panelText {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+/* ---------- Phones and small tablets ---------- */
+
+@media (max-width: 800px) {
+  .hub {
+    padding: 64px 16px;
+  }
+
+  .header {
+    margin-bottom: 32px;
+  }
+
+  /* Two photos per row, one preview box per row */
+  .awardList {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .panel {
+    padding: 22px 20px;
+  }
+}
