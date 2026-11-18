@@ -14,7 +14,7 @@ export const PAGES = {
   contact: { page: 'contact', title: 'Contact | Dr. Anuraag Guglaani' },
   // Same title as the event page sets for itself (EventPage.jsx) and as the
   // shared-link preview uses (vite-plugin-event-page.js). Keep the three in step.
-  event: { page: 'event', title: 'Digital Book Launch & World Record Attempt | Dr. Anuraag Guglaani' }
+  event: { page: 'event', title: 'Virtual Book Launch & World Record Attempt | Dr. Anuraag Guglaani' }
 };
 
 // Links in the top menu, in the order the client asked for.

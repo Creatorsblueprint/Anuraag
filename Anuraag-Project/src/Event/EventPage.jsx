@@ -7,6 +7,8 @@ import { COUNTRIES } from './countries';
 import CountrySelect from './CountrySelect';
 import styles from './EventPage.module.css';
 import { strikeNot } from '../utils/strikeNot';
+// Same end time as the banner, cards and pop-up (22 Nov 2026, 6 PM Dubai time).
+import { isEventPromoActive } from '../EventPromo/eventPromo';
 
 // Event details shown on the page. Kept in one place so they are easy to update.
 // These come from the official event poster.
@@ -14,6 +16,9 @@ import { strikeNot } from '../utils/strikeNot';
 const EVENT = {
   eyebrow: 'World Record Attempt',
   title: 'Most Nationalities Participating in a',
+  // Official record title, so "Digital" stays until the client confirms the
+  // record name also changes to "Virtual" (also in EventPromo/eventPromo.js,
+  // vite-plugin-event-page.js and EVENT.name in the backend's server.js).
   titleHighlight: 'Digital Book Launch', // shown in gold at the end of the title
   host: 'Dr. Anuraag Guglaani',
   bookTitle: 'You Will Not Fly: Grounded at Twenty, Airborne Ever Since',
@@ -80,20 +85,24 @@ export default function EventPage() {
   const [serverError, setServerError] = useState(''); // message shown when the backend says no
   const [isRegistered, setIsRegistered] = useState(false); // true once the backend saved it
 
+  // After the event the page stops asking people to register and thanks
+  // everyone who joined instead. No change to the site is needed on the day.
+  const isEventOver = !isEventPromoActive();
+
   // Report the page view once, the same way the rest of the site does.
   useEffect(() => {
     trackPageView('/event', 'Dr. Anuraag Guglaani — Event Registration');
 
     // Update document title and OpenGraph / Twitter meta tags dynamically
     const originalTitle = document.title;
-    document.title = 'Digital Book Launch & World Record Attempt | Dr. Anuraag Guglaani';
+    document.title = 'Virtual Book Launch & World Record Attempt | Dr. Anuraag Guglaani';
 
     const metaUpdates = [
-      { selector: 'meta[property="og:title"]', attr: 'content', val: 'Digital Book Launch & World Record Attempt | Dr. Anuraag Guglaani' },
+      { selector: 'meta[property="og:title"]', attr: 'content', val: 'Virtual Book Launch & World Record Attempt | Dr. Anuraag Guglaani' },
       { selector: 'meta[property="og:url"]', attr: 'content', val: 'https://dranuraagguglaani.com/event' },
       { selector: 'meta[property="og:description"]', attr: 'content', val: 'Join the official World Record Attempt for Most Nationalities in a Digital Book Launch on 22 Nov 2026 at 3:00 PM GST.' },
       { selector: 'meta[property="og:image"]', attr: 'content', val: 'https://dranuraagguglaani.com/event_og_image.jpg' },
-      { selector: 'meta[name="twitter:title"]', attr: 'content', val: 'Digital Book Launch & World Record Attempt | Dr. Anuraag Guglaani' },
+      { selector: 'meta[name="twitter:title"]', attr: 'content', val: 'Virtual Book Launch & World Record Attempt | Dr. Anuraag Guglaani' },
       { selector: 'meta[name="twitter:url"]', attr: 'content', val: 'https://dranuraagguglaani.com/event' },
       { selector: 'meta[name="twitter:description"]', attr: 'content', val: 'Join the official World Record Attempt for Most Nationalities in a Digital Book Launch on 22 Nov 2026 at 3:00 PM GST.' },
       { selector: 'meta[name="twitter:image"]', attr: 'content', val: 'https://dranuraagguglaani.com/event_og_image.jpg' },
@@ -211,10 +220,17 @@ export default function EventPage() {
             <h1 className={styles.heading}>
               {EVENT.title} <span className={styles.goldText}>{EVENT.titleHighlight}</span>
             </h1>
-            <p className={styles.subtitle}>
-              Join {EVENT.host}, The Family Business Doctor, for the digital launch of{' '}
-              <em>{strikeNot(EVENT.bookTitle)}</em>. Register below to take part and represent your nationality.
-            </p>
+            {isEventOver ? (
+              <p className={styles.subtitle}>
+                {EVENT.host}, The Family Business Doctor, hosted the virtual launch of{' '}
+                <em>{strikeNot(EVENT.bookTitle)}</em>, with participants joining on Zoom.
+              </p>
+            ) : (
+              <p className={styles.subtitle}>
+                Join {EVENT.host}, The Family Business Doctor, for the virtual launch of{' '}
+                <em>{strikeNot(EVENT.bookTitle)}</em>. Register below to take part and represent your nationality.
+              </p>
+            )}
           </div>
 
           {/* Key facts about the event: date, time and where it takes place */}
@@ -237,7 +253,26 @@ export default function EventPage() {
               popups so our styled error messages are shown instead.
               Once the backend has saved the registration, a success card
               is shown in place of the form. */}
-          {isRegistered ? (
+          {isEventOver ? (
+            // After the event: a thank-you card instead of the form (it reuses
+            // the success card's look). Update the text here when the record
+            // result and the recording are ready to share.
+            <div className={`${styles.card} ${styles.successCard}`}>
+              <span className={styles.successIcon} aria-hidden="true">✓</span>
+              <h2 className={styles.successTitle}>Thank you for joining.</h2>
+              <p className={styles.successText}>
+                The launch took place on {EVENT.dateLabel}.
+              </p>
+              <p className={styles.successText}>
+                The result of the world record attempt and highlights from the launch will be
+                shared here soon.
+              </p>
+              <a href="/book" className={styles.submitBtn}>
+                <span>Get the book</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          ) : isRegistered ? (
             <div className={`${styles.card} ${styles.successCard}`} role="status">
               <span className={styles.successIcon} aria-hidden="true">✓</span>
               <h2 className={styles.successTitle}>You are registered.</h2>
