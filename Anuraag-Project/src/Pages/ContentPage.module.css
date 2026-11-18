@@ -177,6 +177,16 @@
   color: var(--color-gold);
 }
 
+/* Short sentence above a form */
+.formIntro {
+  max-width: 600px;
+  margin: 0 auto 22px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
 .ctaRow {
   display: flex;
   justify-content: center;

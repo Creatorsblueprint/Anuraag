@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { fadeInUp } from '../animations';
 import Link from '../router/Link';
 import { strikeNot } from '../utils/strikeNot';
+import LeadForm from './LeadForm';
 import styles from './ContentPage.module.css';
 
 // The book title is always shown with "Not" crossed out (see strikeNot.jsx).
@@ -9,6 +10,20 @@ import styles from './ContentPage.module.css';
 // ordinary sentence is left alone.
 function withBookTitle(text) {
   return text.includes('You Will Not Fly') ? strikeNot(text) : text;
+}
+
+// A form with its own section heading and a short sentence above it.
+// The heading, text and id are used here; every other setting is passed
+// on to LeadForm ("...formSettings" collects them).
+function FormSection({ form }) {
+  const { id, heading, text, ...formSettings } = form;
+  return (
+    <div className={styles.section} id={id}>
+      <h2 className={styles.sectionHeading}>{heading}</h2>
+      {text && <p className={styles.formIntro}>{text}</p>}
+      <LeadForm {...formSettings} />
+    </div>
+  );
 }
 
 /**
@@ -20,13 +35,15 @@ function withBookTitle(text) {
  *
  * Props:
  *   content - one entry from pageContent.js:
- *     { eyebrow, title, text, sections, cta }
+ *     { eyebrow, title, text, sections, form, cta }
  *     sections - list of { heading, items } or { heading, images }
  *     items    - list of { title, meta, text }  (meta and text are optional)
  *     images   - list of { src, title, meta }   (a picture gallery; meta is optional)
+ *     form     - optional form under the sections:
+ *                { id, heading, text, ...settings for LeadForm }
  */
 export default function ContentPage({ content }) {
-  const { eyebrow, title, text, sections, cta } = content;
+  const { eyebrow, title, text, sections, form, cta } = content;
 
   return (
     <section className={styles.page}>
@@ -85,6 +102,11 @@ export default function ContentPage({ content }) {
             )}
           </div>
         ))}
+
+        {/* Optional form (Speaking page: "Invite Dr. Anuraag to speak").
+            Its id lets other pages link straight to it, e.g. /speaking#invite.
+            The heading and text are taken out; the rest is passed to LeadForm. */}
+        {form && <FormSection form={form} />}
 
         {/* Button at the bottom, leading to another page of the site */}
         {cta && (

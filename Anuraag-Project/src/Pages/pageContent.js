@@ -82,7 +82,24 @@ export const PAGE_CONTENT = {
         ]
       }
     ],
-    cta: { label: 'Invite Dr. Guglaani to Speak', to: '/contact' }
+    // "Invite Dr. Anuraag to speak" form (the client asked for these boxes).
+    // Sent to the backend as a "speaking" lead and passed on to Zoho.
+    form: {
+      id: 'invite',
+      heading: 'Invite Dr. Anuraag to speak',
+      text: 'Tell us about your event and the team will get back to you by email.',
+      source: 'speaking',
+      showName: true,
+      showSpeaking: true,
+      showMessage: true,
+      messageRequired: false,
+      messageLabel: 'Anything else (optional)',
+      messagePlaceholder: 'Topic, session length, panel or keynote…',
+      consentLabel: 'Also send me occasional updates from Dr. Anuraag Guglaani. (Optional)',
+      buttonLabel: 'Send Invitation',
+      successTitle: 'Invitation sent.',
+      successText: 'Thank you. The team will reply to you by email.'
+    }
   },
   'board-advisory': {
     eyebrow: 'Board & Advisory',
