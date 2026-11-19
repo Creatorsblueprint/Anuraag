@@ -287,9 +287,12 @@ export default function EventPage() {
                 address. We will also send you a reminder shortly before the event.
               </p>
               {/* Some email apps put the confirmation in the spam folder, so tell
-                  people where to look. (Reuses the small grey note style.) */}
-              <p className={styles.formNote}>
-                Can&apos;t find the email? Check your spam or junk folder.
+                  people clearly where to look (gold box, so it is not missed).
+                  Marking it "Not spam" also helps the reminder reach the inbox. */}
+              <p className={styles.spamNotice}>
+                <strong>Can&apos;t see the email?</strong> Please check your spam or junk
+                folder. If it is there, mark it as &ldquo;Not spam&rdquo; so the reminder
+                and Zoom link reach your inbox.
               </p>
               <a href="/" className={styles.submitBtn}>
                 <span>Back to main site</span>
@@ -390,6 +393,7 @@ export default function EventPage() {
 
             <p className={styles.formNote}>
               Your Zoom joining link will be emailed to you as soon as you register.
+              If you don&apos;t see it, please check your spam or junk folder.
             </p>
           </form>
           )}

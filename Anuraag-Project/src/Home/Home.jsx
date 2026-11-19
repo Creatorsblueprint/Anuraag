@@ -113,7 +113,7 @@ export default function Home() {
           >
             <img
               className={styles.heroPhoto}
-              src="/client_images/dr_anuraag_hero_suit.png"
+              src="/client_images/dr_anuraag_hero_suit.webp"
               alt="Dr. Anuraag Guglaani in his blue checked suit"
               fetchPriority="high"
             />

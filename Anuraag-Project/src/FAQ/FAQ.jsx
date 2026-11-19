@@ -48,7 +48,7 @@ export default function FAQ() {
       answer: (
         <p>
           AI to Automation to Governance is the framework developed through his doctoral research. It focuses on
-          bringing intelligent systems into family businesses without displacing the human judgment that holds them together.
+          bringing intelligent systems into family businesses without displacing the human judgement that holds them together.
         </p>
       )
     },

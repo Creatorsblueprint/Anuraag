@@ -67,7 +67,7 @@ export default function Falcons() {
                 <p>Investment experience informed by operating businesses across markets.</p>
               </div>
               <div>
-                <b>Growth with judgment</b>
+                <b>Growth with judgement</b>
                 <p>Transformation, governance and a long-term view of enterprise.</p>
               </div>
             </div>

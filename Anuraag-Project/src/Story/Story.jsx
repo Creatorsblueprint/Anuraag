@@ -124,7 +124,7 @@ export default function Story() {
 
           <p>
             As Group CEO of ADAM Global and multi-family office chair, his doctoral research produced the
-            <strong> A2G Framework (AI to Automation to Governance)</strong>: empowering enterprises to adopt intelligent systems while protecting the human judgment that holds them together.
+            <strong> A2G Framework (AI to Automation to Governance)</strong>: empowering enterprises to adopt intelligent systems while protecting the human judgement that holds them together.
           </p>
 
           {/* Credentials Box */}

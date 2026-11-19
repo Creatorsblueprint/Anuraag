@@ -32,7 +32,7 @@ export default function Ebook() {
       num: '03',
       label: 'Family',
       title: 'The people behind the enterprise.',
-      desc: 'The story and the operating system were shaped as much at his own kitchen table as in any boardroom. Family, judgment and continuity are central to the perspective he shares.'
+      desc: 'The story and the operating system were shaped as much at his own kitchen table as in any boardroom. Family, judgement and continuity are central to the perspective he shares.'
     },
     {
       id: 'legacy',

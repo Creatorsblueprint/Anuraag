@@ -127,6 +127,23 @@
   color: var(--color-text-muted);
 }
 
+/* Gold box on the success card asking people to check their spam folder */
+.spamNotice {
+  margin: 0;
+  padding: 12px 14px;
+  font-size: 13px;
+  line-height: 1.6;
+  text-align: center;
+  color: var(--color-text-secondary);
+  background: var(--color-gold-bg);
+  border: 1px solid var(--color-gold-border);
+  border-radius: 8px;
+}
+
+.spamNotice strong {
+  color: var(--color-gold);
+}
+
 /* Form card: same surface, border and glow as the checkout modal */
 .card {
   background: var(--color-surface);

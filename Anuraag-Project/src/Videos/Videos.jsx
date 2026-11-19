@@ -36,7 +36,7 @@ export default function Videos() {
     {
       num: '05',
       url: 'https://www.instagram.com/reel/DaDMzVylFRn/',
-      image: '/client_images/reel_vibrant_goa.png',
+      image: '/client_images/reel_vibrant_goa.webp',
       alt: 'Vibrant Goa: Instagram reel cover',
       label: 'INSTAGRAM REEL · 05'
     }

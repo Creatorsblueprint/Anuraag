@@ -46,7 +46,7 @@
 /* Left Portrait */
 .rolesPortrait {
   position: sticky;
-  top: 110px;
+  top: calc(var(--header-height) + 10px); /* just below the header */
   align-self: start;
   width: 100%;
   box-sizing: border-box;

@@ -27,7 +27,7 @@
 
 .withExtra .photoFrame {
   position: sticky;
-  top: 110px; /* just below the menu bar */
+  top: calc(var(--header-height) + 10px); /* just below the header */
 }
 
 /* Space between the introduction and the form under it */

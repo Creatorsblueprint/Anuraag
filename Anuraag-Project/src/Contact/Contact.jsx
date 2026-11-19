@@ -349,7 +349,7 @@ export default function Contact() {
         >
           <div className={styles.contactSignature}>
             <img
-              src="/client_images/dr_anuraag_portrait.png"
+              src="/client_images/dr_anuraag_hero_suit.webp"
               loading="lazy"
               alt="Dr. Anuraag Guglaani portrait"
               width="54"

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { trackNavClick, trackCtaClick } from '../utils/analytics';
 import { useTheme } from '../utils/ThemeContext';
@@ -23,6 +23,7 @@ export default function Nav({ currentPath }) {
   const { toggleTheme, isDark } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const stripRef = useRef(null); // the row of links shown under the logo on smaller screens
 
   // Adds a stronger border and shadow to the header once the page is scrolled.
   useEffect(() => {
@@ -31,6 +32,16 @@ export default function Nav({ currentPath }) {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // On phones the row of links is wider than the screen and scrolls sideways.
+  // When the page changes, slide the row so the current page's link is in view.
+  // (Only the row itself scrolls; the page does not move.)
+  useEffect(() => {
+    const strip = stripRef.current;
+    const active = strip && strip.querySelector('[aria-current="page"]');
+    if (!active) return;
+    strip.scrollTo({ left: active.offsetLeft - (strip.clientWidth - active.offsetWidth) / 2 });
+  }, [currentPath]);
 
   // True when a menu link points at the page being shown ("/about" vs "about").
   const isActive = (to) => to === `/${currentPath}`;
@@ -135,7 +146,25 @@ export default function Nav({ currentPath }) {
         </div>
       </div>
 
-      {/* Full-screen menu for phones and tablets */}
+      {/* The same menu links as a second row under the logo. Hidden on wide
+          screens (the links fit beside the logo there); shown on laptops,
+          tablets and phones so the links are always visible without opening
+          a menu. On phones the row can be swiped sideways. */}
+      <nav aria-label="Main Navigation" className={styles.linkStrip} ref={stripRef}>
+        {MENU_LINKS.map((link) => (
+          <Link
+            key={link.to}
+            to={link.to}
+            onClick={() => handleLinkClick(link, 'link_strip')}
+            className={`${styles.navLink} ${isActive(link.to) ? styles.active : ''}`}
+            aria-current={isActive(link.to) ? 'page' : undefined}
+          >
+            {link.label}
+          </Link>
+        ))}
+      </nav>
+
+      {/* Full-screen menu for phones (holds the two buttons and the links) */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div

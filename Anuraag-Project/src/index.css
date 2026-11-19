@@ -1,4 +1,30 @@
 /* Premium Dark Editorial Theme Design Tokens: Dr. Anuraag Guglaani */
+
+/* Height of the sticky header (Nav.module.css), used by parts of the page
+   that stick just below it. Below 1340px the menu links move to a second
+   row under the logo, so the header gets taller. */
+:root {
+  --header-height: 100px;
+}
+
+@media (max-width: 1340px) {
+  :root {
+    --header-height: 121px; /* 76px logo row + 44px link row + border */
+  }
+}
+
+@media (max-width: 800px) {
+  :root {
+    --header-height: 117px;
+  }
+}
+
+@media (max-width: 520px) {
+  :root {
+    --header-height: 113px;
+  }
+}
+
 :root {
   /* Rich Obsidian / Charcoal Dark Theme Base */
   --color-bg: #090c0e;
@@ -98,7 +124,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 90px;
+  scroll-padding-top: var(--header-height); /* links to a section stop just below the header */
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

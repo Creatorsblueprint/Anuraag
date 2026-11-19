@@ -288,15 +288,69 @@
   display: none;
 }
 
-/* Below this width the full menu no longer fits on one line,
-   so the hamburger menu takes over. */
+/* Second row of menu links under the logo (see Nav.jsx). Hidden on wide
+   screens, where the links fit beside the logo. */
+.linkStrip {
+  display: none;
+}
+
+/* Below this width the links no longer fit beside the logo, so they move
+   to a second row under it (instead of hiding them in a dropdown). The two
+   buttons stay on the first row. The header's total height is kept in
+   --header-height (index.css) so other sticky parts sit below it. */
 @media (max-width: 1340px) {
   .header {
-    height: 76px;
-    padding: 0 24px;
+    height: auto;
+    padding: 0;
+    flex-direction: column;
+    align-items: stretch;
   }
 
-  .desktopNav,
+  .headerInner {
+    height: 76px;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+
+  .desktopNav {
+    display: none;
+  }
+
+  .linkStrip {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    height: 44px;
+    padding: 0 24px;
+    border-top: 1px solid var(--color-border);
+    overflow-x: auto; /* phones: swipe sideways to see every link */
+    scrollbar-width: none; /* no scrollbar line under the links */
+  }
+
+  .linkStrip::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Centres the links when they fit, but still lets the row scroll from the
+     first link when they do not (plain "center" would cut off the first ones) */
+  .linkStrip > :first-child {
+    margin-left: auto;
+  }
+
+  .linkStrip > :last-child {
+    margin-right: auto;
+  }
+
+  /* The underline sits just under the text so the row's edge does not cut it */
+  .linkStrip .navLink:after {
+    bottom: 2px;
+  }
+}
+
+/* Tablets and phones: no room for the two buttons beside the logo, so they
+   go into the menu behind the three-line button. The links stay visible in
+   the row under the logo. */
+@media (max-width: 900px) {
   .desktopAction {
     display: none;
   }
@@ -308,6 +362,15 @@
   .mobileToggle {
     display: flex;
   }
+
+  /* Soft fade at the right edge hints that the row scrolls */
+  .linkStrip {
+    -webkit-mask-image: linear-gradient(to right, #000 85%, transparent);
+    mask-image: linear-gradient(to right, #000 85%, transparent);
+  }
+}
+
+@media (max-width: 1340px) {
 
   .mobileMenu {
     display: flex;
@@ -426,11 +489,13 @@
 }
 
 @media (max-width: 800px) {
-  .header {
+  .headerInner {
     height: 72px;
     padding: 0 16px;
-    width: 100%;
-    box-sizing: border-box;
+  }
+
+  .linkStrip {
+    padding: 0 16px;
   }
 
   .headerInner {
@@ -456,11 +521,14 @@
 }
 
 @media (max-width: 520px) {
-  .header {
+  .headerInner {
     height: 68px;
     padding: 0 14px;
-    width: 100%;
-    box-sizing: border-box;
+  }
+
+  .linkStrip {
+    padding: 0 14px;
+    gap: 20px;
   }
 
   .headerInner {

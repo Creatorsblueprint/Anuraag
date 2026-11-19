@@ -30,7 +30,7 @@ export default function Diagnostics() {
       tabLabel: 'Intelligent AI (A2G)',
       shortTitle: 'Intelligent Transformation (A2G)',
       headline: 'AI to Automation to Governance framework.',
-      desc: 'Developed through doctoral research, the A2G Framework helps established businesses adopt intelligent systems, automated workflows, and risk controls without eroding human judgment.',
+      desc: 'Developed through doctoral research, the A2G Framework helps established businesses adopt intelligent systems, automated workflows, and risk controls without eroding human judgement.',
       bullets: [
         'A2G Enterprise Architecture & Adoption Strategy',
         'Workflow Automation & Cognitive Intelligence',
@@ -38,7 +38,7 @@ export default function Diagnostics() {
         'Operational Resilience for Cross-Border Scaling'
       ],
       tag: 'DOCTORAL FRAMEWORK',
-      quote: '“Automation executes decisions. Only human judgment can bear responsibility for them.”'
+      quote: '“Automation executes decisions. Only human judgement can bear responsibility for them.”'
     },
     {
       id: 'investment',
@@ -142,7 +142,7 @@ export default function Diagnostics() {
               <span className={`${styles.orbit} ${styles.o3}`} />
               <div className={styles.orbitCore}>
                 HUMAN<br />
-                <b>JUDGMENT</b>
+                <b>JUDGEMENT</b>
               </div>
               <span className={`${styles.satellite} ${styles.s1}`}>GOVERNANCE</span>
               <span className={`${styles.satellite} ${styles.s2}`}>INTELLIGENCE</span>
