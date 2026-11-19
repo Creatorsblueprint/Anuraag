@@ -115,6 +115,11 @@
   border-radius: var(--radius-md);
   text-decoration: none;
   transition: border-color 0.25s ease, transform 0.25s ease;
+  /* It is a <button>: reset the browser's button look */
+  width: 100%;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
 }
 
 .video:hover {
@@ -160,6 +165,52 @@
   white-space: nowrap;
 }
 
+/* The pop-up player. The browser centres a <dialog> opened with
+   showModal(); "::backdrop" is the dimmed page behind it. */
+.dialog {
+  margin: auto; /* centres it; the site's reset (margin: 0) would push it to the corner */
+  padding: 0;
+  border: none;
+  background: transparent;
+  max-width: 92vw;
+  max-height: 92vh;
+  overflow: visible; /* lets the close button sit just outside the video */
+}
+
+.dialog::backdrop {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.dialogInner {
+  position: relative;
+}
+
+/* The video is portrait (filmed on a phone), so its height decides the size */
+.player {
+  display: block;
+  height: min(80vh, 760px);
+  max-width: 92vw;
+  border-radius: var(--radius-md);
+  background: #000;
+}
+
+/* Round close button at the top right corner of the video */
+.close {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  z-index: 1;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 235, 185, 0.4);
+  background: linear-gradient(135deg, #e4c988 0%, #c7a967 100%);
+  color: #0b0c09;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
 /* Tablets: three per row */
 @media (max-width: 1000px) {
   .grid {
@@ -200,5 +251,11 @@
 
   .videoAction {
     grid-column: 2;
+  }
+
+  /* Close button inside the video's corner, so it stays on screen */
+  .close {
+    top: 8px;
+    right: 8px;
   }
 }

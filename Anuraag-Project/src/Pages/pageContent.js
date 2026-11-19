@@ -403,6 +403,21 @@ export const PAGE_CONTENT = {
         ]
       },
       {
+        // The book at its launches (same photos as the Book page gallery,
+        // public/gallery). "photos: true" gives them the taller 4:5 boxes.
+        heading: 'The book',
+        photos: true,
+        images: [
+          {
+            src: '/gallery/vibrant-goa-book.jpg',
+            title: 'You Will Not Fly launched by the Chief Minister of Goa',
+            meta: 'Dr. Pramod Sawant · Vibrant Goa Global Business Summit · October 2026'
+          },
+          { src: '/gallery/book-launch-falcons-1.jpg', title: 'With Chitrangada Singh', meta: 'Falcons of Majlis · First book launch' },
+          { src: '/gallery/book-launch-falcons-2.jpg', title: 'With Suniel Shetty', meta: 'Falcons of Majlis · First book launch' }
+        ]
+      },
+      {
         // Picture gallery. The pictures are in public/awards (shrunk copies
         // of the photos supplied by the client, November 2026).
         heading: 'Awards and recognition',
