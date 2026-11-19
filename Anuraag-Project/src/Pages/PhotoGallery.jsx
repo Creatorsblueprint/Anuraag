@@ -1,3 +1,4 @@
+import { strikeNot } from '../utils/strikeNot';
 import styles from './PhotoGallery.module.css';
 
 /**
@@ -11,9 +12,11 @@ import styles from './PhotoGallery.module.css';
  *     { id, eyebrow, heading, text, columns, photos }
  *     columns - how many photographs per row on wide screens (2, 3 or 4)
  *     photos  - list of { src, title, meta }  (meta is optional)
+ *     video   - optional { href, title, text, meta }: a card under the
+ *               photos linking to a video on another website
  */
 export default function PhotoGallery({ gallery }) {
-  const { id, eyebrow, heading, text, columns = 3, photos } = gallery;
+  const { id, eyebrow, heading, text, columns = 3, photos, video } = gallery;
 
   return (
     <section className={styles.section} id={id}>
@@ -46,6 +49,25 @@ export default function PhotoGallery({ gallery }) {
             </li>
           ))}
         </ul>
+
+        {/* Optional video card. The whole card is one link that opens the
+            video in a new tab; rel="noopener noreferrer" stops the other
+            site from controlling this page. strikeNot crosses out "Not" in
+            the book title. */}
+        {video && (
+          <a className={styles.video} href={video.href} target="_blank" rel="noopener noreferrer">
+            {/* Gold round play button (drawn with a small triangle) */}
+            <span className={styles.play} aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18"><path d="M8 5v14l11-7z" fill="currentColor" /></svg>
+            </span>
+            <span className={styles.videoCopy}>
+              <span className={styles.videoTitle}>{strikeNot(video.title)}</span>
+              <span className={styles.videoText}>{video.text}</span>
+              <span className={styles.captionMeta}>{video.meta}</span>
+            </span>
+            <span className={styles.videoAction}>Watch ↗</span>
+          </a>
+        )}
       </div>
     </section>
   );

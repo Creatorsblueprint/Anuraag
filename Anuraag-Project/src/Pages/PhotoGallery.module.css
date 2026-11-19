@@ -102,6 +102,64 @@
   color: var(--color-gold);
 }
 
+/* Video card under the photos: play button, text, and "Watch" on the right */
+.video {
+  display: grid;
+  grid-template-columns: 52px 1fr auto;
+  gap: 18px;
+  align-items: center;
+  margin-top: 20px;
+  padding: 18px 22px;
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-gold-border);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.video:hover {
+  border-color: var(--color-gold);
+  transform: translateY(-2px);
+}
+
+.play {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e4c988 0%, #c7a967 100%);
+  color: #0b0c09;
+  padding-left: 3px; /* the triangle looks centred when nudged right */
+}
+
+.videoCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.videoTitle {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-text-primary);
+}
+
+.videoText {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.videoAction {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--color-gold);
+  white-space: nowrap;
+}
+
 /* Tablets: three per row */
 @media (max-width: 1000px) {
   .grid {
@@ -126,5 +184,21 @@
 
   .caption {
     padding: 10px 12px 12px;
+  }
+
+  /* Phones: smaller play button, and "Watch" moves under the text */
+  .video {
+    grid-template-columns: 44px 1fr;
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .play {
+    width: 44px;
+    height: 44px;
+  }
+
+  .videoAction {
+    grid-column: 2;
   }
 }

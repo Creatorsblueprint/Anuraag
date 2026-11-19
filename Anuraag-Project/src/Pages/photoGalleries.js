@@ -7,6 +7,8 @@
 //   text    - one sentence under the heading (optional)
 //   columns - photographs per row on wide screens
 //   photos  - each one: { src, title, meta }  (meta is optional)
+//   video   - optional link to a video, shown as a card under the photos:
+//             { href, title, text, meta }
 
 // Book page: the book at recent events.
 // Names and event details confirmed by the client (17 November 2026).
@@ -22,7 +24,15 @@ export const BOOK_ON_STAGE = {
     { src: '/gallery/book-launch-falcons-2.jpg', title: 'With Suniel Shetty', meta: 'Falcons of Majlis · First book launch' },
     { src: '/gallery/vibrant-goa-book.jpg', title: 'With Dr. Pramod Sawant, Chief Minister of Goa', meta: 'Vibrant Goa Global Business Summit · October 2026' },
     { src: '/gallery/vibrant-goa-trophy.jpg', title: 'Honoured on stage', meta: 'Vibrant Goa Global Business Summit · October 2026' }
-  ]
+  ],
+  // Short video Dr. Guglaani posted on LinkedIn (November 2026). We link to
+  // the post instead of copying the video, so it stays his own upload.
+  video: {
+    href: 'https://www.linkedin.com/feed/update/urn:li:activity:7526527976901853184/',
+    title: 'Suniel Shetty on You Will Not Fly',
+    text: 'Actor and entrepreneur Suniel Shetty talks about the book in Dubai.',
+    meta: '30-second video · LinkedIn'
+  }
 };
 
 // About page: Dr. Guglaani with leaders in government, business and public
