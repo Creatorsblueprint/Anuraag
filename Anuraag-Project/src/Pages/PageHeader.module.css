@@ -18,6 +18,23 @@
   text-align: left;
 }
 
+/* With a form beside the photo (Contact and Insights): the photo sits at the
+   top and stays in view while the visitor scrolls through the form */
+.withExtra {
+  align-items: start;
+  margin-bottom: 0;
+}
+
+.withExtra .photoFrame {
+  position: sticky;
+  top: 110px; /* just below the menu bar */
+}
+
+/* Space between the introduction and the form under it */
+.extra {
+  margin-top: 28px;
+}
+
 /* Small gold label above the heading (same style as the other pages) */
 .eyebrow {
   color: var(--color-gold);
@@ -81,5 +98,11 @@
     width: 200px;
     margin: 0 auto;
     padding: 6px;
+  }
+
+  /* No sticky photo on phones: it is above the text there */
+  .withExtra .photoFrame {
+    position: relative;
+    top: auto;
   }
 }
