@@ -1,20 +1,27 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { fadeInUp, fadeInScale, staggerContainer } from '../animations';
-import { trackCtaClick, trackPageView } from '../utils/analytics';
+import { trackCtaClick } from '../utils/analytics';
+import { navigate } from '../router/router';
 import styles from './Home.module.css';
 
 export default function Home() {
+  // The book buttons open the Book page (the full book section moved there
+  // when the homepage was shortened, November 2026).
+  const openBookPage = (e, ctaName) => {
+    e.preventDefault();
+    trackCtaClick(ctaName, 'hero_section', '/book');
+    navigate('/book');
+  };
+
+  // Scrolls down to a section of this page (e.g. "#intro"), leaving room
+  // for the sticky header. The address bar stays as it is.
   const handleScrollTo = (e, targetId, ctaName = '') => {
     e.preventDefault();
-    const sectionId = targetId.replace('#', '');
-    const newPath = sectionId === 'overview' ? '/' : `/${sectionId}`;
-    window.history.pushState(null, '', newPath);
 
     if (ctaName) {
       trackCtaClick(ctaName, 'hero_section', targetId);
     }
-    trackPageView(newPath, `Dr. Anuraag Guglaani — ${sectionId}`);
 
     const el = document.querySelector(targetId);
     if (el) {
@@ -86,8 +93,8 @@ export default function Home() {
             <motion.div className={styles.heroActions} variants={fadeInUp}>
               <a
                 className={`${styles.button} ${styles.gold}`}
-                href="#book"
-                onClick={(e) => handleScrollTo(e, '#book', 'Discover the book')}
+                href="/book"
+                onClick={(e) => openBookPage(e, 'Discover the book')}
               >
                 <span>Discover the book</span>
                 <span className={styles.btnArrow}>↗</span>
@@ -95,8 +102,8 @@ export default function Home() {
 
               <a
                 className={styles.textLink}
-                href="#story"
-                onClick={(e) => handleScrollTo(e, '#story', 'Meet the author')}
+                href="#intro"
+                onClick={(e) => handleScrollTo(e, '#intro', 'Meet the author')}
               >
                 <span>Meet the author</span>
                 <span className={styles.btnArrowDown}>↓</span>
@@ -124,8 +131,8 @@ export default function Home() {
           {/* Floating Book Announcement Card */}
           <motion.a
             className={styles.heroBookCard}
-            href="#book"
-            onClick={(e) => handleScrollTo(e, '#book', 'Hero Floating Book Card')}
+            href="/book"
+            onClick={(e) => openBookPage(e, 'Hero Floating Book Card')}
             variants={fadeInUp}
             initial="hidden"
             animate="visible"

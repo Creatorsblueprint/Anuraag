@@ -2,6 +2,7 @@ import styles from './Footer.module.css';
 import { trackSocialClick } from '../utils/analytics';
 import { useTheme } from '../utils/ThemeContext';
 import Link from '../router/Link';
+import { MENU_LINKS } from '../router/routes';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -65,12 +66,12 @@ export default function Footer() {
             >
               <span>Threads ↗</span>
             </a>
-            {/* /falcons opens the home page and scrolls to the Falcons section */}
+            {/* The Falcons of Majlis section is on the Media Kit page */}
             <Link
-              to="/falcons"
+              to="/media-kit#falcons"
               className={styles.socialLink}
               aria-label="Falcons of Majlis"
-              onClick={() => trackSocialClick('Falcons of Majlis', '/falcons')}
+              onClick={() => trackSocialClick('Falcons of Majlis', '/media-kit#falcons')}
             >
               <span>Falcons ↗</span>
             </Link>
@@ -81,6 +82,16 @@ export default function Footer() {
             <span className={styles.arrowUp}>↑</span>
           </a>
         </div>
+
+        {/* Links to every page (the same list as the top menu), so visitors
+            who reach the bottom can go straight on to another page */}
+        <nav className={styles.pageLinks} aria-label="Pages">
+          {MENU_LINKS.map((link) => (
+            <Link key={link.to} to={link.to} className={styles.socialLink}>
+              {link.label}
+            </Link>
+          ))}
+        </nav>
 
         {/* Developer Tag on a Dedicated Centered Line Above Copyright */}
         <div className={styles.creditLine}>

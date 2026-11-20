@@ -219,3 +219,15 @@
     margin: 0 auto;
   }
 }
+
+/* Row of links to every page, under the top row */
+.pageLinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 28px;
+  padding: 22px 0;
+  margin-bottom: 28px;
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}

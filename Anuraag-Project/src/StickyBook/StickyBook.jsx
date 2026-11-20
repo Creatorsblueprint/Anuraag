@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { trackCtaClick } from '../utils/analytics';
 import styles from './StickyBook.module.css';
 import { strikeNot } from '../utils/strikeNot';
+import { navigate } from '../router/router';
 
 export default function StickyBook() {
   const [scrolledPastHero, setScrolledPastHero] = useState(false);
@@ -57,6 +58,10 @@ export default function StickyBook() {
         top: Math.max(0, offsetPosition),
         behavior: 'smooth'
       });
+    } else {
+      // Not on this page (the homepage has no purchase section since it
+      // was shortened): open the Book page at its purchase section instead.
+      navigate(`/book${targetId}`);
     }
   };
 

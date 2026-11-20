@@ -30,40 +30,41 @@ export const MENU_LINKS = [
 ];
 
 // Older short addresses that are already shared or indexed (e.g. /falcons).
-// They still open the home page and scroll to the matching section.
-// The key is the address, the value is the id of the section to scroll to.
-// (Addresses that are now real pages, like /about and /book, are in PAGES above.)
-export const HOME_SECTIONS = {
-  ebook: 'book',
-  'you-will-not-fly': 'book',
-  'the-living-charter': 'book',
-  story: 'story',
-  'about-me': 'story',
-  'about-us': 'story',
-  'the-man': 'story',
-  'the-story': 'story',
-  lectern: 'story',
-  expertise: 'expertise',
-  'the-work': 'expertise',
-  work: 'expertise',
-  pillars: 'expertise',
-  'six-verbs': 'expertise',
-  diagnostics: 'expertise',
-  practice: 'expertise',
-  'the-practice': 'expertise',
-  leadership: 'roles',
-  roles: 'roles',
-  falcons: 'falcons',
-  'falcons-of-majlis': 'falcons',
-  videos: 'videos',
-  media: 'videos',
-  recognition: 'recognition',
-  honors: 'recognition',
-  affiliations: 'recognition',
-  faq: 'faq',
-  purchase: 'purchase',
-  order: 'purchase',
-  top: 'top',
-  overview: 'overview',
-  home: 'overview'
+// Each one is sent on to the page and section where that content lives now
+// (the homepage was shortened in November 2026, so most sections moved to
+// the inner pages). The key is the old address, the value the new one.
+// (Addresses that are real pages, like /about and /book, are in PAGES above.)
+export const OLD_ADDRESSES = {
+  ebook: '/book',
+  'you-will-not-fly': '/book',
+  'the-living-charter': '/book',
+  faq: '/book#faq',
+  purchase: '/book#purchase',
+  order: '/book#purchase',
+  story: '/about#story',
+  'about-me': '/about#story',
+  'about-us': '/about#story',
+  'the-man': '/about#story',
+  'the-story': '/about#story',
+  lectern: '/about#story',
+  expertise: '/about#expertise',
+  'the-work': '/about#expertise',
+  work: '/about#expertise',
+  pillars: '/about#expertise',
+  'six-verbs': '/about#expertise',
+  diagnostics: '/about#expertise',
+  practice: '/about#expertise',
+  'the-practice': '/about#expertise',
+  leadership: '/about#roles',
+  roles: '/about#roles',
+  recognition: '/about#recognition',
+  honors: '/about#recognition',
+  affiliations: '/about#recognition',
+  falcons: '/media-kit#falcons',
+  'falcons-of-majlis': '/media-kit#falcons',
+  videos: '/media-kit#videos',
+  media: '/media-kit#videos',
+  top: '/',
+  overview: '/',
+  home: '/'
 };

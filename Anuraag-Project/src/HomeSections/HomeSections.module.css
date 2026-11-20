@@ -1,0 +1,366 @@
+/* Styles for HomeSections.jsx (the short homepage sections).
+   Uses the shared design tokens from index.css, so it follows the dark and
+   light themes automatically. */
+
+/* ---------- Shared layout ---------- */
+
+.section {
+  display: flex;
+  justify-content: center;
+  padding: 88px 24px;
+}
+
+/* Every second section gets a slightly different background, so the
+   sections are easy to tell apart while scrolling */
+.tinted {
+  background: var(--color-surface);
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1080px;
+}
+
+/* Photo on one side, text on the other */
+.split {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 56px;
+  align-items: center;
+}
+
+/* Swaps the photo to the right-hand side */
+.reverse > :first-child {
+  order: 2;
+}
+
+.splitText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+/* ---------- Headings and text ---------- */
+
+.heading {
+  margin: 0;
+}
+
+.center {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Small gold label above the heading (same style as the other pages) */
+.eyebrow {
+  color: var(--color-gold);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.3px;
+  line-height: 1.5;
+  margin: 0 0 12px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.6vw, 42px);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.text {
+  margin: 0;
+  max-width: 620px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+}
+
+/* Heading on the left, "See all" link on the right */
+.headRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+/* ---------- Links and buttons ---------- */
+
+.arrowLink {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.arrowLink:hover {
+  color: var(--color-gold);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 26px;
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gold {
+  background: var(--color-gold);
+  color: #111;
+}
+
+.gold:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+  margin-top: 6px;
+}
+
+.centerActions {
+  justify-content: center;
+}
+
+/* ---------- 1. Who he is ---------- */
+
+.introPhoto {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: top;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-line);
+}
+
+/* ---------- 2. Achievements ---------- */
+
+.awardList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.award {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  overflow: hidden; /* keeps the photo inside the rounded corners */
+}
+
+/* Same box for every photo; "contain" shows the whole photo, uncropped */
+.awardImage {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  background: #faf7f3;
+}
+
+.awardTitle {
+  padding: 12px 14px 2px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-text-primary);
+}
+
+.awardMeta {
+  padding: 0 14px 14px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+/* ---------- 3. Testimonials ---------- */
+
+.quoteGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.quote {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 30px 32px;
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-line);
+  border-left: 3px solid var(--color-gold);
+  border-radius: var(--radius-md);
+}
+
+.quoteText {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+}
+
+.quoteBy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 14px;
+  color: var(--color-text-primary);
+}
+
+.quoteBy span {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+/* ---------- 4. The book ---------- */
+
+.bookCover {
+  width: 100%;
+  max-width: 300px;
+  justify-self: center;
+  border-radius: 4px;
+  box-shadow: var(--shadow-book);
+}
+
+.bookSubtitle {
+  margin: -6px 0 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--color-gold-light);
+}
+
+/* ---------- 5. Explore blocks ---------- */
+
+.exploreBlock + .exploreBlock {
+  margin-top: 88px;
+}
+
+.explorePhoto {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: top;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-line);
+}
+
+.itemList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.itemTitle {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-text-primary);
+}
+
+.itemMeta {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+/* ---------- 6. Get in touch ---------- */
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
+
+.contact .center {
+  margin-bottom: 8px;
+}
+
+/* ---------- Phones and small tablets ---------- */
+
+@media (max-width: 800px) {
+  .section {
+    padding: 64px 16px;
+  }
+
+  /* Photo above the text */
+  .split {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .reverse > :first-child {
+    order: 0;
+  }
+
+  .introPhoto {
+    aspect-ratio: 1 / 1;
+  }
+
+  .bookCover {
+    max-width: 200px;
+  }
+
+  .exploreBlock + .exploreBlock {
+    margin-top: 56px;
+  }
+
+  .headRow {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 24px;
+  }
+
+  /* Two award photos per row */
+  .awardList {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .quote {
+    padding: 24px 22px;
+  }
+
+  .quoteText {
+    font-size: 16px;
+  }
+}

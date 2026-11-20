@@ -31,8 +31,14 @@ export function restoreRedirectedPath() {
 
 // Goes to another page of the site without a reload.
 // Example: navigate('/speaking') or navigate('/book#purchase').
-export function navigate(to) {
-  window.history.pushState(null, '', to);
+// With { replace: true } the current address is swapped instead of a new one
+// added, so the Back button skips it (used for sending old addresses on).
+export function navigate(to, { replace = false } = {}) {
+  if (replace) {
+    window.history.replaceState(null, '', to);
+  } else {
+    window.history.pushState(null, '', to);
+  }
   window.dispatchEvent(new Event(NAVIGATE_EVENT)); // tells useRoute() to re-read the address
 }
 

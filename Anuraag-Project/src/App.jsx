@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import Nav from './Nav/Nav';
 import Home from './Home/Home';
 import Ebook from './Ebook/Ebook';
-import Interlude from './Interlude/Interlude';
 import Story from './Story/Story';
 import Diagnostics from './Diagnostics/Diagnostics';
 import Roles from './Roles/Roles';
@@ -25,21 +24,23 @@ import { BOOK_ON_STAGE, IN_GOOD_COMPANY } from './Pages/photoGalleries';
 import EventBanner from './EventPromo/EventBanner';
 import EventCard from './EventPromo/EventCard';
 import EventPopup from './EventPromo/EventPopup';
-import HomeHub from './HomeHub/HomeHub';
-import { useRoute } from './router/router';
-import { PAGES, HOME_SECTIONS } from './router/routes';
+import { HomeIntro, Achievements, Testimonials, BookTeaser, ExploreBlocks, ContactStrip } from './HomeSections/HomeSections';
+import { useRoute, navigate } from './router/router';
+import { PAGES, OLD_ADDRESSES } from './router/routes';
 import { trackPageView } from './utils/analytics';
 import './App.css';
 
 // Returns the sections that make up one page.
 // "page" is one of the names listed in router/routes.js (PAGES).
 function renderPage(page) {
-  // About: the existing story, roles and recognition sections, then
-  // photographs of Dr. Guglaani with leaders he has met.
+  // About: the existing story, expertise (moved here from the homepage,
+  // November 2026), roles and recognition sections, then photographs of
+  // Dr. Guglaani with leaders he has met.
   if (page === 'about') {
     return (
       <>
         <Story />
+        <Diagnostics />
         <Roles />
         <Recognition />
         <PhotoGallery gallery={IN_GOOD_COMPANY} />
@@ -68,28 +69,37 @@ function renderPage(page) {
   // is drawn as lists of cards; the others (Insights, Contact) as a short
   // centred page.
   const content = PAGE_CONTENT[page];
+
+  // Media Kit: its cards and galleries, then the Falcons of Majlis feature
+  // and the videos (moved here from the homepage, November 2026).
+  if (page === 'media-kit') {
+    return (
+      <>
+        <ContentPage content={content} />
+        <Falcons />
+        <Videos />
+      </>
+    );
+  }
+
   if (content) {
     return content.sections ? <ContentPage content={content} /> : <PlaceholderPage content={content} />;
   }
 
-  // Home: the full long page, with the book launch card right after the
-  // opening section (the card hides itself once the event is over), and the
-  // "hub" of short previews of the inner pages right after the book.
+  // Home: kept short (client meeting, 19 November 2026). The opening section,
+  // the book launch card (it hides itself once the event is over), then who
+  // he is, achievements, testimonials, the book, his work, and contact.
+  // The full sections are on the inner pages (About, Book, Media Kit...).
   return (
     <>
       <Home />
       <EventCard location="home" />
-      <Ebook />
-      <HomeHub />
-      <Interlude />
-      <Story />
-      <Diagnostics />
-      <Roles />
-      <Falcons />
-      <Recognition />
-      <Videos />
-      <FAQ />
-      <Contact />
+      <HomeIntro />
+      <Achievements />
+      <Testimonials />
+      <BookTeaser />
+      <ExploreBlocks />
+      <ContactStrip />
     </>
   );
 }
@@ -101,6 +111,10 @@ export default function App() {
   // Which page to draw. An address we do not know shows the home page.
   const currentPage = PAGES[path] || PAGES[''];
   const page = currentPage.page;
+
+  // An older short address such as /falcons: where its section lives now,
+  // e.g. "/media-kit#falcons" (see OLD_ADDRESSES). Empty for normal pages.
+  const oldAddressTarget = PAGES[path] ? '' : OLD_ADDRESSES[path] || '';
 
   // Stripe sends the buyer back with "?payment=success" or "?payment=cancel"
   // in the address. Each popup starts open when its word is there.
@@ -114,6 +128,14 @@ export default function App() {
 
   // Runs every time the visitor arrives at an address (first load and every navigation).
   useEffect(() => {
+    // Send an older short address on to its new place. "replace" swaps the
+    // address in the history, so the Back button skips the old one. This
+    // effect then runs again for the new address.
+    if (oldAddressTarget) {
+      navigate(oldAddressTarget, { replace: true });
+      return;
+    }
+
     document.title = currentPage.title; // text in the browser tab
 
     // Report page changes to analytics. Not on the first load (visit 0): the
@@ -122,9 +144,8 @@ export default function App() {
       trackPageView(`/${path}`, currentPage.title);
     }
 
-    // Where to scroll: a section named in the address ("/book#purchase"),
-    // or an older short address such as /falcons (see HOME_SECTIONS).
-    const sectionId = hash || HOME_SECTIONS[path];
+    // Where to scroll: a section named in the address ("/book#purchase").
+    const sectionId = hash;
 
     if (!sectionId) {
       window.scrollTo(0, 0); // a new page starts at the top
@@ -148,7 +169,7 @@ export default function App() {
     }, 150);
 
     return () => clearTimeout(timer); // cancel if the visitor moves on before it fires
-  }, [path, hash, visit, page, currentPage.title]);
+  }, [path, hash, visit, page, currentPage.title, oldAddressTarget]);
 
   // The event registration page stands on its own, with its own simple header.
   // (This return must stay below the hooks above: hooks have to run on every render.)
@@ -176,7 +197,8 @@ export default function App() {
       <Nav currentPath={path} />
       {/* key={page} makes React build the page fresh when the page changes,
           so entrance animations play again and old page state is not kept. */}
-      <main key={page}>{renderPage(page)}</main>
+      {/* Nothing is drawn for the moment an old address is being sent on */}
+      <main key={page}>{oldAddressTarget ? null : renderPage(page)}</main>
       {/* Its own key (different from <main>'s) so it also starts fresh per page */}
       {showStickyBook && <StickyBook key={`sticky-${page}`} />}
       <Footer />
