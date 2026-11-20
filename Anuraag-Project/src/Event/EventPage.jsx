@@ -27,6 +27,20 @@ const EVENT = {
   formatLabel: 'Online via Zoom'
 };
 
+// What the thank-you card shows after the event (from 22 November, 6 PM
+// Dubai time). Fill these in when they are known, then publish the site:
+//   recordResult  - one or two sentences about the world record result,
+//                   e.g. 'We set a new world record with 87 nationalities.'
+//   recordingLink - the full "https://..." link to the recording
+// While a value is empty, the card says it will be shared soon instead.
+const AFTER_EVENT = {
+  recordResult: '',
+  recordingLink: ''
+};
+
+// Only a normal "https://" link is used for the recording button.
+const RECORDING_LINK = /^https:\/\/\S+$/.test(AFTER_EVENT.recordingLink) ? AFTER_EVENT.recordingLink : '';
+
 // The form starts empty. One object holds every field so we can add fields easily.
 const EMPTY_FORM = { name: '', email: '', nationality: '' };
 
@@ -255,18 +269,35 @@ export default function EventPage() {
               is shown in place of the form. */}
           {isEventOver ? (
             // After the event: a thank-you card instead of the form (it reuses
-            // the success card's look). Update the text here when the record
-            // result and the recording are ready to share.
+            // the success card's look). The record result and recording come
+            // from AFTER_EVENT at the top of this file.
             <div className={`${styles.card} ${styles.successCard}`}>
               <span className={styles.successIcon} aria-hidden="true">✓</span>
               <h2 className={styles.successTitle}>Thank you for joining.</h2>
               <p className={styles.successText}>
                 The launch took place on {EVENT.dateLabel}.
               </p>
-              <p className={styles.successText}>
-                The result of the world record attempt and highlights from the launch will be
-                shared here soon.
-              </p>
+              {AFTER_EVENT.recordResult ? (
+                <p className={styles.successText}>
+                  <strong>{AFTER_EVENT.recordResult}</strong>
+                </p>
+              ) : null}
+              {/* Until both are known, say what is still to come */}
+              {!AFTER_EVENT.recordResult || !RECORDING_LINK ? (
+                <p className={styles.successText}>
+                  {!AFTER_EVENT.recordResult && !RECORDING_LINK
+                    ? 'The result of the world record attempt and the recording of the launch will be shared here soon.'
+                    : !RECORDING_LINK
+                      ? 'The recording of the launch will be shared here soon.'
+                      : 'The result of the world record attempt will be shared here soon.'}
+                </p>
+              ) : null}
+              {RECORDING_LINK ? (
+                <a href={RECORDING_LINK} target="_blank" rel="noopener noreferrer" className={styles.submitBtn}>
+                  <span>Watch the recording</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+              ) : null}
               <a href="/book" className={styles.submitBtn}>
                 <span>Get the book</span>
                 <span aria-hidden="true">↗</span>
@@ -285,14 +316,6 @@ export default function EventPage() {
               <p className={styles.successText}>
                 A confirmation email with your Zoom joining link is on its way to this
                 address. We will also send you a reminder shortly before the event.
-              </p>
-              {/* Some email apps put the confirmation in the spam folder, so tell
-                  people clearly where to look (gold box, so it is not missed).
-                  Marking it "Not spam" also helps the reminder reach the inbox. */}
-              <p className={styles.spamNotice}>
-                <strong>Can&apos;t see the email?</strong> Please check your spam or junk
-                folder. If it is there, mark it as &ldquo;Not spam&rdquo; so the reminder
-                and Zoom link reach your inbox.
               </p>
               <a href="/" className={styles.submitBtn}>
                 <span>Back to main site</span>
@@ -393,7 +416,6 @@ export default function EventPage() {
 
             <p className={styles.formNote}>
               Your Zoom joining link will be emailed to you as soon as you register.
-              If you don&apos;t see it, please check your spam or junk folder.
             </p>
           </form>
           )}
