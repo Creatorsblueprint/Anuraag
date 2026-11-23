@@ -343,6 +343,64 @@
 }
 
 /* Bottom Author Note */
+/* "Also available at": the smaller stores as a compact row of links */
+.moreStores {
+  margin-top: 28px;
+  padding: 20px 22px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+}
+
+.moreStoresTitle {
+  margin: 0 0 14px 0;
+  color: var(--color-gold);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.moreStoresGroups {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+}
+
+.moreStoresGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.moreStoresRegion {
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+}
+
+.moreStoresLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.moreStoreLink {
+  padding: 6px 12px;
+  background: var(--color-surface-dim);
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  color: var(--color-text-primary);
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.moreStoreLink:hover,
+.moreStoreLink:focus-visible {
+  background: var(--color-gold-bg);
+  border-color: var(--color-gold);
+}
+
 .purchaseFooterNote {
   display: flex;
   justify-content: center;

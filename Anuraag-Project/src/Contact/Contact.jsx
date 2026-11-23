@@ -66,6 +66,40 @@ const AMAZON_REGIONS = [
   }
 ];
 
+// More stores that sell the book, shown as a compact row of links under the
+// big store cards (so the section does not get longer by eight more cards).
+// Grouped by where the store is. To add a store: add { name, url } to a group.
+const MORE_STORES = [
+  {
+    region: 'Online marketplaces',
+    stores: [
+      { name: 'AbeBooks', url: 'https://www.abebooks.com/products/isbn/9798908174411' },
+      { name: 'eBay', url: 'https://www.ebay.com/itm/920151587628' }
+    ]
+  },
+  {
+    region: 'USA',
+    stores: [
+      { name: 'Barnes & Noble', url: 'https://www.barnesandnoble.com/w/you-will-not-fly-dr-anuraag-guglaani/1151827236?ean=9798908174411' },
+      { name: 'Books-A-Million', url: 'https://www.booksamillion.com/p/9798907632547' },
+      { name: 'Bookshop.org', url: 'https://bookshop.org/p/books/you-will-not-fly-grounded-at-twenty-airborne-ever-since/3f4e3bdef9982bac?ean=9798907632547' }
+    ]
+  },
+  {
+    region: 'Italy',
+    stores: [
+      { name: 'Feltrinelli', url: 'https://www.lafeltrinelli.it/you-will-not-fly-grounded-libro-inglese-dr-anuraag-guglaani/e/9798908174411' },
+      { name: 'IBS', url: 'https://www.ibs.it/libri-inglese/autori/dr-anuraag-guglaani' }
+    ]
+  },
+  {
+    region: 'Switzerland',
+    stores: [
+      { name: 'Orell Füssli', url: 'https://www.orellfuessli.ch/shop/home/artikeldetails/A1082407711' }
+    ]
+  }
+];
+
 export default function Contact() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
@@ -337,6 +371,45 @@ export default function Contact() {
               )}
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* Also available at: the smaller stores, as simple links */}
+        <motion.div
+          className={styles.moreStores}
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
+          <p className={styles.moreStoresTitle}>Also available at</p>
+          <div className={styles.moreStoresGroups}>
+            {MORE_STORES.map((group) => (
+              <div key={group.region} className={styles.moreStoresGroup}>
+                <span className={styles.moreStoresRegion}>{group.region}</span>
+                <div className={styles.moreStoresLinks}>
+                  {group.stores.map((store) => (
+                    <a
+                      key={store.name}
+                      href={store.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.moreStoreLink}
+                      onClick={() => {
+                        trackBookPurchaseClick({
+                          retailer: store.name,
+                          edition: 'You Will Not Fly',
+                          format: 'Print Edition',
+                          url: store.url
+                        });
+                      }}
+                    >
+                      {store.name} <span aria-hidden="true">↗</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </motion.div>
 
         {/* Bottom Personal Sign-off */}
