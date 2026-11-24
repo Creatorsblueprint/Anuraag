@@ -81,10 +81,19 @@ export function HomeIntro() {
 // How many award photos to show; the rest are on the Media Kit page.
 const AWARD_COUNT = 4;
 
-// The first few photos of the Media Kit's "Awards and recognition" gallery.
+// Photos of Dr. Guglaani being honoured on stage, shown first. These are
+// event photos (not photos of framed certificates like the Media Kit gallery),
+// sent by the client on 24 Nov 2026, cropped to 4:3. Files in public/awards.
+const STAGE_AWARD_PHOTOS = [
+  { src: '/awards/rise-2026-honoured.jpg', title: 'Honoured at RISE 2026', meta: 'Vibrant Goa Foundation · Goa · June 2026' },
+  { src: '/awards/rise-2026-recognition.jpg', title: 'Recognised on stage at RISE 2026', meta: 'Vibrant Goa Foundation · Goa · June 2026' }
+];
+
+// The stage photos above, then the first photos of the Media Kit's
+// "Awards and recognition" gallery, up to AWARD_COUNT in total.
 function awardPhotos() {
   const gallery = PAGE_CONTENT['media-kit']?.sections?.find((s) => s.heading === 'Awards and recognition');
-  return gallery?.images ? gallery.images.slice(0, AWARD_COUNT) : [];
+  return [...STAGE_AWARD_PHOTOS, ...(gallery?.images || [])].slice(0, AWARD_COUNT);
 }
 
 export function Achievements() {
