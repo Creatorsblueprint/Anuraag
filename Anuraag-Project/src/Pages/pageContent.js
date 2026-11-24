@@ -95,21 +95,27 @@ export const PAGE_CONTENT = {
         // Event posters and stage photos, saved from Dr. Anuraag's own
         // LinkedIn posts (November 2026). Files are in public/speaking.
         // "photos" gives them a taller box than the award gallery (see ContentPage).
+        // The first five are event photographs sent by the client (24 Nov 2026),
+        // cropped to 4:5 and shrunk to 800x1000. The RISE 2026 and Arabian
+        // Business Exhibition photos replace the posters that were shown before.
         heading: 'From the stage',
         photos: true,
         images: [
+          { src: '/speaking/rise-2026-goa-stage.jpg', title: 'RISE 2026: Building Relationships that Build Nations & Businesses', meta: 'Panaji, Goa · June 2026' },
+          { src: '/speaking/vibrant-goa-summit-stage.jpg', title: 'Vibrant Goa Global Business Summit', meta: 'Goa · October 2026' },
+          { src: '/speaking/arabian-business-exhibition-stage.jpg', title: 'Arabian Business Exhibition', meta: 'Fireside chat' },
+          { src: '/speaking/tln-breakfast-club.jpg', title: 'TLN Breakfast Club', meta: '21 September 2026' },
+          { src: '/speaking/london-event.jpg', title: 'In London', meta: 'May 2026' },
           { src: '/speaking/goa-book-launch.jpg', title: 'You Will Not Fly launched by the Chief Minister of Goa', meta: 'Dr. Pramod Sawant' },
           { src: '/speaking/qs-higher-ed-summit-2026.jpg', title: 'QS Higher Ed Summit: Middle East 2026', meta: 'Abu Dhabi' },
           { src: '/speaking/startup-world-cup-2026.jpg', title: 'Startup World Cup 2026 Grand Finale', meta: 'Mentor' },
           { src: '/speaking/international-investors-summit.jpg', title: 'International Investors Summit', meta: 'Speaker' },
           { src: '/speaking/sme-governance-summit-2026.jpg', title: 'SME Governance Summit 2026', meta: 'BSE, Mumbai' },
           { src: '/speaking/keynote-parachuting.jpg', title: 'Parachuting Into New Terrain', meta: 'Keynote' },
-          { src: '/speaking/rise-2026-goa.jpg', title: 'RISE 2026', meta: 'Panaji, Goa' },
           { src: '/speaking/aurak-book-presentation.jpg', title: 'Presenting the book at AURAK', meta: 'American University of Ras Al Khaimah' },
           { src: '/speaking/icpact-amity-dubai-2026.jpg', title: 'ICPACT 2026', meta: 'Amity University Dubai' },
           { src: '/speaking/gess-startup-spotlight-jury.jpg', title: 'StartUp Spotlight jury', meta: 'Education Investment MENA, GESS Dubai' },
-          { src: '/speaking/aurak-business-resilience.jpg', title: 'Business Resilience and the Art of Staying Ahead', meta: 'AURAK' },
-          { src: '/speaking/arabian-business-exhibition.jpg', title: 'Arabian Business Exhibition', meta: 'Fireside chat' }
+          { src: '/speaking/aurak-business-resilience.jpg', title: 'Business Resilience and the Art of Staying Ahead', meta: 'AURAK' }
         ]
       },
       {
