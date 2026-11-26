@@ -194,6 +194,25 @@
   background: #000;
 }
 
+/* YouTube player: a normal YouTube video is wide (16:9), so the width
+   decides the size, kept small enough that the height fits the screen */
+.youtube {
+  display: block;
+  width: min(92vw, 1100px, calc(80vh * 16 / 9));
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: #000;
+}
+
+/* A YouTube Short is portrait (9:16), like the phone video above */
+.youtubeVertical {
+  width: auto;
+  height: min(80vh, 760px);
+  max-width: 92vw;
+  aspect-ratio: 9 / 16;
+}
+
 /* Round close button at the top right corner of the video */
 .close {
   position: absolute;

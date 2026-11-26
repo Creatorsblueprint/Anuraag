@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { strikeNot } from '../utils/strikeNot';
 import styles from './PhotoGallery.module.css';
 
@@ -13,8 +13,9 @@ import styles from './PhotoGallery.module.css';
  *     { id, eyebrow, heading, text, columns, photos }
  *     columns - how many photographs per row on wide screens (2, 3 or 4)
  *     photos  - list of { src, title, meta }  (meta is optional)
- *     video   - optional { src, title, text, meta }: a card under the
- *               photos that plays a video (from /public) in a pop-up
+ *     videos  - optional list of videos, each a card under the photos that
+ *               plays it in a pop-up: { src, ... } for a file in /public,
+ *               or { youtube, vertical, ... } for a YouTube video
  */
 
 /**
@@ -28,14 +29,26 @@ function VideoCard({ video }) {
   // buttons can open and close the pop-up and start or stop the video.
   const dialogRef = useRef(null);
   const videoRef = useRef(null);
+  // For a YouTube video: true while the pop-up is open. The YouTube player
+  // is only put on the page while this is true, so nothing is loaded from
+  // YouTube until the visitor presses play, and closing removes the player,
+  // which stops the video.
+  const [isOpen, setIsOpen] = useState(false);
 
   function open() {
     dialogRef.current.showModal();
-    videoRef.current.play().catch(() => {}); // some browsers block autoplay; the controls still work
+    setIsOpen(true);
+    videoRef.current?.play().catch(() => {}); // some browsers block autoplay; the controls still work
   }
 
   function close() {
     dialogRef.current.close();
+  }
+
+  // Runs however the pop-up is closed (button, Esc or a click outside).
+  function handleClose() {
+    setIsOpen(false);
+    videoRef.current?.pause();
   }
 
   return (
@@ -62,31 +75,46 @@ function VideoCard({ video }) {
         ref={dialogRef}
         className={styles.dialog}
         aria-label={video.title}
-        onClose={() => videoRef.current.pause()}
+        onClose={handleClose}
         onClick={(event) => event.target === event.currentTarget && close()}
       >
         <div className={styles.dialogInner}>
           <button type="button" className={styles.close} onClick={close} aria-label="Close video">
             ✕
           </button>
-          {/* preload="metadata" fetches only the first frame and length until
-              the visitor presses play; playsInline stops iPhones from forcing
-              full screen. */}
-          <video
-            ref={videoRef}
-            className={styles.player}
-            src={video.src}
-            controls
-            playsInline
-            preload="metadata"
-          />
+          {video.youtube ? (
+            // YouTube's player. youtube-nocookie.com is YouTube's privacy
+            // mode (no tracking cookies until the visitor plays the video);
+            // rel=0 keeps the suggested videos at the end to this channel.
+            isOpen && (
+              <iframe
+                className={`${styles.youtube} ${video.vertical ? styles.youtubeVertical : ''}`}
+                src={`https://www.youtube-nocookie.com/embed/${encodeURIComponent(video.youtube)}?autoplay=1&rel=0`}
+                title={video.title}
+                allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+                allowFullScreen
+              />
+            )
+          ) : (
+            // preload="metadata" fetches only the first frame and length until
+            // the visitor presses play; playsInline stops iPhones from forcing
+            // full screen.
+            <video
+              ref={videoRef}
+              className={styles.player}
+              src={video.src}
+              controls
+              playsInline
+              preload="metadata"
+            />
+          )}
         </div>
       </dialog>
     </>
   );
 }
 export default function PhotoGallery({ gallery }) {
-  const { id, eyebrow, heading, text, columns = 3, photos, video } = gallery;
+  const { id, eyebrow, heading, text, columns = 3, photos, videos = [] } = gallery;
 
   return (
     <section className={styles.section} id={id}>
@@ -120,8 +148,10 @@ export default function PhotoGallery({ gallery }) {
           ))}
         </ul>
 
-        {/* Optional video card that plays the video in a pop-up */}
-        {video && <VideoCard video={video} />}
+        {/* Optional video cards, each playing its video in a pop-up */}
+        {videos.map((video) => (
+          <VideoCard video={video} key={video.youtube || video.src} />
+        ))}
       </div>
     </section>
   );

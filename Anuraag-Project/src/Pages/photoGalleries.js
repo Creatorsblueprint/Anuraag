@@ -7,8 +7,11 @@
 //   text    - one sentence under the heading (optional)
 //   columns - photographs per row on wide screens
 //   photos  - each one: { src, title, meta }  (meta is optional)
-//   video   - optional video, shown as a card under the photos that plays
-//             it in a pop-up: { src, title, text, meta }
+//   videos  - optional list of videos, each shown as a card under the photos
+//             that plays it in a pop-up: { src, title, text, meta } for a
+//             file in /public, or { youtube, title, text, meta, vertical }
+//             for a YouTube video (youtube = the id at the end of its link;
+//             vertical = true for a YouTube Short, which is portrait)
 
 // Book page: the book at recent events.
 // Names and event details confirmed by the client (17 November 2026).
@@ -25,14 +28,32 @@ export const BOOK_ON_STAGE = {
     { src: '/gallery/vibrant-goa-book.jpg', title: 'With Dr. Pramod Sawant, Chief Minister of Goa', meta: 'Vibrant Goa Global Business Summit · October 2026' },
     { src: '/gallery/vibrant-goa-trophy.jpg', title: 'Honoured on stage', meta: 'Vibrant Goa Global Business Summit · October 2026' }
   ],
-  // Short video Dr. Guglaani posted on LinkedIn (November 2026), saved into
-  // public/videos so it plays on this page instead of sending visitors away.
-  video: {
-    src: '/videos/suniel-shetty-on-the-book.mp4',
-    title: 'Suniel Shetty on You Will Not Fly',
-    text: 'Actor and entrepreneur Suniel Shetty talks about the book in Dubai.',
-    meta: '30-second video'
-  }
+  videos: [
+    // Short video Dr. Guglaani posted on LinkedIn (November 2026), saved into
+    // public/videos so it plays on this page instead of sending visitors away.
+    {
+      src: '/videos/suniel-shetty-on-the-book.mp4',
+      title: 'Suniel Shetty on You Will Not Fly',
+      text: 'Actor and entrepreneur Suniel Shetty talks about the book in Dubai.',
+      meta: '30-second video'
+    },
+    // The two client videos too big to host on the site (848 MB and 47 MB),
+    // uploaded to Dr. Guglaani's YouTube channel (November 2026) and played
+    // here in YouTube's own player.
+    {
+      youtube: '3bxEsxmGDow', // https://youtu.be/3bxEsxmGDow
+      title: 'Dr. Anuraag Guglaani at Falcons of Majlis',
+      text: 'On the Falcons of Majlis stage, where the book had its first launch.',
+      meta: 'YouTube video'
+    },
+    {
+      youtube: 'T6YrhxVri-g', // https://youtube.com/shorts/T6YrhxVri-g
+      vertical: true,
+      title: 'On stage at the Vibrant Goa Global Business Summit',
+      text: 'Dr. Guglaani speaking on stage in Goa.',
+      meta: 'YouTube Short'
+    }
+  ]
 };
 
 // About page: Dr. Guglaani with leaders in government, business and public
